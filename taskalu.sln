@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "taskalu", "taskalu\taskalu.csproj", "{560A86E5-9594-47FE-AED5-CEDE4893A50C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{560A86E5-9594-47FE-AED5-CEDE4893A50C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{560A86E5-9594-47FE-AED5-CEDE4893A50C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{560A86E5-9594-47FE-AED5-CEDE4893A50C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{560A86E5-9594-47FE-AED5-CEDE4893A50C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {748A96BB-5F01-48EE-BEE8-F7FDC1791080}
+	EndGlobalSection
+EndGlobal
