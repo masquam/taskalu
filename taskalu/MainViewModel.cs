@@ -24,7 +24,7 @@ namespace Taskalu
             try
             {
                 SelectedFile = files[0];
-            } catch (Exception ex) {
+            } catch (Exception e) {
                 SelectedFile = null;
             }
         }
