@@ -24,7 +24,8 @@
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
             </Style>
         </Grid.Resources>
-        <StackPanel VerticalAlignment="Top">
+        <DockPanel>
+        <StackPanel DockPanel.Dock="Top" VerticalAlignment="Top">
             <Menu VerticalAlignment="Top">
                 <MenuItem Header="_File">
                     <MenuItem Header="e_xit" Click="Exit_Click" />
@@ -38,7 +39,9 @@
                     <Button Content="Button" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75"/>
                 </ToolBar>
             </ToolBarTray>
-         <ListBox x:Name="listbox1" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" >
+            </StackPanel>
+            <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
+            <ListBox x:Name="listbox1" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="0,0,0,1" BorderBrush="#FFDCDCDC" Margin="17,0,10,0">
@@ -78,9 +81,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        </StackPanel>
 
-        <StatusBar Height="20" VerticalAlignment="Bottom"/>
 
+        </DockPanel>
     </Grid>
 </Window>

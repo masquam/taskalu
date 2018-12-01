@@ -29,7 +29,8 @@ namespace Taskalu
 
             for (int i = 0; i < 10; i++)
             {
-                mv.Files.Add(new ListViewFile() { Name = "Image.jpg", ImageSize = "128 × 128", Type = "JPEG イメージ です。\n長い説明をここに\n表示します。", Size = "☆☆☆☆☆", CreateDate = "2011/11/11 11:11" });
+                // TODO: 実際の値に変更
+                mv.Files.Add(new ListViewFile() { Name = "Image.jpg", ImageSize = "128 × 128", Type = "JPEG イメージ です。\n長い説明をここに\n表示します。", Size = "☆☆☆☆☆", CreateDate = "2011/11/11 11:1" + i.ToString() });
             }
 
             this.DataContext = mv;
