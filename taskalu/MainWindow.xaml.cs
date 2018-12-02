@@ -36,15 +36,27 @@ namespace Taskalu
             this.DataContext = mv;
         }
 
+        // リストのアイテムがクリックされた時
         void ListSelectionChanged(object sender, SelectionChangedEventArgs args)
         {
             ListViewFile lbf = ((sender as ListBox).SelectedItem as ListViewFile);
-            MessageBox.Show(lbf.CreateDate);
+
+            listbox1.Visibility = Visibility.Collapsed;
+            //MessageBox.Show(lbf.CreateDate);
+            textbox1.Text = lbf.CreateDate;
+            stackpanel1.Visibility = Visibility.Visible;
+        }
+
+        private void Button1_Click(object sender, RoutedEventArgs e)
+        {
+            stackpanel1.Visibility = Visibility.Collapsed;
+            listbox1.Visibility = Visibility.Visible;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+
     }
 }

@@ -41,7 +41,7 @@
             </ToolBarTray>
         </StackPanel>
         <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
-        <ListBox x:Name="listbox1" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged">
+        <ListBox x:Name="listbox1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="0,0,0,1" BorderBrush="#FFDCDCDC" Margin="17,0,10,0">
@@ -81,8 +81,10 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-
-
+            <StackPanel DockPanel.Dock="Top" Name="stackpanel1" Visibility="Collapsed" >
+                <TextBox Name="textbox1" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
+                <Button Name="button1" Content="Close" Width="75" Click="Button1_Click"/>
+            </StackPanel>
         </DockPanel>
     </Grid>
 </Window>
