@@ -53,16 +53,38 @@ namespace Taskalu
             stackpanel1.Visibility = Visibility.Visible;
         }
 
+        // 明細画面の閉じるボタン
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
             stackpanel1.Visibility = Visibility.Collapsed;
             listbox1.Visibility = Visibility.Visible;
         }
 
+        // ツールバーの New Task ボタン。新規タスクウィンドウを開く
+        private void NewButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenNewTaskWindow();
+        }
+
+        void OpenNewTaskWindow()
+        {
+            // Instantiate the dialog box
+            NewWindow dlg = new NewWindow();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            //dlg.DocumentMargin = this.documentTextBox.Margin;
+
+            // Open the dialog box modally 
+            dlg.ShowDialog();
+        }
+
+        // メニューのExitクリック
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
+
 
     }
 }

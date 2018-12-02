@@ -36,7 +36,7 @@
             </Menu>
             <ToolBarTray VerticalAlignment="Top">
                 <ToolBar Height="26" VerticalAlignment="Top">
-                    <Button Content="Button" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75" Click="NewButton_Click"/>
                 </ToolBar>
             </ToolBarTray>
         </StackPanel>
