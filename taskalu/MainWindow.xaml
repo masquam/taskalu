@@ -41,7 +41,7 @@
             </ToolBarTray>
         </StackPanel>
         <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
-        <ListBox x:Name="listbox1" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" >
+        <ListBox x:Name="listbox1" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="0,0,0,1" BorderBrush="#FFDCDCDC" Margin="17,0,10,0">

@@ -36,6 +36,12 @@ namespace Taskalu
             this.DataContext = mv;
         }
 
+        void ListSelectionChanged(object sender, SelectionChangedEventArgs args)
+        {
+            ListViewFile lbf = ((sender as ListBox).SelectedItem as ListViewFile);
+            MessageBox.Show(lbf.CreateDate);
+        }
+
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
