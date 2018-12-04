@@ -10,16 +10,11 @@ namespace Taskalu
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        public static MainViewModel mv = new MainViewModel();
+
         public MainViewModel()
         {
             ObservableCollection<ListViewFile> files = new ObservableCollection<ListViewFile>();
-
-            // TODO: ここは仮データ
-/*            for (int i = 0; i < 10; i++)
-            {
-                files.Add(new ListViewFile() { Name = "Image.jpg", ImageSize = "256 × 256", Type = "JPEG イメージ", Size = "256 KB", CreateDate = "2011/11/11 11:11" });
-            }
-*/
             Files = files;
 /*
             try

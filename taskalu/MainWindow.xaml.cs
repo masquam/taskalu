@@ -25,12 +25,12 @@ namespace Taskalu
         {
             InitializeComponent();
 
-            MainViewModel mv = new MainViewModel();
+            //MainViewModel mv = new MainViewModel();
 
             for (int i = 0; i < 10; i++)
             {
                 // TODO: 実際の値に変更
-                mv.Files.Add(new ListViewFile() {
+                MainViewModel.mv.Files.Add(new ListViewFile() {
                     Name = "Image.jpg",
                     ImageSize = "128 × 128",
                     Type = "JPEG イメージ です。\n長い説明をここに\n表示します。",
@@ -39,7 +39,7 @@ namespace Taskalu
                     Id = i.ToString() });
             }
 
-            this.DataContext = mv;
+            this.DataContext = MainViewModel.mv;
         }
 
         // リストのアイテムがクリックされた時

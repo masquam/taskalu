@@ -26,6 +26,18 @@ namespace Taskalu
 
         private void ButtonNewWindowOk_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: DB書き込みに変更
+            MainViewModel.mv.Files.Add(new ListViewFile()
+            {
+                Name = NewTitleBox.Text,
+                ImageSize = "128 × 128",
+                Type = NewDesriptioncBox.Text,
+                Size = "☆☆☆☆☆",
+                CreateDate = "2011/11/11 11:10",
+                Id = "11"
+            });
+            
+
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;
         }

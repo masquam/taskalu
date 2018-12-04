@@ -9,6 +9,10 @@
     <Grid>
         <Button Name="NewWindowOk" Content="OK" HorizontalAlignment="Left" Margin="585,371,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="687,371,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.259,3.535" IsCancel="True"/>
+        <Label Content="Title" HorizontalAlignment="Left" Height="27" Margin="39,47,0,0" Width="79" VerticalAlignment="Top"/>
+        <TextBox Name="NewTitleBox" HorizontalAlignment="Left" Height="27" Margin="123,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203"/>
+        <Label Content="Description" HorizontalAlignment="Left" Height="27" Margin="39,88,0,0" Width="79" VerticalAlignment="Top"/>
+        <TextBox Name="NewDesriptioncBox" HorizontalAlignment="Left" Height="94" Margin="123,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203"/>
 
     </Grid>
 </Window>
