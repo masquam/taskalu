@@ -15,10 +15,14 @@ namespace Taskalu
         // TODO: EntityFramework License
         // https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm
 
+
+        public static string dbdirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
+        public static string dbpath = dbdirectory + "\\taskaludb.sqlite";
+
         public static void TouchDB()
         {
-            string dbdirectory= System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
-            string dbpath = dbdirectory + "\\taskaludb.sqlite";
+            //string dbdirectory= System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
+            //string dbpath = dbdirectory + "\\taskaludb.sqlite";
             MessageBox.Show("The folder where database flle will be created: " + dbpath);
 
             Directory.CreateDirectory(dbdirectory);
