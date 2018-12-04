@@ -25,7 +25,7 @@ namespace Taskalu
         {
             InitializeComponent();
 
-            //MainViewModel mv = new MainViewModel();
+            SQLiteClass.TouchDB();
 
             for (int i = 0; i < 10; i++)
             {
