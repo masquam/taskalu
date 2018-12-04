@@ -42,7 +42,33 @@ namespace Taskalu
                 {
                     MessageBox.Show("database file create error!\n" + ex.Message);
                 }
+
+                ExecuteCreateTable("create table tasklist (id varchar(8), name varchar(255), type varchar(255), size varchar(255), imagesize varchar(255), createdate varchar(255))");
             }
         }
+
+        public static void ExecuteCreateTable(string sql)
+        {
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+            try
+            {
+                SQLiteCommand com = new SQLiteCommand(sql, con);
+                com.ExecuteNonQuery();
+            } catch (Exception ex)
+            {
+                MessageBox.Show("database table create error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+
+        }
+
+
+
+
     }
 }
