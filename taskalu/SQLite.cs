@@ -36,12 +36,12 @@ namespace Taskalu
                 try
                 {
                     SQLiteConnection.CreateFile(dbpath);
+                    MessageBox.Show("database file created.");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("database file create error!\n" + ex.Message);
                 }
-                MessageBox.Show("database file created.");
             }
         }
     }
