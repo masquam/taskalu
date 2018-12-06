@@ -32,7 +32,7 @@ namespace Taskalu
                 // TODO: 実際の値に変更
                 MainViewModel.mv.Files.Add(new ListViewFile() {
                     Name = "Image.jpg",
-                    Description = "JPEG イメージ です。\n長い説明をここに\n表示します。",
+                    Description = "JPEG イメージ です。ここには詳細な説明を書き込むようにする予定です。したがって、自動的に改行するように画面を調整する予定です。\n長い説明をここに\n表示します。",
                     Priority = "☆☆☆☆☆",
                     CreateDate = "2011/11/11 11:1" + i.ToString(),
                     Id = i.ToString() });
@@ -51,6 +51,16 @@ namespace Taskalu
             textbox1.Text = lbf.Id;
             stackpanel1.Visibility = Visibility.Visible;
         }
+
+        /*
+         * TODO: ウィンドウ幅に応じて textbox の幅を変更する
+         * textblock1 が　現在のコンテキストに存在しない　エラーとなる
+        void MainWindowSizeChanged(object sender, SizeChangedEventArgs args)
+        {
+            // change width of TextBlock Description
+            textblock1.width = ActualWidth - 100;
+        }
+        */
 
         // 明細画面の閉じるボタン
         private void Button1_Click(object sender, RoutedEventArgs e)

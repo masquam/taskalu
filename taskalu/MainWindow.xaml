@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}" 
-        Title="MainWindow" Height="768" Width="1024">
+        Title="MainWindow" Height="768" Width="1024" MinWidth="400">
 
     <Grid>
         <Grid.Resources>
@@ -45,28 +45,16 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="0,0,0,1" BorderBrush="#FFDCDCDC" Margin="17,0,10,0">
-                        <Grid Height="72" HorizontalAlignment="Stretch">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="180" />
-                            </Grid.ColumnDefinitions>
-                            <Border Background="White" Margin="0,7,0,18" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                        <DockPanel>
+                            <Border DockPanel.Dock="Left" Background="White" Margin="0,7,0,18" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <Border.Effect>
                                     <DropShadowEffect Color="Gray" Direction="-45" Opacity="0.5" ShadowDepth="2" />
                                 </Border.Effect>
                                 <Image Source="{Binding Name}" Width="29" />
                             </Border>
-                            
-                            <StackPanel Grid.Column="1" Margin="0,5" HorizontalAlignment="Left" >
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="14" Margin="4,4" />
-                                </StackPanel>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Description}" Style="{StaticResource label2}" />
-                                </StackPanel>
-                            </StackPanel>
-                            <StackPanel Grid.Column="2" Margin="0,5">
+
+                            <StackPanel DockPanel.Dock="Right" Margin="0,5">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="期限:" Style="{StaticResource label1}" />
                                     <TextBlock Text="{Binding CreateDate}" Style="{StaticResource label2}" />
@@ -76,7 +64,16 @@
                                     <TextBlock Text="{Binding Priority}" Style="{StaticResource label2}" />
                                 </StackPanel>
                             </StackPanel>
-                        </Grid>
+                            <StackPanel Margin="0,5" HorizontalAlignment="Stretch" >
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="14" Margin="4,4" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <TextBlock x:Name="textblock1" Text="{Binding Description}" Style="{StaticResource label2}" TextWrapping="Wrap"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                        </DockPanel>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
