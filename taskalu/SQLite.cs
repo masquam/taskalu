@@ -106,22 +106,28 @@ namespace Taskalu
             return param;
         }
 
-        public static string ExecuteSelectTable()
+        public static void ExecuteSelectTable(MainViewModel mv)
         {
-            string ret = "";
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
             SQLiteCommand com = new SQLiteCommand("select * from tasklist", con);
 
+            mv.Files.Clear();
             try
             {
                 SQLiteDataReader sdr = com.ExecuteReader();
                 while (sdr.Read() == true)
                 {
-                    ret += string.Format("id:{0:d}, name:{1}, description:{2}, priority:{3}, createdate:{4}\r\n",
-                      (string)sdr["id"], (string)sdr["name"], (string)sdr["description"], (string)sdr["priority"], (string)sdr["createdate"]);
+                    ListViewFile lvFile = new ListViewFile();
+                    lvFile.Id = (string)sdr["id"];
+                    lvFile.Name = (string)sdr["name"];
+                    lvFile.Description = (string)sdr["description"];
+                    lvFile.Priority = (string)sdr["priority"];
+                    lvFile.CreateDate = (string)sdr["createdate"];
+
+                    mv.Files.Add(lvFile);
                 }
                 sdr.Close();
             }
@@ -134,7 +140,7 @@ namespace Taskalu
                 con.Close();
 
             }
-            return ret;
+            return;
         }
     }
 }

@@ -88,7 +88,7 @@ namespace Taskalu
             if (dlg.ShowDialog() == true)
             {
                 // MessageBox.Show("OK button pressed");
-                MessageBox.Show(SQLiteClass.ExecuteSelectTable());
+                SQLiteClass.ExecuteSelectTable(MainViewModel.mv);
             }
         }
 
