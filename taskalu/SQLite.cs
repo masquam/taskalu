@@ -43,7 +43,7 @@ namespace Taskalu
                     MessageBox.Show("database file create error!\n" + ex.Message);
                 }
 
-                ExecuteCreateTable("create table tasklist (id varchar(8), name varchar(255), type varchar(255), size varchar(255), imagesize varchar(255), createdate varchar(255))");
+                ExecuteCreateTable("create table tasklist (id varchar(8), name varchar(255), description varchar(255), priority varchar(255), createdate varchar(255))");
             }
         }
 

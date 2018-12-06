@@ -63,7 +63,7 @@
                                     <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="14" Margin="4,4" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding Type}" Style="{StaticResource label2}" />
+                                    <TextBlock Text="{Binding Description}" Style="{StaticResource label2}" />
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Grid.Column="2" Margin="0,5">
@@ -73,7 +73,7 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="優先度:" Style="{StaticResource label1}" />
-                                    <TextBlock Text="{Binding Size}" Style="{StaticResource label2}" />
+                                    <TextBlock Text="{Binding Priority}" Style="{StaticResource label2}" />
                                 </StackPanel>
                             </StackPanel>
                         </Grid>

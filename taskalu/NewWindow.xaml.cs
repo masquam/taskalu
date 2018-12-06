@@ -30,9 +30,8 @@ namespace Taskalu
             MainViewModel.mv.Files.Add(new ListViewFile()
             {
                 Name = NewTitleBox.Text,
-                ImageSize = "128 × 128",
-                Type = NewDesriptioncBox.Text,
-                Size = "☆☆☆☆☆",
+                Description = NewDesriptioncBox.Text,
+                Priority = "☆☆☆☆☆",
                 CreateDate = "2011/11/11 11:10",
                 Id = "11"
             });
