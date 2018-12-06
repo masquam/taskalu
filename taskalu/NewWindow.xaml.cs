@@ -26,6 +26,8 @@ namespace Taskalu
 
         private void ButtonNewWindowOk_Click(object sender, RoutedEventArgs e)
         {
+
+            /*
             // TODO: DB書き込みに変更
             MainViewModel.mv.Files.Add(new ListViewFile()
             {
@@ -35,7 +37,16 @@ namespace Taskalu
                 CreateDate = "2011/11/11 11:10",
                 Id = "11"
             });
-            
+            */
+            ListViewFile lvFile = new ListViewFile()
+            {
+                Name = NewTitleBox.Text,
+                Description = NewDesriptioncBox.Text,
+                Priority = "☆☆☆☆☆",
+                CreateDate = "2011/11/11 11:10",
+                Id = "11"
+            };
+            SQLiteClass.ExecuteInsertTable(lvFile);
 
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;

@@ -85,7 +85,11 @@ namespace Taskalu
             //dlg.DocumentMargin = this.documentTextBox.Margin;
 
             // Open the dialog box modally 
-            dlg.ShowDialog();
+            if (dlg.ShowDialog() == true)
+            {
+                // MessageBox.Show("OK button pressed");
+                MessageBox.Show(SQLiteClass.ExecuteSelectTable());
+            }
         }
 
         // メニューのExitクリック
