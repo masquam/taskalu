@@ -42,7 +42,7 @@ namespace Taskalu
             {
                 Name = NewTitleBox.Text,
                 Description = NewDesriptioncBox.Text,
-                Priority = "☆☆☆☆☆",
+                Priority = "\u272e\u272e\u272e\u272e\u272e",
                 //CreateDate = "2011/11/11 11:10",
                 Id = "11"
             };

@@ -61,7 +61,7 @@
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="優先度:" Style="{StaticResource label1}" />
-                                    <TextBlock Text="{Binding Priority}" Style="{StaticResource label2}" />
+                                    <TextBlock Text="{Binding Priority}" Style="{StaticResource label2}" Foreground="#FFA0AA3D" />
                                 </StackPanel>
                             </StackPanel>
                             <StackPanel Margin="0,5" HorizontalAlignment="Stretch" >
