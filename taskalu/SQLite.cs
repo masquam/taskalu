@@ -21,8 +21,6 @@ namespace Taskalu
 
         public static void TouchDB()
         {
-            //string dbdirectory= System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
-            //string dbpath = dbdirectory + "\\taskaludb.sqlite";
             MessageBox.Show("The folder where database flle will be created: " + dbpath);
 
             Directory.CreateDirectory(dbdirectory);
@@ -65,7 +63,6 @@ namespace Taskalu
                 con.Close();
             }
 
-
         }
 
 
@@ -80,9 +77,7 @@ namespace Taskalu
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
             com.Parameters.Add(sqliteParam(com, "@createdate", System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
-            //MessageBox.Show(System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"));
-            //com.Parameters.Add(sqliteParam(com, "@createdate", "2011-11-01 11:10"));
-            //com.Parameters.Add(sqliteParam(com, "@createdate", lvFile.CreateDate));
+
             try
             {
                 com.ExecuteNonQuery();
