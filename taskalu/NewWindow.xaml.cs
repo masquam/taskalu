@@ -43,7 +43,7 @@ namespace Taskalu
                 Name = NewTitleBox.Text,
                 Description = NewDesriptioncBox.Text,
                 Priority = "☆☆☆☆☆",
-                CreateDate = "2011/11/11 11:10",
+                //CreateDate = "2011/11/11 11:10",
                 Id = "11"
             };
             SQLiteClass.ExecuteInsertTable(lvFile);

@@ -29,6 +29,7 @@ namespace Taskalu
 
             for (int i = 0; i < 10; i++)
             {
+                /*
                 // TODO: 実際の値に変更
                 MainViewModel.mv.Files.Add(new ListViewFile() {
                     Name = "Image.jpg",
@@ -36,6 +37,8 @@ namespace Taskalu
                     Priority = "☆☆☆☆☆",
                     CreateDate = "2011-11-11 11:1" + i.ToString(),
                     Id = i.ToString() });
+                    */
+                SQLiteClass.ExecuteSelectTable(MainViewModel.mv);
             }
 
             this.DataContext = MainViewModel.mv;
