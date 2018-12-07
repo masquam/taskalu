@@ -43,7 +43,7 @@ namespace Taskalu
                     MessageBox.Show("database file create error!\n" + ex.Message);
                 }
 
-                ExecuteCreateTable("create table tasklist (id varchar(8), name varchar(255), description varchar(255), priority varchar(255), createdate varchar(255))");
+                ExecuteCreateTable("create table tasklist (id varchar(8), name varchar(255), description varchar(255), priority varchar(255), createdate DATETIME)");
             }
         }
 
@@ -79,8 +79,10 @@ namespace Taskalu
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
-            com.Parameters.Add(sqliteParam(com, "@createdate", lvFile.CreateDate));
-
+            com.Parameters.Add(sqliteParam(com, "@createdate", System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
+            //MessageBox.Show(System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"));
+            //com.Parameters.Add(sqliteParam(com, "@createdate", "2011-11-01 11:10"));
+            //com.Parameters.Add(sqliteParam(com, "@createdate", lvFile.CreateDate));
             try
             {
                 com.ExecuteNonQuery();
@@ -125,7 +127,9 @@ namespace Taskalu
                     lvFile.Name = (string)sdr["name"];
                     lvFile.Description = (string)sdr["description"];
                     lvFile.Priority = (string)sdr["priority"];
-                    lvFile.CreateDate = (string)sdr["createdate"];
+
+                    DateTime utc = (DateTime)sdr["createdate"];
+                    lvFile.CreateDate = utc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
                     mv.Files.Add(lvFile);
                 }
@@ -133,7 +137,7 @@ namespace Taskalu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("database table insert error!\n" + ex.Message);
+                MessageBox.Show("database table select error!\n" + ex.Message);
             }
             finally
             {

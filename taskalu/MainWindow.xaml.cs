@@ -34,7 +34,7 @@ namespace Taskalu
                     Name = "Image.jpg",
                     Description = "JPEG イメージ です。ここには詳細な説明を書き込むようにする予定です。したがって、自動的に改行するように画面を調整する予定です。\n長い説明をここに\n表示します。",
                     Priority = "☆☆☆☆☆",
-                    CreateDate = "2011/11/11 11:1" + i.ToString(),
+                    CreateDate = "2011-11-11 11:1" + i.ToString(),
                     Id = i.ToString() });
             }
 
