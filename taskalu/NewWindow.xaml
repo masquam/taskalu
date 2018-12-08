@@ -13,5 +13,48 @@
         <TextBox Name="NewDesriptioncBox" HorizontalAlignment="Left" Height="94" Margin="123,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203"/>
         <Button Name="NewWindowOk" Content="OK" HorizontalAlignment="Left" Margin="585,371,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="687,371,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.259,3.535" IsCancel="True"/>
+        <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="39,216,0,0" Width="79" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="123,216,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="238,216,0,0" VerticalAlignment="Top" Width="120" IsReadOnly="True">
+            <ComboBoxItem Content="00"/>
+            <ComboBoxItem Content="01"/>
+            <ComboBoxItem Content="02"/>
+            <ComboBoxItem Content="03"/>
+            <ComboBoxItem Content="04"/>
+            <ComboBoxItem Content="05"/>
+            <ComboBoxItem Content="06"/>
+            <ComboBoxItem Content="07"/>
+            <ComboBoxItem Content="08"/>
+            <ComboBoxItem Content="09"/>
+            <ComboBoxItem Content="10"/>
+            <ComboBoxItem Content="11"/>
+            <ComboBoxItem Content="12"/>
+            <ComboBoxItem Content="13"/>
+            <ComboBoxItem Content="14"/>
+            <ComboBoxItem Content="15"/>
+            <ComboBoxItem Content="16"/>
+            <ComboBoxItem Content="17"/>
+            <ComboBoxItem Content="18"/>
+            <ComboBoxItem Content="19"/>
+            <ComboBoxItem Content="20"/>
+            <ComboBoxItem Content="21"/>
+            <ComboBoxItem Content="22"/>
+            <ComboBoxItem Content="23"/>
+        </ComboBox>
+        <ComboBox x:Name="minuteBox" HorizontalAlignment="Left" Margin="387,216,0,0" VerticalAlignment="Top" Width="120" IsReadOnly="True">
+            <ComboBoxItem Content="00"/>
+            <ComboBoxItem Content="05"/>
+            <ComboBoxItem Content="10"/>
+            <ComboBoxItem Content="15"/>
+            <ComboBoxItem Content="20"/>
+            <ComboBoxItem Content="25"/>
+            <ComboBoxItem Content="30"/>
+            <ComboBoxItem Content="35"/>
+            <ComboBoxItem Content="40"/>
+            <ComboBoxItem Content="45"/>
+            <ComboBoxItem Content="50"/>
+            <ComboBoxItem Content="55"/>
+        </ComboBox>
+        <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="363,213,0,0" Width="79" VerticalAlignment="Top"/>
     </Grid>
 </Window>

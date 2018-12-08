@@ -22,32 +22,28 @@ namespace Taskalu
         public NewWindow()
         {
             InitializeComponent();
+
+            TimeSpan ts1hour = TimeSpan.FromHours(1);
+            DateTime due = System.DateTime.Now + ts1hour;
+            dateBox.SelectedDate = due;
+
+            hourBox.SelectedIndex = Int32.Parse(due.ToString("HH"));
+            minuteBox.SelectedIndex = Int32.Parse(due.ToString("mm")) / 5;
         }
 
         private void ButtonNewWindowOk_Click(object sender, RoutedEventArgs e)
         {
 
-            /*
-            // TODO: DB書き込みに変更
-            MainViewModel.mv.Files.Add(new ListViewFile()
-            {
-                Name = NewTitleBox.Text,
-                Description = NewDesriptioncBox.Text,
-                Priority = "☆☆☆☆☆",
-                CreateDate = "2011/11/11 11:10",
-                Id = "11"
-            });
-            */
-            TimeSpan ts1hour = new TimeSpan(0, 1, 0, 0);
+            DateTime due = (DateTime)dateBox.SelectedDate;
+            DateTime dueDate = new DateTime(due.Year, due.Month, due.Day, hourBox.SelectedIndex, (minuteBox.SelectedIndex * 5), 0);
 
             ListViewFile lvFile = new ListViewFile()
             {
                 Name = NewTitleBox.Text,
                 Description = NewDesriptioncBox.Text,
                 Priority = "\u272e\u272e\u272e\u272e\u272e",
-                //CreateDate = "2011/11/11 11:10",
                 Id = "11",
-                DueDate = (System.DateTime.UtcNow + ts1hour).ToString("yyyy-MM-dd HH:mm:ss"),
+                DueDate = TimeZoneInfo.ConvertTimeToUtc(dueDate).ToString("yyyy-MM-dd HH:mm:ss"),
                 Status = "Active"
             };
             SQLiteClass.ExecuteInsertTable(lvFile);
