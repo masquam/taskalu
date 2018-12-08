@@ -41,7 +41,7 @@ namespace Taskalu
                     MessageBox.Show("database file create error!\n" + ex.Message);
                 }
 
-                ExecuteCreateTable("create table tasklist (id TEXT, name TEXT, description TEXT, priority TEXT, createdate DATETIME)");
+                ExecuteCreateTable("create table tasklist (id TEXT, name TEXT, description TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT)");
             }
         }
 
@@ -71,12 +71,14 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (id, name, description, priority, createdate) VALUES (@id, @name, @description, @priority, @createdate)", con);
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (id, name, description, priority, createdate, duedate, status) VALUES (@id, @name, @description, @priority, @createdate, @duedate, @status)", con);
             com.Parameters.Add(sqliteParam(com, "@id", lvFile.Id));
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
             com.Parameters.Add(sqliteParam(com, "@createdate", System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
+            com.Parameters.Add(sqliteParam(com, "@duedate", lvFile.DueDate));
+            com.Parameters.Add(sqliteParam(com, "@status", lvFile.Status));
 
             try
             {
@@ -125,6 +127,11 @@ namespace Taskalu
 
                     DateTime utc = (DateTime)sdr["createdate"];
                     lvFile.CreateDate = utc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+
+                    DateTime utc2 = (DateTime)sdr["duedate"];
+                    lvFile.DueDate = utc2.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+
+                    lvFile.Status = (string)sdr["status"];
 
                     mv.Files.Add(lvFile);
                 }

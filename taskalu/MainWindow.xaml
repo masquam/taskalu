@@ -57,7 +57,7 @@
                             <StackPanel DockPanel.Dock="Right" Margin="0,5">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="期限:" Style="{StaticResource label1}" />
-                                    <TextBlock Text="{Binding CreateDate}" Style="{StaticResource label2}" />
+                                    <TextBlock Text="{Binding DueDate}" Style="{StaticResource label2}" />
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="優先度:" Style="{StaticResource label1}" />

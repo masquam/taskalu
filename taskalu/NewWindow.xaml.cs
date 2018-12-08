@@ -38,13 +38,17 @@ namespace Taskalu
                 Id = "11"
             });
             */
+            TimeSpan ts1hour = new TimeSpan(0, 1, 0, 0);
+
             ListViewFile lvFile = new ListViewFile()
             {
                 Name = NewTitleBox.Text,
                 Description = NewDesriptioncBox.Text,
                 Priority = "\u272e\u272e\u272e\u272e\u272e",
                 //CreateDate = "2011/11/11 11:10",
-                Id = "11"
+                Id = "11",
+                DueDate = (System.DateTime.UtcNow + ts1hour).ToString("yyyy-MM-dd HH:mm:ss"),
+                Status = "Active"
             };
             SQLiteClass.ExecuteInsertTable(lvFile);
 
