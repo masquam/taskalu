@@ -104,8 +104,24 @@ namespace Taskalu
             return param;
         }
 
+        public static Boolean ExecuteFirstSelectTable()
+        {
+            return SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
+                "select * from tasklist order by duedate limit "
+                + (SQLiteClass.moreSize + 1).ToString());
+        }
+
+        public static Boolean ExecuteMoreSelectTable()
+        {
+            return SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
+                "select * from tasklist order by duedate limit "
+                + (SQLiteClass.moreSize + 1).ToString()
+                + " offset " + SQLiteClass.moreCount.ToString());
+        }
+
         public static Boolean ExecuteSelectTable(MainViewModel mv, string sql)
         {
+            // return value true: More button visibie
             Boolean ret = false;
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");

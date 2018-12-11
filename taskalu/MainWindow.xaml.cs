@@ -86,9 +86,7 @@ namespace Taskalu
         private void ExecuteFirstSelectTable()
         {
             SQLiteClass.moreCount = 0;
-            if (SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
-                "select * from tasklist order by duedate limit "
-                + (SQLiteClass.moreSize + 1).ToString()))
+            if (SQLiteClass.ExecuteFirstSelectTable())
             {
                 MoreButton.Visibility = Visibility.Visible;
             }
@@ -101,10 +99,7 @@ namespace Taskalu
         // More button
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
-                "select * from tasklist order by duedate limit "
-                + (SQLiteClass.moreSize + 1).ToString()
-                + " offset " + SQLiteClass.moreCount.ToString()))
+            if (SQLiteClass.ExecuteMoreSelectTable())
             {
                 MoreButton.Visibility = Visibility.Visible;
             }
