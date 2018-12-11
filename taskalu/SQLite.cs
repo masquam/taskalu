@@ -12,10 +12,6 @@ namespace Taskalu
 {
     class SQLiteClass
     {
-        // TODO: EntityFramework License
-        // https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm
-
-
         public static string dbdirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
         public static string dbpath = dbdirectory + "\\taskaludb.sqlite";
 
@@ -111,7 +107,7 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("select * from tasklist", con);
+            SQLiteCommand com = new SQLiteCommand("select * from tasklist order by duedate", con);
 
             mv.Files.Clear();
             try
