@@ -27,12 +27,9 @@ namespace Taskalu
 
             SQLiteClass.TouchDB();
 
-            for (int i = 0; i < 10; i++)
-            {
-                SQLiteClass.ExecuteSelectTable(MainViewModel.mv);
-            }
-
             this.DataContext = MainViewModel.mv;
+
+            ExecuteFirstSelectTable();
         }
 
         // リストのアイテムがクリックされた時
@@ -63,7 +60,7 @@ namespace Taskalu
             listbox1.Visibility = Visibility.Visible;
         }
 
-        // ツールバーの New Task ボタン。新規タスクウィンドウを開く
+        // Toolbar - New Task button
         private void NewButton_Click(object sender, RoutedEventArgs e)
         {
             OpenNewTaskWindow();
@@ -81,16 +78,47 @@ namespace Taskalu
             if (dlg.ShowDialog() == true)
             {
                 // MessageBox.Show("OK button pressed");
-                SQLiteClass.ExecuteSelectTable(MainViewModel.mv);
+                MainViewModel.mv.Files.Clear();
+                ExecuteFirstSelectTable();
             }
         }
 
-        // メニューのExitクリック
+        private void ExecuteFirstSelectTable()
+        {
+            SQLiteClass.moreCount = 0;
+            if (SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
+                "select * from tasklist order by duedate limit "
+                + (SQLiteClass.moreSize + 1).ToString()))
+            {
+                MoreButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MoreButton.Visibility = Visibility.Collapsed;
+            }
+        }
+        
+        // More button
+        private void MoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
+                "select * from tasklist order by duedate limit "
+                + (SQLiteClass.moreSize + 1).ToString()
+                + " offset " + SQLiteClass.moreCount.ToString()))
+            {
+                MoreButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MoreButton.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        // Menu - Exit
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
-
 
     }
 }

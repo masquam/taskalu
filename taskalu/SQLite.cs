@@ -15,6 +15,9 @@ namespace Taskalu
         public static string dbdirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
         public static string dbpath = dbdirectory + "\\taskaludb.sqlite";
 
+        public static int moreCount { get; set; }
+        public static int moreSize = 8;
+
         public static void TouchDB()
         {
             MessageBox.Show("The folder where database flle will be created: " + dbpath);
@@ -101,35 +104,45 @@ namespace Taskalu
             return param;
         }
 
-        public static void ExecuteSelectTable(MainViewModel mv)
+        public static Boolean ExecuteSelectTable(MainViewModel mv, string sql)
         {
+            Boolean ret = false;
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("select * from tasklist order by duedate", con);
+            SQLiteCommand com = new SQLiteCommand(sql, con);
 
-            mv.Files.Clear();
             try
             {
                 SQLiteDataReader sdr = com.ExecuteReader();
+                int resultCount = 0;
                 while (sdr.Read() == true)
                 {
-                    ListViewFile lvFile = new ListViewFile();
-                    lvFile.Id = (string)sdr["id"];
-                    lvFile.Name = (string)sdr["name"];
-                    lvFile.Description = (string)sdr["description"];
-                    lvFile.Priority = (string)sdr["priority"];
+                    resultCount++;
+                    if (resultCount <= moreSize)
+                    {
+                        ListViewFile lvFile = new ListViewFile();
+                        lvFile.Id = (string)sdr["id"];
+                        lvFile.Name = (string)sdr["name"];
+                        lvFile.Description = (string)sdr["description"];
+                        lvFile.Priority = (string)sdr["priority"];
 
-                    DateTime utc = (DateTime)sdr["createdate"];
-                    lvFile.CreateDate = utc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                        DateTime utc = (DateTime)sdr["createdate"];
+                        lvFile.CreateDate = utc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
-                    DateTime utc2 = (DateTime)sdr["duedate"];
-                    lvFile.DueDate = utc2.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                        DateTime utc2 = (DateTime)sdr["duedate"];
+                        lvFile.DueDate = utc2.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
-                    lvFile.Status = (string)sdr["status"];
+                        lvFile.Status = (string)sdr["status"];
 
-                    mv.Files.Add(lvFile);
+                        mv.Files.Add(lvFile);
+                    }
+                    else
+                    {
+                        moreCount += moreSize;
+                        ret = true;
+                    }
                 }
                 sdr.Close();
             }
@@ -142,7 +155,7 @@ namespace Taskalu
                 con.Close();
 
             }
-            return;
+            return ret;
         }
     }
 }
