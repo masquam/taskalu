@@ -39,8 +39,7 @@ namespace Taskalu
 
             if (lbf == null)
             {
-                // TODO : 詳細画面を閉じてからすぐにlistviewの項目をクリックすると発生
-                MessageBox.Show("empty task item is detected");
+                // nop
             }
             else
             { 
@@ -63,6 +62,7 @@ namespace Taskalu
         // 明細画面の閉じるボタン
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
+            listview1.UnselectAll();
             stackpanel1.Visibility = Visibility.Collapsed;
             listview1.Visibility = Visibility.Visible;
         }
@@ -84,6 +84,8 @@ namespace Taskalu
             // Open the dialog box modally 
             if (dlg.ShowDialog() == true)
             {
+                // new task window is closed
+
                 // MessageBox.Show("OK button pressed");
                 ExecuteFirstSelectTable();
             }
@@ -119,66 +121,57 @@ namespace Taskalu
         private void Priority_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.priorityOrderByDirection = toggleDirection(SQLiteClass.priorityOrderByDirection);
-            SQLiteClass.orderBy = "priority";
-            SQLiteClass.orderByDirection = SQLiteClass.priorityOrderByDirection;
+            SetOrderBy("priority", SQLiteClass.priorityOrderByDirection);
             ExecuteFirstSelectTable();
         }
         private void PriorityAsc_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.orderBy = "priority";
-            SQLiteClass.orderByDirection = "ASC";
             SQLiteClass.priorityOrderByDirection = "ASC";
+            SetOrderBy("priority", "ASC");
             ExecuteFirstSelectTable();
         }
         private void PriorityDes_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.orderBy = "priority";
-            SQLiteClass.orderByDirection = "DESC";
             SQLiteClass.priorityOrderByDirection = "DESC";
+            SetOrderBy("priority", "DESC");
             ExecuteFirstSelectTable();
         }
 
         private void Name_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.nameOrderByDirection = toggleDirection(SQLiteClass.nameOrderByDirection);
-            SQLiteClass.orderBy = "name";
-            SQLiteClass.orderByDirection = SQLiteClass.nameOrderByDirection;
+            SetOrderBy("name", SQLiteClass.nameOrderByDirection);
             ExecuteFirstSelectTable();
         }
         private void NameAsc_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.orderBy = "name";
-            SQLiteClass.orderByDirection = "ASC";
             SQLiteClass.nameOrderByDirection = "ASC";
+            SetOrderBy("name", "ASC");
             ExecuteFirstSelectTable();
         }
         private void NameDes_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.orderBy = "name";
-            SQLiteClass.orderByDirection = "DESC";
             SQLiteClass.nameOrderByDirection = "DESC";
+            SetOrderBy("name", "DESC");
             ExecuteFirstSelectTable();
         }
 
         private void DueDate_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.duedateOrderByDirection = toggleDirection(SQLiteClass.duedateOrderByDirection);
-            SQLiteClass.orderBy = "duedate";
-            SQLiteClass.orderByDirection = SQLiteClass.duedateOrderByDirection;
+            SetOrderBy("duedate", SQLiteClass.duedateOrderByDirection);
             ExecuteFirstSelectTable();
         }
         private void DueDateAsc_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.orderBy = "duedate";
-            SQLiteClass.orderByDirection = "ASC";
             SQLiteClass.duedateOrderByDirection = "ASC";
+            SetOrderBy("duedate", "ASC");
             ExecuteFirstSelectTable();
         }
         private void DueDateDes_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.orderBy = "duedate";
-            SQLiteClass.orderByDirection = "DESC";
             SQLiteClass.duedateOrderByDirection = "DESC";
+            SetOrderBy("duedate", "DESC");
             ExecuteFirstSelectTable();
         }
         private string toggleDirection(string input)
@@ -191,6 +184,11 @@ namespace Taskalu
             {
                 return "ASC";
             }
+        }
+        private void SetOrderBy(string orderby, string direction)
+        {
+            SQLiteClass.orderBy = orderby;
+            SQLiteClass.orderByDirection = direction;
         }
 
         // Menu - Exit
