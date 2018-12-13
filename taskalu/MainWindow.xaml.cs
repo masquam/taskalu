@@ -109,11 +109,53 @@ namespace Taskalu
             }
         }
 
-        private void NameCM_Click(object sender, RoutedEventArgs e)
+        private void Priority_Click(object sender, RoutedEventArgs e)
         {
             // TODO: 実装
+            MessageBox.Show("Priority is clicked");
+        }
+        private void PriorityAsc_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+            MessageBox.Show("Priority Ascending is clicked");
+        }
+        private void PriorityDes_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+            MessageBox.Show("Priority Descending is clicked");
         }
 
+        private void Name_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+            MessageBox.Show("Name is clicked");
+        }
+        private void NameAsc_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+            MessageBox.Show("Name Ascending is clicked");
+        }
+        private void NameDes_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+            MessageBox.Show("Name Descending is clicked");
+        }
+
+        private void DueDate_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+            MessageBox.Show("DueDate is clicked");
+        }
+        private void DueDateAsc_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+            MessageBox.Show("DueDate Ascending is clicked");
+        }
+        private void DueDateDes_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+            MessageBox.Show("DueDate Descending is clicked");
+        }
         // Menu - Exit
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
