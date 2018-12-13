@@ -50,7 +50,7 @@
                         <GridViewColumn Width="100">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Priority}" Foreground="#FFE8E800" />
+                                    <TextBlock Text="{Binding Priority}" Foreground="#FFC8C800" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                             <GridViewColumnHeader Click="Priority_Click">Priority

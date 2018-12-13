@@ -41,7 +41,7 @@ namespace Taskalu
             {
                 Name = NewTitleBox.Text,
                 Description = NewDesriptioncBox.Text,
-                Priority = "\u272e\u272e\u272e\u272e\u272e",
+                Priority = priorityBox.Text,
                 Id = "11",
                 DueDate = TimeZoneInfo.ConvertTimeToUtc(dueDate).ToString("yyyy-MM-dd HH:mm:ss"),
                 Status = "Active"
