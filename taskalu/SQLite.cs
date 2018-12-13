@@ -183,5 +183,23 @@ namespace Taskalu
             }
             return ret;
         }
+
+        public static void SetOrderBy(string orderby, string direction)
+        {
+            orderBy = orderby;
+            orderByDirection = direction;
+        }
+
+        public static string toggleDirection(string input)
+        {
+            if (input == "ASC")
+            {
+                return "DESC";
+            }
+            else
+            {
+                return "ASC";
+            }
+        }
     }
 }

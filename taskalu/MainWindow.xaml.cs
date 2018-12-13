@@ -120,75 +120,59 @@ namespace Taskalu
 
         private void Priority_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.priorityOrderByDirection = toggleDirection(SQLiteClass.priorityOrderByDirection);
-            SetOrderBy("priority", SQLiteClass.priorityOrderByDirection);
+            SQLiteClass.priorityOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.priorityOrderByDirection);
+            SQLiteClass.SetOrderBy("priority", SQLiteClass.priorityOrderByDirection);
             ExecuteFirstSelectTable();
         }
         private void PriorityAsc_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.priorityOrderByDirection = "ASC";
-            SetOrderBy("priority", "ASC");
+            SQLiteClass.SetOrderBy("priority", "ASC");
             ExecuteFirstSelectTable();
         }
         private void PriorityDes_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.priorityOrderByDirection = "DESC";
-            SetOrderBy("priority", "DESC");
+            SQLiteClass.SetOrderBy("priority", "DESC");
             ExecuteFirstSelectTable();
         }
 
         private void Name_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.nameOrderByDirection = toggleDirection(SQLiteClass.nameOrderByDirection);
-            SetOrderBy("name", SQLiteClass.nameOrderByDirection);
+            SQLiteClass.nameOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.nameOrderByDirection);
+            SQLiteClass.SetOrderBy("name", SQLiteClass.nameOrderByDirection);
             ExecuteFirstSelectTable();
         }
         private void NameAsc_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.nameOrderByDirection = "ASC";
-            SetOrderBy("name", "ASC");
+            SQLiteClass.SetOrderBy("name", "ASC");
             ExecuteFirstSelectTable();
         }
         private void NameDes_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.nameOrderByDirection = "DESC";
-            SetOrderBy("name", "DESC");
+            SQLiteClass.SetOrderBy("name", "DESC");
             ExecuteFirstSelectTable();
         }
 
         private void DueDate_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.duedateOrderByDirection = toggleDirection(SQLiteClass.duedateOrderByDirection);
-            SetOrderBy("duedate", SQLiteClass.duedateOrderByDirection);
+            SQLiteClass.duedateOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.duedateOrderByDirection);
+            SQLiteClass.SetOrderBy("duedate", SQLiteClass.duedateOrderByDirection);
             ExecuteFirstSelectTable();
         }
         private void DueDateAsc_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.duedateOrderByDirection = "ASC";
-            SetOrderBy("duedate", "ASC");
+            SQLiteClass.SetOrderBy("duedate", "ASC");
             ExecuteFirstSelectTable();
         }
         private void DueDateDes_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.duedateOrderByDirection = "DESC";
-            SetOrderBy("duedate", "DESC");
+            SQLiteClass.SetOrderBy("duedate", "DESC");
             ExecuteFirstSelectTable();
-        }
-        private string toggleDirection(string input)
-        {
-            if (input == "ASC")
-            {
-                return "DESC";
-            }
-            else
-            {
-                return "ASC";
-            }
-        }
-        private void SetOrderBy(string orderby, string direction)
-        {
-            SQLiteClass.orderBy = orderby;
-            SQLiteClass.orderByDirection = direction;
         }
 
         // Menu - Exit
