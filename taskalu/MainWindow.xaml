@@ -41,8 +41,8 @@
             </ToolBarTray>
         </StackPanel>
         <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
-            <StackPanel Background="{DynamicResource {x:Static SystemColors.MenuBarBrushKey}}" DockPanel.Dock="Bottom" Height="24"  HorizontalAlignment="Center">
-                <Button Visibility="Collapsed" x:Name="MoreButton" Content="More" Click="MoreButton_Click"/>
+            <StackPanel Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="24"  HorizontalAlignment="Stretch">
+                <Button Visibility="Collapsed" x:Name="MoreButton" Content="&#x25bc; More &#x25bc;" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FFF1EDED" BorderBrush="#FFF1EDED" />
             </StackPanel>
             <ListBox x:Name="listbox1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged">
             <ListBox.ItemTemplate>
