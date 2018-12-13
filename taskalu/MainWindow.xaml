@@ -44,11 +44,17 @@
         <StackPanel Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="24"  HorizontalAlignment="Stretch">
             <Button Visibility="Collapsed" x:Name="MoreButton" Content="&#x25bc; More &#x25bc;" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FFF1EDED" BorderBrush="#FFF1EDED" />
         </StackPanel>
-            <ListView  x:Name="listview1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged">
+            <ListView  x:Name="listview1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged" FontSize="20">
                 <ListView.View>
                     <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Task Information">
-                        <GridViewColumn DisplayMemberBinding="{Binding Priority}" Header="Priority" Width="64"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="200">
+                        <GridViewColumn  Header="Priority" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Priority}" Foreground="#FFE8E800" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="400">
                             <GridViewColumnHeader>Name
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu MenuItem.Click="NameCM_Click"  Name="NameCM">
@@ -58,7 +64,7 @@
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding DueDate}" Header="Due Date" Width="128"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding DueDate}" Header="Due Date" Width="200"/>
                     </GridView>
                 </ListView.View>
             </ListView>
