@@ -37,10 +37,17 @@ namespace Taskalu
         {
             ListViewFile lbf = ((sender as ListBox).SelectedItem as ListViewFile);
 
-            listview1.Visibility = Visibility.Collapsed;
-            //MessageBox.Show(lbf.CreateDate);
-            textbox1.Text = lbf.Id;
-            stackpanel1.Visibility = Visibility.Visible;
+            if (lbf == null)
+            {
+                // TODO : 詳細画面を閉じてからすぐにlistviewの項目をクリックすると発生
+                MessageBox.Show("empty task item is detected");
+            }
+            else
+            { 
+                listview1.Visibility = Visibility.Collapsed;
+                textbox1.Text = lbf.Id;
+                stackpanel1.Visibility = Visibility.Visible;
+            }
         }
 
         /*
@@ -78,13 +85,13 @@ namespace Taskalu
             if (dlg.ShowDialog() == true)
             {
                 // MessageBox.Show("OK button pressed");
-                MainViewModel.mv.Files.Clear();
                 ExecuteFirstSelectTable();
             }
         }
 
         private void ExecuteFirstSelectTable()
         {
+            MainViewModel.mv.Files.Clear();
             SQLiteClass.moreCount = 0;
             if (SQLiteClass.ExecuteFirstSelectTable())
             {
@@ -111,51 +118,81 @@ namespace Taskalu
 
         private void Priority_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
-            MessageBox.Show("Priority is clicked");
+            SQLiteClass.priorityOrderByDirection = toggleDirection(SQLiteClass.priorityOrderByDirection);
+            SQLiteClass.orderBy = "priority";
+            SQLiteClass.orderByDirection = SQLiteClass.priorityOrderByDirection;
+            ExecuteFirstSelectTable();
         }
         private void PriorityAsc_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
-            MessageBox.Show("Priority Ascending is clicked");
+            SQLiteClass.orderBy = "priority";
+            SQLiteClass.orderByDirection = "ASC";
+            SQLiteClass.priorityOrderByDirection = "ASC";
+            ExecuteFirstSelectTable();
         }
         private void PriorityDes_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
-            MessageBox.Show("Priority Descending is clicked");
+            SQLiteClass.orderBy = "priority";
+            SQLiteClass.orderByDirection = "DESC";
+            SQLiteClass.priorityOrderByDirection = "DESC";
+            ExecuteFirstSelectTable();
         }
 
         private void Name_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
-            MessageBox.Show("Name is clicked");
+            SQLiteClass.nameOrderByDirection = toggleDirection(SQLiteClass.nameOrderByDirection);
+            SQLiteClass.orderBy = "name";
+            SQLiteClass.orderByDirection = SQLiteClass.nameOrderByDirection;
+            ExecuteFirstSelectTable();
         }
         private void NameAsc_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
-            MessageBox.Show("Name Ascending is clicked");
+            SQLiteClass.orderBy = "name";
+            SQLiteClass.orderByDirection = "ASC";
+            SQLiteClass.nameOrderByDirection = "ASC";
+            ExecuteFirstSelectTable();
         }
         private void NameDes_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
-            MessageBox.Show("Name Descending is clicked");
+            SQLiteClass.orderBy = "name";
+            SQLiteClass.orderByDirection = "DESC";
+            SQLiteClass.nameOrderByDirection = "DESC";
+            ExecuteFirstSelectTable();
         }
 
         private void DueDate_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
-            MessageBox.Show("DueDate is clicked");
+            SQLiteClass.duedateOrderByDirection = toggleDirection(SQLiteClass.duedateOrderByDirection);
+            SQLiteClass.orderBy = "duedate";
+            SQLiteClass.orderByDirection = SQLiteClass.duedateOrderByDirection;
+            ExecuteFirstSelectTable();
         }
         private void DueDateAsc_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
-            MessageBox.Show("DueDate Ascending is clicked");
+            SQLiteClass.orderBy = "duedate";
+            SQLiteClass.orderByDirection = "ASC";
+            SQLiteClass.duedateOrderByDirection = "ASC";
+            ExecuteFirstSelectTable();
         }
         private void DueDateDes_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
-            MessageBox.Show("DueDate Descending is clicked");
+            SQLiteClass.orderBy = "duedate";
+            SQLiteClass.orderByDirection = "DESC";
+            SQLiteClass.duedateOrderByDirection = "DESC";
+            ExecuteFirstSelectTable();
         }
+        private string toggleDirection(string input)
+        {
+            if (input == "ASC")
+            {
+                return "DESC";
+            }
+            else
+            {
+                return "ASC";
+            }
+        }
+
         // Menu - Exit
         private void Exit_Click(object sender, RoutedEventArgs e)
         {

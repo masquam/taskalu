@@ -15,6 +15,14 @@ namespace Taskalu
         public static string dbdirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
         public static string dbpath = dbdirectory + "\\taskaludb.sqlite";
 
+        public static string selectTaskListSql = "select * from tasklist ";
+
+        public static string orderBy { get; set; } = "duedate";
+        public static string orderByDirection { get; set; } = "ASC";
+        public static string priorityOrderByDirection { get; set; } = "ASC";
+        public static string nameOrderByDirection { get; set; } = "ASC";
+        public static string duedateOrderByDirection { get; set; } = "ASC";
+
         public static int moreCount { get; set; }
         public static int moreSize = 8;
 
@@ -107,15 +115,17 @@ namespace Taskalu
         public static Boolean ExecuteFirstSelectTable()
         {
             return SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
-                "select * from tasklist order by duedate limit "
-                + (SQLiteClass.moreSize + 1).ToString());
+                selectTaskListSql
+                + " order by " + orderBy + " " + orderByDirection
+                + " limit " + (SQLiteClass.moreSize + 1).ToString());
         }
 
         public static Boolean ExecuteMoreSelectTable()
         {
             return SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
-                "select * from tasklist order by duedate limit "
-                + (SQLiteClass.moreSize + 1).ToString()
+                selectTaskListSql
+                + " order by " + orderBy + " " + orderByDirection
+                + " limit " + (SQLiteClass.moreSize + 1).ToString()
                 + " offset " + SQLiteClass.moreCount.ToString());
         }
 
