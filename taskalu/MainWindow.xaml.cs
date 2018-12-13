@@ -37,7 +37,7 @@ namespace Taskalu
         {
             ListViewFile lbf = ((sender as ListBox).SelectedItem as ListViewFile);
 
-            listbox1.Visibility = Visibility.Collapsed;
+            listview1.Visibility = Visibility.Collapsed;
             //MessageBox.Show(lbf.CreateDate);
             textbox1.Text = lbf.Id;
             stackpanel1.Visibility = Visibility.Visible;
@@ -57,7 +57,7 @@ namespace Taskalu
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
             stackpanel1.Visibility = Visibility.Collapsed;
-            listbox1.Visibility = Visibility.Visible;
+            listview1.Visibility = Visibility.Visible;
         }
 
         // Toolbar - New Task button
@@ -107,6 +107,11 @@ namespace Taskalu
             {
                 MoreButton.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void NameCM_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
         }
 
         // Menu - Exit
