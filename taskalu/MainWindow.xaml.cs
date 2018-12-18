@@ -44,7 +44,7 @@ namespace Taskalu
             else
             { 
                 listview1.Visibility = Visibility.Collapsed;
-                textbox1.Text = lbf.Id;
+                textbox1.Text = lbf.Name;
                 stackpanel1.Visibility = Visibility.Visible;
             }
         }

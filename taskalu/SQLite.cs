@@ -48,7 +48,7 @@ namespace Taskalu
                     MessageBox.Show("database file create error!\n" + ex.Message);
                 }
 
-                ExecuteCreateTable("create table tasklist (id TEXT, name TEXT, description TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT)");
+                ExecuteCreateTable("create table tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT)");
             }
         }
 
@@ -78,8 +78,8 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (id, name, description, priority, createdate, duedate, status) VALUES (@id, @name, @description, @priority, @createdate, @duedate, @status)", con);
-            com.Parameters.Add(sqliteParam(com, "@id", lvFile.Id));
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (name, description, priority, createdate, duedate, status) VALUES (@name, @description, @priority, @createdate, @duedate, @status)", con);
+            //com.Parameters.Add(sqliteParam(com, "@id", lvFile.Id));
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
@@ -149,7 +149,7 @@ namespace Taskalu
                     if (resultCount <= moreSize)
                     {
                         ListViewFile lvFile = new ListViewFile();
-                        lvFile.Id = (string)sdr["id"];
+                        lvFile.Id = (Int64)sdr["id"];
                         lvFile.Name = (string)sdr["name"];
                         lvFile.Description = (string)sdr["description"];
                         lvFile.Priority = (string)sdr["priority"];
