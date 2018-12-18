@@ -171,10 +171,14 @@ namespace Taskalu
             {
                 MoreButton.Visibility = Visibility.Collapsed;
                 listview1.Visibility = Visibility.Collapsed;
+
+                int priorityLen = lbf.Priority.Length;
+                if (priorityLen > 5) priorityLen = 5;
+
                 epId = lbf.Id;
                 ep_name.Text = lbf.Name;
                 ep_description.Text = lbf.Description;
-                ep_priority.Text = lbf.Priority;
+                ep_priorityBox.SelectedIndex = 5 - priorityLen;
                 ep_createdate.Text = lbf.CreateDate;
                 ep_duedate.Text = lbf.DueDate;
                 ep_status.Text = lbf.Status;
@@ -189,7 +193,7 @@ namespace Taskalu
             lbf.Id = epId;
             lbf.Name = ep_name.Text;
             lbf.Description = ep_description.Text;
-            lbf.Priority = ep_priority.Text;
+            lbf.Priority = String.Concat(Enumerable.Repeat("\u272e", 5 - ep_priorityBox.SelectedIndex));
             lbf.CreateDate = ep_createdate.Text;
             lbf.DueDate = ep_duedate.Text;
             lbf.Status = ep_status.Text;
