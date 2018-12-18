@@ -79,7 +79,6 @@ namespace Taskalu
             con.Open();
 
             SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (name, description, priority, createdate, duedate, status) VALUES (@name, @description, @priority, @createdate, @duedate, @status)", con);
-            //com.Parameters.Add(sqliteParam(com, "@id", lvFile.Id));
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));

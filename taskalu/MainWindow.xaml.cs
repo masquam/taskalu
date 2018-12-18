@@ -44,8 +44,13 @@ namespace Taskalu
             else
             { 
                 listview1.Visibility = Visibility.Collapsed;
-                textbox1.Text = lbf.Name;
-                stackpanel1.Visibility = Visibility.Visible;
+                ep_name.Text = lbf.Name;
+                ep_description.Text = lbf.Description;
+                ep_priority.Text = lbf.Priority;
+                ep_createdate.Text = lbf.CreateDate;
+                ep_duedate.Text = lbf.DueDate;
+                ep_status.Text = lbf.Status;
+                editpanel.Visibility = Visibility.Visible;
             }
         }
 
@@ -63,7 +68,7 @@ namespace Taskalu
         private void Button1_Click(object sender, RoutedEventArgs e)
         {
             listview1.UnselectAll();
-            stackpanel1.Visibility = Visibility.Collapsed;
+            editpanel.Visibility = Visibility.Collapsed;
             listview1.Visibility = Visibility.Visible;
         }
 

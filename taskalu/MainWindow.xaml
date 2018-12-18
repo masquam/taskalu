@@ -80,13 +80,25 @@
                                         <MenuItem Header="Descending" Click="DueDateDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
-                            </GridViewColumnHeader>                        </GridViewColumn>
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
 
-            <StackPanel DockPanel.Dock="Top" Name="stackpanel1" Visibility="Collapsed" >
-                <TextBox Name="textbox1" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
+            <StackPanel DockPanel.Dock="Top" Name="editpanel" Visibility="Collapsed" >
+                <Label Content="name"/>
+                <TextBox Name="ep_name" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
+                <Label Content="description"/>
+                <TextBox Name="ep_description" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
+                <Label Content="priority"/>
+                <TextBox Name="ep_priority" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
+                <Label Content="create date"/>
+                <TextBox Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
+                <Label Content="due date"/>
+                <TextBox Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
+                <Label Content="status"/>
+                <TextBox Name="ep_status" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
                 <Button Name="button1" Content="Close" Width="75" Click="Button1_Click"/>
             </StackPanel>
         </DockPanel>
