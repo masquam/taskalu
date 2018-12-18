@@ -21,6 +21,8 @@ namespace Taskalu
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Int64 epId = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,28 +34,6 @@ namespace Taskalu
             ExecuteFirstSelectTable();
         }
 
-        // リストのアイテムがクリックされた時
-        void ListSelectionChanged(object sender, SelectionChangedEventArgs args)
-        {
-            ListViewFile lbf = ((sender as ListBox).SelectedItem as ListViewFile);
-
-            if (lbf == null)
-            {
-                // nop
-            }
-            else
-            { 
-                listview1.Visibility = Visibility.Collapsed;
-                ep_name.Text = lbf.Name;
-                ep_description.Text = lbf.Description;
-                ep_priority.Text = lbf.Priority;
-                ep_createdate.Text = lbf.CreateDate;
-                ep_duedate.Text = lbf.DueDate;
-                ep_status.Text = lbf.Status;
-                editpanel.Visibility = Visibility.Visible;
-            }
-        }
-
         /*
          * TODO: ウィンドウ幅に応じて textbox の幅を変更する
          * textblock1 が　現在のコンテキストに存在しない　エラーとなる
@@ -63,14 +43,6 @@ namespace Taskalu
             textblock1.width = ActualWidth - 100;
         }
         */
-
-        // 明細画面の閉じるボタン
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            listview1.UnselectAll();
-            editpanel.Visibility = Visibility.Collapsed;
-            listview1.Visibility = Visibility.Visible;
-        }
 
         // Toolbar - New Task button
         private void NewButton_Click(object sender, RoutedEventArgs e)
@@ -184,6 +156,63 @@ namespace Taskalu
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        // list item is clicked, editpanel will be visible
+        void ListSelectionChanged(object sender, SelectionChangedEventArgs args)
+        {
+            ListViewFile lbf = ((sender as ListBox).SelectedItem as ListViewFile);
+
+            if (lbf == null)
+            {
+                // nop
+            }
+            else
+            {
+                MoreButton.Visibility = Visibility.Collapsed;
+                listview1.Visibility = Visibility.Collapsed;
+                epId = lbf.Id;
+                ep_name.Text = lbf.Name;
+                ep_description.Text = lbf.Description;
+                ep_priority.Text = lbf.Priority;
+                ep_createdate.Text = lbf.CreateDate;
+                ep_duedate.Text = lbf.DueDate;
+                ep_status.Text = lbf.Status;
+                editpanel.Visibility = Visibility.Visible;
+            }
+        }
+
+        // editpanel Save button
+        private void ep_save_Click(object sender, RoutedEventArgs e)
+        {
+            ListViewFile lbf = new ListViewFile();
+            lbf.Id = epId;
+            lbf.Name = ep_name.Text;
+            lbf.Description = ep_description.Text;
+            lbf.Priority = ep_priority.Text;
+            lbf.CreateDate = ep_createdate.Text;
+            lbf.DueDate = ep_duedate.Text;
+            lbf.Status = ep_status.Text;
+
+            if (SQLiteClass.ExecuteUpdateTable(lbf))
+            {
+                ep_CloseWindow();
+                ExecuteFirstSelectTable();
+            }
+        }
+
+
+        // editpanel Close button
+        private void ep_close_Click(object sender, RoutedEventArgs e)
+        {
+            ep_CloseWindow();
+        }
+
+        private void ep_CloseWindow()
+        {
+            listview1.UnselectAll();
+            editpanel.Visibility = Visibility.Collapsed;
+            listview1.Visibility = Visibility.Visible;
         }
 
     }

@@ -111,6 +111,17 @@ namespace Taskalu
             return param;
         }
 
+        private static SQLiteParameter sqliteParamInt64(SQLiteCommand com, string paramName, Int64 field)
+        {
+            SQLiteParameter param = new SQLiteParameter();
+            param = com.CreateParameter();
+            param.ParameterName = paramName;
+            param.DbType = System.Data.DbType.Int64;
+            param.Direction = System.Data.ParameterDirection.Input;
+            param.Value = field;
+            return param;
+        }
+
         public static Boolean ExecuteFirstSelectTable()
         {
             return SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
@@ -200,5 +211,45 @@ namespace Taskalu
                 return "ASC";
             }
         }
+
+        public static Boolean ExecuteUpdateTable(ListViewFile lvFile)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist set name=@name, description=@description, priority=@priority, createdate=@createdate, duedate=@duedate, status=@status where id=@id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", lvFile.Id));
+            com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
+            com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
+            com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
+            com.Parameters.Add(sqliteParam(com, "@createdate", getUTCString(lvFile.CreateDate)));
+            com.Parameters.Add(sqliteParam(com, "@duedate", getUTCString(lvFile.DueDate)));
+            com.Parameters.Add(sqliteParam(com, "@status", lvFile.Status));
+
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table update error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
+
+        private static string getUTCString(string localTime)
+        {
+            return DateTime.ParseExact(localTime, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)
+                .ToUniversalTime()
+                .ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
     }
 }
