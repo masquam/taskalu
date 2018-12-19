@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}" 
-        Title="MainWindow" Height="768" Width="1024" MinWidth="400">
+        Title="MainWindow" Height="560" Width="760" MinWidth="400">
 
     <Grid>
         <Grid.Resources>
@@ -41,7 +41,7 @@
             </ToolBarTray>
         </StackPanel>
         <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
-        <StackPanel Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="24"  HorizontalAlignment="Stretch">
+        <StackPanel x:Name="listviewBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="24"  HorizontalAlignment="Stretch">
             <Button Visibility="Collapsed" x:Name="MoreButton" Content="&#x25bc; More &#x25bc;" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FF0C1880" BorderBrush="#FF0C1880" Foreground="White" />
         </StackPanel>
             <ListView  x:Name="listview1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged" FontSize="20">

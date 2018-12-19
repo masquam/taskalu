@@ -169,7 +169,8 @@ namespace Taskalu
             }
             else
             {
-                MoreButton.Visibility = Visibility.Collapsed;
+                //MoreButton.Visibility = Visibility.Collapsed;
+                listviewBottomToolbar.Visibility = Visibility.Collapsed;
                 listview1.Visibility = Visibility.Collapsed;
 
                 int priorityLen = lbf.Priority.Length;
@@ -216,6 +217,7 @@ namespace Taskalu
         {
             listview1.UnselectAll();
             editpanel.Visibility = Visibility.Collapsed;
+            listviewBottomToolbar.Visibility = Visibility.Visible;
             listview1.Visibility = Visibility.Visible;
         }
 
