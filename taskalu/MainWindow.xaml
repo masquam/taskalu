@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}" 
-        Title="MainWindow" Height="560" Width="760" MinWidth="400">
+        Title="taskalu" Height="560" Width="760" MinWidth="400">
 
     <Grid>
         <Grid.Resources>
@@ -86,13 +86,31 @@
                 </ListView.View>
             </ListView>
 
-            <StackPanel DockPanel.Dock="Top" Name="editpanel" Visibility="Collapsed" >
-                <Label Content="name"/>
-                <TextBox Name="ep_name" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
-                <Label Content="description"/>
-                <TextBox Name="ep_description" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
-                <Label Content="priority"/>
-                <ComboBox x:Name="ep_priorityBox" SelectedIndex="5" Foreground="#FF9B9B00" Width="120">
+            <Grid DockPanel.Dock="Top" Name="editpanel" Visibility="Collapsed" >
+                <Grid.Resources >
+                    <Style TargetType="TextBox" >
+                        <Setter Property="Margin" Value="4,4,4,4" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="28" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="86" />
+                    <ColumnDefinition Width="128" />
+                    <ColumnDefinition Width="64" />
+                    <ColumnDefinition Width="86" />
+                    <ColumnDefinition Width="128" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="name"/>
+                <TextBox Grid.ColumnSpan="5" Grid.Row="0" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" />
+                <Label Grid.Row="1" Grid.Column="0" Content="priority"/>
+                <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ep_priorityBox" SelectedIndex="5" Foreground="#FF9B9B00" Width="120" Height="23" HorizontalAlignment="Left" Margin="4">
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;"/>
@@ -100,15 +118,19 @@
                     <ComboBoxItem Content="&#x272e;"/>
                     <ComboBoxItem Content=""/>
                 </ComboBox>
-                <Label Content="create date"/>
-                <TextBox Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
-                <Label Content="due date"/>
-                <TextBox Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
-                <Label Content="status"/>
-                <TextBox Name="ep_status" Height="23" TextWrapping="Wrap" Text="" Width="120"/>
-                <Button Name="ep_save" Content="Save" Width="75" Click="ep_save_Click"/>
-                <Button Name="ep_close" Content="Close" Width="75" Click="ep_close_Click"/>
-            </StackPanel>
+                <Label Grid.Row="1" Grid.Column="3" Content="create date"/>
+                <TextBox Grid.Row="1" Grid.Column="4" Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
+                <Label Grid.Row="2" Grid.Column="0" Content="status"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Name="ep_status" Height="23" TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" IsReadOnly="True"/>
+                <Button Grid.Row="2" Grid.Column="2" Name="ep_changestatus" Content="..." Width="32" Height="23" Click="ep_changestatus_Click" HorizontalAlignment="Left"/>
+                <Label Grid.Row="2" Grid.Column="3" Content="due date"/>
+                <TextBox Grid.Row="2" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
+                <Button Grid.Row="2" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left"/>
+                <Label Grid.Row="3" Grid.Column="0" Content="description"/>
+                <TextBox Grid.ColumnSpan="5" Grid.Row="3" Grid.Column="1" Name="ep_description" TextWrapping="Wrap" Text=""/>
+                <Button Grid.Row="4" Grid.Column="1" Name="ep_save" Content="Save" Width="75" Click="ep_save_Click"/>
+                <Button Grid.Row="4" Grid.Column="3" Name="ep_close" Content="Close" Width="75" Click="ep_close_Click"/>
+            </Grid>
         </DockPanel>
     </Grid>
 </Window>

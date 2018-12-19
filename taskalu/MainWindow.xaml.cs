@@ -64,6 +64,7 @@ namespace Taskalu
                 // new task window is closed
 
                 // MessageBox.Show("OK button pressed");
+                // TODO: 詳細パネルが開いていた場合の処理
                 ExecuteFirstSelectTable();
             }
         }
@@ -185,6 +186,18 @@ namespace Taskalu
                 ep_status.Text = lbf.Status;
                 editpanel.Visibility = Visibility.Visible;
             }
+        }
+
+        // editpanel change status button
+        private void ep_changestatus_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+        }
+
+        // editpanel change due date button
+        private void ep_changeduedate_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
         }
 
         // editpanel Save button
