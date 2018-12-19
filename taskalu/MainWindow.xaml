@@ -127,7 +127,7 @@
                 <TextBox Grid.Row="2" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
                 <Button Grid.Row="2" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left"/>
                 <Label Grid.Row="3" Grid.Column="0" Content="description"/>
-                <TextBox Grid.ColumnSpan="5" Grid.Row="3" Grid.Column="1" Name="ep_description" TextWrapping="Wrap" Text=""/>
+                <TextBox Grid.ColumnSpan="5" Grid.Row="3" Grid.Column="1" Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text=""/>
                 <Button Grid.Row="4" Grid.Column="1" Name="ep_save" Content="Save" Width="75" Click="ep_save_Click"/>
                 <Button Grid.Row="4" Grid.Column="3" Name="ep_close" Content="Close" Width="75" Click="ep_close_Click"/>
             </Grid>
