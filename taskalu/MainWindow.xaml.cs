@@ -170,7 +170,7 @@ namespace Taskalu
             }
             else
             {
-                //MoreButton.Visibility = Visibility.Collapsed;
+                listviewTopToolbar.Visibility = Visibility.Collapsed;
                 listviewBottomToolbar.Visibility = Visibility.Collapsed;
                 listview1.Visibility = Visibility.Collapsed;
 
@@ -196,6 +196,12 @@ namespace Taskalu
 
         // editpanel change due date button
         private void ep_changeduedate_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+        }
+
+        // editpanel open work folder button
+        private void ep_openWorkFolder_Click(object sender, RoutedEventArgs e)
         {
             // TODO: 実装
         }
@@ -230,6 +236,7 @@ namespace Taskalu
         {
             listview1.UnselectAll();
             editpanel.Visibility = Visibility.Collapsed;
+            listviewTopToolbar.Visibility = Visibility.Visible;
             listviewBottomToolbar.Visibility = Visibility.Visible;
             listview1.Visibility = Visibility.Visible;
         }
