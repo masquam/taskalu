@@ -36,7 +36,7 @@
                 </Menu>
                 <ToolBarTray VerticalAlignment="Top">
                     <ToolBar Height="26" VerticalAlignment="Top">
-                        <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75" Click="NewButton_Click" Background="#FF0C1880" BorderBrush="#FF0C1880" Foreground="White"/>
+                        <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75" Click="NewButton_Click" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
                     </ToolBar>
                 </ToolBarTray>
             </StackPanel>
@@ -62,7 +62,7 @@
                 </Grid>
             </StackPanel>
             <StackPanel x:Name="listviewBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="24"  HorizontalAlignment="Stretch">
-                <Button Visibility="Collapsed" x:Name="MoreButton" Content="&#x25bc; More &#x25bc;" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FF0C1880" BorderBrush="#FF0C1880" Foreground="White" />
+                <Button Visibility="Collapsed" x:Name="MoreButton" Content="&#x25bc; More &#x25bc;" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" />
             </StackPanel>
             <ListView  x:Name="listview1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged" FontSize="20">
                 <ListView.View>
@@ -147,12 +147,12 @@
                 </ComboBox>
                 <Label Grid.Row="2" Grid.Column="3" Content="due date"/>
                 <TextBox Grid.Row="2" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
-                <Button Grid.Row="2" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left" Background="#FF0C1880" BorderBrush="#FF0C1880" Foreground="White"/>
+                <Button Grid.Row="2" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
                 <Label Grid.Row="3" Grid.Column="0" Content="description"/>
                 <TextBox Grid.ColumnSpan="5" Grid.Row="3" Grid.Column="1" Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Margin="0,4,8,4"/>
-                <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="Open work folder..." Width="160" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" Background="#FF0C1880" BorderBrush="#FF0C1880" Foreground="White"/>
-                <Button Grid.Row="4" Grid.Column="4" Name="ep_save" Content="Save" Width="75" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4" Background="#FF0C1880" BorderBrush="#FF0C1880" Foreground="White"/>
-                <Button Grid.Row="4" Grid.Column="5" Name="ep_close" Content="Close" Width="75" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" Background="#FF0C1880" BorderBrush="#FF0C1880" Foreground="White"/>
+                <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="Open work folder..." Width="160" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
+                <Button Grid.Row="4" Grid.Column="4" Name="ep_save" Content="Save" Width="75" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
+                <Button Grid.Row="4" Grid.Column="5" Name="ep_close" Content="Close" Width="75" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
             </Grid>
         </DockPanel>
     </Grid>
