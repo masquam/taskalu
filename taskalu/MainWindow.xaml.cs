@@ -86,7 +86,6 @@ namespace Taskalu
         // status combobox is changed
         private void statusBox_DropDownClosed(object sender, EventArgs e)
         {
-            //MessageBox.Show("combobox is selected: " + statusBox.Text);
             SQLiteClass.where_status = statusBox.Text;
             ExecuteFirstSelectTable();
         }
@@ -192,15 +191,9 @@ namespace Taskalu
                 ep_priorityBox.SelectedIndex = 5 - priorityLen;
                 ep_createdate.Text = lbf.CreateDate;
                 ep_duedate.Text = lbf.DueDate;
-                ep_status.Text = lbf.Status;
+                ep_statusBox.Text = lbf.Status;
                 editpanel.Visibility = Visibility.Visible;
             }
-        }
-
-        // editpanel change status button
-        private void ep_changestatus_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO: 実装
         }
 
         // editpanel change due date button
@@ -225,7 +218,7 @@ namespace Taskalu
             lbf.Priority = String.Concat(Enumerable.Repeat("\u272e", 5 - ep_priorityBox.SelectedIndex));
             lbf.CreateDate = ep_createdate.Text;
             lbf.DueDate = ep_duedate.Text;
-            lbf.Status = ep_status.Text;
+            lbf.Status = ep_statusBox.Text;
 
             if (SQLiteClass.ExecuteUpdateTable(lbf))
             {
