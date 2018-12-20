@@ -83,7 +83,7 @@
                             </GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="400">
-                            <GridViewColumnHeader Click="Name_Click">Name
+                            <GridViewColumnHeader Click="Name_Click">Title
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="NameCM">
                                         <MenuItem Header="Ascending" Click="NameAsc_Click"/>
@@ -126,7 +126,7 @@
                     <ColumnDefinition Width="120" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="0" Grid.Column="0" Content="name"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="title"/>
                 <TextBox Grid.ColumnSpan="5" Grid.Row="0" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,4,8,4"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="priority"/>
                 <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ep_priorityBox" SelectedIndex="5" Foreground="#FF9B9B00" Width="120" Height="23" HorizontalAlignment="Left" Margin="0,4,0,4">
