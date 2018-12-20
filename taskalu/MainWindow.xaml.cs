@@ -82,7 +82,16 @@ namespace Taskalu
                 MoreButton.Visibility = Visibility.Collapsed;
             }
         }
-        
+
+        // status combobox is changed
+        private void statusBox_DropDownClosed(object sender, EventArgs e)
+        {
+            //MessageBox.Show("combobox is selected: " + statusBox.Text);
+            SQLiteClass.where_status = statusBox.Text;
+            ExecuteFirstSelectTable();
+        }
+
+
         // More button
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {

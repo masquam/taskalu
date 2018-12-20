@@ -23,6 +23,8 @@ namespace Taskalu
         public static string nameOrderByDirection { get; set; } = "ASC";
         public static string duedateOrderByDirection { get; set; } = "ASC";
 
+        public static string where_status { get; set; } = "Active";
+
         public static int moreCount { get; set; }
         public static int moreSize = 8;
 
@@ -126,6 +128,7 @@ namespace Taskalu
         {
             return SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
                 selectTaskListSql
+                + " where status = '" + where_status + "'"
                 + " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString());
         }
@@ -134,6 +137,7 @@ namespace Taskalu
         {
             return SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
                 selectTaskListSql
+                + " where status = '" + where_status + "'"
                 + " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString()
                 + " offset " + SQLiteClass.moreCount.ToString());
