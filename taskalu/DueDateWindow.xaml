@@ -1,0 +1,57 @@
+﻿<Window x:Class="Taskalu.DueDateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Taskalu"
+        mc:Ignorable="d"
+        Title="DueDateWindow" Height="200" Width="560" Loaded="DueDateWindow_Loaded">
+    <Grid>
+        <Button x:Name="DueDateOk" Content="OK" HorizontalAlignment="Left" Margin="275,109,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="424,109,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.259,3.535" IsCancel="True" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
+        <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="31,45,0,0" Width="79" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DueDateBox" HorizontalAlignment="Left" Margin="115,45,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="DueDateHourBox" HorizontalAlignment="Left" Margin="230,45,0,0" VerticalAlignment="Top" Width="120" IsReadOnly="True">
+            <ComboBoxItem Content="00"/>
+            <ComboBoxItem Content="01"/>
+            <ComboBoxItem Content="02"/>
+            <ComboBoxItem Content="03"/>
+            <ComboBoxItem Content="04"/>
+            <ComboBoxItem Content="05"/>
+            <ComboBoxItem Content="06"/>
+            <ComboBoxItem Content="07"/>
+            <ComboBoxItem Content="08"/>
+            <ComboBoxItem Content="09"/>
+            <ComboBoxItem Content="10"/>
+            <ComboBoxItem Content="11"/>
+            <ComboBoxItem Content="12"/>
+            <ComboBoxItem Content="13"/>
+            <ComboBoxItem Content="14"/>
+            <ComboBoxItem Content="15"/>
+            <ComboBoxItem Content="16"/>
+            <ComboBoxItem Content="17"/>
+            <ComboBoxItem Content="18"/>
+            <ComboBoxItem Content="19"/>
+            <ComboBoxItem Content="20"/>
+            <ComboBoxItem Content="21"/>
+            <ComboBoxItem Content="22"/>
+            <ComboBoxItem Content="23"/>
+        </ComboBox>
+        <ComboBox x:Name="DueDateMinuteBox" HorizontalAlignment="Left" Margin="379,45,0,0" VerticalAlignment="Top" Width="120" IsReadOnly="True">
+            <ComboBoxItem Content="00"/>
+            <ComboBoxItem Content="05"/>
+            <ComboBoxItem Content="10"/>
+            <ComboBoxItem Content="15"/>
+            <ComboBoxItem Content="20"/>
+            <ComboBoxItem Content="25"/>
+            <ComboBoxItem Content="30"/>
+            <ComboBoxItem Content="35"/>
+            <ComboBoxItem Content="40"/>
+            <ComboBoxItem Content="45"/>
+            <ComboBoxItem Content="50"/>
+            <ComboBoxItem Content="55"/>
+        </ComboBox>
+        <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="355,42,0,0" Width="79" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

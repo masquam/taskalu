@@ -199,7 +199,20 @@ namespace Taskalu
         // editpanel change due date button
         private void ep_changeduedate_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
+            // Instantiate the dialog box
+            DueDateWindow dlg = new DueDateWindow();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+
+            dlg.dueDateString = ep_duedate.Text;
+
+            // Open the dialog box modally 
+            if (dlg.ShowDialog() == true)
+            {
+                // due date window is closed
+                ep_duedate.Text = dlg.dueDateString;
+            }
         }
 
         // editpanel open work folder button
