@@ -64,10 +64,15 @@
             <StackPanel x:Name="listviewBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="24"  HorizontalAlignment="Stretch">
                 <Button Visibility="Collapsed" x:Name="MoreButton" Content="&#x25bc; More &#x25bc;" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" />
             </StackPanel>
-            <ListView  x:Name="listview1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged" FontSize="20">
+            <ListView  x:Name="listview1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Height" Value="32" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Task Information">
-                        <GridViewColumn Width="100">
+                        <GridViewColumn Width="64">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Priority}" Foreground="#FFC8C800" />
@@ -82,7 +87,7 @@
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="400">
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="256">
                             <GridViewColumnHeader Click="Name_Click">Title
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="NameCM">
@@ -92,7 +97,17 @@
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding DueDate}" Width="200">
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="256" >
+                            <GridViewColumnHeader Click="Description_Click">Description
+                                <GridViewColumnHeader.ContextMenu>
+                                    <ContextMenu Name="DescriptionCM">
+                                        <MenuItem Header="Ascending" Click="DescriptionAsc_Click"/>
+                                        <MenuItem Header="Descending" Click="DescriptionDes_Click"/>
+                                    </ContextMenu>
+                                </GridViewColumnHeader.ContextMenu>
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding DueDate}" Width="128">
                             <GridViewColumnHeader Click="DueDate_Click">Due Date
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DueDateCM">

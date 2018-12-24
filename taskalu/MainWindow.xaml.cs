@@ -90,7 +90,6 @@ namespace Taskalu
             ExecuteFirstSelectTable();
         }
 
-
         // More button
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {
@@ -104,6 +103,7 @@ namespace Taskalu
             }
         }
 
+        // ASC/DESC
         private void Priority_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.priorityOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.priorityOrderByDirection);
@@ -139,6 +139,25 @@ namespace Taskalu
         {
             SQLiteClass.nameOrderByDirection = "DESC";
             SQLiteClass.SetOrderBy("name", "DESC");
+            ExecuteFirstSelectTable();
+        }
+
+        private void Description_Click(object sender, RoutedEventArgs e)
+        {
+            SQLiteClass.nameOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.nameOrderByDirection);
+            SQLiteClass.SetOrderBy("description", SQLiteClass.nameOrderByDirection);
+            ExecuteFirstSelectTable();
+        }
+        private void DescriptionAsc_Click(object sender, RoutedEventArgs e)
+        {
+            SQLiteClass.nameOrderByDirection = "ASC";
+            SQLiteClass.SetOrderBy("description", "ASC");
+            ExecuteFirstSelectTable();
+        }
+        private void DescriptionDes_Click(object sender, RoutedEventArgs e)
+        {
+            SQLiteClass.nameOrderByDirection = "DESC";
+            SQLiteClass.SetOrderBy("description", "DESC");
             ExecuteFirstSelectTable();
         }
 
