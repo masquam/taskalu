@@ -26,7 +26,7 @@ namespace Taskalu
         public static string where_status { get; set; } = "Active";
 
         public static int moreCount { get; set; }
-        public static int moreSize = 8;
+        public static int moreSize = 10;
 
         public static void TouchDB()
         {

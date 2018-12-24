@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}" 
-        Title="taskalu" Height="560" Width="760" MinWidth="740">
+        Title="taskalu" Height="564" Width="760" MinWidth="740">
     <Window.Resources>
         <local:DateToColorConverter x:Key="DateToColorConverter" />
     </Window.Resources>
@@ -69,7 +69,7 @@
             <ListView  x:Name="listview1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
-                        <Setter Property="Height" Value="48" />
+                        <Setter Property="Height" Value="38" />
                         <Setter Property="VerticalContentAlignment" Value="Top"/>
                     </Style>
                 </ListView.ItemContainerStyle>
