@@ -16,13 +16,23 @@ namespace Taskalu
         object value, Type targetType,
         object parameter, System.Globalization.CultureInfo culture)
         {
-            string date = (string)value;
+            string datestring = (string)value;
 
-            //if( number < 0.0 )
-            // return -1;
-            //if( number == 0.0 )
-            // return 0;
-            return +1;
+            DateTime date = DateTime.ParseExact(datestring, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+
+            if (DateTime.Compare(DateTime.Now, date) > 0)
+            {
+                return +1;
+            }
+            else if (DateTime.Compare(DateTime.Today, date.Date) == 0)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+
         }
 
         public object ConvertBack(
@@ -34,25 +44,3 @@ namespace Taskalu
     }
 }
 
-
-/*
-
-                <Style TargetType="{x:Type ListViewItem}">
-                    <Style.Resources>
-                        <local:DateToColorConverter x:Key="DateToColorConv" />
-                    </Style.Resources>
-                    <Style.Triggers>
-                        <DataTrigger
-                            Binding="{Binding DueDate, Converter={StaticResource DateToColorConv}}"
-                            Value="+1">
-                            <Setter Property="Foreground" Value="Red" />
-                        </DataTrigger>
-                        <DataTrigger
-                            Binding="{Binding DueDate, Converter={StaticResource DateToColorConv}}"
-                            Value="-1">
-                            <Setter Property="Foreground" Value="Blue" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
- 
- */

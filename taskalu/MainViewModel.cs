@@ -26,6 +26,12 @@ namespace Taskalu
             */
         }
 
+        //public static void initialize()
+        //{
+        //    ObservableCollection<ListViewFile> files = new ObservableCollection<ListViewFile>();
+        //    mv.Files = files;
+        //}
+
         public ObservableCollection<ListViewFile> Files { get; set; }
 
         private ListViewFile selectedFile;
