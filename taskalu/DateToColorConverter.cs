@@ -27,15 +27,15 @@ namespace Taskalu
 
             if (DateTime.Compare(DateTime.Now, date) > 0)
             {
-                return "2000-01-01 00:00:00";
+                return "Red";
             }
             else if (DateTime.Compare(DateTime.Today, date.Date) == 0)
             {
-                return "2000-01-02 00:00:00";
+                return "Blue";
             }
             else
             {
-                return "2000-01-03 00:00:00";
+                return "Black";
             }
         }
 
