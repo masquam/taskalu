@@ -61,6 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DateToColorConverter.cs" />
     <Compile Include="DueDateWindow.xaml.cs">
       <DependentUpon>DueDateWindow.xaml</DependentUpon>
     </Compile>

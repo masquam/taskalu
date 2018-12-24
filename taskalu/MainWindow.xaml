@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}" 
         Title="taskalu" Height="560" Width="760" MinWidth="740">
-
     <Grid>
         <Grid.Resources>
             <Style TargetType="TextBlock" x:Key="label1">
@@ -65,9 +64,11 @@
                 <Button Visibility="Collapsed" x:Name="MoreButton" Content="&#x25bc; More &#x25bc;" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" />
             </StackPanel>
             <ListView  x:Name="listview1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged">
+
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
-                        <Setter Property="Height" Value="32" />
+                        <Setter Property="Height" Value="48" />
+                        <Setter Property="VerticalContentAlignment" Value="Top"/>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>

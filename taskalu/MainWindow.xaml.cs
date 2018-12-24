@@ -26,11 +26,8 @@ namespace Taskalu
         public MainWindow()
         {
             InitializeComponent();
-
             SQLiteClass.TouchDB();
-
             this.DataContext = MainViewModel.mv;
-
             ExecuteFirstSelectTable();
         }
 
@@ -274,6 +271,5 @@ namespace Taskalu
             listviewBottomToolbar.Visibility = Visibility.Visible;
             listview1.Visibility = Visibility.Visible;
         }
-
     }
 }

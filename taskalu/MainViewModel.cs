@@ -16,14 +16,14 @@ namespace Taskalu
         {
             ObservableCollection<ListViewFile> files = new ObservableCollection<ListViewFile>();
             Files = files;
-/*
+            /*
             try
             {
                 SelectedFile = files[0];
             } catch (Exception) {
                 SelectedFile = null;
             }
-*/
+            */
         }
 
         public ObservableCollection<ListViewFile> Files { get; set; }
