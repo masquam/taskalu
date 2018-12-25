@@ -22,6 +22,7 @@ namespace Taskalu
     public partial class MainWindow : Window
     {
         public Int64 epId = 0;
+        public string workHolder = "";
 
         public MainWindow()
         {
@@ -209,6 +210,7 @@ namespace Taskalu
                 ep_duedate.Text = lbf.DueDate;
                 ep_statusBox.Text = lbf.Status;
                 editpanel.Visibility = Visibility.Visible;
+                workHolder = lbf.WorkHolder;
             }
         }
 
@@ -235,6 +237,7 @@ namespace Taskalu
         private void ep_openWorkFolder_Click(object sender, RoutedEventArgs e)
         {
             // TODO: 実装
+            WorkHolder.Open(workHolder);
         }
 
         // editpanel Save button
@@ -248,6 +251,7 @@ namespace Taskalu
             lbf.CreateDate = ep_createdate.Text;
             lbf.DueDate = ep_duedate.Text;
             lbf.Status = ep_statusBox.Text;
+            lbf.WorkHolder = workHolder;
 
             if (SQLiteClass.ExecuteUpdateTable(lbf))
             {

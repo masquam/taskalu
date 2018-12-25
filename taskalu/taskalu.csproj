@@ -69,6 +69,7 @@
       <DependentUpon>NewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQLite.cs" />
+    <Compile Include="WorkHolder.cs" />
     <Page Include="DueDateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

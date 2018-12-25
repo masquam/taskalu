@@ -15,5 +15,6 @@ namespace Taskalu
         public string CreateDate { get; set; }
         public string DueDate { get; set; }
         public string Status { get; set; }
+        public string WorkHolder { get; set; }
     }
 }

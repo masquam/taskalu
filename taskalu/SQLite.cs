@@ -50,7 +50,7 @@ namespace Taskalu
                     MessageBox.Show("database file create error!\n" + ex.Message);
                 }
 
-                ExecuteCreateTable("create table tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT)");
+                ExecuteCreateTable("create table tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT, workholder TEXT)");
             }
         }
 
@@ -80,13 +80,14 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (name, description, priority, createdate, duedate, status) VALUES (@name, @description, @priority, @createdate, @duedate, @status)", con);
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (name, description, priority, createdate, duedate, status, workholder) VALUES (@name, @description, @priority, @createdate, @duedate, @status, @workholder)", con);
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
             com.Parameters.Add(sqliteParam(com, "@createdate", System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
             com.Parameters.Add(sqliteParam(com, "@duedate", lvFile.DueDate));
             com.Parameters.Add(sqliteParam(com, "@status", lvFile.Status));
+            com.Parameters.Add(sqliteParam(com, "@workholder", lvFile.WorkHolder));
 
             try
             {
@@ -175,6 +176,7 @@ namespace Taskalu
                         lvFile.DueDate = utc2.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
                         lvFile.Status = (string)sdr["status"];
+                        lvFile.WorkHolder = (string)sdr["workholder"];
 
                         mv.Files.Add(lvFile);
                     }
@@ -223,7 +225,7 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist set name=@name, description=@description, priority=@priority, createdate=@createdate, duedate=@duedate, status=@status where id=@id", con);
+            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist set name=@name, description=@description, priority=@priority, createdate=@createdate, duedate=@duedate, status=@status, workholder=@workholder where id=@id", con);
             com.Parameters.Add(sqliteParamInt64(com, "@id", lvFile.Id));
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
@@ -231,6 +233,7 @@ namespace Taskalu
             com.Parameters.Add(sqliteParam(com, "@createdate", getUTCString(lvFile.CreateDate)));
             com.Parameters.Add(sqliteParam(com, "@duedate", getUTCString(lvFile.DueDate)));
             com.Parameters.Add(sqliteParam(com, "@status", lvFile.Status));
+            com.Parameters.Add(sqliteParam(com, "@workholder", lvFile.WorkHolder));
 
             try
             {

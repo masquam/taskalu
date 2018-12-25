@@ -43,7 +43,8 @@ namespace Taskalu
                 Description = NewDesriptioncBox.Text,
                 Priority = priorityBox.Text,
                 DueDate = TimeZoneInfo.ConvertTimeToUtc(dueDate).ToString("yyyy-MM-dd HH:mm:ss"),
-                Status = "Active"
+                Status = "Active",
+                WorkHolder = WorkHolder.CreateWorkHolder(NewTitleBox.Text)
             };
             SQLiteClass.ExecuteInsertTable(lvFile);
 
