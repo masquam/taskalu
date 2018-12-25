@@ -27,21 +27,21 @@
             </Style>
         </Grid.Resources>
         <DockPanel>
-            <StackPanel DockPanel.Dock="Top" VerticalAlignment="Top">
-                <Menu VerticalAlignment="Top">
-                    <MenuItem Header="_File">
-                        <MenuItem Header="e_xit" Click="Exit_Click" />
-                    </MenuItem>
-                    <MenuItem Header="_view">
-                        <MenuItem Header="" />
-                    </MenuItem>
-                </Menu>
-                <ToolBarTray VerticalAlignment="Top">
-                    <ToolBar Height="26" VerticalAlignment="Top">
-                        <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="75" Click="NewButton_Click" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
-                    </ToolBar>
-                </ToolBarTray>
-            </StackPanel>
+            <ToolBarTray DockPanel.Dock="Top" VerticalAlignment="Top" Background="#FFF1EDED">
+                <ToolBar Height="36" VerticalAlignment="Top">
+                    <Menu VerticalAlignment="Top">
+                        <MenuItem Width="32" Height="32">
+                            <MenuItem.Icon>
+                                <Image Source="menu.ico"/>
+                            </MenuItem.Icon>
+                            <MenuItem Header="_New Task" Click="NewButton_Click" />
+                            <Separator />
+                            <MenuItem Header="e_xit" Click="Exit_Click" />
+                        </MenuItem>
+                    </Menu>
+                    <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
+                </ToolBar>
+            </ToolBarTray>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
             <StackPanel x:Name="listviewTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal">
                 <Grid>
@@ -63,8 +63,8 @@
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <StackPanel x:Name="listviewBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="24"  HorizontalAlignment="Stretch">
-                <Button Visibility="Collapsed" x:Name="MoreButton" Content="&#x25bc; More &#x25bc;" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" />
+            <StackPanel x:Name="listviewBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
+                <Button Visibility="Collapsed" x:Name="MoreButton" Content="More" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Width="96" Height="32"/>
             </StackPanel>
             <ListView  x:Name="listview1" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Files}" SelectionChanged="ListSelectionChanged">
                 <ListView.ItemContainerStyle>
