@@ -11,8 +11,8 @@
         <TextBox Name="NewTitleBox" HorizontalAlignment="Left" Height="27" Margin="123,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
         <Label Content="Description" HorizontalAlignment="Left" Height="27" Margin="39,64,0,0" Width="79" VerticalAlignment="Top"/>
         <TextBox Name="NewDesriptioncBox" HorizontalAlignment="Left" Height="94" Margin="123,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" AcceptsReturn="True"/>
-        <Button Name="NewWindowOk" Content="OK" HorizontalAlignment="Left" Margin="346,282,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="448,282,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.259,3.535" IsCancel="True" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
+        <Button Name="NewWindowOk" Content="OK" HorizontalAlignment="Left" Margin="283,272,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="427,272,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
         <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="39,186,0,0" Width="79" VerticalAlignment="Top"/>
         <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="123,186,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="238,186,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
@@ -57,7 +57,7 @@
         </ComboBox>
         <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="300,183,0,0" Width="79" VerticalAlignment="Top"/>
         <Label Content="Priority" HorizontalAlignment="Left" Height="27" Margin="39,231,0,0" Width="79" VerticalAlignment="Top"/>
-        <ComboBox x:Name="priorityBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="123,234,0,0" VerticalAlignment="Top" Width="120" Foreground="#FF9B9B00">
+        <ComboBox x:Name="priorityBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="123,234,0,0" VerticalAlignment="Top" Width="92" Foreground="#FF9B9B00">
             <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
             <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;"/>
             <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;"/>
