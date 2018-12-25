@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows;
 
 namespace Taskalu
 {
@@ -51,7 +52,14 @@ namespace Taskalu
         /// <param name="dir"></param>
         public static void Open(string dir)
         {
-            System.Diagnostics.Process.Start(dir);
+            try
+            {
+                System.Diagnostics.Process.Start(dir);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message + "\n\n" + dir);
+            }
         }
     }
 }
