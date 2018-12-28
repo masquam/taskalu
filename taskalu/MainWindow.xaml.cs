@@ -21,6 +21,7 @@ namespace Taskalu
     /// </summary>
     public partial class MainWindow : Window
     {
+        // data behind detail window
         public Int64 epId = 0;
         public string workHolder = "";
 
@@ -85,6 +86,37 @@ namespace Taskalu
         private void statusBox_DropDownClosed(object sender, EventArgs e)
         {
             SQLiteClass.where_status = statusBox.Text;
+            ExecuteFirstSelectTable();
+        }
+
+        /// <summary>
+        /// textbox title changed event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textboxTitle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SQLiteClass.searchStringName = textboxTitle.Text;
+        }
+
+        /// <summary>
+        /// textbox description changed event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textboxDescription_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SQLiteClass.searchStringDescription = textboxDescription.Text;
+        }
+
+
+        /// <summary>
+        /// search button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+        {
             ExecuteFirstSelectTable();
         }
 
@@ -275,5 +307,7 @@ namespace Taskalu
             listviewBottomToolbar.Visibility = Visibility.Visible;
             listview1.Visibility = Visibility.Visible;
         }
+
+
     }
 }

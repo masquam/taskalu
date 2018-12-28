@@ -15,7 +15,7 @@ namespace Taskalu
         public static string dbdirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
         public static string dbpath = dbdirectory + "\\taskaludb.sqlite";
 
-        public static string selectTaskListSql = "select * from tasklist ";
+        public static string selectTaskListSql = "SELECT * FROM tasklist ";
 
         public static string orderBy { get; set; } = "duedate";
         public static string orderByDirection { get; set; } = "ASC";
@@ -24,6 +24,8 @@ namespace Taskalu
         public static string duedateOrderByDirection { get; set; } = "ASC";
 
         public static string where_status { get; set; } = "Active";
+        public static string searchStringName { get; set; } = "";
+        public static string searchStringDescription { get; set; } = "";
 
         public static int moreCount { get; set; }
         public static int moreSize = 10;
@@ -136,21 +138,33 @@ namespace Taskalu
 
         public static Boolean ExecuteFirstSelectTable()
         {
-            return SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
-                selectTaskListSql
-                + " where status = '" + where_status + "'"
-                + " order by " + orderBy + " " + orderByDirection
-                + " limit " + (SQLiteClass.moreSize + 1).ToString());
+            string sql = selectTaskListSql + addWhereClause();
+            sql += " order by " + orderBy + " " + orderByDirection
+                + " limit " + (SQLiteClass.moreSize + 1).ToString();
+            return SQLiteClass.ExecuteSelectTable(MainViewModel.mv, sql);
         }
 
         public static Boolean ExecuteMoreSelectTable()
         {
-            return SQLiteClass.ExecuteSelectTable(MainViewModel.mv,
-                selectTaskListSql
-                + " where status = '" + where_status + "'"
-                + " order by " + orderBy + " " + orderByDirection
+            string sql = selectTaskListSql + addWhereClause();
+            sql += " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString()
-                + " offset " + SQLiteClass.moreCount.ToString());
+                + " offset " + SQLiteClass.moreCount.ToString();
+            return SQLiteClass.ExecuteSelectTable(MainViewModel.mv, sql);
+        }
+
+        public static string addWhereClause()
+        {
+            string sql = " WHERE status = '" + where_status + "'";
+            if (!String.IsNullOrEmpty(searchStringName))
+            {
+                sql += " AND name LIKE @name";
+            }
+            if (!String.IsNullOrEmpty(searchStringDescription))
+            {
+                sql += " AND description LIKE @description";
+            }
+            return sql;
         }
 
         public static Boolean ExecuteSelectTable(MainViewModel mv, string sql)
@@ -162,6 +176,14 @@ namespace Taskalu
             con.Open();
 
             SQLiteCommand com = new SQLiteCommand(sql, con);
+            if (!String.IsNullOrEmpty(searchStringName))
+            {
+                com.Parameters.Add(sqliteParam(com, "@name", "%" +searchStringName + "%"));
+            }
+            if (!String.IsNullOrEmpty(searchStringDescription))
+            {
+                com.Parameters.Add(sqliteParam(com, "@description", "%" + searchStringDescription + "%"));
+            }
 
             try
             {

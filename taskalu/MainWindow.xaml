@@ -43,25 +43,18 @@
                 </ToolBar>
             </ToolBarTray>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
-            <StackPanel x:Name="listviewTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="250"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="250"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1">
-                        <Label Content="status:"></Label>
-                        <ComboBox x:Name="statusBox" Width="120" IsReadOnly="True" SelectedIndex="0" DropDownClosed="statusBox_DropDownClosed">
-                            <ComboBoxItem Content="Active"/>
-                            <ComboBoxItem Content="Closed"/>
-                            <ComboBoxItem Content="Deffered"/>
-                        </ComboBox>
-                    </StackPanel>
-                </Grid>
+            <StackPanel x:Name="listviewTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
+                <Label Content="status"></Label>
+                <ComboBox x:Name="statusBox" Width="120" IsReadOnly="True" SelectedIndex="0" DropDownClosed="statusBox_DropDownClosed" Margin="0,2,20,0">
+                    <ComboBoxItem Content="Active"/>
+                    <ComboBoxItem Content="Closed"/>
+                    <ComboBoxItem Content="Deffered"/>
+                </ComboBox>
+                <Label Content="title"></Label>
+                <TextBox x:Name="textboxTitle" TextChanged="textboxTitle_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0"></TextBox>
+                <Label Content="description"></Label>
+                <TextBox x:Name="textboxDescription" TextChanged="textboxDescription_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0"></TextBox>
+                <Button x:Name="ButtonSearch" Content="Search" Click="ButtonSearch_Click" Width="96" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Margin="0,2,0,0"></Button>
             </StackPanel>
             <StackPanel x:Name="listviewBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
                 <Button Visibility="Collapsed" x:Name="MoreButton" Content="More" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Width="96" Height="32"/>
