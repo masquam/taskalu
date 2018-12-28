@@ -28,6 +28,9 @@ namespace Taskalu
         public static int moreCount { get; set; }
         public static int moreSize = 10;
 
+        /// <summary>
+        /// "touch" database - directory initialize, create table, index
+        /// </summary>
         public static void TouchDB()
         {
             MessageBox.Show("The folder where database flle will be created: " + dbpath);
@@ -51,6 +54,12 @@ namespace Taskalu
                 }
 
                 ExecuteCreateTable("create table tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT, workholder TEXT)");
+                ExecuteCreateIndex("tasklist", "index_name", "name");
+                ExecuteCreateIndex("tasklist", "index_description", "description");
+                ExecuteCreateIndex("tasklist", "index_priority", "priority");
+                ExecuteCreateIndex("tasklist", "index_createdate", "createdate");
+                ExecuteCreateIndex("tasklist", "index_duedate", "duedate");
+                ExecuteCreateIndex("tasklist", "index_status", "status");
             }
         }
 
@@ -256,6 +265,36 @@ namespace Taskalu
             return DateTime.ParseExact(localTime, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)
                 .ToUniversalTime()
                 .ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
+        /// <summary>
+        /// create index
+        /// </summary>
+        /// <param name="tablename">table name</param>
+        /// <param name="indexname">index name</param>
+        /// <param name="indexfield">index field</param>
+        /// <returns></returns>
+        public static Boolean ExecuteCreateIndex(string tablename, string indexname, string indexfield)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+            SQLiteCommand com = new SQLiteCommand("CREATE INDEX " + indexname + " ON " + tablename + " (" + indexfield + ")", con);
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database craate index error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
         }
 
     }
