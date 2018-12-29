@@ -35,13 +35,13 @@ namespace Taskalu
         /// </summary>
         public static Boolean TouchDB()
         {
-            MessageBox.Show("The folder where database flle will be created: " + dbpath);
+            //MessageBox.Show("The folder where database flle will be created: " + dbpath);
 
             Directory.CreateDirectory(dbdirectory);
 
             if (File.Exists(dbpath))
             {
-                MessageBox.Show("'" + dbpath + "' already exists.");
+                //MessageBox.Show("'" + dbpath + "' already exists.");
                 // check database scheme
                 if (!CheckTable("tasklist")){
                     return false;
