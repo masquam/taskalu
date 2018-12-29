@@ -28,7 +28,11 @@ namespace Taskalu
         public MainWindow()
         {
             InitializeComponent();
-            SQLiteClass.TouchDB();
+            if (!SQLiteClass.TouchDB())
+            {
+                MessageBox.Show("database creation error.");
+                Application.Current.Shutdown();
+            }
             this.DataContext = MainViewModel.mv;
             ExecuteFirstSelectTable();
         }
