@@ -220,7 +220,11 @@ namespace Taskalu
             Application.Current.Shutdown();
         }
 
-        // list item is clicked, editpanel will be visible
+        /// <summary>
+        /// list item is clicked, editpanel will be visible
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         void ListSelectionChanged(object sender, SelectionChangedEventArgs args)
         {
             ListViewFile lbf = ((sender as ListBox).SelectedItem as ListViewFile);
@@ -247,6 +251,8 @@ namespace Taskalu
                 ep_statusBox.Text = lbf.Status;
                 editpanel.Visibility = Visibility.Visible;
                 workHolder = lbf.WorkHolder;
+
+                EditTimer.start(epId);
             }
         }
 
@@ -276,9 +282,15 @@ namespace Taskalu
             WorkHolder.Open(workHolder);
         }
 
-        // editpanel Save button
+        /// <summary>
+        /// editpanel Save button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ep_save_Click(object sender, RoutedEventArgs e)
         {
+            EditTimer.stop();
+
             ListViewFile lbf = new ListViewFile();
             lbf.Id = epId;
             lbf.Name = ep_name.Text;
@@ -295,11 +307,16 @@ namespace Taskalu
                 ExecuteFirstSelectTable();
             }
         }
-
-
-        // editpanel Close button
+        
+        /// <summary>
+        /// editpanel Close button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ep_close_Click(object sender, RoutedEventArgs e)
         {
+            EditTimer.stop();
+
             ep_CloseWindow();
         }
 
