@@ -30,7 +30,7 @@
             <ToolBarTray DockPanel.Dock="Top" VerticalAlignment="Top" Background="#FFF1EDED">
                 <ToolBar Height="36" VerticalAlignment="Top">
                     <Menu VerticalAlignment="Top">
-                        <MenuItem Width="32" Height="32">
+                        <MenuItem Width="32" Height="32" Header="_menu">
                             <MenuItem.Icon>
                                 <Image Source="menu.ico"/>
                             </MenuItem.Icon>
