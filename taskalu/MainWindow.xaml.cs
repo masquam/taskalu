@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Taskalu
 
@@ -252,7 +253,7 @@ namespace Taskalu
                 editpanel.Visibility = Visibility.Visible;
                 workHolder = lbf.WorkHolder;
 
-                EditTimer.start(epId);
+                editTimer_start(epId);
             }
         }
 
@@ -289,7 +290,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void ep_save_Click(object sender, RoutedEventArgs e)
         {
-            EditTimer.stop();
+            editTimer_stop();
 
             ListViewFile lbf = new ListViewFile();
             lbf.Id = epId;
@@ -315,7 +316,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void ep_close_Click(object sender, RoutedEventArgs e)
         {
-            EditTimer.stop();
+            editTimer_stop();
 
             ep_CloseWindow();
         }
@@ -329,6 +330,77 @@ namespace Taskalu
             listview1.Visibility = Visibility.Visible;
         }
 
+
+        // ///////////////////////////////////////////////////////////////////////
+        //
+        // DispacherTimer
+
+        private static DispatcherTimer dTimer { get; set; }
+        private static DateTime editTimerStartDateTime { get; set; }
+        private static TimeSpan editTimerSpan { get; set; }
+        private static Int64 tasklist_id { get; set; }
+
+        /// <summary>
+        /// start the DispatcherTimer, Timespan initialize
+        /// </summary>
+        public void editTimer_start(Int64 tlist_id)
+        {
+            dTimer = new DispatcherTimer();
+            dTimer.Tick += new EventHandler(editTimer_Tick);
+            dTimer.Interval = new TimeSpan(0, 1, 0);
+            dTimer.Start();
+
+            // Timespan init
+            editTimerStartDateTime = DateTime.UtcNow;
+            editTimerSpan = new TimeSpan(0, 0, 0);
+
+            updateEditTimerLabel(editTimerSpan);
+
+            tasklist_id = tlist_id;
+        }
+
+        /// <summary>
+        /// DispatcherTimer.Tick handler
+        /// 
+        /// update the Timespan 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void editTimer_Tick(object sender, EventArgs e)
+        {
+            DateTime currentDateTime = DateTime.UtcNow;
+            editTimerSpan = currentDateTime - editTimerStartDateTime;
+
+            updateEditTimerLabel(editTimerSpan);
+
+            // Forcing the CommandManager to raise the RequerySuggested event
+            System.Windows.Input.CommandManager.InvalidateRequerySuggested();
+        }
+
+        private void updateEditTimerLabel(TimeSpan ts)
+        {
+            string str;
+            if ((ts.Days == 0) && (ts.Hours == 0)) {
+                str = ts.ToString(@"m\m\i\n\u\t\e\s");
+            }
+            else if (ts.Days == 0)
+            {
+                str = ts.ToString(@"h\h\o\u\r\ m\m\i\n\u\t\e\s");
+            }
+            else
+            {
+                str = ts.ToString(@"d\d\a\y\ h\h\o\u\r\ m\m\i\n\u\t\e\s");
+            }
+            editTimerLabel.Content = str;
+        }
+
+        /// <summary>
+        /// stop the DispacherTimer
+        /// </summary>
+        public void editTimer_stop()
+        {
+            dTimer.Stop();
+        }
 
     }
 }

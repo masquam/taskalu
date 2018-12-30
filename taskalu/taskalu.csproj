@@ -65,7 +65,6 @@
     <Compile Include="DueDateWindow.xaml.cs">
       <DependentUpon>DueDateWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EditTimer.cs" />
     <Compile Include="NewWindow.xaml.cs">
       <DependentUpon>NewWindow.xaml</DependentUpon>
     </Compile>
