@@ -14,42 +14,50 @@ namespace Taskalu
         public static string workDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\taskalu";
 
         /// <summary>
-        /// タスクに対するワークフォルダを作成し、そのディレクトリ名を返す
+        /// create the workholder for the task, return directory string
         /// </summary>
-        /// <param name="title">タスクのタイトル</param>
-        /// <returns>ディレクトリ名</returns>
+        /// <param name="title">title of task</param>
+        /// <returns>directory string</returns>
         public static string CreateWorkHolder(string title)
         {
             string dir = workDirectory;
-            Directory.CreateDirectory(dir);
-            DateTime now = DateTime.Now;
-            dir += "\\" + now.ToString("yyyy");
-            Directory.CreateDirectory(dir);
-            dir += "\\" + now.ToString("MM");
-            Directory.CreateDirectory(dir);
-            dir += "\\" + now.ToString("dd");
-            Directory.CreateDirectory(dir);
-            dir += "\\" + now.ToString("HHmmss");
-            if ((title == null) || (title.Length == 0))
+            try
             {
-                // nop
+                Directory.CreateDirectory(dir);
+                DateTime now = DateTime.Now;
+                dir += "\\" + now.ToString("yyyy");
+                Directory.CreateDirectory(dir);
+                dir += "\\" + now.ToString("MM");
+                Directory.CreateDirectory(dir);
+                dir += "\\" + now.ToString("dd");
+                Directory.CreateDirectory(dir);
+                dir += "\\" + now.ToString("HHmmss");
+                if ((title == null) || (title.Length == 0))
+                {
+                    // nop
+                }
+                else if (title.Length <= 8)
+                {
+                    dir += "_" + title;
+                }
+                else
+                {
+                    dir += "_" + title.Substring(0, 8);
+                }
+                Directory.CreateDirectory(dir);
             }
-            else if (title.Length <= 8)
+            catch (Exception e)
             {
-                dir += "_" + title;
+                MessageBox.Show(e.Message + "\n\n" + dir);
+                dir = "";
             }
-            else {
-                dir += "_" + title.Substring(0, 8);
-            }
-            Directory.CreateDirectory(dir);
-
             return dir;
         }
 
         /// <summary>
-        /// 指定ディレクトリを開く
+        /// Open the directory with explorer
         /// </summary>
-        /// <param name="dir"></param>
+        /// <param name="dir">directory string</param>
         public static void Open(string dir)
         {
             try

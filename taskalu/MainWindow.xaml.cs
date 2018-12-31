@@ -279,7 +279,9 @@ namespace Taskalu
         // editpanel open work folder button
         private void ep_openWorkFolder_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
+            if (string.IsNullOrEmpty(workHolder)){
+                workHolder = WorkHolder.CreateWorkHolder(ep_name.Text);
+            }
             WorkHolder.Open(workHolder);
         }
 
