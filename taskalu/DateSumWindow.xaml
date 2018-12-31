@@ -27,7 +27,7 @@
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>
-                    <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Task Information">
+                    <GridView AllowsColumnReorder="true">
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="256">
                             <GridViewColumnHeader Click="Name_Click">Title
                                 <GridViewColumnHeader.ContextMenu>

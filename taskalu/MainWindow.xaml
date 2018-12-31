@@ -68,7 +68,7 @@
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>
-                    <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Task Information">
+                    <GridView AllowsColumnReorder="true">
                         <GridViewColumn Width="64">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
