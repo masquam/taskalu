@@ -76,6 +76,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DateSumDateWindow.xaml.cs">
+      <DependentUpon>DateSumDateWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DateSumViewModel.cs" />
     <Compile Include="DateSumWindow.xaml.cs">
       <DependentUpon>DateSumWindow.xaml</DependentUpon>
@@ -90,6 +93,10 @@
     </Compile>
     <Compile Include="SQLite.cs" />
     <Compile Include="WorkHolder.cs" />
+    <Page Include="DateSumDateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DateSumWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

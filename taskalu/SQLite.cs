@@ -534,24 +534,24 @@ namespace Taskalu
 
         public static string selectTaskTimeSql = "SELECT t.tasklist_id, l.name name, SUM(t.duration) duration FROM tasktime t, tasklist l WHERE t.tasklist_id = l.id AND t.date = @date GROUP BY t.tasklist_id";
 
-        public static Boolean ExecuteFirstSelectTableTaskTime()
+        public static Boolean ExecuteFirstSelectTableTaskTime(DateTime dt)
         {
             string sql = selectTaskTimeSql;
             sql += " ORDER BY duration DESC"
                 + " LIMIT " + (SQLiteClass.DateSumMoreSize + 1).ToString();
-            return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql);
+            return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql, dt);
         }
 
-        public static Boolean ExecuteMoreSelectTableTaskTime()
+        public static Boolean ExecuteMoreSelectTableTaskTime(DateTime dt)
         {
             string sql = selectTaskTimeSql;
             sql += " ORDER BY duration DESC"
                 + " LIMIT " + (SQLiteClass.DateSumMoreSize + 1).ToString()
                 + " OFFSET " + SQLiteClass.DateSumMoreCount.ToString();
-            return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql);
+            return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql, dt);
         }
 
-        public static Boolean ExecuteSelectTableTaskTime(DateSumViewModel dsv, string sql)
+        public static Boolean ExecuteSelectTableTaskTime(DateSumViewModel dsv, string sql, DateTime dt)
         {
             // return value true: More button visibie
             Boolean ret = false;
@@ -560,7 +560,7 @@ namespace Taskalu
             con.Open();
 
             SQLiteCommand com = new SQLiteCommand(sql, con);
-            com.Parameters.Add(sqliteParam(com, "@date", DateTime.Today.ToString("yyyy-MM-dd HH:mm:ss")));
+            com.Parameters.Add(sqliteParam(com, "@date", dt.Date.ToString("yyyy-MM-dd HH:mm:ss")));
 
             try
             {

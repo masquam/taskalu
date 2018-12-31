@@ -24,15 +24,18 @@ namespace Taskalu
             InitializeComponent();
             this.DataContext = DateSumViewModel.dsv;
 
-            ExecuteFirstSelectTableTaskTime();
+            DateTime dt = DateTime.Today;
+            textboxDateSum.Text = dt.ToString("yyyy-MM-dd");
+
+            ExecuteFirstSelectTableTaskTime(dt.Date);
 
         }
 
-        private void ExecuteFirstSelectTableTaskTime()
+        private void ExecuteFirstSelectTableTaskTime(DateTime dt)
         {
             DateSumViewModel.dsv.Entries.Clear();
             SQLiteClass.DateSumMoreCount = 0;
-            if (SQLiteClass.ExecuteFirstSelectTableTaskTime())
+            if (SQLiteClass.ExecuteFirstSelectTableTaskTime(dt))
             {
                 DateSumMoreButton.Visibility = Visibility.Visible;
             }
@@ -42,10 +45,33 @@ namespace Taskalu
             }
         }
 
-
+        /// <summary>
+        /// date change button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDateSumChange_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
+            // Instantiate the dialog box
+            DateSumDateWindow dlg = new DateSumDateWindow();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+
+            dlg.dateString = textboxDateSum.Text;
+
+            // Open the dialog box modally 
+            if (dlg.ShowDialog() == true)
+            {
+                // due date window is closed
+                textboxDateSum.Text = dlg.dateString;
+                ExecuteFirstSelectTableTaskTime(
+                    DateTime.ParseExact(
+                        dlg.dateString,
+                        "yyyy-MM-dd", 
+                        System.Globalization.CultureInfo.InvariantCulture)
+                        .Date);
+            }
         }
 
         /// <summary>
@@ -55,7 +81,12 @@ namespace Taskalu
         /// <param name="e"></param>
         private void DateSumMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectTableTaskTime())
+            DateTime dt = DateTime.ParseExact(
+                textboxDateSum.Text,
+                "yyyy-MM-dd",
+                System.Globalization.CultureInfo.InvariantCulture).Date;
+
+            if (SQLiteClass.ExecuteMoreSelectTableTaskTime(dt))
             {
                 DateSumMoreButton.Visibility = Visibility.Visible;
             }
