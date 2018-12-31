@@ -294,6 +294,10 @@ namespace Taskalu
         {
             editTimer_stop();
 
+            // TaskTimeInserted is false then INSERT
+            // else UPDATE the tasktime table
+            TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+
             ListViewFile lbf = new ListViewFile();
             lbf.Id = epId;
             lbf.Name = ep_name.Text;
@@ -320,6 +324,10 @@ namespace Taskalu
         {
             editTimer_stop();
 
+            // TaskTimeInserted is false then INSERT
+            // else UPDATE the tasktime table
+            TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+
             ep_CloseWindow();
         }
 
@@ -332,6 +340,20 @@ namespace Taskalu
             listview1.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// INSERT or UPDATE tasktime table entry
+        /// </summary>
+        /// <param name="TaskTimeInserted">TaskTimeInserted flag</param>
+        /// <param name="tasklist_id">tasklist_id</param>
+        /// <param name="editTimerStartDateTime">editTimerStartDateTime</param>
+        /// <returns>TaskTimeInserted flag: success of insert is true</returns>
+        private Boolean InsertOrUpdateTaskTime(
+            Boolean TaskTimeInserted,
+            Int64 tasklist_id,
+            DateTime editTimerStartDateTime)
+        {
+            return SQLiteClass.InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+        }
 
         // ///////////////////////////////////////////////////////////////////////
         //
@@ -341,9 +363,10 @@ namespace Taskalu
         private static DateTime editTimerStartDateTime { get; set; }
         private static TimeSpan editTimerSpan { get; set; }
         private static Int64 tasklist_id { get; set; }
+        private static Boolean TaskTimeInserted { get; set; } = false;
 
         /// <summary>
-        /// start the DispatcherTimer, Timespan initialize
+        /// start the DispatcherTimer, TimeSpan initialize
         /// </summary>
         public void editTimer_start(Int64 tlist_id)
         {
@@ -352,13 +375,15 @@ namespace Taskalu
             dTimer.Interval = new TimeSpan(0, 1, 0);
             dTimer.Start();
 
-            // Timespan init
+            // TimeSpan init
             editTimerStartDateTime = DateTime.UtcNow;
             editTimerSpan = new TimeSpan(0, 0, 0);
 
             updateEditTimerLabel(editTimerSpan);
 
+            // for tasktime
             tasklist_id = tlist_id;
+            TaskTimeInserted = false;
         }
 
         /// <summary>
@@ -370,10 +395,12 @@ namespace Taskalu
         /// <param name="e"></param>
         private void editTimer_Tick(object sender, EventArgs e)
         {
-            DateTime currentDateTime = DateTime.UtcNow;
-            editTimerSpan = currentDateTime - editTimerStartDateTime;
+            updateEditTimerLabel(DateTime.UtcNow - editTimerStartDateTime);
 
-            updateEditTimerLabel(editTimerSpan);
+            // TaskTimeInserted is false then INSERT
+            // else UPDATE the tasktime table
+            // use for WHERE tasklist_id and editTimerStartDateTime
+            TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
 
             // Forcing the CommandManager to raise the RequerySuggested event
             System.Windows.Input.CommandManager.InvalidateRequerySuggested();

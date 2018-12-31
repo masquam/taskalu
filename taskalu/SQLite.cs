@@ -399,5 +399,97 @@ namespace Taskalu
             return ret;
         }
 
+
+        // ///////////////////////////////////////////////////////////////////////////
+        //
+        // tasktime table
+
+        /// <summary>
+        /// INSERT or UPDATE tasktime table entry
+        /// </summary>
+        /// <param name="TaskTimeInserted">TaskTimeInserted flag</param>
+        /// <param name="tasklist_id">tasklist_id</param>
+        /// <param name="start_date">start_date</param>
+        /// <returns>TaskTimeInserted flag: success of insert is true</returns>
+        public static Boolean InsertOrUpdateTaskTime(
+            Boolean TaskTimeInserted,
+            Int64 tasklist_id,
+            DateTime start_date)
+        {
+            Boolean ret = false;
+
+            DateTime end_date = DateTime.UtcNow;
+            TimeSpan duration = end_date - start_date;
+
+            if (TaskTimeInserted)
+            {
+                ExecuteUpdateTableTaskTime(tasklist_id, start_date, end_date, duration);
+                ret = true;
+            }
+            else
+            {
+                ret = ExecuteInsertTableTaskTime(tasklist_id, start_date, end_date, duration);
+            }
+            return ret;
+        }
+
+        private static Boolean ExecuteInsertTableTaskTime(Int64 tasklist_id, DateTime start_date, DateTime end_date, TimeSpan duration)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasktime (tasklist_id, start_date, end_date, duration) VALUES (@tasklist_id, @start_date, @end_date, @duration)", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@tasklist_id", tasklist_id));
+            com.Parameters.Add(sqliteParam(com, "@start_date", start_date.ToString("yyyy-MM-dd HH:mm:ss")));
+            com.Parameters.Add(sqliteParam(com, "@end_date", end_date.ToString("yyyy-MM-dd HH:mm:ss")));
+            com.Parameters.Add(sqliteParamInt64(com, "@duration", duration.Ticks));
+
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table tasktime insert error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
+
+        private static Boolean ExecuteUpdateTableTaskTime(Int64 tasklist_id, DateTime start_date, DateTime end_date, TimeSpan duration)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("UPDATE tasktime SET end_date=@end_date, duration=@duration WHERE tasklist_id=@tasklist_id AND start_date=@start_date", con);
+            com.Parameters.Add(sqliteParam(com, "@end_date", end_date.ToString("yyyy-MM-dd HH:mm:ss")));
+            com.Parameters.Add(sqliteParamInt64(com, "@duration", duration.Ticks));
+            com.Parameters.Add(sqliteParamInt64(com, "@tasklist_id", tasklist_id));
+            com.Parameters.Add(sqliteParam(com, "@start_date", start_date.ToString("yyyy-MM-dd HH:mm:ss")));
+
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table update error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
+
     }
 }
