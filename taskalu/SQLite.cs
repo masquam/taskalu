@@ -33,6 +33,11 @@ namespace Taskalu
         public static int DateSumMoreCount { get; set; }
         public static int DateSumMoreSize = 10;
 
+        public static string DateSumOrderBy { get; set; } = "duration";
+        public static string DateSumOrderByDirection { get; set; } = "DESC";
+        public static string DateSumNameOrderByDirection { get; set; } = "ASC";
+        public static string DateSumDurationOrderByDirection { get; set; } = "DESC";
+
 
         /// <summary>
         /// "touch" database - directory initialize, create table, index
@@ -537,7 +542,7 @@ namespace Taskalu
         public static Boolean ExecuteFirstSelectTableTaskTime(DateTime dt)
         {
             string sql = selectTaskTimeSql;
-            sql += " ORDER BY duration DESC"
+            sql += " ORDER BY " + DateSumOrderBy + " " + DateSumOrderByDirection
                 + " LIMIT " + (SQLiteClass.DateSumMoreSize + 1).ToString();
             return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql, dt);
         }
@@ -545,7 +550,7 @@ namespace Taskalu
         public static Boolean ExecuteMoreSelectTableTaskTime(DateTime dt)
         {
             string sql = selectTaskTimeSql;
-            sql += " ORDER BY duration DESC"
+            sql += " ORDER BY " + DateSumOrderBy + " " + DateSumOrderByDirection
                 + " LIMIT " + (SQLiteClass.DateSumMoreSize + 1).ToString()
                 + " OFFSET " + SQLiteClass.DateSumMoreCount.ToString();
             return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql, dt);
@@ -600,5 +605,10 @@ namespace Taskalu
             return ret;
         }
 
+        public static void DateSumSetOrderBy(string orderby, string direction)
+        {
+            DateSumOrderBy = orderby;
+            DateSumOrderByDirection = direction;
+        }
     }
 }

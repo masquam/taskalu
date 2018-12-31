@@ -67,7 +67,7 @@ namespace Taskalu
                 textboxDateSum.Text = dlg.dateString;
                 ExecuteFirstSelectTableTaskTime(
                     DateTime.ParseExact(
-                        dlg.dateString,
+                        textboxDateSum.Text,
                         "yyyy-MM-dd", 
                         System.Globalization.CultureInfo.InvariantCulture)
                         .Date);
@@ -98,6 +98,21 @@ namespace Taskalu
 
         private void Name_Click(object sender, RoutedEventArgs e)
         {
+            SQLiteClass.DateSumNameOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.DateSumNameOrderByDirection);
+            SQLiteClass.DateSumSetOrderBy("name", SQLiteClass.DateSumNameOrderByDirection);
+            ExecuteFirstSelectTableTaskTime(
+                DateTime.ParseExact(
+                    textboxDateSum.Text,
+                    "yyyy-MM-dd",
+                    System.Globalization.CultureInfo.InvariantCulture)
+                    .Date);
+        }
+        private void NameAsc_Click(object sender, RoutedEventArgs e)
+        {
+            // TODO: 実装
+        }
+        private void NameDes_Click(object sender, RoutedEventArgs e)
+        {
             // TODO: 実装
         }
 
@@ -105,27 +120,10 @@ namespace Taskalu
         {
             // TODO: 実装
         }
-
-        private void DueDate_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO: 実装
-        }
-
-        private void NameAsc_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO: 実装
-        }
-
-        private void NameDes_Click(object sender, RoutedEventArgs e)
-        {
-            // TODO: 実装
-        }
-
         private void DurationAsc_Click(object sender, RoutedEventArgs e)
         {
             // TODO: 実装
         }
-
         private void DurationDes_Click(object sender, RoutedEventArgs e)
         {
             // TODO: 実装
