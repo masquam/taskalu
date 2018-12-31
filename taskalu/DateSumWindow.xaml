@@ -1,0 +1,65 @@
+﻿<Window x:Class="Taskalu.DateSumWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Taskalu"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type local:DateSumViewModel}}"
+        Title="Summary of date" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
+            <StackPanel x:Name="DateSumTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
+                <Label Content="date"></Label>
+                <TextBox x:Name="textboxDateSum" Width="120" Margin="0,2,0,0" Padding="0,2,0,0"></TextBox>
+                <Button x:Name="buttonDateSumChange" Content="..." Click="buttonDateSumChange_Click" Width="96" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Margin="0,2,0,0"></Button>
+            </StackPanel>
+            <StackPanel x:Name="DateSumBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
+                <Button Visibility="Collapsed" x:Name="DateSumMoreButton" Content="More" Click="DateSumMoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Width="96" Height="32"/>
+            </StackPanel>
+            <ListView  x:Name="listviewDateSum" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Entries}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Height" Value="38" />
+                        <Setter Property="VerticalContentAlignment" Value="Top"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Task Information">
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="256">
+                            <GridViewColumnHeader Click="Name_Click">Title
+                                <GridViewColumnHeader.ContextMenu>
+                                    <ContextMenu Name="NameCM">
+                                        <MenuItem Header="Ascending" Click="NameAsc_Click"/>
+                                        <MenuItem Header="Descending" Click="NameDes_Click"/>
+                                    </ContextMenu>
+                                </GridViewColumnHeader.ContextMenu>
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Duration}" Width="256" >
+                            <GridViewColumnHeader Click="Description_Click">Duration
+                                <GridViewColumnHeader.ContextMenu>
+                                    <ContextMenu Name="DescriptionCM">
+                                        <MenuItem Header="Ascending" Click="DurationAsc_Click"/>
+                                        <MenuItem Header="Descending" Click="DurationDes_Click"/>
+                                    </ContextMenu>
+                                </GridViewColumnHeader.ContextMenu>
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                        <GridViewColumn Width="128">
+                            <GridViewColumnHeader Click="DueDate_Click">Due Date
+                                <GridViewColumnHeader.ContextMenu>
+                                    <ContextMenu Name="DueDateCM">
+                                        <MenuItem Header="Ascending" Click="DueDateAsc_Click"/>
+                                        <MenuItem Header="Descending" Click="DueDateDes_Click"/>
+                                    </ContextMenu>
+                                </GridViewColumnHeader.ContextMenu>
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>

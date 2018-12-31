@@ -92,11 +92,15 @@ namespace Taskalu
                 {
                     return false;
                 }
-                if (!ExecuteCreateTable("CREATE TABLE tasktime (id INTEGER NOT NULL PRIMARY KEY, tasklist_id INTEGER, start_date TEXT, end_date TEXT, duration INTEGER)"))
+                if (!ExecuteCreateTable("CREATE TABLE tasktime (id INTEGER NOT NULL PRIMARY KEY, tasklist_id INTEGER, date TEXT, start_date TEXT, end_date TEXT, duration INTEGER)"))
                 {
                     return false;
                 }
                 if (!ExecuteCreateIndex("tasktime", "index_tasklist_id", "tasklist_id"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateIndex("tasktime", "index_date", "date"))
                 {
                     return false;
                 }
@@ -440,8 +444,9 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasktime (tasklist_id, start_date, end_date, duration) VALUES (@tasklist_id, @start_date, @end_date, @duration)", con);
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasktime (tasklist_id, date, start_date, end_date, duration) VALUES (@tasklist_id, @date, @start_date, @end_date, @duration)", con);
             com.Parameters.Add(sqliteParamInt64(com, "@tasklist_id", tasklist_id));
+            com.Parameters.Add(sqliteParam(com, "@date", start_date.ToLocalTime().Date.ToString("yyyy-MM-dd HH:mm:ss")));
             com.Parameters.Add(sqliteParam(com, "@start_date", start_date.ToString("yyyy-MM-dd HH:mm:ss")));
             com.Parameters.Add(sqliteParam(com, "@end_date", end_date.ToString("yyyy-MM-dd HH:mm:ss")));
             com.Parameters.Add(sqliteParamInt64(com, "@duration", duration.Ticks));
@@ -505,7 +510,7 @@ namespace Taskalu
             {
                 tick = (Int64)com.ExecuteScalar();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // if no record, return DBNull -> exception raised
                 tick = 0;
