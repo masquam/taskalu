@@ -11,8 +11,6 @@ namespace Taskalu
         public Int64 Tasklist_Id { get; set; }
         public string Name { get; set; }
         public string Date { get; set; }
-        //public string Start_date { get; set; }
-        //public string End_date { get; set; }
         public string Duration { get; set; }
     }
 }

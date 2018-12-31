@@ -34,13 +34,11 @@ namespace Taskalu
             SQLiteClass.DateSumMoreCount = 0;
             if (SQLiteClass.ExecuteFirstSelectTableTaskTime())
             {
-                // TODO: more 実装
-                //MoreButton.Visibility = Visibility.Visible;
+                DateSumMoreButton.Visibility = Visibility.Visible;
             }
             else
             {
-                // TODO: more 実装
-                //MoreButton.Visibility = Visibility.Collapsed;
+                DateSumMoreButton.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -50,9 +48,21 @@ namespace Taskalu
             // TODO: 実装
         }
 
+        /// <summary>
+        /// more button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DateSumMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
+            if (SQLiteClass.ExecuteMoreSelectTableTaskTime())
+            {
+                DateSumMoreButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                DateSumMoreButton.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void Name_Click(object sender, RoutedEventArgs e)

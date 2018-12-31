@@ -532,11 +532,22 @@ namespace Taskalu
         //
         // DateSum window
 
+        public static string selectTaskTimeSql = "SELECT t.tasklist_id, l.name name, SUM(t.duration) duration FROM tasktime t, tasklist l WHERE t.tasklist_id = l.id AND t.date = @date GROUP BY t.tasklist_id";
+
         public static Boolean ExecuteFirstSelectTableTaskTime()
         {
-            string sql = "SELECT t.tasklist_id, l.name name, SUM(t.duration) duration FROM tasktime t, tasklist l WHERE t.tasklist_id = l.id AND t.date = @date GROUP BY t.tasklist_id";
-            //sql += " order by " + orderBy + " " + orderByDirection
-            //    + " limit " + (SQLiteClass.moreSize + 1).ToString();
+            string sql = selectTaskTimeSql;
+            sql += " ORDER BY duration DESC"
+                + " LIMIT " + (SQLiteClass.DateSumMoreSize + 1).ToString();
+            return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql);
+        }
+
+        public static Boolean ExecuteMoreSelectTableTaskTime()
+        {
+            string sql = selectTaskTimeSql;
+            sql += " ORDER BY duration DESC"
+                + " LIMIT " + (SQLiteClass.DateSumMoreSize + 1).ToString()
+                + " OFFSET " + SQLiteClass.DateSumMoreCount.ToString();
             return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql);
         }
 

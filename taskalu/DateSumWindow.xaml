@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:DateSumViewModel}}"
-        Title="Summary of date" Height="450" Width="800">
+        Title="Summary of date" Height="528" Width="600" MinWidth="600">
     <Grid>
         <DockPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
