@@ -368,6 +368,7 @@ namespace Taskalu
         /// <summary>
         /// start the DispatcherTimer, TimeSpan initialize
         /// </summary>
+        /// <param name="tlist_id">tasklist id</param>
         public void editTimer_start(Int64 tlist_id)
         {
             dTimer = new DispatcherTimer();
@@ -377,7 +378,10 @@ namespace Taskalu
 
             // TimeSpan init
             editTimerStartDateTime = DateTime.UtcNow;
-            editTimerSpan = new TimeSpan(0, 0, 0);
+
+            // TODO: read sum of timespan from database
+            //editTimerSpan = new TimeSpan(0, 0, 0);
+            editTimerSpan = SQLiteClass.ExecuteSumTaskTime(tlist_id);
 
             updateEditTimerLabel(editTimerSpan);
 
@@ -395,7 +399,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void editTimer_Tick(object sender, EventArgs e)
         {
-            updateEditTimerLabel(DateTime.UtcNow - editTimerStartDateTime);
+            updateEditTimerLabel(DateTime.UtcNow - editTimerStartDateTime + editTimerSpan);
 
             // TaskTimeInserted is false then INSERT
             // else UPDATE the tasktime table

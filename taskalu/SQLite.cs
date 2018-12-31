@@ -491,5 +491,31 @@ namespace Taskalu
             return ret;
         }
 
+        public static TimeSpan ExecuteSumTaskTime(Int64 tasklist_id)
+        {
+            Int64 tick = 0;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("SELECT SUM(duration) FROM tasktime WHERE tasklist_id = @tasklist_id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@tasklist_id", tasklist_id));
+
+            try
+            {
+                tick = (Int64)com.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                // if no record, return DBNull -> exception raised
+                tick = 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return new TimeSpan(tick);
+        }
+
     }
 }
