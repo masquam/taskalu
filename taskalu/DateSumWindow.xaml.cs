@@ -109,24 +109,59 @@ namespace Taskalu
         }
         private void NameAsc_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
+            SQLiteClass.DateSumNameOrderByDirection = "ASC";
+            SQLiteClass.DateSumSetOrderBy("name", "ASC");
+            ExecuteFirstSelectTableTaskTime(
+                DateTime.ParseExact(
+                    textboxDateSum.Text,
+                    "yyyy-MM-dd",
+                    System.Globalization.CultureInfo.InvariantCulture)
+                    .Date);
         }
         private void NameDes_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
+            SQLiteClass.DateSumNameOrderByDirection = "DESC";
+            SQLiteClass.DateSumSetOrderBy("name", "DESC");
+            ExecuteFirstSelectTableTaskTime(
+                DateTime.ParseExact(
+                    textboxDateSum.Text,
+                    "yyyy-MM-dd",
+                    System.Globalization.CultureInfo.InvariantCulture)
+                    .Date);
         }
 
         private void Duration_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
+            SQLiteClass.DateSumNameOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.DateSumNameOrderByDirection);
+            SQLiteClass.DateSumSetOrderBy("duration", SQLiteClass.DateSumNameOrderByDirection);
+            ExecuteFirstSelectTableTaskTime(
+                DateTime.ParseExact(
+                    textboxDateSum.Text,
+                    "yyyy-MM-dd",
+                    System.Globalization.CultureInfo.InvariantCulture)
+                    .Date);
         }
         private void DurationAsc_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
+            SQLiteClass.DateSumNameOrderByDirection = "ASC";
+            SQLiteClass.DateSumSetOrderBy("duration", "ASC");
+            ExecuteFirstSelectTableTaskTime(
+                DateTime.ParseExact(
+                    textboxDateSum.Text,
+                    "yyyy-MM-dd",
+                    System.Globalization.CultureInfo.InvariantCulture)
+                    .Date);
         }
         private void DurationDes_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: 実装
+            SQLiteClass.DateSumNameOrderByDirection = "DESC";
+            SQLiteClass.DateSumSetOrderBy("duration", "DESC");
+            ExecuteFirstSelectTableTaskTime(
+                DateTime.ParseExact(
+                    textboxDateSum.Text,
+                    "yyyy-MM-dd",
+                    System.Globalization.CultureInfo.InvariantCulture)
+                    .Date);
         }
 
     }
