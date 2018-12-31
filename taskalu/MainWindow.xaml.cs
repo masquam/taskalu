@@ -73,6 +73,31 @@ namespace Taskalu
             }
         }
 
+        /// <summary>
+        /// open Date Summary window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DateSumButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenDateSumWindow();
+        }
+
+        void OpenDateSumWindow()
+        {
+            // Instantiate the dialog box
+            DateSumWindow dlg = new DateSumWindow();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+
+            // Open the dialog box modally 
+            if (dlg.ShowDialog() == true)
+            {
+                // window is closed
+            }
+        }
+
         private void ExecuteFirstSelectTable()
         {
             MainViewModel.mv.Files.Clear();
@@ -434,6 +459,7 @@ namespace Taskalu
         {
             dTimer.Stop();
         }
+
 
     }
 }
