@@ -30,6 +30,10 @@ namespace Taskalu
         public static int moreCount { get; set; }
         public static int moreSize = 10;
 
+        public static int DateSumMoreCount { get; set; }
+        public static int DateSumMoreSize = 10;
+
+
         /// <summary>
         /// "touch" database - directory initialize, create table, index
         /// </summary>
@@ -520,6 +524,69 @@ namespace Taskalu
                 con.Close();
             }
             return new TimeSpan(tick);
+        }
+
+
+
+        // /////////////////////////////////////////////////////////////////////
+        //
+        // DateSum window
+
+        public static Boolean ExecuteFirstSelectTableTaskTime()
+        {
+            string sql = "SELECT t.tasklist_id, l.name name, SUM(t.duration) duration FROM tasktime t, tasklist l WHERE t.tasklist_id = l.id AND t.date = @date GROUP BY t.tasklist_id";
+            //sql += " order by " + orderBy + " " + orderByDirection
+            //    + " limit " + (SQLiteClass.moreSize + 1).ToString();
+            return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql);
+        }
+
+        public static Boolean ExecuteSelectTableTaskTime(DateSumViewModel dsv, string sql)
+        {
+            // return value true: More button visibie
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand(sql, con);
+            com.Parameters.Add(sqliteParam(com, "@date", DateTime.Today.ToString("yyyy-MM-dd HH:mm:ss")));
+
+            try
+            {
+                SQLiteDataReader sdr = com.ExecuteReader();
+                int resultCount = 0;
+                while (sdr.Read() == true)
+                {
+                    resultCount++;
+                    if (resultCount <= DateSumMoreSize)
+                    {
+                        ListDateSum lds = new ListDateSum();
+
+                        lds.Name = (string)sdr["name"];
+
+                        TimeSpan ts = new TimeSpan((Int64)sdr["duration"]);
+                        lds.Duration = ts.ToString(@"d\d\a\y\ h\h\o\u\r\ m\m\i\n\u\t\e\s");
+
+                        dsv.Entries.Add(lds);
+                    }
+                    else
+                    {
+                        DateSumMoreCount += DateSumMoreSize;
+                        ret = true;
+                    }
+                }
+                sdr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table select tasktime error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+            return ret;
         }
 
     }

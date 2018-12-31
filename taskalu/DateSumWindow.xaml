@@ -38,21 +38,11 @@
                             </GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Duration}" Width="256" >
-                            <GridViewColumnHeader Click="Description_Click">Duration
+                            <GridViewColumnHeader Click="Duration_Click">Duration
                                 <GridViewColumnHeader.ContextMenu>
-                                    <ContextMenu Name="DescriptionCM">
+                                    <ContextMenu Name="DurationCM">
                                         <MenuItem Header="Ascending" Click="DurationAsc_Click"/>
                                         <MenuItem Header="Descending" Click="DurationDes_Click"/>
-                                    </ContextMenu>
-                                </GridViewColumnHeader.ContextMenu>
-                            </GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn Width="128">
-                            <GridViewColumnHeader Click="DueDate_Click">Due Date
-                                <GridViewColumnHeader.ContextMenu>
-                                    <ContextMenu Name="DueDateCM">
-                                        <MenuItem Header="Ascending" Click="DueDateAsc_Click"/>
-                                        <MenuItem Header="Descending" Click="DueDateDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
