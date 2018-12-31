@@ -18,11 +18,12 @@
             <StackPanel x:Name="DateSumBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
                 <Button Visibility="Collapsed" x:Name="DateSumMoreButton" Content="More" Click="DateSumMoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Width="96" Height="32"/>
             </StackPanel>
-            <ListView  x:Name="listviewDateSum" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Entries}">
+            <ListView x:Name="listviewDateSum" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Entries}" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Height" Value="38" />
                         <Setter Property="VerticalContentAlignment" Value="Top"/>
+                        <Setter Property="Focusable" Value="false" />
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>
