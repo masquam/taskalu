@@ -240,6 +240,16 @@ namespace Taskalu
             ExecuteFirstSelectTable();
         }
 
+        /// <summary>
+        /// Copy button, to clipboard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CopyButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClipBrd.CopyMvToClipBoard();
+        }
+
         // Menu - Exit
         private void Exit_Click(object sender, RoutedEventArgs e)
         {

@@ -76,6 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClipBrd.cs" />
     <Compile Include="DateSumDateWindow.xaml.cs">
       <DependentUpon>DateSumDateWindow.xaml</DependentUpon>
     </Compile>
