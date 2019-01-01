@@ -32,17 +32,20 @@ namespace Taskalu
                 dir += "\\" + now.ToString("dd");
                 Directory.CreateDirectory(dir);
                 dir += "\\" + now.ToString("HHmmss");
-                if ((title == null) || (title.Length == 0))
+
+                string safeTitle = SafeFilename(title);
+
+                if ((safeTitle == null) || (safeTitle.Length == 0))
                 {
                     // nop
                 }
-                else if (title.Length <= 8)
+                else if (safeTitle.Length <= 8)
                 {
-                    dir += "_" + title;
+                    dir += "_" + safeTitle;
                 }
                 else
                 {
-                    dir += "_" + title.Substring(0, 8);
+                    dir += "_" + safeTitle.Substring(0, 8);
                 }
                 Directory.CreateDirectory(dir);
             }
@@ -69,5 +72,16 @@ namespace Taskalu
                 MessageBox.Show(e.Message + "\n\n" + dir);
             }
         }
+
+        /// <summary>
+        /// remove invalid file name chars
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        public static string SafeFilename(string filename)
+        {
+            return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+        }
+
     }
 }
