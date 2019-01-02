@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="New Task" Height="360" Width="600">
+        Title="New Task - taskaru" Height="360" Width="600">
     <Grid FocusManager.FocusedElement="{Binding ElementName=NewTitleBox}">
         <Label Content="Title" HorizontalAlignment="Left" Height="27" Margin="39,23,0,0" Width="79" VerticalAlignment="Top"/>
         <TextBox Name="NewTitleBox" HorizontalAlignment="Left" Height="27" Margin="123,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
         <Label Content="Description" HorizontalAlignment="Left" Height="27" Margin="39,64,0,0" Width="79" VerticalAlignment="Top"/>
         <TextBox Name="NewDesriptioncBox" HorizontalAlignment="Left" Height="94" Margin="123,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" AcceptsReturn="True"/>
-        <Button Name="NewWindowOk" Content="OK" HorizontalAlignment="Left" Margin="283,272,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="427,272,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+        <Button Name="NewWindowOk" Content="OK" HorizontalAlignment="Left" Margin="283,272,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click" />
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="427,272,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True"/>
         <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="39,186,0,0" Width="79" VerticalAlignment="Top"/>
         <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="123,186,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="238,186,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">

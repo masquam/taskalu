@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="DueDateWindow" Height="200" Width="480" Loaded="DueDateWindow_Loaded">
+        Title="Due Date - taskalu" Height="200" Width="480" Loaded="DueDateWindow_Loaded">
     <Grid>
-        <Button x:Name="DueDateOk" Content="OK" HorizontalAlignment="Left" Margin="115,101,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="300,101,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+        <Button x:Name="DueDateOk" Content="OK" HorizontalAlignment="Left" Margin="115,101,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click" />
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="300,101,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
         <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="31,45,0,0" Width="79" VerticalAlignment="Top"/>
         <DatePicker x:Name="DueDateBox" HorizontalAlignment="Left" Margin="115,45,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="DueDateHourBox" HorizontalAlignment="Left" Margin="230,45,0,0" VerticalAlignment="Top" Width="64" IsReadOnly="True">
