@@ -27,24 +27,22 @@
             </Style>
         </Grid.Resources>
         <DockPanel>
-            <ToolBarTray DockPanel.Dock="Top" VerticalAlignment="Top" Background="#FFF1EDED">
-                <ToolBar Height="36" VerticalAlignment="Top">
+            <WrapPanel DockPanel.Dock="Top" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Height="36">
                     <Menu VerticalAlignment="Top">
-                        <MenuItem Width="32" Height="32" Header="_menu">
-                            <MenuItem.Icon>
-                                <Image Source="menu.ico"/>
+                    <MenuItem Width="32" Height="32" Header=" _menu">
+                        <MenuItem.Icon>
+                            <Image Source="menu.ico" Width="16" Height="16" Margin="4,0,0,0"/>
                             </MenuItem.Icon>
                             <MenuItem Header="_New Task" Click="NewButton_Click" />
                             <Separator />
                             <MenuItem Header="e_xit" Click="Exit_Click" />
                         </MenuItem>
                     </Menu>
-                    <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
-                    <Button Name="DateSumButton" Content="Date Summary" HorizontalAlignment="Left" Margin="8,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
-                </ToolBar>
-            </ToolBarTray>
+                <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                <Button Name="DateSumButton" Content="Date Summary" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+            </WrapPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
-            <StackPanel x:Name="listviewTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
+            <StackPanel x:Name="listviewTopToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
                 <Label Content="status"></Label>
                 <ComboBox x:Name="statusBox" Width="120" IsReadOnly="True" SelectedIndex="0" DropDownClosed="statusBox_DropDownClosed" Margin="0,2,20,0">
                     <ComboBoxItem Content="Active"/>
@@ -55,7 +53,7 @@
                 <TextBox x:Name="textboxTitle" TextChanged="textboxTitle_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0"></TextBox>
                 <Label Content="description"></Label>
                 <TextBox x:Name="textboxDescription" TextChanged="textboxDescription_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0"></TextBox>
-                <Button x:Name="ButtonSearch" Content="Search" Click="ButtonSearch_Click" Width="96" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Margin="0,2,0,0"></Button>
+                <Button x:Name="ButtonSearch" Content="Search" Click="ButtonSearch_Click" Width="96" Margin="0,2,0,0" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"  ></Button>
             </StackPanel>
             <StackPanel x:Name="listviewBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch" Orientation="Horizontal">
                 <Grid HorizontalAlignment="Stretch">
@@ -68,10 +66,10 @@
                         
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch">
-                        <Button Visibility="Collapsed" x:Name="MoreButton" Content="More" Click="MoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Width="96" Height="32"/>
+                        <Button Visibility="Collapsed" x:Name="MoreButton" Content="More" Click="MoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
-                        <Button Visibility="Visible" x:Name="CopyButton" Content="Copy" Click="CopyButton_Click" HorizontalAlignment="Right" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Width="96" Height="32"/>
+                        <Button Visibility="Visible" x:Name="CopyButton" Content="Copy" Click="CopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
                     </StackPanel>
                 </Grid>
             </StackPanel>
@@ -193,7 +191,7 @@
                 </ComboBox>
                 <Label Grid.Row="2" Grid.Column="3" Content="due date"/>
                 <TextBox Grid.Row="2" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
-                <Button Grid.Row="2" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White"/>
+                <Button Grid.Row="2" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
                 <StackPanel  Grid.Row="2" Grid.Column="6" Orientation="Horizontal">
                     <Label Content="tick "/>
                     <Label x:Name="editTimerLabel" Content=""/>

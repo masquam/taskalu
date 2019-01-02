@@ -164,5 +164,9 @@ namespace Taskalu
                     .Date);
         }
 
+        private void DateSumCopyButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClipBrd.CopyDsvToClipBoard();
+        }
     }
 }

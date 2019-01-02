@@ -19,5 +19,17 @@ namespace Taskalu
             }
             Clipboard.SetText(str);
         }
+
+        public static void CopyDsvToClipBoard()
+        {
+            string str = "";
+
+            foreach (ListDateSum entry in DateSumViewModel.dsv.Entries)
+            {
+                str += entry.Name + "\t" +  entry.Duration + "\n";
+            }
+            Clipboard.SetText(str);
+        }
+
     }
 }

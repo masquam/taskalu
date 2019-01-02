@@ -13,10 +13,25 @@
             <StackPanel x:Name="DateSumTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
                 <Label Content="date"></Label>
                 <TextBox x:Name="textboxDateSum" Width="120" Height="23" Margin="0,2,0,0" Padding="0,2,0,0" IsReadOnly="True"></TextBox>
-                <Button x:Name="buttonDateSumChange" Content="..." Click="buttonDateSumChange_Click" Width="32" Height="23" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Margin="0,2,0,0"></Button>
+                <Button x:Name="buttonDateSumChange" Content="..." Click="buttonDateSumChange_Click" Width="32" Height="23" Margin="0,2,0,0" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Button>
             </StackPanel>
             <StackPanel x:Name="DateSumBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
-                <Button Visibility="Collapsed" x:Name="DateSumMoreButton" Content="More" Click="DateSumMoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Width="96" Height="32"/>
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="192"/>
+                        <ColumnDefinition Width="192"/>
+                        <ColumnDefinition Width="192"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch">
+                        <Button Visibility="Collapsed" x:Name="DateSumMoreButton" Content="More" Click="DateSumMoreButton_Click" HorizontalAlignment="Center" Background="#FF0078D7" BorderBrush="#FF0078D7" Foreground="White" Width="96" Height="32"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
+                        <Button Visibility="Visible" x:Name="DateSumCopyButton" Content="Copy" Click="DateSumCopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                    </StackPanel>
+                </Grid>
             </StackPanel>
             <ListView x:Name="listviewDateSum" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Entries}" >
                 <ListView.ItemContainerStyle>
