@@ -28,16 +28,17 @@
         </Grid.Resources>
         <DockPanel>
             <WrapPanel DockPanel.Dock="Top" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Height="36">
-                    <Menu VerticalAlignment="Top">
+                <Menu VerticalAlignment="Top">
                     <MenuItem Width="32" Height="32" Header=" _menu">
                         <MenuItem.Icon>
                             <Image Source="menu.ico" Width="16" Height="16" Margin="4,0,0,0"/>
-                            </MenuItem.Icon>
-                            <MenuItem Header="_New Task" Click="NewButton_Click" />
-                            <Separator />
-                            <MenuItem Header="e_xit" Click="Exit_Click" />
-                        </MenuItem>
-                    </Menu>
+                        </MenuItem.Icon>
+                        <MenuItem Header="_New Task" Click="NewButton_Click" />
+                        <MenuItem Header="_Date Summary" Click="DateSumButton_Click" />
+                        <Separator />
+                        <MenuItem Header="e_xit" Click="Exit_Click" />
+                    </MenuItem>
+                </Menu>
                 <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                 <Button Name="DateSumButton" Content="Date Summary" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
             </WrapPanel>
