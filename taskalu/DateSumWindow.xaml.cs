@@ -168,5 +168,10 @@ namespace Taskalu
         {
             ClipBrd.CopyDsvToClipBoard();
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
