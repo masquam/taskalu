@@ -581,8 +581,8 @@ namespace Taskalu
                         lds.Name = (string)sdr["name"];
 
                         TimeSpan ts = new TimeSpan((Int64)sdr["duration"]);
-                        lds.Duration = ts.ToString(@"h\h\o\u\r\ m\m\i\n\u\t\e\s");
-
+                        //lds.Duration = ts.ToString(@"h\h\o\u\r\ m\m\i\n\u\t\e\s");
+                        lds.Duration = ts.ToString(@"hh\:mm");
                         dsv.Entries.Add(lds);
                     }
                     else
