@@ -27,9 +27,9 @@
             </Style>
         </Grid.Resources>
         <DockPanel>
-            <WrapPanel DockPanel.Dock="Top" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" Height="36">
+            <WrapPanel DockPanel.Dock="Top" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Height="32">
                 <Menu VerticalAlignment="Top">
-                    <MenuItem Width="32" Height="32" Header=" _menu">
+                    <MenuItem Width="32" Height="32" Header=" _menu" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
                         <MenuItem.Icon>
                             <Image Source="menu.ico" Width="16" Height="16" Margin="4,0,0,0"/>
                         </MenuItem.Icon>
@@ -39,8 +39,8 @@
                         <MenuItem Header="e_xit" Click="Exit_Click" />
                     </MenuItem>
                 </Menu>
-                <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-                <Button Name="DateSumButton" Content="Date Summary" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                <Button Name="DateSumButton" Content="Date Summary" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
             <StackPanel x:Name="listviewTopToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
