@@ -17,7 +17,10 @@ namespace Taskalu
             {
                 str += file.Priority + "\t" + file.Name + "\t\"" + file.Description + "\"\t" + file.DueDate + "\n";
             }
-            Clipboard.SetText(str);
+            if (!string.IsNullOrEmpty(str))
+            {
+                Clipboard.SetText(str);
+            }
         }
 
         public static void CopyDsvToClipBoard()
@@ -28,7 +31,10 @@ namespace Taskalu
             {
                 str += entry.Name + "\t" +  entry.Duration + "\n";
             }
-            Clipboard.SetText(str);
+            if (!string.IsNullOrEmpty(str))
+            {
+                Clipboard.SetText(str);
+            }
         }
 
         public static void CopyLbfToClipBoard(
