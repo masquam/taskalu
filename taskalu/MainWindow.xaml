@@ -34,6 +34,7 @@
                             <Image Source="menu.ico" Width="16" Height="16" Margin="4,0,0,0"/>
                         </MenuItem.Icon>
                         <MenuItem Header="_New Task" Click="NewButton_Click" />
+                        <MenuItem Header="_Copy" Click="CopyButton_Click" />
                         <MenuItem Header="_Date Summary" Click="DateSumButton_Click" />
                         <Separator />
                         <MenuItem Header="e_xit" Click="Exit_Click" />
