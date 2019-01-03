@@ -31,5 +31,20 @@ namespace Taskalu
             Clipboard.SetText(str);
         }
 
+        public static void CopyLbfToClipBoard(
+            string name,
+            string priority,
+            string status,
+            string createdate,
+            string duedate,
+            string description,
+            string workHolder)
+        {
+            string str = "";
+            str = name + "\t" + priority + "\t" + status + "\t" + createdate + "\t" + duedate
+                 + "\t\"" + description + "\"\t" + workHolder;
+            Clipboard.SetText(str);
+        }
+
     }
 }

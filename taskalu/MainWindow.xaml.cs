@@ -247,7 +247,22 @@ namespace Taskalu
         /// <param name="e"></param>
         private void CopyButton_Click(object sender, RoutedEventArgs e)
         {
-            ClipBrd.CopyMvToClipBoard();
+            if (editpanel.Visibility == Visibility.Visible)
+            {
+                ClipBrd.CopyLbfToClipBoard(
+                    ep_name.Text,
+                    ep_priorityBox.Text,
+                    ep_statusBox.Text,
+                    ep_createdate.Text,
+                    ep_duedate.Text,
+                    ep_description.Text,
+                    workHolder);
+            }
+            else
+            {
+                ClipBrd.CopyMvToClipBoard();
+            }
+
         }
 
         // Menu - Exit
