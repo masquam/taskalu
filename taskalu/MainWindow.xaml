@@ -40,6 +40,7 @@
                     </MenuItem>
                 </Menu>
                 <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                <Button x:Name="CopyButton" Content="Copy" Click="CopyButton_Click" VerticalAlignment="Top"  Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                 <Button Name="DateSumButton" Content="Date Summary" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
@@ -70,7 +71,6 @@
                         <Button Visibility="Collapsed" x:Name="MoreButton" Content="More" Click="MoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
-                        <Button Visibility="Visible" x:Name="CopyButton" Content="Copy" Click="CopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" />
                     </StackPanel>
                 </Grid>
             </StackPanel>
