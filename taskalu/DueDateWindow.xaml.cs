@@ -36,12 +36,16 @@ namespace Taskalu
 
         private void ButtonDueDateWindowOk_Click(object sender, RoutedEventArgs e)
         {
+            DueDateOk.IsEnabled = false;
+
             DateTime due = (DateTime)DueDateBox.SelectedDate;
             DateTime dueDate = new DateTime(due.Year, due.Month, due.Day, DueDateHourBox.SelectedIndex, (DueDateMinuteBox.SelectedIndex * 5), 0);
             dueDateString = dueDate.ToString("yyyy-MM-dd HH:mm:ss");
 
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;
+
+            DueDateOk.IsEnabled = true;
         }
 
 

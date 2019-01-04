@@ -342,6 +342,8 @@ namespace Taskalu
         /// <param name="e"></param>
         private void ep_save_Click(object sender, RoutedEventArgs e)
         {
+            ep_save.IsEnabled = false;
+
             editTimer_stop();
 
             // TaskTimeInserted is false then INSERT
@@ -363,8 +365,10 @@ namespace Taskalu
                 ep_CloseWindow();
                 ExecuteFirstSelectTable();
             }
+
+            ep_save.IsEnabled = true;
         }
-        
+
         /// <summary>
         /// editpanel Close button is clicked
         /// </summary>
@@ -372,6 +376,8 @@ namespace Taskalu
         /// <param name="e"></param>
         private void ep_close_Click(object sender, RoutedEventArgs e)
         {
+            ep_close.IsEnabled = false;
+
             editTimer_stop();
 
             // TaskTimeInserted is false then INSERT
@@ -379,6 +385,8 @@ namespace Taskalu
             TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
 
             ep_CloseWindow();
+
+            ep_close.IsEnabled = true;
         }
 
         private void ep_CloseWindow()

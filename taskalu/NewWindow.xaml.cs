@@ -33,6 +33,7 @@ namespace Taskalu
 
         private void ButtonNewWindowOk_Click(object sender, RoutedEventArgs e)
         {
+            NewWindowOk.IsEnabled = false;
 
             DateTime due = (DateTime)dateBox.SelectedDate;
             DateTime dueDate = new DateTime(due.Year, due.Month, due.Day, hourBox.SelectedIndex, (minuteBox.SelectedIndex * 5), 0);
@@ -50,6 +51,8 @@ namespace Taskalu
 
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;
+
+            NewWindowOk.IsEnabled = true;
         }
     }
 }
