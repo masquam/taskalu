@@ -436,12 +436,32 @@ namespace Taskalu
 
             if (TaskTimeInserted)
             {
-                ExecuteUpdateTableTaskTime(tasklist_id, start_date, end_date, duration);
-                ret = true;
+                if (start_date.ToLocalTime().Date == end_date.ToLocalTime().Date)
+                {
+                    ExecuteUpdateTableTaskTime(tasklist_id, start_date, end_date, duration);
+                    ret = true;
+                }
+                else
+                {
+                    DateTime tmp_start_date = start_date.ToLocalTime().Date + new TimeSpan(1, 0, 0, 0);
+                    ExecuteUpdateTableTaskTime(tasklist_id, start_date, tmp_start_date, tmp_start_date - start_date);
+                    start_date = tmp_start_date; // update the argument
+                    InsertOrUpdateTaskTime(false, tasklist_id, start_date);
+                }
             }
             else
             {
-                ret = ExecuteInsertTableTaskTime(tasklist_id, start_date, end_date, duration);
+                if (start_date.ToLocalTime().Date == end_date.ToLocalTime().Date)
+                {
+                    ret = ExecuteInsertTableTaskTime(tasklist_id, start_date, end_date, duration);
+                }
+                else
+                {
+                    DateTime tmp_start_date = start_date.ToLocalTime().Date + new TimeSpan(1, 0, 0, 0);
+                    ExecuteInsertTableTaskTime(tasklist_id, start_date, tmp_start_date, tmp_start_date - start_date);
+                    start_date = tmp_start_date; // update the argument
+                    InsertOrUpdateTaskTime(false, tasklist_id, start_date);
+                }
             }
             return ret;
         }
