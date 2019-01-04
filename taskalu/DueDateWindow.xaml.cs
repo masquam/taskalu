@@ -37,6 +37,7 @@ namespace Taskalu
         private void ButtonDueDateWindowOk_Click(object sender, RoutedEventArgs e)
         {
             DueDateOk.IsEnabled = false;
+            DueDateCancel.IsEnabled = false;
 
             DateTime due = (DateTime)DueDateBox.SelectedDate;
             DateTime dueDate = new DateTime(due.Year, due.Month, due.Day, DueDateHourBox.SelectedIndex, (DueDateMinuteBox.SelectedIndex * 5), 0);
@@ -46,6 +47,7 @@ namespace Taskalu
             this.DialogResult = true;
 
             DueDateOk.IsEnabled = true;
+            DueDateCancel.IsEnabled = true;
         }
 
 

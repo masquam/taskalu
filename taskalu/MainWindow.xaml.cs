@@ -343,6 +343,7 @@ namespace Taskalu
         private void ep_save_Click(object sender, RoutedEventArgs e)
         {
             ep_save.IsEnabled = false;
+            ep_close.IsEnabled = false;
 
             editTimer_stop();
 
@@ -367,6 +368,7 @@ namespace Taskalu
             }
 
             ep_save.IsEnabled = true;
+            ep_close.IsEnabled = true;
         }
 
         /// <summary>
@@ -376,6 +378,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void ep_close_Click(object sender, RoutedEventArgs e)
         {
+            ep_save.IsEnabled = false;
             ep_close.IsEnabled = false;
 
             editTimer_stop();
@@ -386,6 +389,7 @@ namespace Taskalu
 
             ep_CloseWindow();
 
+            ep_save.IsEnabled = true;
             ep_close.IsEnabled = true;
         }
 
