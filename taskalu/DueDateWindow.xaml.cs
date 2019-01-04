@@ -28,8 +28,10 @@ namespace Taskalu
 
         private void DueDateWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(dueDateString);
-    
+            DateTime due = DateTime.ParseExact(dueDateString, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+            DueDateBox.SelectedDate = due;
+            DueDateHourBox.SelectedIndex = Int32.Parse(due.ToString("HH"));
+            DueDateMinuteBox.SelectedIndex = Int32.Parse(due.ToString("mm")) / 5;
         }
 
         private void ButtonDueDateWindowOk_Click(object sender, RoutedEventArgs e)
