@@ -36,6 +36,7 @@
                         <MenuItem Header="_New Task" Click="NewButton_Click" />
                         <MenuItem Header="_Copy" Click="CopyButton_Click" />
                         <MenuItem Header="_Date Summary" Click="DateSumButton_Click" />
+                        <MenuItem Header="_Date Details" Click="DateDetailsButton_Click" />
                         <Separator />
                         <MenuItem Header="e_xit" Click="Exit_Click" />
                     </MenuItem>
@@ -43,6 +44,7 @@
                 <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
                 <Button x:Name="CopyButton" Content="Copy" Click="CopyButton_Click" VerticalAlignment="Top"  Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" />
                 <Button Name="DateSumButton" Content="Date Summary" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Button Name="DateDetailButton" Content="Date Details" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateDetailsButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
             <StackPanel x:Name="listviewTopToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
@@ -199,7 +201,25 @@
                     <Label x:Name="editTimerLabel" Content=""/>
                 </StackPanel>
                 <Label Grid.Row="3" Grid.Column="0" Content="description"/>
-                <TextBox Grid.ColumnSpan="6" Grid.Row="3" Grid.Column="1" Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Margin="0,4,8,4"/>
+                <TextBox Grid.ColumnSpan="3" Grid.Row="3" Grid.Column="1" Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Margin="0,4,8,4"/>
+                <ListView Grid.ColumnSpan="3" Grid.Row="3" Grid.Column="4" x:Name="listviewTaskMemo" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Height" Value="38" />
+                            <Setter Property="VerticalContentAlignment" Value="Top"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="true">
+                            <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="128">
+                                <GridViewColumnHeader >Date</GridViewColumnHeader>
+                            </GridViewColumn>
+                            <GridViewColumn DisplayMemberBinding="{Binding Memo}" Width="200">
+                                <GridViewColumnHeader >Memo</GridViewColumnHeader>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
                 <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="Open work folder" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
                 <Button Grid.Row="4" Grid.Column="4" Name="ep_save" Content="Save" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
                 <Button Grid.Row="4" Grid.Column="6" Name="ep_close" Content="Cancel" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />

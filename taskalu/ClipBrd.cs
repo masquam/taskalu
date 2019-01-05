@@ -37,6 +37,20 @@ namespace Taskalu
             }
         }
 
+        public static void CopyDsvDateDetailsToClipBoard()
+        {
+            string str = "";
+
+            foreach (ListDateDetails entry in DateDetailsViewModel.dsv.Entries)
+            {
+                str += entry.Name + "\t" + entry.StartDate + "\t" + entry.EndDate + "\t" + entry.Duration + "\n";
+            }
+            if (!string.IsNullOrEmpty(str))
+            {
+                Clipboard.SetText(str);
+            }
+        }
+
         public static void CopyLbfToClipBoard(
             string name,
             string priority,

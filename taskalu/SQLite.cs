@@ -38,6 +38,14 @@ namespace Taskalu
         public static string DateSumNameOrderByDirection { get; set; } = "ASC";
         public static string DateSumDurationOrderByDirection { get; set; } = "DESC";
 
+        public static int DateDetailsMoreCount { get; set; }
+        public static int DateDetailsMoreSize = 10;
+
+        public static string DateDetailsOrderBy { get; set; } = "start_date";
+        public static string DateDetailsOrderByDirection { get; set; } = "ASC";
+        public static string DateDetailsNameOrderByDirection { get; set; } = "ASC";
+        public static string DateDetailsDurationOrderByDirection { get; set; } = "DESC";
+
 
         /// <summary>
         /// "touch" database - directory initialize, create table, index
@@ -55,7 +63,12 @@ namespace Taskalu
                 if (!CheckTable("tasklist")){
                     return false;
                 }
-                if (!CheckTable("tasktime")){
+                if (!CheckTable("tasktime"))
+                {
+                    return false;
+                }
+                if (!CheckTable("taskmemo"))
+                {
                     return false;
                 }
             }
@@ -77,27 +90,27 @@ namespace Taskalu
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_name", "name"))
+                if (!ExecuteCreateIndex("tasklist", "index_tasklist_name", "name"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_description", "description"))
+                if (!ExecuteCreateIndex("tasklist", "index_tasklist_description", "description"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_priority", "priority"))
+                if (!ExecuteCreateIndex("tasklist", "index_tasklist_priority", "priority"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_createdate", "createdate"))
+                if (!ExecuteCreateIndex("tasklist", "index_tasklist_createdate", "createdate"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_duedate", "duedate"))
+                if (!ExecuteCreateIndex("tasklist", "index_tasklist_duedate", "duedate"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_status", "status"))
+                if (!ExecuteCreateIndex("tasklist", "index_tasklist_status", "status"))
                 {
                     return false;
                 }
@@ -105,19 +118,31 @@ namespace Taskalu
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasktime", "index_tasklist_id", "tasklist_id"))
+                if (!ExecuteCreateIndex("tasktime", "index_tasktime_tasklist_id", "tasklist_id"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasktime", "index_date", "date"))
+                if (!ExecuteCreateIndex("tasktime", "index_tasktime_date", "date"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasktime", "index_start_date", "start_date"))
+                if (!ExecuteCreateIndex("tasktime", "index_tasktime_start_date", "start_date"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasktime", "index_end_date", "end_date"))
+                if (!ExecuteCreateIndex("tasktime", "index_tasktime_end_date", "end_date"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateTable("CREATE TABLE taskmemo (id INTEGER NOT NULL PRIMARY KEY, tasklist_id INTEGER, date TEXT, memo TEXT)"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateIndex("taskmemo", "index_taskmemo_tasklist_id", "tasklist_id"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateIndex("taskmemo", "index_taskmemo_date", "date"))
                 {
                     return false;
                 }
@@ -630,5 +655,92 @@ namespace Taskalu
             DateSumOrderBy = orderby;
             DateSumOrderByDirection = direction;
         }
+
+
+        // /////////////////////////////////////////////////////////////////////
+        //
+        // DateDetails window
+
+        public static string selectDateDetailsTaskTimeSql = "SELECT t.tasklist_id, l.name name, t.start_date start_date, t.end_date end_date, t.duration duration FROM tasktime t, tasklist l WHERE t.tasklist_id = l.id AND t.date = @date";
+
+        public static Boolean ExecuteFirstSelecttDateDetailsTableTaskTime(DateTime dt)
+        {
+            string sql = selectDateDetailsTaskTimeSql;
+            sql += " ORDER BY " + DateDetailsOrderBy + " " + DateDetailsOrderByDirection
+                + " LIMIT " + (SQLiteClass.DateDetailsMoreSize + 1).ToString();
+            return SQLiteClass.ExecuteSelectDateDetailsTableTaskTime(DateDetailsViewModel.dsv, sql, dt);
+        }
+
+        public static Boolean ExecuteMoreSelectDateDetailsTableTaskTime(DateTime dt)
+        {
+            string sql = selectDateDetailsTaskTimeSql;
+            sql += " ORDER BY " + DateDetailsOrderBy + " " + DateDetailsOrderByDirection
+                + " LIMIT " + (SQLiteClass.DateDetailsMoreSize + 1).ToString()
+                + " OFFSET " + SQLiteClass.DateDetailsMoreCount.ToString();
+            return SQLiteClass.ExecuteSelectDateDetailsTableTaskTime(DateDetailsViewModel.dsv, sql, dt);
+        }
+
+        public static Boolean ExecuteSelectDateDetailsTableTaskTime(DateDetailsViewModel dsv, string sql, DateTime dt)
+        {
+            // return value true: More button visibie
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand(sql, con);
+            com.Parameters.Add(sqliteParam(com, "@date", dt.Date.ToString("yyyy-MM-dd HH:mm:ss")));
+
+            try
+            {
+                SQLiteDataReader sdr = com.ExecuteReader();
+                int resultCount = 0;
+                while (sdr.Read() == true)
+                {
+                    resultCount++;
+                    if (resultCount <= DateSumMoreSize)
+                    {
+                        ListDateDetails lds = new ListDateDetails();
+
+                        lds.Name = (string)sdr["name"];
+
+                        //DateTime utc = (DateTime)sdr["start_date"];
+                        DateTime utc = DateTime.ParseExact((string)sdr["start_date"], "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        lds.StartDate = utc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                        //DateTime utc2 = (DateTime)sdr["end_date"];
+                        DateTime utc2 = DateTime.ParseExact((string)sdr["end_date"], "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        lds.EndDate = utc2.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+
+                        TimeSpan ts = new TimeSpan((Int64)sdr["duration"]);
+                        //lds.Duration = ts.ToString(@"h\h\o\u\r\ m\m\i\n\u\t\e\s");
+                        lds.Duration = ts.ToString(@"hh\:mm");
+                        dsv.Entries.Add(lds);
+                    }
+                    else
+                    {
+                        DateDetailsMoreCount += DateDetailsMoreSize;
+                        ret = true;
+                    }
+                }
+                sdr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table select tasktime DateDetails error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+            return ret;
+        }
+
+        public static void DateDetailsSetOrderBy(string orderby, string direction)
+        {
+            DateSumOrderBy = orderby;
+            DateSumOrderByDirection = direction;
+        }
+
     }
 }

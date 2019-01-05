@@ -80,6 +80,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClipBrd.cs" />
+    <Compile Include="DateDetailsViewModel.cs" />
+    <Compile Include="DateDetailsWindow.xaml.cs">
+      <DependentUpon>DateDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DateSumDateWindow.xaml.cs">
       <DependentUpon>DateSumDateWindow.xaml</DependentUpon>
     </Compile>
@@ -91,12 +95,19 @@
     <Compile Include="DueDateWindow.xaml.cs">
       <DependentUpon>DueDateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListDateDetails.cs" />
     <Compile Include="ListDateSum.cs" />
+    <Compile Include="ListTaskMemo.cs" />
     <Compile Include="NewWindow.xaml.cs">
       <DependentUpon>NewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQLite.cs" />
+    <Compile Include="TaskMemoViewModel.cs" />
     <Compile Include="WorkHolder.cs" />
+    <Page Include="DateDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DateSumDateWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Collections.ObjectModel;
 
 namespace Taskalu
 
@@ -73,6 +74,20 @@ namespace Taskalu
             }
         }
 
+        private void ExecuteFirstSelectTable()
+        {
+            MainViewModel.mv.Files.Clear();
+            SQLiteClass.moreCount = 0;
+            if (SQLiteClass.ExecuteFirstSelectTable())
+            {
+                MoreButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                MoreButton.Visibility = Visibility.Collapsed;
+            }
+        }
+        
         /// <summary>
         /// open Date Summary window
         /// </summary>
@@ -98,19 +113,31 @@ namespace Taskalu
             }
         }
 
-        private void ExecuteFirstSelectTable()
+        /// <summary>
+        /// open Date Details window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DateDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            MainViewModel.mv.Files.Clear();
-            SQLiteClass.moreCount = 0;
-            if (SQLiteClass.ExecuteFirstSelectTable())
+            OpenDateDetailsWindow();
+        }
+
+        void OpenDateDetailsWindow()
+        {
+            // Instantiate the dialog box
+            DateDetailsWindow dlg = new DateDetailsWindow();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+
+            // Open the dialog box modally 
+            if (dlg.ShowDialog() == true)
             {
-                MoreButton.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                MoreButton.Visibility = Visibility.Collapsed;
+                // window is closed
             }
         }
+
 
         // status combobox is changed
         private void statusBox_DropDownClosed(object sender, EventArgs e)
@@ -304,6 +331,14 @@ namespace Taskalu
                 workHolder = lbf.WorkHolder;
 
                 editTimer_start(epId);
+
+                // Memo
+                listviewTaskMemo.DataContext = TaskMemoViewModel.tmv;
+                TaskMemoViewModel.tmv.Memos.Clear();
+                ListTaskMemo ltm = new ListTaskMemo();
+                ltm.Date = "2019-01-05 00:00:00";
+                ltm.Memo = "Hello World";
+                TaskMemoViewModel.tmv.Memos.Add(ltm);
             }
         }
 
@@ -498,6 +533,13 @@ namespace Taskalu
             dTimer.Stop();
         }
 
+        // ///////////////////////////////////////////////////////////////////////////
+        //
+        // Memo
 
+        private void ListTaskMemoSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -1,12 +1,12 @@
-﻿<Window x:Class="Taskalu.DateSumWindow"
+﻿<Window x:Class="Taskalu.DateDetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance {x:Type local:DateSumViewModel}}"
-        Title="Date Summary - taskaru" Height="528" Width="600" MinWidth="600">
+        d:DataContext="{d:DesignInstance {x:Type local:DateDetailsViewModel}}"
+        Title="Date Details - taskaru" Height="528" Width="600" MinWidth="600">
     <Grid>
         <DockPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
@@ -16,19 +16,19 @@
                         <MenuItem.Icon>
                             <Image Source="menu.ico" Width="16" Height="16" Margin="4,0,0,0"/>
                         </MenuItem.Icon>
-                        <MenuItem Header="_Copy" Click="DateSumCopyButton_Click" />
+                        <MenuItem Header="_Copy" Click="DateDetailsCopyButton_Click" />
                         <Separator />
                         <MenuItem Header="e_xit" Click="Exit_Click" />
                     </MenuItem>
                 </Menu>
-                <Button x:Name="DateSumCopyButton" Content="Copy" Click="DateSumCopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Button x:Name="DateDetailsCopyButton" Content="Copy" Click="DateDetailsCopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
-            <StackPanel x:Name="DateSumTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
+            <StackPanel x:Name="DateDetailsTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
                 <Label Content="date"></Label>
-                <TextBox x:Name="textboxDateSum" Width="120" Height="23" Margin="0,2,0,0" Padding="0,2,0,0" IsReadOnly="True"></TextBox>
-                <Button x:Name="buttonDateSumChange" Content="..." Click="buttonDateSumChange_Click" Width="32" Height="23" Margin="0,2,0,0" ></Button>
+                <TextBox x:Name="textboxDateDetails" Width="120" Height="23" Margin="0,2,0,0" Padding="0,2,0,0" IsReadOnly="True"></TextBox>
+                <Button x:Name="buttonDateDetailsChange" Content="..." Click="buttonDateDetailsChange_Click" Width="32" Height="23" Margin="0,2,0,0" ></Button>
             </StackPanel>
-            <StackPanel x:Name="DateSumBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
+            <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
                 <Grid HorizontalAlignment="Stretch">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="192"/>
@@ -39,13 +39,13 @@
 
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch">
-                        <Button Visibility="Collapsed" x:Name="DateSumMoreButton" Content="More" Click="DateSumMoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32"/>
+                        <Button Visibility="Collapsed" x:Name="DateDetailsMoreButton" Content="More" Click="DateDetailsMoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32"/>
                     </StackPanel>
                     <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
                     </StackPanel>
                 </Grid>
             </StackPanel>
-            <ListView x:Name="listviewDateSum" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Entries}" >
+            <ListView x:Name="listviewDateDetails" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Entries}" >
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Height" Value="20" />
@@ -55,7 +55,7 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView AllowsColumnReorder="true">
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="256">
+                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="200">
                             <GridViewColumnHeader Click="Name_Click">Title
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="NameCM">
@@ -65,7 +65,27 @@
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Duration}" Width="256" >
+                        <GridViewColumn DisplayMemberBinding="{Binding StartDate}" Width="128" >
+                            <GridViewColumnHeader Click="StartDate_Click">Start Date
+                                <GridViewColumnHeader.ContextMenu>
+                                    <ContextMenu Name="StartDateCM">
+                                        <MenuItem Header="Ascending" Click="StartDateAsc_Click"/>
+                                        <MenuItem Header="Descending" Click="StartDateDes_Click"/>
+                                    </ContextMenu>
+                                </GridViewColumnHeader.ContextMenu>
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding EndDate}" Width="128" >
+                            <GridViewColumnHeader Click="EndDate_Click">End Date
+                                <GridViewColumnHeader.ContextMenu>
+                                    <ContextMenu Name="EndDateCM">
+                                        <MenuItem Header="Ascending" Click="EndDateAsc_Click"/>
+                                        <MenuItem Header="Descending" Click="EndDateDes_Click"/>
+                                    </ContextMenu>
+                                </GridViewColumnHeader.ContextMenu>
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Duration}" Width="100" >
                             <GridViewColumnHeader Click="Duration_Click">Duration (hour:minutes)
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DurationCM">
