@@ -742,5 +742,38 @@ namespace Taskalu
             DateSumOrderByDirection = direction;
         }
 
+        // ///////////////////////////////////////////////////////////////////////////
+        //
+        // Memo
+
+        public static Boolean ExecuteInsertTableTaskMemo(Int64 tasklist_id, string memo)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO taskmemo (tasklist_id, date, memo) VALUES (@tasklist_id, @date, @memo)", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@tasklist_id", tasklist_id));
+            com.Parameters.Add(sqliteParam(com, "@date", DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
+            com.Parameters.Add(sqliteParam(com, "@memo", memo));
+
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table taskmemo insert error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
+
+
     }
 }

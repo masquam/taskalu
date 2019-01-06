@@ -541,5 +541,11 @@ namespace Taskalu
         {
 
         }
+
+        private void saveMemo_Click(object sender, RoutedEventArgs e)
+        {
+            //epId
+            SQLiteClass.ExecuteInsertTableTaskMemo(epId, ep_description.Text);
+        }
     }
 }

@@ -162,6 +162,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="42" />
                 </Grid.RowDefinitions>
@@ -196,13 +197,14 @@
                 <Label Grid.Row="2" Grid.Column="3" Content="due date"/>
                 <TextBox Grid.Row="2" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
                 <Button Grid.Row="2" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left" />
-                <StackPanel  Grid.Row="2" Grid.Column="6" Orientation="Horizontal">
+                <StackPanel Grid.Row="2" Grid.Column="6" Orientation="Horizontal">
                     <Label Content="tick "/>
                     <Label x:Name="editTimerLabel" Content=""/>
                 </StackPanel>
-                <Label Grid.Row="3" Grid.Column="0" Content="description"/>
-                <TextBox Grid.ColumnSpan="3" Grid.Row="3" Grid.Column="1" Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Margin="0,4,8,4"/>
-                <ListView Grid.ColumnSpan="3" Grid.Row="3" Grid.Column="4" x:Name="listviewTaskMemo" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged">
+                <Label Grid.Row="3" Grid.Column="0" Content="memo"/>
+                <TextBox Grid.ColumnSpan="5" Grid.Row="3" Grid.Column="1" x:Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" />
+                <Button  Grid.Row="3" Grid.Column="6" x:Name="SaveMemo" Content="Save" Width="96" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
+                <ListView Grid.ColumnSpan="6" Grid.Row="4" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="600">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Height" Value="38" />
@@ -211,18 +213,18 @@
                     </ListView.ItemContainerStyle>
                     <ListView.View>
                         <GridView AllowsColumnReorder="true">
+                            <GridViewColumn DisplayMemberBinding="{Binding Memo}" Width="448">
+                                <GridViewColumnHeader >Memo</GridViewColumnHeader>
+                            </GridViewColumn>
                             <GridViewColumn DisplayMemberBinding="{Binding Date}" Width="128">
                                 <GridViewColumnHeader >Date</GridViewColumnHeader>
-                            </GridViewColumn>
-                            <GridViewColumn DisplayMemberBinding="{Binding Memo}" Width="200">
-                                <GridViewColumnHeader >Memo</GridViewColumnHeader>
                             </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="Open work folder" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
-                <Button Grid.Row="4" Grid.Column="4" Name="ep_save" Content="Save" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
-                <Button Grid.Row="4" Grid.Column="6" Name="ep_close" Content="Cancel" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="Open work folder" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="5" Grid.Column="4" Name="ep_save" Content="Save" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
+                <Button Grid.Row="5" Grid.Column="6" Name="ep_close" Content="Cancel" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
             </Grid>
         </DockPanel>
     </Grid>
