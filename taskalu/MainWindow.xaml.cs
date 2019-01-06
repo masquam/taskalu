@@ -544,8 +544,21 @@ namespace Taskalu
 
         private void saveMemo_Click(object sender, RoutedEventArgs e)
         {
-            //epId
             SQLiteClass.ExecuteInsertTableTaskMemo(epId, ep_description.Text);
+        }
+
+        private void ExecuteFirstSelectTableTaskMemo()
+        {
+            TaskMemoViewModel.tmv.Memos.Clear();
+            SQLiteClass.TaskMemoMoreCount = 0;
+            if (SQLiteClass.ExecuteFirstSelectTableTaskMemo())
+            {
+                //MoreButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                //MoreButton.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

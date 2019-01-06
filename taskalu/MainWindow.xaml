@@ -164,6 +164,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="40" />
                     <RowDefinition Height="42" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -176,7 +177,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Label Grid.Row="0" Grid.Column="0" Content="title"/>
-                <TextBox Grid.ColumnSpan="6" Grid.Row="0" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,4,8,4" FontSize="20"/>
+                <TextBox Grid.ColumnSpan="6" Grid.Row="0" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,4,8,4" FontSize="20" Width="600" HorizontalAlignment="Left"/>
                 <Label Grid.Row="1" Grid.Column="0" Content="priority"/>
                 <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ep_priorityBox" SelectedIndex="5" Foreground="#FF9B9B00" Width="120" Height="23" HorizontalAlignment="Left" Margin="0,4,0,4">
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
@@ -222,9 +223,10 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="Open work folder" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
-                <Button Grid.Row="5" Grid.Column="4" Name="ep_save" Content="Save" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
-                <Button Grid.Row="5" Grid.Column="6" Name="ep_close" Content="Cancel" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="5" Grid.Column="4" Visibility="Visible" x:Name="TaskMemoMoreButton" Content="More" Click="MoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
+                <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="Open work folder" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="6" Grid.Column="4" Name="ep_save" Content="Save" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
+                <Button Grid.Row="6" Grid.Column="6" Name="ep_close" Content="Cancel" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
             </Grid>
         </DockPanel>
     </Grid>

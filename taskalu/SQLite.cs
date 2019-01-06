@@ -46,6 +46,9 @@ namespace Taskalu
         public static string DateDetailsNameOrderByDirection { get; set; } = "ASC";
         public static string DateDetailsDurationOrderByDirection { get; set; } = "DESC";
 
+        public static int TaskMemoMoreCount { get; set; }
+        public static int TaskMemoMoreSize = 10;
+
 
         /// <summary>
         /// "touch" database - directory initialize, create table, index
@@ -772,6 +775,12 @@ namespace Taskalu
                 con.Close();
             }
             return ret;
+        }
+
+        public static Boolean ExecuteFirstSelectTableTaskMemo()
+        {
+            //
+            return true;
         }
 
 
