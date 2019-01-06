@@ -282,7 +282,6 @@ namespace Taskalu
                     ep_statusBox.Text,
                     ep_createdate.Text,
                     ep_duedate.Text,
-                    ep_description.Text,
                     workHolder);
             }
             else
@@ -322,7 +321,7 @@ namespace Taskalu
 
                 epId = lbf.Id;
                 ep_name.Text = lbf.Name;
-                ep_description.Text = lbf.Description;
+                //ep_description.Text = lbf.Description;
                 ep_priorityBox.SelectedIndex = 5 - priorityLen;
                 ep_createdate.Text = lbf.CreateDate;
                 ep_duedate.Text = lbf.DueDate;
@@ -334,11 +333,14 @@ namespace Taskalu
 
                 // Memo
                 listviewTaskMemo.DataContext = TaskMemoViewModel.tmv;
+                ExecuteFirstSelectTableTaskMemo(epId);
+                /*
                 TaskMemoViewModel.tmv.Memos.Clear();
                 ListTaskMemo ltm = new ListTaskMemo();
                 ltm.Date = "2019-01-05 00:00:00";
                 ltm.Memo = "Hello World";
                 TaskMemoViewModel.tmv.Memos.Add(ltm);
+                */
             }
         }
 
@@ -539,25 +541,38 @@ namespace Taskalu
 
         private void ListTaskMemoSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            //
         }
 
         private void saveMemo_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.ExecuteInsertTableTaskMemo(epId, ep_description.Text);
+            ExecuteFirstSelectTableTaskMemo(epId);
         }
 
-        private void ExecuteFirstSelectTableTaskMemo()
+        private void ExecuteFirstSelectTableTaskMemo(Int64 id)
         {
             TaskMemoViewModel.tmv.Memos.Clear();
             SQLiteClass.TaskMemoMoreCount = 0;
-            if (SQLiteClass.ExecuteFirstSelectTableTaskMemo())
+            if (SQLiteClass.ExecuteFirstSelectTableTaskMemo(id))
             {
-                //MoreButton.Visibility = Visibility.Visible;
+                TaskMemoMoreButton.Visibility = Visibility.Visible;
             }
             else
             {
-                //MoreButton.Visibility = Visibility.Collapsed;
+                TaskMemoMoreButton.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void TaskMemoMoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SQLiteClass.ExecuteMoreSelectTableTaskTime(epId))
+            {
+                TaskMemoMoreButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                TaskMemoMoreButton.Visibility = Visibility.Collapsed;
             }
         }
     }

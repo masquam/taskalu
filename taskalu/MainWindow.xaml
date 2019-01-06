@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}" 
-        Title="taskalu" Height="564" Width="740" MinWidth="740">
+        Title="taskalu" Height="564" Width="740" MinWidth="740" MaxWidth="740">
     <Window.Resources>
         <local:DateToColorConverter x:Key="DateToColorConverter" />
     </Window.Resources>
@@ -223,7 +223,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Grid.Row="5" Grid.Column="4" Visibility="Visible" x:Name="TaskMemoMoreButton" Content="More" Click="MoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
+                <Button Grid.Row="5" Grid.Column="4" Visibility="Collapsed" x:Name="TaskMemoMoreButton" Content="More" Click="TaskMemoMoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
                 <Button Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="Open work folder" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
                 <Button Grid.Row="6" Grid.Column="4" Name="ep_save" Content="Save" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
                 <Button Grid.Row="6" Grid.Column="6" Name="ep_close" Content="Cancel" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />

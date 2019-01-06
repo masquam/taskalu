@@ -777,10 +777,70 @@ namespace Taskalu
             return ret;
         }
 
-        public static Boolean ExecuteFirstSelectTableTaskMemo()
+        public static string selectTaskMemoSql = "SELECT tasklist_id, date, memo FROM taskmemo WHERE tasklist_id = @id";
+
+        public static Boolean ExecuteFirstSelectTableTaskMemo(Int64 id)
         {
-            //
-            return true;
+            string sql = selectTaskMemoSql;
+            sql += " ORDER BY date DESC"
+                + " LIMIT " + (SQLiteClass.TaskMemoMoreSize + 1).ToString();
+            return SQLiteClass.ExecuteSelectTableTaskTime(TaskMemoViewModel.tmv, sql, id);
+        }
+
+        public static Boolean ExecuteMoreSelectTableTaskTime(Int64 id)
+        {
+            string sql = selectTaskMemoSql;
+            sql += " ORDER BY date DESC"
+                + " LIMIT " + (SQLiteClass.TaskMemoMoreSize + 1).ToString()
+                + " OFFSET " + SQLiteClass.TaskMemoMoreCount.ToString();
+            return SQLiteClass.ExecuteSelectTableTaskTime(TaskMemoViewModel.tmv, sql, id);
+        }
+
+        public static Boolean ExecuteSelectTableTaskTime(TaskMemoViewModel tmv, string sql, Int64 id)
+        {
+            // return value true: More button visibie
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand(sql, con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
+
+            try
+            {
+                SQLiteDataReader sdr = com.ExecuteReader();
+                int resultCount = 0;
+                while (sdr.Read() == true)
+                {
+                    resultCount++;
+                    if (resultCount <= DateSumMoreSize)
+                    {
+                        ListTaskMemo ltm = new ListTaskMemo();
+
+                        ltm.Memo = (string)sdr["memo"];
+                        DateTime utc = DateTime.ParseExact((string)sdr["date"], "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        ltm.Date = utc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                        tmv.Memos.Add(ltm);
+                    }
+                    else
+                    {
+                        TaskMemoMoreCount += TaskMemoMoreSize;
+                        ret = true;
+                    }
+                }
+                sdr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table select taskmemo error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+            return ret;
         }
 
 

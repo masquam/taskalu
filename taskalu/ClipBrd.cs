@@ -57,12 +57,11 @@ namespace Taskalu
             string status,
             string createdate,
             string duedate,
-            string description,
             string workHolder)
         {
             string str = "";
             str = name + "\t" + priority + "\t" + status + "\t" + createdate + "\t" + duedate
-                 + "\t\"" + description + "\"\t" + workHolder;
+                 + "\t" + workHolder;
             Clipboard.SetText(str);
         }
 
