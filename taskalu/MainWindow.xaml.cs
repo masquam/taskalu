@@ -536,7 +536,26 @@ namespace Taskalu
 
         private void ListTaskMemoSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //
+            ListTaskMemo ltm = ((sender as ListView).SelectedItem as ListTaskMemo);
+
+            if (ltm != null)
+            {
+                // Instantiate the dialog box
+                MemoWindow dlg = new MemoWindow();
+
+                dlg.memo = ltm.Memo;
+                dlg.date = ltm.Date;
+
+                // Configure the dialog box
+                dlg.Owner = this;
+
+                // Open the dialog box modally 
+                if (dlg.ShowDialog() == true)
+                {
+                    // window is closed
+                }
+                listviewTaskMemo.UnselectAll();
+            }
         }
 
         private void saveMemo_Click(object sender, RoutedEventArgs e)
@@ -571,5 +590,7 @@ namespace Taskalu
                 TaskMemoMoreButton.Visibility = Visibility.Collapsed;
             }
         }
+
+
     }
 }
