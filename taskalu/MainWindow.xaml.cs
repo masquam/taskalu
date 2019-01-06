@@ -282,7 +282,8 @@ namespace Taskalu
                     ep_statusBox.Text,
                     ep_createdate.Text,
                     ep_duedate.Text,
-                    workHolder);
+                    workHolder,
+                    TaskMemoViewModel.tmv);
             }
             else
             {
@@ -321,7 +322,7 @@ namespace Taskalu
 
                 epId = lbf.Id;
                 ep_name.Text = lbf.Name;
-                //ep_description.Text = lbf.Description;
+                ep_description.Text = ""; // memo
                 ep_priorityBox.SelectedIndex = 5 - priorityLen;
                 ep_createdate.Text = lbf.CreateDate;
                 ep_duedate.Text = lbf.DueDate;
@@ -334,13 +335,6 @@ namespace Taskalu
                 // Memo
                 listviewTaskMemo.DataContext = TaskMemoViewModel.tmv;
                 ExecuteFirstSelectTableTaskMemo(epId);
-                /*
-                TaskMemoViewModel.tmv.Memos.Clear();
-                ListTaskMemo ltm = new ListTaskMemo();
-                ltm.Date = "2019-01-05 00:00:00";
-                ltm.Memo = "Hello World";
-                TaskMemoViewModel.tmv.Memos.Add(ltm);
-                */
             }
         }
 
@@ -391,7 +385,6 @@ namespace Taskalu
             ListViewFile lbf = new ListViewFile();
             lbf.Id = epId;
             lbf.Name = ep_name.Text;
-            lbf.Description = ep_description.Text;
             lbf.Priority = String.Concat(Enumerable.Repeat("\u272e", 5 - ep_priorityBox.SelectedIndex));
             lbf.CreateDate = ep_createdate.Text;
             lbf.DueDate = ep_duedate.Text;
@@ -425,6 +418,8 @@ namespace Taskalu
             TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
 
             ep_CloseWindow();
+
+            ExecuteFirstSelectTable();
 
             ep_save.IsEnabled = true;
             ep_close.IsEnabled = true;
@@ -547,6 +542,7 @@ namespace Taskalu
         private void saveMemo_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.ExecuteInsertTableTaskMemo(epId, ep_description.Text);
+            SQLiteClass.UpdateTaskListDescription(epId, ep_description.Text);
             ExecuteFirstSelectTableTaskMemo(epId);
         }
 

@@ -57,12 +57,20 @@ namespace Taskalu
             string status,
             string createdate,
             string duedate,
-            string workHolder)
+            string workHolder,
+            TaskMemoViewModel tmv)
         {
             string str = "";
-            str = name + "\t" + priority + "\t" + status + "\t" + createdate + "\t" + duedate
-                 + "\t" + workHolder;
-            Clipboard.SetText(str);
+            str = name + "\t" + priority + "\t" + status + "\t" + createdate + "\t" + duedate + "\t" + workHolder;
+
+            foreach (ListTaskMemo ltm in TaskMemoViewModel.tmv.Memos)
+            {
+                str += "\t\"" + ltm.Memo + "\"\t" + ltm.Date;
+            }
+            if (!string.IsNullOrEmpty(str))
+            {
+                Clipboard.SetText(str);
+            }
         }
 
     }

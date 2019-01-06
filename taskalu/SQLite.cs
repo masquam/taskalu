@@ -31,7 +31,7 @@ namespace Taskalu
         public static int moreSize = 10;
 
         public static int DateSumMoreCount { get; set; }
-        public static int DateSumMoreSize = 10;
+        public static int DateSumMoreSize = 20;
 
         public static string DateSumOrderBy { get; set; } = "duration";
         public static string DateSumOrderByDirection { get; set; } = "DESC";
@@ -39,7 +39,7 @@ namespace Taskalu
         public static string DateSumDurationOrderByDirection { get; set; } = "DESC";
 
         public static int DateDetailsMoreCount { get; set; }
-        public static int DateDetailsMoreSize = 10;
+        public static int DateDetailsMoreSize = 20;
 
         public static string DateDetailsOrderBy { get; set; } = "start_date";
         public static string DateDetailsOrderByDirection { get; set; } = "ASC";
@@ -377,10 +377,9 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist set name=@name, description=@description, priority=@priority, createdate=@createdate, duedate=@duedate, status=@status, workholder=@workholder where id=@id", con);
+            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist set name=@name, priority=@priority, createdate=@createdate, duedate=@duedate, status=@status, workholder=@workholder where id=@id", con);
             com.Parameters.Add(sqliteParamInt64(com, "@id", lvFile.Id));
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
-            com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
             com.Parameters.Add(sqliteParam(com, "@createdate", getUTCString(lvFile.CreateDate)));
             com.Parameters.Add(sqliteParam(com, "@duedate", getUTCString(lvFile.DueDate)));
@@ -843,6 +842,27 @@ namespace Taskalu
             return ret;
         }
 
+        public static void UpdateTaskListDescription(Int64 id, string memo)
+        {
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
 
+            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist SET description=@memo WHERE id=@id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
+            com.Parameters.Add(sqliteParam(com, "@memo", memo));
+
+            try
+            {
+                com.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table tasklist update description error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
     }
 }
