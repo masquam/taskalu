@@ -549,6 +549,8 @@ namespace Taskalu
                 // Configure the dialog box
                 dlg.Owner = this;
 
+                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
                 // Open the dialog box modally 
                 if (dlg.ShowDialog() == true)
                 {
