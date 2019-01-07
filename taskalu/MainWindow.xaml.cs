@@ -30,6 +30,10 @@ namespace Taskalu
         public MainWindow()
         {
             InitializeComponent();
+
+            Microsoft.Win32.SystemEvents.PowerModeChanged +=
+                new Microsoft.Win32.PowerModeChangedEventHandler(PowerModeChanged);
+
             if (!SQLiteClass.TouchDB())
             {
                 MessageBox.Show("database creation error.");
@@ -37,6 +41,29 @@ namespace Taskalu
             }
             this.DataContext = MainViewModel.mv;
             ExecuteFirstSelectTable();
+        }
+
+        private void PowerModeChanged(object sender, Microsoft.Win32.PowerModeChangedEventArgs e)
+        {
+            switch (e.Mode)
+            {
+                case Microsoft.Win32.PowerModes.Suspend:
+                    if (editpanel.Visibility == Visibility.Visible)
+                    {
+                        editTimer_stop();
+
+                        // TaskTimeInserted is false then INSERT
+                        // else UPDATE the tasktime table
+                        TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+                    }
+                    break;
+                case Microsoft.Win32.PowerModes.Resume:
+                    if (editpanel.Visibility == Visibility.Visible)
+                    {
+                        editTimer_start(epId);
+                    }
+                    break;
+            }
         }
 
         /*
@@ -87,6 +114,7 @@ namespace Taskalu
             {
                 MoreButton.Visibility = Visibility.Collapsed;
             }
+            refreshTimer_start();
         }
         
         /// <summary>
@@ -325,6 +353,8 @@ namespace Taskalu
             }
             else
             {
+                refreshTimer_stop();
+
                 listviewTopToolbar.Visibility = Visibility.Collapsed;
                 listviewBottomToolbar.Visibility = Visibility.Collapsed;
                 listview1.Visibility = Visibility.Collapsed;
@@ -358,6 +388,7 @@ namespace Taskalu
 
             // Configure the dialog box
             dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             dlg.dueDateString = ep_duedate.Text;
 
@@ -542,6 +573,31 @@ namespace Taskalu
             dTimer.Stop();
         }
 
+
+        private static DispatcherTimer rTimer { get; set; }
+        /// <summary>
+        /// start the DispatcherTimer, for refresh
+        /// </summary>
+        /// <param name="tlist_id">tasklist id</param>
+        public void refreshTimer_start()
+        {
+            rTimer = new DispatcherTimer();
+            rTimer.Tick += new EventHandler(refreshTimer_Tick);
+            rTimer.Interval = new TimeSpan(0, 0, 10);
+            rTimer.Start();
+        }
+
+        private void refreshTimer_Tick(object sender, EventArgs e)
+        {
+            System.ComponentModel.ICollectionView view = CollectionViewSource.GetDefaultView(listview1.ItemsSource);
+            view.Refresh();
+        }
+
+        public void refreshTimer_stop()
+        {
+            rTimer.Stop();
+        }
+
         // ///////////////////////////////////////////////////////////////////////////
         //
         // Memo
@@ -595,7 +651,7 @@ namespace Taskalu
 
         private void TaskMemoMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectTableTaskTime(epId))
+            if (SQLiteClass.ExecuteMoreSelectTableTaskMemo(epId))
             {
                 TaskMemoMoreButton.Visibility = Visibility.Visible;
             }

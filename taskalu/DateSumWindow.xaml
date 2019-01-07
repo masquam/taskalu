@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:DateSumViewModel}}"
-        Title="Date Summary - taskaru" Height="570" Width="600" MinWidth="600">
+        Title="Date Summary - taskaru" Height="602" Width="600" MinWidth="600">
     <Grid>
         <DockPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
@@ -23,10 +23,13 @@
                 </Menu>
                 <Button x:Name="DateSumCopyButton" Content="Copy" Click="DateSumCopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
-            <StackPanel x:Name="DateSumTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
-                <Label Content="date"></Label>
+            <StackPanel x:Name="DateSumTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Vertical" Height="58">
+                <Label Content="Date Summary" FontSize="16" Height="32"></Label>
+                <StackPanel Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
+                    <Label Content="date"></Label>
                 <TextBox x:Name="textboxDateSum" Width="120" Height="23" Margin="0,2,0,0" Padding="0,2,0,0" IsReadOnly="True"></TextBox>
                 <Button x:Name="buttonDateSumChange" Content="..." Click="buttonDateSumChange_Click" Width="32" Height="23" Margin="0,2,0,0" ></Button>
+                </StackPanel>
             </StackPanel>
             <StackPanel x:Name="DateSumBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
                 <Grid HorizontalAlignment="Stretch">

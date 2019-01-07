@@ -783,19 +783,19 @@ namespace Taskalu
             string sql = selectTaskMemoSql;
             sql += " ORDER BY date DESC"
                 + " LIMIT " + (SQLiteClass.TaskMemoMoreSize + 1).ToString();
-            return SQLiteClass.ExecuteSelectTableTaskTime(TaskMemoViewModel.tmv, sql, id);
+            return SQLiteClass.ExecuteSelectTableTaskMemo(TaskMemoViewModel.tmv, sql, id);
         }
 
-        public static Boolean ExecuteMoreSelectTableTaskTime(Int64 id)
+        public static Boolean ExecuteMoreSelectTableTaskMemo(Int64 id)
         {
             string sql = selectTaskMemoSql;
             sql += " ORDER BY date DESC"
                 + " LIMIT " + (SQLiteClass.TaskMemoMoreSize + 1).ToString()
                 + " OFFSET " + SQLiteClass.TaskMemoMoreCount.ToString();
-            return SQLiteClass.ExecuteSelectTableTaskTime(TaskMemoViewModel.tmv, sql, id);
+            return SQLiteClass.ExecuteSelectTableTaskMemo(TaskMemoViewModel.tmv, sql, id);
         }
 
-        public static Boolean ExecuteSelectTableTaskTime(TaskMemoViewModel tmv, string sql, Int64 id)
+        public static Boolean ExecuteSelectTableTaskMemo(TaskMemoViewModel tmv, string sql, Int64 id)
         {
             // return value true: More button visibie
             Boolean ret = false;
@@ -813,7 +813,7 @@ namespace Taskalu
                 while (sdr.Read() == true)
                 {
                     resultCount++;
-                    if (resultCount <= DateSumMoreSize)
+                    if (resultCount <= TaskMemoMoreSize)
                     {
                         ListTaskMemo ltm = new ListTaskMemo();
 
