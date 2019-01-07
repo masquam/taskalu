@@ -231,6 +231,7 @@
                     </ListView.View>
                 </ListView>
                 <Button Grid.Row="6" Grid.Column="4" Visibility="Collapsed" x:Name="TaskMemoMoreButton" Content="More" Click="TaskMemoMoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
+                <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></StackPanel>
                 <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="Open work folder" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
                 <Button Grid.Row="7" Grid.Column="4" Name="ep_save" Content="Save" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
                 <Button Grid.Row="7" Grid.Column="6" Name="ep_close" Content="Cancel" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />

@@ -5,65 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="New Task - taskaru" Height="360" Width="600">
+        Title="New Task - taskaru" Height="380" Width="600">
     <Grid FocusManager.FocusedElement="{Binding ElementName=NewTitleBox}">
-        <Label Content="Title" HorizontalAlignment="Left" Height="27" Margin="39,23,0,0" Width="79" VerticalAlignment="Top"/>
-        <TextBox Name="NewTitleBox" HorizontalAlignment="Left" Height="27" Margin="123,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
-        <Label Content="Description" HorizontalAlignment="Left" Height="27" Margin="39,64,0,0" Width="79" VerticalAlignment="Top"/>
-        <TextBox Name="NewDesriptioncBox" HorizontalAlignment="Left" Height="94" Margin="123,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" AcceptsReturn="True"/>
-        <Button Name="NewWindowOk" Content="OK" HorizontalAlignment="Left" Margin="283,272,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click" />
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="427,272,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True"/>
-        <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="39,186,0,0" Width="79" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="123,186,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="238,186,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
-            <ComboBoxItem Content="00"/>
-            <ComboBoxItem Content="01"/>
-            <ComboBoxItem Content="02"/>
-            <ComboBoxItem Content="03"/>
-            <ComboBoxItem Content="04"/>
-            <ComboBoxItem Content="05"/>
-            <ComboBoxItem Content="06"/>
-            <ComboBoxItem Content="07"/>
-            <ComboBoxItem Content="08"/>
-            <ComboBoxItem Content="09"/>
-            <ComboBoxItem Content="10"/>
-            <ComboBoxItem Content="11"/>
-            <ComboBoxItem Content="12"/>
-            <ComboBoxItem Content="13"/>
-            <ComboBoxItem Content="14"/>
-            <ComboBoxItem Content="15"/>
-            <ComboBoxItem Content="16"/>
-            <ComboBoxItem Content="17"/>
-            <ComboBoxItem Content="18"/>
-            <ComboBoxItem Content="19"/>
-            <ComboBoxItem Content="20"/>
-            <ComboBoxItem Content="21"/>
-            <ComboBoxItem Content="22"/>
-            <ComboBoxItem Content="23"/>
-        </ComboBox>
-        <ComboBox x:Name="minuteBox" HorizontalAlignment="Left" Margin="324,186,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
-            <ComboBoxItem Content="00"/>
-            <ComboBoxItem Content="05"/>
-            <ComboBoxItem Content="10"/>
-            <ComboBoxItem Content="15"/>
-            <ComboBoxItem Content="20"/>
-            <ComboBoxItem Content="25"/>
-            <ComboBoxItem Content="30"/>
-            <ComboBoxItem Content="35"/>
-            <ComboBoxItem Content="40"/>
-            <ComboBoxItem Content="45"/>
-            <ComboBoxItem Content="50"/>
-            <ComboBoxItem Content="55"/>
-        </ComboBox>
-        <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="300,183,0,0" Width="79" VerticalAlignment="Top"/>
-        <Label Content="Priority" HorizontalAlignment="Left" Height="27" Margin="39,231,0,0" Width="79" VerticalAlignment="Top"/>
-        <ComboBox x:Name="priorityBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="123,234,0,0" VerticalAlignment="Top" Width="92" Foreground="#FF9B9B00">
-            <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
-            <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;"/>
-            <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;"/>
-            <ComboBoxItem Content="&#x272e;&#x272e;"/>
-            <ComboBoxItem Content="&#x272e;"/>
-            <ComboBoxItem Content=""/>
-        </ComboBox>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <Label Content="New Task" FontSize="16"></Label>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Height="40" Orientation="Horizontal" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <Button Name="NewWindowOk" Content="OK" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="32" Margin="300,4,0,0" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click" />
+                <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="32" Margin="32,4,0,0" RenderTransformOrigin="1.259,3.535" IsCancel="True"/>
+            </StackPanel>
+            <Grid>
+                <Label Content="Title" HorizontalAlignment="Left" Height="27" Margin="39,23,0,0" Width="79" VerticalAlignment="Top"/>
+                <TextBox Name="NewTitleBox" HorizontalAlignment="Left" Height="27" Margin="123,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+                <Label Content="Description" HorizontalAlignment="Left" Height="27" Margin="39,64,0,0" Width="79" VerticalAlignment="Top"/>
+                <TextBox Name="NewDesriptioncBox" HorizontalAlignment="Left" Height="94" Margin="123,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" AcceptsReturn="True"/>
+                <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="39,183,0,0" Width="79" VerticalAlignment="Top"/>
+                <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="123,183,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="237,183,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
+                    <ComboBoxItem Content="00"/>
+                    <ComboBoxItem Content="01"/>
+                    <ComboBoxItem Content="02"/>
+                    <ComboBoxItem Content="03"/>
+                    <ComboBoxItem Content="04"/>
+                    <ComboBoxItem Content="05"/>
+                    <ComboBoxItem Content="06"/>
+                    <ComboBoxItem Content="07"/>
+                    <ComboBoxItem Content="08"/>
+                    <ComboBoxItem Content="09"/>
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem Content="11"/>
+                    <ComboBoxItem Content="12"/>
+                    <ComboBoxItem Content="13"/>
+                    <ComboBoxItem Content="14"/>
+                    <ComboBoxItem Content="15"/>
+                    <ComboBoxItem Content="16"/>
+                    <ComboBoxItem Content="17"/>
+                    <ComboBoxItem Content="18"/>
+                    <ComboBoxItem Content="19"/>
+                    <ComboBoxItem Content="20"/>
+                    <ComboBoxItem Content="21"/>
+                    <ComboBoxItem Content="22"/>
+                    <ComboBoxItem Content="23"/>
+                </ComboBox>
+                <ComboBox x:Name="minuteBox" HorizontalAlignment="Left" Margin="324,183,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
+                    <ComboBoxItem Content="00"/>
+                    <ComboBoxItem Content="05"/>
+                    <ComboBoxItem Content="10"/>
+                    <ComboBoxItem Content="15"/>
+                    <ComboBoxItem Content="20"/>
+                    <ComboBoxItem Content="25"/>
+                    <ComboBoxItem Content="30"/>
+                    <ComboBoxItem Content="35"/>
+                    <ComboBoxItem Content="40"/>
+                    <ComboBoxItem Content="45"/>
+                    <ComboBoxItem Content="50"/>
+                    <ComboBoxItem Content="55"/>
+                </ComboBox>
+                <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="300,180,0,0" Width="19" VerticalAlignment="Top"/>
+                <Label Content="Priority" HorizontalAlignment="Left" Height="27" Margin="39,220,0,0" Width="79" VerticalAlignment="Top"/>
+                <ComboBox x:Name="priorityBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="123,222,0,0" VerticalAlignment="Top" Width="92" Foreground="#FF9B9B00">
+                    <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
+                    <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;"/>
+                    <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;"/>
+                    <ComboBoxItem Content="&#x272e;&#x272e;"/>
+                    <ComboBoxItem Content="&#x272e;"/>
+                    <ComboBoxItem Content=""/>
+                </ComboBox>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
