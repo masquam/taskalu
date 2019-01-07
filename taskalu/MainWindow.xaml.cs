@@ -62,6 +62,7 @@ namespace Taskalu
 
             // Configure the dialog box
             dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             // Open the dialog box modally 
             if (dlg.ShowDialog() == true)
@@ -100,17 +101,7 @@ namespace Taskalu
 
         void OpenDateSumWindow()
         {
-            // Instantiate the dialog box
-            DateSumWindow dlg = new DateSumWindow();
-
-            // Configure the dialog box
-            dlg.Owner = this;
-
-            // Open the dialog box modally 
-            if (dlg.ShowDialog() == true)
-            {
-                // window is closed
-            }
+            OpenDatesWindow(new DateSumWindow());
         }
 
         /// <summary>
@@ -125,16 +116,37 @@ namespace Taskalu
 
         void OpenDateDetailsWindow()
         {
-            // Instantiate the dialog box
-            DateDetailsWindow dlg = new DateDetailsWindow();
+            OpenDatesWindow(new DateDetailsWindow());
+
+        }
+
+        void OpenDatesWindow(Window dlg)
+        {
+            bool timerOnOff = false;
+            if (editpanel.Visibility == Visibility.Visible)
+            {
+                editTimer_stop();
+
+                // TaskTimeInserted is false then INSERT
+                // else UPDATE the tasktime table
+                TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+
+                timerOnOff = true;
+            }
 
             // Configure the dialog box
             dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             // Open the dialog box modally 
             if (dlg.ShowDialog() == true)
             {
                 // window is closed
+            }
+
+            if (timerOnOff)
+            {
+                editTimer_start(epId);
             }
         }
 
