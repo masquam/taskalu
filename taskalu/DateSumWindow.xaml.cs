@@ -38,10 +38,11 @@ namespace Taskalu
             if (SQLiteClass.ExecuteFirstSelectTableTaskTime(dt))
             {
                 DateSumMoreButton.Visibility = Visibility.Visible;
-            }
+                textDateSumStatusBar.Content = "";            }
             else
             {
                 DateSumMoreButton.Visibility = Visibility.Collapsed;
+                textDateSumStatusBar.Content = "sum: " + SQLiteClass.SumTimeSpanDateSum.ToString(@"hh\:mm\:ss");
             }
         }
 
@@ -79,10 +80,12 @@ namespace Taskalu
             if (SQLiteClass.ExecuteMoreSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text)))
             {
                 DateSumMoreButton.Visibility = Visibility.Visible;
+                textDateSumStatusBar.Content = "";
             }
             else
             {
                 DateSumMoreButton.Visibility = Visibility.Collapsed;
+                textDateSumStatusBar.Content = "sum: " + SQLiteClass.SumTimeSpanDateSum.ToString(@"hh\:mm\:ss");
             }
         }
 
@@ -126,7 +129,7 @@ namespace Taskalu
 
         private void DateSumCopyButton_Click(object sender, RoutedEventArgs e)
         {
-            ClipBrd.CopyDsvToClipBoard();
+            ClipBrd.CopyDsvToClipBoard(SQLiteClass.SumTimeSpanDateSum);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

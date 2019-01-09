@@ -36,5 +36,10 @@ namespace Taskalu
                 mutex.Close();
             }
         }
+
+        private void App_SessionEnding(object sender, SessionEndingCancelEventArgs e)
+        {
+            SQLiteClass.InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
+        }
     }
 }

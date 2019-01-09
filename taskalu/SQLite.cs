@@ -49,7 +49,11 @@ namespace Taskalu
         public static int TaskMemoMoreCount { get; set; }
         public static int TaskMemoMoreSize = 10;
 
-
+        // for TasskTime Timer
+        public static DateTime editTimerStartDateTime { get; set; }
+        public static Int64 tasklist_id { get; set; }
+        public static Boolean TaskTimeInserted { get; set; } = false;
+                     
         /// <summary>
         /// "touch" database - directory initialize, create table, index
         /// </summary>
@@ -590,6 +594,7 @@ namespace Taskalu
         // DateSum window
 
         public static string selectTaskTimeSql = "SELECT t.tasklist_id, l.name name, SUM(t.duration) duration FROM tasktime t, tasklist l WHERE t.tasklist_id = l.id AND t.date = @date GROUP BY t.tasklist_id";
+        public static TimeSpan SumTimeSpanDateSum = new TimeSpan(0, 0, 0);
 
         public static Boolean ExecuteFirstSelectTableTaskTime(DateTime dt)
         {
@@ -636,6 +641,7 @@ namespace Taskalu
                         //lds.Duration = ts.ToString(@"h\h\o\u\r\ m\m\i\n\u\t\e\s");
                         lds.Duration = ts.ToString(@"hh\:mm\:ss");
                         dsv.Entries.Add(lds);
+                        SumTimeSpanDateSum += ts;
                     }
                     else
                     {

@@ -23,7 +23,7 @@ namespace Taskalu
             }
         }
 
-        public static void CopyDsvToClipBoard()
+        public static void CopyDsvToClipBoard(TimeSpan sumTS)
         {
             string str = "";
 
@@ -33,6 +33,7 @@ namespace Taskalu
             }
             if (!string.IsNullOrEmpty(str))
             {
+                str += "sum:" + "\t" + sumTS.ToString(@"hh\:mm\:ss");
                 Clipboard.SetText(str);
             }
         }

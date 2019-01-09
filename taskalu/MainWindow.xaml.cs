@@ -54,7 +54,7 @@ namespace Taskalu
 
                         // TaskTimeInserted is false then INSERT
                         // else UPDATE the tasktime table
-                        TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+                        SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
                     }
                     break;
                 case Microsoft.Win32.PowerModes.Resume:
@@ -157,7 +157,7 @@ namespace Taskalu
 
                 // TaskTimeInserted is false then INSERT
                 // else UPDATE the tasktime table
-                TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+                SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
 
                 timerOnOff = true;
             }
@@ -423,7 +423,7 @@ namespace Taskalu
 
             // TaskTimeInserted is false then INSERT
             // else UPDATE the tasktime table
-            TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+            SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
 
             ListViewFile lbf = new ListViewFile();
             lbf.Id = epId;
@@ -458,7 +458,7 @@ namespace Taskalu
 
             // TaskTimeInserted is false then INSERT
             // else UPDATE the tasktime table
-            TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+            SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
 
             ep_CloseWindow();
 
@@ -497,11 +497,11 @@ namespace Taskalu
         // DispacherTimer
 
         private static DispatcherTimer dTimer { get; set; }
-        private static DateTime editTimerStartDateTime { get; set; }
+        //private static DateTime editTimerStartDateTime { get; set; }
         private static DateTime editTimerStartDateTimeForLabel { get; set; }
         private static TimeSpan editTimerSpan { get; set; }
-        private static Int64 tasklist_id { get; set; }
-        private static Boolean TaskTimeInserted { get; set; } = false;
+        //private static Int64 tasklist_id { get; set; }
+        //private static Boolean TaskTimeInserted { get; set; } = false;
 
         /// <summary>
         /// start the DispatcherTimer, TimeSpan initialize
@@ -515,16 +515,16 @@ namespace Taskalu
             dTimer.Start();
 
             // TimeSpan init
-            editTimerStartDateTime = DateTime.UtcNow;
+            SQLiteClass.editTimerStartDateTime = DateTime.UtcNow;
 
             // for label(summary)
-            editTimerStartDateTimeForLabel = editTimerStartDateTime;
+            editTimerStartDateTimeForLabel = SQLiteClass.editTimerStartDateTime;
             editTimerSpan = SQLiteClass.ExecuteSumTaskTime(tlist_id);
             updateEditTimerLabel(editTimerSpan);
 
             // for tasktime
-            tasklist_id = tlist_id;
-            TaskTimeInserted = false;
+            SQLiteClass.tasklist_id = tlist_id;
+            SQLiteClass.TaskTimeInserted = false;
         }
 
         /// <summary>
@@ -542,7 +542,7 @@ namespace Taskalu
             // TaskTimeInserted is false then INSERT
             // else UPDATE the tasktime table
             // use for WHERE tasklist_id and editTimerStartDateTime
-            TaskTimeInserted = InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+            SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
 
             // Forcing the CommandManager to raise the RequerySuggested event
             System.Windows.Input.CommandManager.InvalidateRequerySuggested();
