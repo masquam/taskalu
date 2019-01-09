@@ -5,53 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="Due Date - taskalu" Height="200" Width="480" Loaded="DueDateWindow_Loaded">
+        Title="taskalu" Height="210" Width="480" Loaded="DueDateWindow_Loaded">
     <Grid>
-        <Button x:Name="DueDateOk" Content="OK" HorizontalAlignment="Left" Margin="115,101,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click" />
-        <Button x:Name="DueDateCancel" Content="Cancel" HorizontalAlignment="Left" Margin="300,101,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
-        <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="31,45,0,0" Width="79" VerticalAlignment="Top"/>
-        <DatePicker x:Name="DueDateBox" HorizontalAlignment="Left" Margin="115,45,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="DueDateHourBox" HorizontalAlignment="Left" Margin="230,45,0,0" VerticalAlignment="Top" Width="64" IsReadOnly="True">
-            <ComboBoxItem Content="00"/>
-            <ComboBoxItem Content="01"/>
-            <ComboBoxItem Content="02"/>
-            <ComboBoxItem Content="03"/>
-            <ComboBoxItem Content="04"/>
-            <ComboBoxItem Content="05"/>
-            <ComboBoxItem Content="06"/>
-            <ComboBoxItem Content="07"/>
-            <ComboBoxItem Content="08"/>
-            <ComboBoxItem Content="09"/>
-            <ComboBoxItem Content="10"/>
-            <ComboBoxItem Content="11"/>
-            <ComboBoxItem Content="12"/>
-            <ComboBoxItem Content="13"/>
-            <ComboBoxItem Content="14"/>
-            <ComboBoxItem Content="15"/>
-            <ComboBoxItem Content="16"/>
-            <ComboBoxItem Content="17"/>
-            <ComboBoxItem Content="18"/>
-            <ComboBoxItem Content="19"/>
-            <ComboBoxItem Content="20"/>
-            <ComboBoxItem Content="21"/>
-            <ComboBoxItem Content="22"/>
-            <ComboBoxItem Content="23"/>
-        </ComboBox>
-        <ComboBox x:Name="DueDateMinuteBox" HorizontalAlignment="Left" Margin="332,45,0,0" VerticalAlignment="Top" Width="64" IsReadOnly="True">
-            <ComboBoxItem Content="00"/>
-            <ComboBoxItem Content="05"/>
-            <ComboBoxItem Content="10"/>
-            <ComboBoxItem Content="15"/>
-            <ComboBoxItem Content="20"/>
-            <ComboBoxItem Content="25"/>
-            <ComboBoxItem Content="30"/>
-            <ComboBoxItem Content="35"/>
-            <ComboBoxItem Content="40"/>
-            <ComboBoxItem Content="45"/>
-            <ComboBoxItem Content="50"/>
-            <ComboBoxItem Content="55"/>
-        </ComboBox>
-        <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="308,42,0,0" Width="20" VerticalAlignment="Top"/>
-
+        <DockPanel>
+            <Label DockPanel.Dock="Top" Content="Select the Date" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
+            <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
+                <Button x:Name="DueDateOk" Content="OK" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click"  />
+                <Button x:Name="DueDateCancel" Content="Cancel" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+            </StackPanel>
+            <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="32,42,0,0" Width="79" VerticalAlignment="Top"/>
+            <DatePicker x:Name="DueDateBox" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="DueDateHourBox" HorizontalAlignment="Left" Margin="32,45,0,0" VerticalAlignment="Top" Width="64" IsReadOnly="True">
+                <ComboBoxItem Content="00"/>
+                <ComboBoxItem Content="01"/>
+                <ComboBoxItem Content="02"/>
+                <ComboBoxItem Content="03"/>
+                <ComboBoxItem Content="04"/>
+                <ComboBoxItem Content="05"/>
+                <ComboBoxItem Content="06"/>
+                <ComboBoxItem Content="07"/>
+                <ComboBoxItem Content="08"/>
+                <ComboBoxItem Content="09"/>
+                <ComboBoxItem Content="10"/>
+                <ComboBoxItem Content="11"/>
+                <ComboBoxItem Content="12"/>
+                <ComboBoxItem Content="13"/>
+                <ComboBoxItem Content="14"/>
+                <ComboBoxItem Content="15"/>
+                <ComboBoxItem Content="16"/>
+                <ComboBoxItem Content="17"/>
+                <ComboBoxItem Content="18"/>
+                <ComboBoxItem Content="19"/>
+                <ComboBoxItem Content="20"/>
+                <ComboBoxItem Content="21"/>
+                <ComboBoxItem Content="22"/>
+                <ComboBoxItem Content="23"/>
+            </ComboBox>
+            <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="10,42,0,0" Width="20" VerticalAlignment="Top"/>
+            <ComboBox x:Name="DueDateMinuteBox" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Width="64" IsReadOnly="True">
+                <ComboBoxItem Content="00"/>
+                <ComboBoxItem Content="05"/>
+                <ComboBoxItem Content="10"/>
+                <ComboBoxItem Content="15"/>
+                <ComboBoxItem Content="20"/>
+                <ComboBoxItem Content="25"/>
+                <ComboBoxItem Content="30"/>
+                <ComboBoxItem Content="35"/>
+                <ComboBoxItem Content="40"/>
+                <ComboBoxItem Content="45"/>
+                <ComboBoxItem Content="50"/>
+                <ComboBoxItem Content="55"/>
+            </ComboBox>
+        </DockPanel>
     </Grid>
 </Window>
