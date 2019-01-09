@@ -40,5 +40,15 @@ namespace Taskalu
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;
         }
+
+        private void TriangleButton_Up_Click(object sender, RoutedEventArgs e)
+        {
+            DateSumDateBox.SelectedDate -= new TimeSpan(1, 0, 0, 0);
+        }
+
+        private void TriangleButton_Down_Click(object sender, RoutedEventArgs e)
+        {
+            DateSumDateBox.SelectedDate += new TimeSpan(1, 0, 0, 0);
+        }
     }
 }
