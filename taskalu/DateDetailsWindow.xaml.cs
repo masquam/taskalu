@@ -25,7 +25,7 @@ namespace Taskalu
             this.DataContext = DateDetailsViewModel.dsv;
 
             DateTime dt = DateTime.Today;
-            textboxDateDetails.Text = dt.ToString("d", System.Globalization.CultureInfo.CurrentCulture);
+            textboxDateDetails.Text = DateCalc.DateToString(dt);
 
             ExecuteFirstSelectTableTaskTime(dt.Date);
         }
@@ -64,12 +64,7 @@ namespace Taskalu
             {
                 // due date window is closed
                 textboxDateDetails.Text = dlg.dateString;
-                ExecuteFirstSelectTableTaskTime(
-                    DateTime.ParseExact(
-                        textboxDateDetails.Text,
-                        "d",
-                        System.Globalization.CultureInfo.CurrentCulture)
-                        .Date);
+                ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateDetails.Text));
             }
         }
 
@@ -80,12 +75,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void DateDetailsMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            DateTime dt = DateTime.ParseExact(
-                textboxDateDetails.Text,
-                "d",
-                System.Globalization.CultureInfo.CurrentCulture).Date;
-
-            if (SQLiteClass.ExecuteMoreSelectDateDetailsTableTaskTime(dt))
+            if (SQLiteClass.ExecuteMoreSelectDateDetailsTableTaskTime(DateCalc.StringToDate(textboxDateDetails.Text)))
             {
                 DateDetailsMoreButton.Visibility = Visibility.Visible;
             }

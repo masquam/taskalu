@@ -76,12 +76,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void DateSumMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            DateTime dt = DateTime.ParseExact(
-                textboxDateSum.Text,
-                "d",
-                System.Globalization.CultureInfo.CurrentCulture).Date;
-
-            if (SQLiteClass.ExecuteMoreSelectTableTaskTime(dt))
+            if (SQLiteClass.ExecuteMoreSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text)))
             {
                 DateSumMoreButton.Visibility = Visibility.Visible;
             }
