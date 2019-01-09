@@ -58,6 +58,7 @@ namespace Taskalu
 
             // Configure the dialog box
             dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             dlg.dateString = textboxDateSum.Text;
 
