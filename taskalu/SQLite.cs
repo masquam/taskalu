@@ -634,7 +634,7 @@ namespace Taskalu
 
                         TimeSpan ts = new TimeSpan((Int64)sdr["duration"]);
                         //lds.Duration = ts.ToString(@"h\h\o\u\r\ m\m\i\n\u\t\e\s");
-                        lds.Duration = ts.ToString(@"hh\:mm");
+                        lds.Duration = ts.ToString(@"hh\:mm\:ss");
                         dsv.Entries.Add(lds);
                     }
                     else
@@ -717,7 +717,7 @@ namespace Taskalu
                         lds.EndDate = utc2.ToLocalTime().ToString("G", System.Globalization.CultureInfo.CurrentCulture);
 
                         TimeSpan ts = new TimeSpan((Int64)sdr["duration"]);
-                        lds.Duration = ts.ToString(@"hh\:mm");
+                        lds.Duration = ts.ToString(@"hh\:mm\:ss");
                         dsv.Entries.Add(lds);
                     }
                     else

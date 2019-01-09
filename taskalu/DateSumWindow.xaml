@@ -69,7 +69,7 @@
                             </GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Duration}" Width="256" >
-                            <GridViewColumnHeader Click="Duration_Click">Duration (hour:minutes)
+                            <GridViewColumnHeader Click="Duration_Click">Duration
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DurationCM">
                                         <MenuItem Header="Ascending" Click="DurationAsc_Click"/>

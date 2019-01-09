@@ -83,8 +83,8 @@ namespace Taskalu
         {
             DateTime dt = DateTime.ParseExact(
                 textboxDateSum.Text,
-                "yyyy-MM-dd",
-                System.Globalization.CultureInfo.InvariantCulture).Date;
+                "d",
+                System.Globalization.CultureInfo.CurrentCulture).Date;
 
             if (SQLiteClass.ExecuteMoreSelectTableTaskTime(dt))
             {
@@ -103,8 +103,8 @@ namespace Taskalu
             ExecuteFirstSelectTableTaskTime(
                 DateTime.ParseExact(
                     textboxDateSum.Text,
-                    "yyyy-MM-dd",
-                    System.Globalization.CultureInfo.InvariantCulture)
+                    "d",
+                    System.Globalization.CultureInfo.CurrentCulture)
                     .Date);
         }
         private void NameAsc_Click(object sender, RoutedEventArgs e)
@@ -114,8 +114,8 @@ namespace Taskalu
             ExecuteFirstSelectTableTaskTime(
                 DateTime.ParseExact(
                     textboxDateSum.Text,
-                    "yyyy-MM-dd",
-                    System.Globalization.CultureInfo.InvariantCulture)
+                    "d",
+                    System.Globalization.CultureInfo.CurrentCulture)
                     .Date);
         }
         private void NameDes_Click(object sender, RoutedEventArgs e)
@@ -125,8 +125,8 @@ namespace Taskalu
             ExecuteFirstSelectTableTaskTime(
                 DateTime.ParseExact(
                     textboxDateSum.Text,
-                    "yyyy-MM-dd",
-                    System.Globalization.CultureInfo.InvariantCulture)
+                    "d",
+                    System.Globalization.CultureInfo.CurrentCulture)
                     .Date);
         }
 
@@ -137,8 +137,8 @@ namespace Taskalu
             ExecuteFirstSelectTableTaskTime(
                 DateTime.ParseExact(
                     textboxDateSum.Text,
-                    "yyyy-MM-dd",
-                    System.Globalization.CultureInfo.InvariantCulture)
+                    "d",
+                    System.Globalization.CultureInfo.CurrentCulture)
                     .Date);
         }
         private void DurationAsc_Click(object sender, RoutedEventArgs e)
@@ -148,8 +148,8 @@ namespace Taskalu
             ExecuteFirstSelectTableTaskTime(
                 DateTime.ParseExact(
                     textboxDateSum.Text,
-                    "yyyy-MM-dd",
-                    System.Globalization.CultureInfo.InvariantCulture)
+                    "d",
+                    System.Globalization.CultureInfo.CurrentCulture)
                     .Date);
         }
         private void DurationDes_Click(object sender, RoutedEventArgs e)
@@ -159,8 +159,8 @@ namespace Taskalu
             ExecuteFirstSelectTableTaskTime(
                 DateTime.ParseExact(
                     textboxDateSum.Text,
-                    "yyyy-MM-dd",
-                    System.Globalization.CultureInfo.InvariantCulture)
+                    "d",
+                    System.Globalization.CultureInfo.CurrentCulture)
                     .Date);
         }
 
