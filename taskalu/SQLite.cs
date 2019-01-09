@@ -711,9 +711,9 @@ namespace Taskalu
 
                         lds.Name = (string)sdr["name"];
 
-                        DateTime utc = DateTime.ParseExact((string)sdr["start_date"], "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        DateTime utc = DateCalc.SQLiteStringToDateTime((string)sdr["start_date"]);
                         lds.StartDate = utc.ToLocalTime().ToString("G", System.Globalization.CultureInfo.CurrentCulture);
-                        DateTime utc2 = DateTime.ParseExact((string)sdr["end_date"], "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+                        DateTime utc2 = DateCalc.SQLiteStringToDateTime((string)sdr["end_date"]);
                         lds.EndDate = utc2.ToLocalTime().ToString("G", System.Globalization.CultureInfo.CurrentCulture);
 
                         TimeSpan ts = new TimeSpan((Int64)sdr["duration"]);
@@ -820,8 +820,8 @@ namespace Taskalu
                         ListTaskMemo ltm = new ListTaskMemo();
 
                         ltm.Memo = (string)sdr["memo"];
-                        DateTime utc = DateTime.ParseExact((string)sdr["date"], "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                        ltm.Date = utc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                        DateTime utc = DateCalc.SQLiteStringToDateTime((string)sdr["date"]);
+                        ltm.Date = utc.ToLocalTime().ToString("G", System.Globalization.CultureInfo.CurrentCulture);
                         tmv.Memos.Add(ltm);
                     }
                     else
