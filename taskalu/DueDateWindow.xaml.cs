@@ -55,6 +55,47 @@ namespace Taskalu
             DueDateCancel.IsEnabled = true;
         }
 
+        private void TriangleButton_Date_Up_Click(object sender, RoutedEventArgs e)
+        {
+            DueDateBox.SelectedDate -= new TimeSpan(1, 0, 0, 0);
+        }
 
+        private void TriangleButton_Date_Down_Click(object sender, RoutedEventArgs e)
+        {
+            DueDateBox.SelectedDate += new TimeSpan(1, 0, 0, 0);
+        }
+
+        private void TriangleButton_Hour_Up_Click(object sender, RoutedEventArgs e)
+        {
+            if (DueDateHourBox.SelectedIndex > 0)
+            {
+                DueDateHourBox.SelectedIndex--;
+            }
+        }
+
+        private void TriangleButton_Hour_Down_Click(object sender, RoutedEventArgs e)
+        {
+            if (DueDateHourBox.SelectedIndex < 23)
+            {
+                DueDateHourBox.SelectedIndex++;
+            }
+
+        }
+
+        private void TriangleButton_Minutes_Up_Click(object sender, RoutedEventArgs e)
+        {
+            if (DueDateMinuteBox.SelectedIndex > 0)
+            {
+                DueDateMinuteBox.SelectedIndex--;
+            }
+        }
+
+        private void TriangleButton_Minutes_Down_Click(object sender, RoutedEventArgs e)
+        {
+            if (DueDateMinuteBox.SelectedIndex < 11)
+            {
+                DueDateMinuteBox.SelectedIndex++;
+            }
+        }
     }
 }
