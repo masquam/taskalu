@@ -57,9 +57,9 @@
                         <ComboBoxItem Content="Deffered"/>
                     </ComboBox>
                     <Label Content="title"></Label>
-                    <TextBox x:Name="textboxTitle" TextChanged="textboxTitle_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0"></TextBox>
+                    <TextBox x:Name="textboxTitle" TextChanged="textboxTitle_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767"></TextBox>
                     <Label Content="Memo"></Label>
-                    <TextBox x:Name="textboxDescription" TextChanged="textboxDescription_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0"></TextBox>
+                    <TextBox x:Name="textboxDescription" TextChanged="textboxDescription_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767"></TextBox>
                     <Button x:Name="ButtonSearch" Content="Search" Click="ButtonSearch_Click" Width="96" Margin="0,2,0,0" ></Button>
                 </StackPanel>
             </StackPanel>
@@ -184,7 +184,7 @@
                     <Label Content="Task Detail" FontSize="16" Height="32"/>
                 </StackPanel>
                 <Label Grid.Row="1" Grid.Column="0" Content="title" Margin="0,4,0,4"/>
-                <TextBox Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,8,8,4" FontSize="20" Width="600" HorizontalAlignment="Left"/>
+                <TextBox Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,8,8,4" FontSize="20" Width="600" HorizontalAlignment="Left" MaxLength="32767"/>
                 <Label Grid.Row="2" Grid.Column="0" Content="priority"/>
                 <ComboBox Grid.Row="2" Grid.Column="1" x:Name="ep_priorityBox" SelectedIndex="5" Foreground="#FF9B9B00" Width="120" Height="23" HorizontalAlignment="Left" Margin="0,4,0,4">
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
@@ -210,8 +210,8 @@
                     <Label x:Name="editTimerLabel" Content=""/>
                 </StackPanel>
                 <Label Grid.Row="4" Grid.Column="0" Content="memo"/>
-                <TextBox Grid.ColumnSpan="5" Grid.Row="4" Grid.Column="1" x:Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8"/>
-                <Button  Grid.Row="4" Grid.Column="6" x:Name="SaveMemo" Content="Save" Width="96" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
+                <TextBox Grid.ColumnSpan="5" Grid.Row="4" Grid.Column="1" x:Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767"/>
+                <Button  Grid.Row="4" Grid.Column="6" x:Name="SaveMemo" Content="Add" Width="96" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 <ListView Grid.ColumnSpan="6" Grid.Row="5" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="600">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">

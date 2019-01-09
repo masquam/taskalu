@@ -25,7 +25,7 @@ namespace Taskalu
             this.DataContext = DateDetailsViewModel.dsv;
 
             DateTime dt = DateTime.Today;
-            textboxDateDetails.Text = dt.ToString("yyyy-MM-dd");
+            textboxDateDetails.Text = dt.ToString("d", System.Globalization.CultureInfo.CurrentCulture);
 
             ExecuteFirstSelectTableTaskTime(dt.Date);
         }
@@ -67,8 +67,8 @@ namespace Taskalu
                 ExecuteFirstSelectTableTaskTime(
                     DateTime.ParseExact(
                         textboxDateDetails.Text,
-                        "yyyy-MM-dd",
-                        System.Globalization.CultureInfo.InvariantCulture)
+                        "d",
+                        System.Globalization.CultureInfo.CurrentCulture)
                         .Date);
             }
         }
@@ -82,8 +82,8 @@ namespace Taskalu
         {
             DateTime dt = DateTime.ParseExact(
                 textboxDateDetails.Text,
-                "yyyy-MM-dd",
-                System.Globalization.CultureInfo.InvariantCulture).Date;
+                "d",
+                System.Globalization.CultureInfo.CurrentCulture).Date;
 
             if (SQLiteClass.ExecuteMoreSelectDateDetailsTableTaskTime(dt))
             {

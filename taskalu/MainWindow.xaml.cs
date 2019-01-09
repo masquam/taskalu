@@ -632,6 +632,7 @@ namespace Taskalu
         {
             SQLiteClass.ExecuteInsertTableTaskMemo(epId, ep_description.Text);
             SQLiteClass.UpdateTaskListDescription(epId, ep_description.Text);
+            ep_description.Text = "";
             ExecuteFirstSelectTableTaskMemo(epId);
         }
 

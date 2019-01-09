@@ -28,7 +28,12 @@ namespace Taskalu
 
         private void DueDateWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            DateTime due = DateTime.ParseExact(dueDateString, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
+            DateTime due;
+            DateTime.TryParseExact(
+                dueDateString, "G", 
+                System.Globalization.CultureInfo.CurrentCulture,
+                System.Globalization.DateTimeStyles.None,
+                out due);
             DueDateBox.SelectedDate = due;
             DueDateHourBox.SelectedIndex = Int32.Parse(due.ToString("HH"));
             DueDateMinuteBox.SelectedIndex = Int32.Parse(due.ToString("mm")) / 5;
@@ -41,7 +46,7 @@ namespace Taskalu
 
             DateTime due = (DateTime)DueDateBox.SelectedDate;
             DateTime dueDate = new DateTime(due.Year, due.Month, due.Day, DueDateHourBox.SelectedIndex, (DueDateMinuteBox.SelectedIndex * 5), 0);
-            dueDateString = dueDate.ToString("yyyy-MM-dd HH:mm:ss");
+            dueDateString = dueDate.ToString("G", System.Globalization.CultureInfo.CurrentCulture);
 
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;

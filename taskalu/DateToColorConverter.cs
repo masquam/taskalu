@@ -20,8 +20,8 @@ namespace Taskalu
 
             DateTime date;
             DateTime.TryParseExact(datestring,
-                "yyyy-MM-dd HH:mm:ss",
-                System.Globalization.CultureInfo.InvariantCulture,
+                "G",
+                System.Globalization.CultureInfo.CurrentCulture,
                 System.Globalization.DateTimeStyles.None,
                 out date);
 

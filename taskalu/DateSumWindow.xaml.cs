@@ -25,7 +25,7 @@ namespace Taskalu
             this.DataContext = DateSumViewModel.dsv;
 
             DateTime dt = DateTime.Today;
-            textboxDateSum.Text = dt.ToString("yyyy-MM-dd");
+            textboxDateSum.Text = dt.ToString("d", System.Globalization.CultureInfo.CurrentCulture);
 
             ExecuteFirstSelectTableTaskTime(dt.Date);
 
@@ -68,8 +68,8 @@ namespace Taskalu
                 ExecuteFirstSelectTableTaskTime(
                     DateTime.ParseExact(
                         textboxDateSum.Text,
-                        "yyyy-MM-dd", 
-                        System.Globalization.CultureInfo.InvariantCulture)
+                        "d", 
+                        System.Globalization.CultureInfo.CurrentCulture)
                         .Date);
             }
         }

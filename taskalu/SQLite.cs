@@ -322,10 +322,10 @@ namespace Taskalu
                         lvFile.Priority = (string)sdr["priority"];
 
                         DateTime utc = (DateTime)sdr["createdate"];
-                        lvFile.CreateDate = utc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                        lvFile.CreateDate = utc.ToLocalTime().ToString("G", System.Globalization.CultureInfo.CurrentCulture);
 
                         DateTime utc2 = (DateTime)sdr["duedate"];
-                        lvFile.DueDate = utc2.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                        lvFile.DueDate = utc2.ToLocalTime().ToString("G", System.Globalization.CultureInfo.CurrentCulture);
 
                         lvFile.Status = (string)sdr["status"];
                         lvFile.WorkHolder = (string)sdr["workholder"];
@@ -404,8 +404,13 @@ namespace Taskalu
 
         private static string getUTCString(string localTime)
         {
-            return DateTime.ParseExact(localTime, "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture)
-                .ToUniversalTime()
+            DateTime date;
+            DateTime.TryParseExact(
+                localTime, "G",
+                System.Globalization.CultureInfo.CurrentCulture,
+                System.Globalization.DateTimeStyles.None,
+                out date);
+            return date.ToUniversalTime()
                 .ToString("yyyy-MM-dd HH:mm:ss");
         }
 
@@ -706,15 +711,12 @@ namespace Taskalu
 
                         lds.Name = (string)sdr["name"];
 
-                        //DateTime utc = (DateTime)sdr["start_date"];
                         DateTime utc = DateTime.ParseExact((string)sdr["start_date"], "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                        lds.StartDate = utc.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
-                        //DateTime utc2 = (DateTime)sdr["end_date"];
+                        lds.StartDate = utc.ToLocalTime().ToString("G", System.Globalization.CultureInfo.CurrentCulture);
                         DateTime utc2 = DateTime.ParseExact((string)sdr["end_date"], "yyyy-MM-dd HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                        lds.EndDate = utc2.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+                        lds.EndDate = utc2.ToLocalTime().ToString("G", System.Globalization.CultureInfo.CurrentCulture);
 
                         TimeSpan ts = new TimeSpan((Int64)sdr["duration"]);
-                        //lds.Duration = ts.ToString(@"h\h\o\u\r\ m\m\i\n\u\t\e\s");
                         lds.Duration = ts.ToString(@"hh\:mm");
                         dsv.Entries.Add(lds);
                     }
