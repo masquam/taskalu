@@ -9,7 +9,9 @@
         Title="Date Details - taskaru" Height="570" Width="600" MinWidth="600">
     <Grid>
         <DockPanel>
-            <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
+            <StatusBar DockPanel.Dock="Bottom" Height="24" VerticalAlignment="Bottom">
+                <Label x:Name="textDateDetailsStatusBar" Height="24"></Label>
+            </StatusBar>
             <WrapPanel DockPanel.Dock="Top" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Height="32">
                 <Menu VerticalAlignment="Top">
                     <MenuItem Width="32" Height="32" Header=" _menu" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">

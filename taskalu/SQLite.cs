@@ -675,6 +675,7 @@ namespace Taskalu
         // DateDetails window
 
         public static string selectDateDetailsTaskTimeSql = "SELECT t.tasklist_id, l.name name, t.start_date start_date, t.end_date end_date, t.duration duration FROM tasktime t, tasklist l WHERE t.tasklist_id = l.id AND t.date = @date";
+        public static TimeSpan SumTimeSpanDateDetails = new TimeSpan(0, 0, 0);
 
         public static Boolean ExecuteFirstSelecttDateDetailsTableTaskTime(DateTime dt)
         {
@@ -725,6 +726,8 @@ namespace Taskalu
                         TimeSpan ts = new TimeSpan((Int64)sdr["duration"]);
                         lds.Duration = ts.ToString(@"hh\:mm\:ss");
                         dsv.Entries.Add(lds);
+
+                        SumTimeSpanDateDetails += ts;
                     }
                     else
                     {
