@@ -28,14 +28,14 @@ namespace Taskalu
 
         private void DateSumDateWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            DateTime due = DateTime.ParseExact(dateString, "d", System.Globalization.CultureInfo.CurrentCulture);
+            DateTime due = DateCalc.StringToDate(dateString);
             DateSumDateBox.SelectedDate = due;
         }
 
         private void ButtonDateSumDateWindowOk_Click(object sender, RoutedEventArgs e)
         {
             DateTime due = (DateTime)DateSumDateBox.SelectedDate;
-            dateString = due.Date.ToString("d", System.Globalization.CultureInfo.CurrentCulture);
+            dateString = DateCalc.DateToString(due);
 
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;
