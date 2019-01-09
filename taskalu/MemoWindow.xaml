@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="Memo - taskalu" Height="320" Width="500" Loaded="MemoWindow_Loaded"  >
+        Title="taskalu" Height="320" Width="500" Loaded="MemoWindow_Loaded"  >
     <Grid>
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="Memo" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
