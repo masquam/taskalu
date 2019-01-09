@@ -7,9 +7,13 @@
         mc:Ignorable="d"
         Title="Memo - taskalu" Height="320" Width="500" Loaded="MemoWindow_Loaded"  >
     <Grid>
-        <StackPanel>
-            <TextBox x:Name="DateTextBox"></TextBox>
-            <TextBox x:Name="MemoTextBox" Height="270" ScrollViewer.VerticalScrollBarVisibility="Auto"></TextBox>
-        </StackPanel>
+        <DockPanel>
+            <Label DockPanel.Dock="Top" Content="Memo" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
+            <TextBox DockPanel.Dock="Top" x:Name="DateTextBox" IsReadOnly="True" Margin="8,8,8,4"/>
+            <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch">
+                <Button x:Name="MemoOkButton" Content="Ok" IsCancel="True" HorizontalAlignment="Center" Margin="4" Width="96" Height="32"/>
+            </StackPanel>
+            <TextBox DockPanel.Dock="Left" x:Name="MemoTextBox" IsReadOnly="True" Margin="8,4,8,8" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        </DockPanel>
     </Grid>
 </Window>

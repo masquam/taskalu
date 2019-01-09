@@ -32,5 +32,10 @@ namespace Taskalu
             DateTextBox.Text = date;
             MemoTextBox.Text = memo;
         }
+
+        private void MemoOkButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
