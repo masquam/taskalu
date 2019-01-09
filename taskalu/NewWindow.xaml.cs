@@ -41,7 +41,7 @@ namespace Taskalu
             ListViewFile lvFile = new ListViewFile()
             {
                 Name = NewTitleBox.Text,
-                Description = NewDesriptioncBox.Text,
+                Description = "",
                 Priority = priorityBox.Text,
                 DueDate = TimeZoneInfo.ConvertTimeToUtc(dueDate).ToString("yyyy-MM-dd HH:mm:ss"),
                 Status = "Active",

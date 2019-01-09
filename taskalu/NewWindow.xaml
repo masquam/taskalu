@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="New Task - taskaru" Height="380" Width="600">
+        Title="New Task - taskaru" Height="300" Width="600">
     <Grid FocusManager.FocusedElement="{Binding ElementName=NewTitleBox}">
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
@@ -18,11 +18,9 @@
             <Grid>
                 <Label Content="Title" HorizontalAlignment="Left" Height="27" Margin="39,23,0,0" Width="79" VerticalAlignment="Top"/>
                 <TextBox Name="NewTitleBox" HorizontalAlignment="Left" Height="27" Margin="123,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
-                <Label Content="Description" HorizontalAlignment="Left" Height="27" Margin="39,64,0,0" Width="79" VerticalAlignment="Top"/>
-                <TextBox Name="NewDesriptioncBox" HorizontalAlignment="Left" Height="94" Margin="123,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" AcceptsReturn="True"/>
-                <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="39,183,0,0" Width="79" VerticalAlignment="Top"/>
-                <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="123,183,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="237,183,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
+                <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="39,76,0,0" Width="79" VerticalAlignment="Top"/>
+                <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="123,76,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="237,78,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
                     <ComboBoxItem Content="00"/>
                     <ComboBoxItem Content="01"/>
                     <ComboBoxItem Content="02"/>
@@ -48,7 +46,7 @@
                     <ComboBoxItem Content="22"/>
                     <ComboBoxItem Content="23"/>
                 </ComboBox>
-                <ComboBox x:Name="minuteBox" HorizontalAlignment="Left" Margin="324,183,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
+                <ComboBox x:Name="minuteBox" HorizontalAlignment="Left" Margin="325,78,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
                     <ComboBoxItem Content="00"/>
                     <ComboBoxItem Content="05"/>
                     <ComboBoxItem Content="10"/>
@@ -62,9 +60,9 @@
                     <ComboBoxItem Content="50"/>
                     <ComboBoxItem Content="55"/>
                 </ComboBox>
-                <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="300,180,0,0" Width="19" VerticalAlignment="Top"/>
-                <Label Content="Priority" HorizontalAlignment="Left" Height="27" Margin="39,220,0,0" Width="79" VerticalAlignment="Top"/>
-                <ComboBox x:Name="priorityBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="123,222,0,0" VerticalAlignment="Top" Width="92" Foreground="#FF9B9B00">
+                <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="301,76,0,0" Width="19" VerticalAlignment="Top"/>
+                <Label Content="Priority" HorizontalAlignment="Left" Height="27" Margin="39,120,0,0" Width="79" VerticalAlignment="Top"/>
+                <ComboBox x:Name="priorityBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="123,122,0,0" VerticalAlignment="Top" Width="92" Foreground="#FF9B9B00">
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;"/>
