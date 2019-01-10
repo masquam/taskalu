@@ -3,22 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="New Task - taskaru" Height="300" Width="600">
+        Title="taskaru" Height="300" Width="600">
     <Grid FocusManager.FocusedElement="{Binding ElementName=NewTitleBox}">
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-                <Label Content="New Task" FontSize="16"></Label>
+                <Label Content="{x:Static properties:Resources.Menu_NewTask}" FontSize="16"></Label>
             </StackPanel>
             <StackPanel DockPanel.Dock="Bottom" Height="40" Orientation="Horizontal" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-                <Button Name="NewWindowOk" Content="OK" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="32" Margin="300,4,0,0" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click" />
-                <Button Content="Cancel" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="32" Margin="32,4,0,0" RenderTransformOrigin="1.259,3.535" IsCancel="True"/>
+                <Button Name="NewWindowOk" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="32" Margin="300,4,0,0" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click" />
+                <Button Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="32" Margin="32,4,0,0" RenderTransformOrigin="1.259,3.535" IsCancel="True"/>
             </StackPanel>
             <Grid>
-                <Label Content="Title" HorizontalAlignment="Left" Height="27" Margin="39,23,0,0" Width="79" VerticalAlignment="Top"/>
+                <Label Content="{x:Static properties:Resources.MW_Title}" HorizontalAlignment="Left" Height="27" Margin="39,23,0,0" Width="79" VerticalAlignment="Top"/>
                 <TextBox Name="NewTitleBox" HorizontalAlignment="Left" Height="27" Margin="123,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" MaxLength="32767"/>
-                <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="39,76,0,0" Width="79" VerticalAlignment="Top"/>
+                <Label Content="{x:Static properties:Resources.MW_DueDate}" HorizontalAlignment="Left" Height="27" Margin="39,76,0,0" Width="79" VerticalAlignment="Top"/>
                 <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="123,76,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="237,78,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
                     <ComboBoxItem Content="00"/>
@@ -61,7 +62,7 @@
                     <ComboBoxItem Content="55"/>
                 </ComboBox>
                 <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="301,76,0,0" Width="19" VerticalAlignment="Top"/>
-                <Label Content="Priority" HorizontalAlignment="Left" Height="27" Margin="39,120,0,0" Width="79" VerticalAlignment="Top"/>
+                <Label Content="{x:Static properties:Resources.MW_Priority}" HorizontalAlignment="Left" Height="27" Margin="39,120,0,0" Width="79" VerticalAlignment="Top"/>
                 <ComboBox x:Name="priorityBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="123,122,0,0" VerticalAlignment="Top" Width="92" Foreground="#FF9B9B00">
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;"/>

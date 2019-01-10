@@ -284,5 +284,14 @@ namespace Taskalu.Properties {
                 return ResourceManager.GetString("MW_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ok に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NW_Ok {
+            get {
+                return ResourceManager.GetString("NW_Ok", resourceCulture);
+            }
+        }
     }
 }
