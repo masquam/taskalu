@@ -42,7 +42,7 @@ namespace Taskalu
             else
             {
                 DateDetailsMoreButton.Visibility = Visibility.Collapsed;
-                textDateDetailsStatusBar.Content = "sum: " + SQLiteClass.SumTimeSpanDateDetails.ToString(@"hh\:mm\:ss");
+                textDateDetailsStatusBar.Content = Properties.Resources.DD_Sum + SQLiteClass.SumTimeSpanDateDetails.ToString(@"hh\:mm\:ss");
             }
         }
 
@@ -86,7 +86,7 @@ namespace Taskalu
             else
             {
                 DateDetailsMoreButton.Visibility = Visibility.Collapsed;
-                textDateDetailsStatusBar.Content = "sum: " + SQLiteClass.SumTimeSpanDateDetails.ToString(@"hh\:mm\:ss");
+                textDateDetailsStatusBar.Content = Properties.Resources.DD_Sum + SQLiteClass.SumTimeSpanDateDetails.ToString(@"hh\:mm\:ss");
             }
         }
 

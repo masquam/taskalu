@@ -133,6 +133,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   sum:  に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DD_Sum {
+            get {
+                return ResourceManager.GetString("DD_Sum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   end date に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string DS_EndDate {

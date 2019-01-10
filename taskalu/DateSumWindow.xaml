@@ -65,8 +65,8 @@
                             <GridViewColumnHeader Click="Name_Click" Content="{x:Static properties:Resources.MW_Title}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="NameCM">
-                                        <MenuItem Header="Ascending" Click="NameAsc_Click"/>
-                                        <MenuItem Header="Descending" Click="NameDes_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="NameAsc_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="NameDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
@@ -75,8 +75,8 @@
                             <GridViewColumnHeader Click="Duration_Click" Content="{x:Static properties:Resources.MW_Tick}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DurationCM">
-                                        <MenuItem Header="Ascending" Click="DurationAsc_Click"/>
-                                        <MenuItem Header="Descending" Click="DurationDes_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="DurationAsc_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="DurationDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>

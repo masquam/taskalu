@@ -33,7 +33,7 @@ namespace Taskalu
             }
             if (!string.IsNullOrEmpty(str))
             {
-                str += "sum:" + "\t" + sumTS.ToString(@"hh\:mm\:ss");
+                str += Properties.Resources.DD_Sum + "\t" + sumTS.ToString(@"hh\:mm\:ss");
                 Clipboard.SetText(str);
             }
         }
@@ -48,7 +48,7 @@ namespace Taskalu
             }
             if (!string.IsNullOrEmpty(str))
             {
-                str += "sum:" + "\t\t\t" + sumTS.ToString(@"hh\:mm\:ss");
+                str += Properties.Resources.DD_Sum + "\t\t\t" + sumTS.ToString(@"hh\:mm\:ss");
                 Clipboard.SetText(str);
             }
         }

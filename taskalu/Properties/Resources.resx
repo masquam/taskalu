@@ -201,6 +201,9 @@
   <data name="DD_SelectDateTime" xml:space="preserve">
     <value>Select the Date/time</value>
   </data>
+  <data name="DD_Sum" xml:space="preserve">
+    <value>sum: </value>
+  </data>
   <data name="DS_EndDate" xml:space="preserve">
     <value>end date</value>
   </data>
