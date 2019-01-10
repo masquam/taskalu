@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}" 
@@ -33,34 +34,34 @@
                         <MenuItem.Icon>
                             <Image Source="menu.ico" Width="16" Height="16" Margin="4,0,0,0"/>
                         </MenuItem.Icon>
-                        <MenuItem Header="_New Task" Click="NewButton_Click" />
-                        <MenuItem Header="_Copy" Click="CopyButton_Click" />
-                        <MenuItem Header="_Date Summary" Click="DateSumButton_Click" />
-                        <MenuItem Header="_Date Details" Click="DateDetailsButton_Click" />
+                        <MenuItem Header="{x:Static properties:Resources.ContextMenu_NewTask}" Click="NewButton_Click" />
+                        <MenuItem Header="{x:Static properties:Resources.ContextMenu_Copy}" Click="CopyButton_Click" />
+                        <MenuItem Header="{x:Static properties:Resources.ContextMenu_DateSummary}" Click="DateSumButton_Click" />
+                        <MenuItem Header="{x:Static properties:Resources.ContextMenu_DateDetails}" Click="DateDetailsButton_Click" />
                         <Separator />
-                        <MenuItem Header="e_xit" Click="Exit_Click" />
+                        <MenuItem Header="{x:Static properties:Resources.ContextMenu_Exit}" Click="Exit_Click" />
                     </MenuItem>
                 </Menu>
-                <Button Name="NewButton" Content="New Task" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
-                <Button x:Name="CopyButton" Content="Copy" Click="CopyButton_Click" VerticalAlignment="Top"  Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" />
-                <Button Name="DateSumButton" Content="Date Summary" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
-                <Button Name="DateDetailButton" Content="Date Details" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateDetailsButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Button Name="NewButton" Content="{x:Static properties:Resources.Menu_NewTask}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="NewButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}"/>
+                <Button x:Name="CopyButton" Content="{x:Static properties:Resources.Menu_Copy}" Click="CopyButton_Click" VerticalAlignment="Top"  Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" />
+                <Button Name="DateSumButton" Content="{x:Static properties:Resources.Menu_DateSummary}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Button Name="DateDetailButton" Content="{x:Static properties:Resources.Menu_DateDetails}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateDetailsButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
             <StackPanel x:Name="listviewTopToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Vertical" Height="58">
-                <Label Content="Task Summary" FontSize="16" Height="32"></Label>
+                <Label Content="{x:Static properties:Resources.MW_TaskSummary}" FontSize="16" Height="32"></Label>
                 <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
-                    <Label Content="status"></Label>
+                    <Label Content="{x:Static properties:Resources.MW_Status}"></Label>
                     <ComboBox x:Name="statusBox" Width="120" IsReadOnly="True" SelectedIndex="0" DropDownClosed="statusBox_DropDownClosed" Margin="0,2,20,0">
                         <ComboBoxItem Content="Active"/>
                         <ComboBoxItem Content="Closed"/>
                         <ComboBoxItem Content="Deffered"/>
                     </ComboBox>
-                    <Label Content="title"></Label>
+                    <Label Content="{x:Static properties:Resources.MW_Title}"></Label>
                     <TextBox x:Name="textboxTitle" TextChanged="textboxTitle_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767"></TextBox>
-                    <Label Content="Memo"></Label>
+                    <Label Content="{x:Static properties:Resources.MW_Memo}"></Label>
                     <TextBox x:Name="textboxDescription" TextChanged="textboxDescription_TextChanged" Width="120" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767"></TextBox>
-                    <Button x:Name="ButtonSearch" Content="Search" Click="ButtonSearch_Click" Width="96" Margin="0,2,0,0" ></Button>
+                    <Button x:Name="ButtonSearch" Content="{x:Static properties:Resources.MW_Search}" Click="ButtonSearch_Click" Width="96" Margin="0,2,0,0" ></Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="listviewBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch" Orientation="Horizontal">
@@ -74,7 +75,7 @@
                         
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch">
-                        <Button Visibility="Collapsed" x:Name="MoreButton" Content="More" Click="MoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32" />
+                        <Button Visibility="Collapsed" x:Name="MoreButton" Content="{x:Static properties:Resources.MW_More}" Click="MoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32" />
                     </StackPanel>
                     <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
                     </StackPanel>
@@ -95,7 +96,7 @@
                                     <TextBlock Text="{Binding Priority}" Foreground="#FFC8C800" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
-                            <GridViewColumnHeader Click="Priority_Click">Priority
+                            <GridViewColumnHeader Click="Priority_Click" Content="{x:Static properties:Resources.MW_Priority}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="PriorityCM">
                                         <MenuItem Header="Ascending" Click="PriorityAsc_Click"/>
@@ -105,7 +106,7 @@
                             </GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="256">
-                            <GridViewColumnHeader Click="Name_Click">Title
+                            <GridViewColumnHeader Click="Name_Click" Content="{x:Static properties:Resources.MW_Title}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="NameCM">
                                         <MenuItem Header="Ascending" Click="NameAsc_Click"/>
@@ -115,7 +116,7 @@
                             </GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="256" >
-                            <GridViewColumnHeader Click="Description_Click">Memo
+                            <GridViewColumnHeader Click="Description_Click" Content="{x:Static properties:Resources.MW_Memo}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DescriptionCM">
                                         <MenuItem Header="Ascending" Click="DescriptionAsc_Click"/>
@@ -125,7 +126,7 @@
                             </GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn Width="128">
-                            <GridViewColumnHeader Click="DueDate_Click">Due Date
+                            <GridViewColumnHeader Click="DueDate_Click" Content="{x:Static properties:Resources.MW_DueDate}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DueDateCM">
                                         <MenuItem Header="Ascending" Click="DueDateAsc_Click"/>

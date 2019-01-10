@@ -22,7 +22,7 @@ namespace Taskalu.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Taskalu.Properties {
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Taskalu.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,165 @@ namespace Taskalu.Properties {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   _Copy に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ContextMenu_Copy {
+            get {
+                return ResourceManager.GetString("ContextMenu_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Date _Details に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ContextMenu_DateDetails {
+            get {
+                return ResourceManager.GetString("ContextMenu_DateDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Date _Summary に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ContextMenu_DateSummary {
+            get {
+                return ResourceManager.GetString("ContextMenu_DateSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   E_xit に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ContextMenu_Exit {
+            get {
+                return ResourceManager.GetString("ContextMenu_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   _New Task に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ContextMenu_NewTask {
+            get {
+                return ResourceManager.GetString("ContextMenu_NewTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Copy に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Menu_Copy {
+            get {
+                return ResourceManager.GetString("Menu_Copy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Date Details に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Menu_DateDetails {
+            get {
+                return ResourceManager.GetString("Menu_DateDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Date Summary に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Menu_DateSummary {
+            get {
+                return ResourceManager.GetString("Menu_DateSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   New Task に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string Menu_NewTask {
+            get {
+                return ResourceManager.GetString("Menu_NewTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   due date に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_DueDate {
+            get {
+                return ResourceManager.GetString("MW_DueDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   memo に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Memo {
+            get {
+                return ResourceManager.GetString("MW_Memo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   More に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_More {
+            get {
+                return ResourceManager.GetString("MW_More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   priority に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Priority {
+            get {
+                return ResourceManager.GetString("MW_Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Search に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Search {
+            get {
+                return ResourceManager.GetString("MW_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   status に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Status {
+            get {
+                return ResourceManager.GetString("MW_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Task Summary に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_TaskSummary {
+            get {
+                return ResourceManager.GetString("MW_TaskSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   title に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Title {
+            get {
+                return ResourceManager.GetString("MW_Title", resourceCulture);
             }
         }
     }

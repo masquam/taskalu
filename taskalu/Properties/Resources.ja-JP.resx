@@ -118,54 +118,54 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ContextMenu_Copy" xml:space="preserve">
-    <value>_Copy</value>
+    <value>コピー(_C)</value>
   </data>
   <data name="ContextMenu_DateDetails" xml:space="preserve">
-    <value>Date _Details</value>
+    <value>日次詳細(_D)</value>
   </data>
   <data name="ContextMenu_DateSummary" xml:space="preserve">
-    <value>Date _Summary</value>
+    <value>日次集計(_S)</value>
   </data>
   <data name="ContextMenu_Exit" xml:space="preserve">
-    <value>E_xit</value>
+    <value>終了(_X)</value>
   </data>
   <data name="ContextMenu_NewTask" xml:space="preserve">
-    <value>_New Task</value>
+    <value>新規タスク(_N)</value>
   </data>
   <data name="Menu_Copy" xml:space="preserve">
-    <value>Copy</value>
+    <value>コピー</value>
   </data>
   <data name="Menu_DateDetails" xml:space="preserve">
-    <value>Date Details</value>
+    <value>日次詳細</value>
   </data>
   <data name="Menu_DateSummary" xml:space="preserve">
-    <value>Date Summary</value>
+    <value>日次集計</value>
   </data>
   <data name="Menu_NewTask" xml:space="preserve">
-    <value>New Task</value>
+    <value>新規タスク</value>
   </data>
   <data name="MW_DueDate" xml:space="preserve">
-    <value>due date</value>
+    <value>期限</value>
   </data>
   <data name="MW_Memo" xml:space="preserve">
-    <value>memo</value>
+    <value>メモ</value>
   </data>
   <data name="MW_More" xml:space="preserve">
-    <value>More</value>
+    <value>さらに表示</value>
   </data>
   <data name="MW_Priority" xml:space="preserve">
-    <value>priority</value>
+    <value>優先度</value>
   </data>
   <data name="MW_Search" xml:space="preserve">
-    <value>Search</value>
+    <value>検索</value>
   </data>
   <data name="MW_Status" xml:space="preserve">
-    <value>status</value>
+    <value>ステータス</value>
   </data>
   <data name="MW_TaskSummary" xml:space="preserve">
-    <value>Task Summary</value>
+    <value>タスク一覧</value>
   </data>
   <data name="MW_Title" xml:space="preserve">
-    <value>title</value>
+    <value>タイトル</value>
   </data>
 </root>
