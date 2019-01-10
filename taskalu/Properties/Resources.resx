@@ -192,8 +192,14 @@
   <data name="MW_Title" xml:space="preserve">
     <value>title</value>
   </data>
+  <data name="DD_Date" xml:space="preserve">
+    <value>date</value>
+  </data>
   <data name="DD_SelectDate" xml:space="preserve">
     <value>Select the Date</value>
+  </data>
+  <data name="DD_SelectDateTime" xml:space="preserve">
+    <value>Select the Date/time</value>
   </data>
   <data name="NW_Ok" xml:space="preserve">
     <value>Ok</value>

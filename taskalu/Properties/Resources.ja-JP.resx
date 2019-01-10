@@ -192,7 +192,13 @@
   <data name="MW_Title" xml:space="preserve">
     <value>タイトル</value>
   </data>
+  <data name="DD_Date" xml:space="preserve">
+    <value>日付</value>
+  </data>
   <data name="DD_SelectDate" xml:space="preserve">
+    <value>日付を選択</value>
+  </data>
+  <data name="DD_SelectDateTime" xml:space="preserve">
     <value>日時を選択</value>
   </data>
   <data name="NW_Ok" xml:space="preserve">

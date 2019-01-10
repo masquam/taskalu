@@ -12,7 +12,7 @@
     </Window.Resources>
     <Grid>
         <DockPanel>
-            <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.DD_SelectDate}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
+            <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.DD_SelectDateTime}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
                 <Button x:Name="DueDateOk" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click"  />
                 <Button x:Name="DueDateCancel" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />

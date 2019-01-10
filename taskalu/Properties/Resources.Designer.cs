@@ -106,11 +106,29 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   date に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DD_Date {
+            get {
+                return ResourceManager.GetString("DD_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Select the Date に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string DD_SelectDate {
             get {
                 return ResourceManager.GetString("DD_SelectDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Select the Date/time に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DD_SelectDateTime {
+            get {
+                return ResourceManager.GetString("DD_SelectDateTime", resourceCulture);
             }
         }
         
