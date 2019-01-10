@@ -101,8 +101,8 @@
                             <GridViewColumnHeader Click="Priority_Click" Content="{x:Static properties:Resources.MW_Priority}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="PriorityCM">
-                                        <MenuItem Header="Ascending" Click="PriorityAsc_Click"/>
-                                        <MenuItem Header="Descending" Click="PriorityDes_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="PriorityAsc_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="PriorityDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
@@ -111,8 +111,8 @@
                             <GridViewColumnHeader Click="Name_Click" Content="{x:Static properties:Resources.MW_Title}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="NameCM">
-                                        <MenuItem Header="Ascending" Click="NameAsc_Click"/>
-                                        <MenuItem Header="Descending" Click="NameDes_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="NameAsc_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="NameDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
@@ -121,8 +121,8 @@
                             <GridViewColumnHeader Click="Description_Click" Content="{x:Static properties:Resources.MW_Memo}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DescriptionCM">
-                                        <MenuItem Header="Ascending" Click="DescriptionAsc_Click"/>
-                                        <MenuItem Header="Descending" Click="DescriptionDes_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="DescriptionAsc_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="DescriptionDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
@@ -131,8 +131,8 @@
                             <GridViewColumnHeader Click="DueDate_Click" Content="{x:Static properties:Resources.MW_DueDate}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DueDateCM">
-                                        <MenuItem Header="Ascending" Click="DueDateAsc_Click"/>
-                                        <MenuItem Header="Descending" Click="DueDateDes_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="DueDateAsc_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="DueDateDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>

@@ -210,6 +210,12 @@
   <data name="DS_StartDate" xml:space="preserve">
     <value>開始日時</value>
   </data>
+  <data name="MW_Ascending" xml:space="preserve">
+    <value>昇順</value>
+  </data>
+  <data name="MW_Descending" xml:space="preserve">
+    <value>降順</value>
+  </data>
   <data name="NW_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>

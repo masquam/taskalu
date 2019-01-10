@@ -196,6 +196,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Ascending に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Ascending {
+            get {
+                return ResourceManager.GetString("MW_Ascending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cancel に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_Cancel {
@@ -219,6 +228,15 @@ namespace Taskalu.Properties {
         public static string MW_Date {
             get {
                 return ResourceManager.GetString("MW_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Descending に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Descending {
+            get {
+                return ResourceManager.GetString("MW_Descending", resourceCulture);
             }
         }
         
