@@ -569,7 +569,7 @@ namespace Taskalu
             }
             */
             str = ts.ToString(@"hh\:mm");
-            editTimerLabel.Content = str;
+            editTimerTextBox.Text = str;
         }
 
         /// <summary>
@@ -728,6 +728,23 @@ namespace Taskalu
             catch (ConfigurationErrorsException)
             {
                 Console.WriteLine("Error writing app settings");
+            }
+        }
+
+        private void TaskDetails_Click(object sender, RoutedEventArgs e)
+        {
+            TaskDetailsWindow dlg = new TaskDetailsWindow();
+
+            // Configure the dialog box
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            TaskDetailsWindow.id = epId;
+
+            // Open the dialog box modally 
+            if (dlg.ShowDialog() == true)
+            {
+                // window is closed
             }
         }
     }

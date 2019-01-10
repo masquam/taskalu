@@ -222,4 +222,7 @@
   <data name="NW_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="TD_TaskDetails" xml:space="preserve">
+    <value>タスク詳細</value>
+  </data>
 </root>

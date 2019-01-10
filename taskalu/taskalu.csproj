@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="ListDateDetails.cs" />
     <Compile Include="ListDateSum.cs" />
+    <Compile Include="ListTaskDetails.cs" />
     <Compile Include="ListTaskMemo.cs" />
     <Compile Include="MemoWindow.xaml.cs">
       <DependentUpon>MemoWindow.xaml</DependentUpon>
@@ -110,6 +111,10 @@
       <DependentUpon>NewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQLite.cs" />
+    <Compile Include="TaskDetailsViewModel.cs" />
+    <Compile Include="TaskDetailsWindow.xaml.cs">
+      <DependentUpon>TaskDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TaskMemoViewModel.cs" />
     <Compile Include="WorkHolder.cs" />
     <Page Include="DateDetailsWindow.xaml">
@@ -155,6 +160,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ResourceDictionary1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TaskDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

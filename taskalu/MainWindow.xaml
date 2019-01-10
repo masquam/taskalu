@@ -198,7 +198,7 @@
                     <ComboBoxItem Content=""/>
                 </ComboBox>
                 <Label Grid.Row="2" Grid.Column="3" Content="{x:Static properties:Resources.MW_CreateDate}"/>
-                <TextBox Grid.Row="2" Grid.Column="4" Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True"/>
+                <TextBox Grid.Row="2" Grid.Column="4" Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True" />
                 <Label Grid.Row="3" Grid.Column="0" Content="{x:Static properties:Resources.MW_Status}"/>
                 <ComboBox  Grid.Row="3" Grid.Column="1" x:Name="ep_statusBox" Width="120" IsReadOnly="True" SelectedIndex="0" Height="23" >
                     <ComboBoxItem Content="Active"/>
@@ -210,7 +210,8 @@
                 <Button Grid.Row="3" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left" />
                 <StackPanel Grid.Row="2" Grid.Column="6" Orientation="Horizontal">
                     <Label Content="{x:Static properties:Resources.MW_Tick}"/>
-                    <Label x:Name="editTimerLabel" Content=""/>
+                    <TextBox x:Name="editTimerTextBox" Height="23" TextWrapping="NoWrap" Text="" IsReadOnly="True"/>
+                    <Button x:Name="TaskDetails" Content="..." Width="32" Height="23" Click="TaskDetails_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 </StackPanel>
                 <Label Grid.Row="4" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
                 <TextBox Grid.ColumnSpan="5" Grid.Row="4" Grid.Column="1" x:Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767"/>

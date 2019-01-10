@@ -219,4 +219,7 @@
   <data name="NW_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
+  <data name="TD_TaskDetails" xml:space="preserve">
+    <value>Task Details</value>
+  </data>
 </root>

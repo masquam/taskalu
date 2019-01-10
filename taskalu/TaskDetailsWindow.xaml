@@ -1,0 +1,76 @@
+﻿<Window x:Class="Taskalu.TaskDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:Taskalu.Properties"
+        xmlns:local="clr-namespace:Taskalu"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type local:TaskDetailsViewModel}}"
+        Title="taskalu" Height="450" Width="480" Loaded="TaskDetailsWindow_Loaded">
+    <Grid>
+        <DockPanel>
+            <StatusBar DockPanel.Dock="Bottom" Height="24" VerticalAlignment="Bottom">
+                <Label x:Name="textTaskDetailsStatusBar" Height="24"></Label>
+            </StatusBar>
+            <WrapPanel DockPanel.Dock="Top" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Height="32">
+                <Menu VerticalAlignment="Top">
+                    <MenuItem Width="32" Height="32" Header=" _menu" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}">
+                        <MenuItem.Icon>
+                            <Image Source="menu.ico" Width="16" Height="16" Margin="4,0,0,0"/>
+                        </MenuItem.Icon>
+                        <MenuItem Header="{x:Static properties:Resources.ContextMenu_Copy}" Click="TaskDetailsCopyButton_Click" />
+                        <Separator />
+                        <MenuItem Header="{x:Static properties:Resources.ContextMenu_Exit}" Click="Exit_Click" />
+                    </MenuItem>
+                </Menu>
+                <Button x:Name="TaskDetailsCopyButton" Content="{x:Static properties:Resources.Menu_Copy}" Click="TaskDetailsCopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+            </WrapPanel>
+            <StackPanel x:Name="TaskDetailsTopToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Vertical" Height="32">
+                <Label Content="{x:Static properties:Resources.TD_TaskDetails}" FontSize="16" Height="32"></Label>
+            </StackPanel>
+            <StackPanel x:Name="TaskDetailsBottomToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
+                <Grid HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="192"/>
+                        <ColumnDefinition Width="192"/>
+                        <ColumnDefinition Width="192"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left">
+
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch">
+                        <Button Visibility="Collapsed" x:Name="TaskDetailsMoreButton" Content="More" Click="TaskDetailsMoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+            <ListView x:Name="listviewTaskDetails" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Entries}" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Height" Value="20" />
+                        <Setter Property="VerticalContentAlignment" Value="Top"/>
+                        <Setter Property="Focusable" Value="false" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView AllowsColumnReorder="true">
+                        <GridViewColumn DisplayMemberBinding="{Binding StartDate}" Width="148" >
+                            <GridViewColumnHeader Content="{x:Static properties:Resources.DS_StartDate}">
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding EndDate}" Width="148" >
+                            <GridViewColumnHeader Content="{x:Static properties:Resources.DS_EndDate}">
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Duration}" Width="100" >
+                            <GridViewColumnHeader Content="{x:Static properties:Resources.MW_Tick}">
+                            </GridViewColumnHeader>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>

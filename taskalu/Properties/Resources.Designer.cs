@@ -365,5 +365,14 @@ namespace Taskalu.Properties {
                 return ResourceManager.GetString("NW_Ok", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Task Details に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TD_TaskDetails {
+            get {
+                return ResourceManager.GetString("TD_TaskDetails", resourceCulture);
+            }
+        }
     }
 }
