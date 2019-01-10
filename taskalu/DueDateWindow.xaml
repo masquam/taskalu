@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         Title="taskalu" Height="220" Width="480" Loaded="DueDateWindow_Loaded">
@@ -11,12 +12,12 @@
     </Window.Resources>
     <Grid>
         <DockPanel>
-            <Label DockPanel.Dock="Top" Content="Select the Date" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
+            <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.DD_SelectDate}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
-                <Button x:Name="DueDateOk" Content="OK" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click"  />
-                <Button x:Name="DueDateCancel" Content="Cancel" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+                <Button x:Name="DueDateOk" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click"  />
+                <Button x:Name="DueDateCancel" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
             </StackPanel>
-            <Label Content="Due Date" HorizontalAlignment="Left" Height="27" Margin="32,42,0,0" Width="79" VerticalAlignment="Top"/>
+            <Label Content="{x:Static properties:Resources.MW_DueDate}" HorizontalAlignment="Left" Height="27" Margin="32,42,0,0" Width="79" VerticalAlignment="Top"/>
             <StackPanel Orientation="Vertical">
                 <Button Style="{StaticResource TriangleButton}" Margin="40,16,0,8" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TriangleButton_Date_Up_Click" />
                 <DatePicker x:Name="DueDateBox" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>

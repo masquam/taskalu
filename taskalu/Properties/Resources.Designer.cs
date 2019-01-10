@@ -106,6 +106,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Select the Date に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DD_SelectDate {
+            get {
+                return ResourceManager.GetString("DD_SelectDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Copy に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Menu_Copy {
