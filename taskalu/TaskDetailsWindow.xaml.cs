@@ -64,7 +64,9 @@ namespace Taskalu
 
         private void TaskDetailsCopyButton_Click(object sender, RoutedEventArgs e)
         {
-            //ClipBrd.CopyDsvTaskDetailsToClipBoard(SQLiteClass.SumTimeSpanTaskDetails);
+            ClipBrd.CopyTdvTaskDetailsToClipBoard(
+                SQLiteClass.SumTimeSpanTaskDetails,
+                TaskDetailsMoreButton.Visibility != Visibility.Visible);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)

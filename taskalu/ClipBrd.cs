@@ -75,5 +75,22 @@ namespace Taskalu
             }
         }
 
+        public static void CopyTdvTaskDetailsToClipBoard(TimeSpan sumTS, Boolean outputSum)
+        {
+            string str = "";
+
+            foreach (ListTaskDetails entry in TaskDetailsViewModel.tdv.Entries)
+            {
+                str += entry.StartDate + "\t" + entry.EndDate + "\t" + entry.Duration + "\n";
+            }
+            if (!string.IsNullOrEmpty(str))
+            {
+                if (outputSum)
+                {
+                    str += Properties.Resources.DD_Sum + "\t\t" + sumTS.ToString(@"hh\:mm\:ss");
+                }
+                Clipboard.SetText(str);
+            }
+        }
     }
 }
