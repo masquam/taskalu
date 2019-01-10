@@ -23,7 +23,7 @@ namespace Taskalu
             }
         }
 
-        public static void CopyDsvToClipBoard(TimeSpan sumTS)
+        public static void CopyDsvToClipBoard(TimeSpan sumTS, Boolean outputSum)
         {
             string str = "";
 
@@ -33,12 +33,15 @@ namespace Taskalu
             }
             if (!string.IsNullOrEmpty(str))
             {
-                str += Properties.Resources.DD_Sum + "\t" + sumTS.ToString(@"hh\:mm\:ss");
+                if (outputSum)
+                {
+                    str += Properties.Resources.DD_Sum + "\t" + sumTS.ToString(@"hh\:mm\:ss");
+                }
                 Clipboard.SetText(str);
             }
         }
 
-        public static void CopyDsvDateDetailsToClipBoard(TimeSpan sumTS)
+        public static void CopyDsvDateDetailsToClipBoard(TimeSpan sumTS, Boolean outputSum)
         {
             string str = "";
 
@@ -48,7 +51,10 @@ namespace Taskalu
             }
             if (!string.IsNullOrEmpty(str))
             {
-                str += Properties.Resources.DD_Sum + "\t\t\t" + sumTS.ToString(@"hh\:mm\:ss");
+                if (outputSum)
+                {
+                    str += Properties.Resources.DD_Sum + "\t\t\t" + sumTS.ToString(@"hh\:mm\:ss");
+                }
                 Clipboard.SetText(str);
             }
         }

@@ -152,7 +152,9 @@ namespace Taskalu
 
         private void DateDetailsCopyButton_Click(object sender, RoutedEventArgs e)
         {
-            ClipBrd.CopyDsvDateDetailsToClipBoard(SQLiteClass.SumTimeSpanDateDetails);
+            ClipBrd.CopyDsvDateDetailsToClipBoard(
+                SQLiteClass.SumTimeSpanDateDetails,
+                DateDetailsMoreButton.Visibility != Visibility.Visible);
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
