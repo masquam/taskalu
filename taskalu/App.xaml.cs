@@ -28,19 +28,6 @@ namespace Taskalu
                 mutex = null;
                 this.Shutdown();
             }
-
-            // Language Setting
-            string lang = ConfigurationManager.AppSettings["Language_Setting"];
-            if (lang == "ja-JP")
-            {
-                CultureInfo.CurrentCulture = new CultureInfo("ja-JP");
-                CultureInfo.CurrentUICulture = new CultureInfo("ja-JP");
-            }
-            else
-            {
-                CultureInfo.CurrentCulture = new CultureInfo("en-US");
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-            }
         }
 
         private void Application_Exit(object sender, ExitEventArgs e)

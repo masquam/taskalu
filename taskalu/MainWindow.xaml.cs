@@ -33,6 +33,20 @@ namespace Taskalu
 
         public MainWindow()
         {
+            // Language Setting
+            string settingvalue = Properties.Settings.Default.Language_Setting;
+
+            if (settingvalue == "ja-JP")
+            {
+                CultureInfo.CurrentCulture = new CultureInfo("ja-JP");
+                CultureInfo.CurrentUICulture = new CultureInfo("ja-JP");
+            }
+            else
+            {
+                CultureInfo.CurrentCulture = new CultureInfo("en-US");
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+            }
+
             InitializeComponent();
 
             Microsoft.Win32.SystemEvents.PowerModeChanged +=
@@ -683,7 +697,10 @@ namespace Taskalu
             dlg.Owner = this;
             dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
-            if (ConfigurationManager.AppSettings["Language_Setting"] == "ja-JP")
+            // Language Configuration
+            string settingvalue = Properties.Settings.Default.Language_Setting;
+
+            if (settingvalue == "ja-JP")
             {
                 LanguageSettingsWindow.language = "Japanese";
             }
@@ -710,25 +727,8 @@ namespace Taskalu
         }
         static void AddUpdateAppSettings(string key, string value)
         {
-            try
-            {
-                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                var settings = configFile.AppSettings.Settings;
-                if (settings[key] == null)
-                {
-                    settings.Add(key, value);
-                }
-                else
-                {
-                    settings[key].Value = value;
-                }
-                configFile.Save(ConfigurationSaveMode.Modified);
-                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
-            }
-            catch (ConfigurationErrorsException)
-            {
-                Console.WriteLine("Error writing app settings");
-            }
+            Properties.Settings.Default[key] = value;
+            Properties.Settings.Default.Save();
         }
 
         private void TaskDetails_Click(object sender, RoutedEventArgs e)
