@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}" 
-        Title="taskalu" Height="596" Width="740" MinWidth="740" MaxWidth="740">
+        Title="taskalu" Height="596" Width="760" MinWidth="760" MaxWidth="760">
     <Window.Resources>
         <local:DateToColorConverter x:Key="DateToColorConverter" />
     </Window.Resources>
@@ -38,6 +38,8 @@
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_Copy}" Click="CopyButton_Click" />
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_DateSummary}" Click="DateSumButton_Click" />
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_DateDetails}" Click="DateDetailsButton_Click" />
+                        <Separator />
+                        <MenuItem Header="Language Settings..." Click="LanguageSettings_Click" />
                         <Separator />
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_Exit}" Click="Exit_Click" />
                     </MenuItem>
@@ -125,7 +127,7 @@
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn Width="128">
+                        <GridViewColumn Width="148">
                             <GridViewColumnHeader Click="DueDate_Click" Content="{x:Static properties:Resources.MW_DueDate}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DueDateCM">
@@ -177,7 +179,7 @@
                     <ColumnDefinition Width="120" />
                     <ColumnDefinition Width="64" />
                     <ColumnDefinition Width="86" />
-                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="140" />
                     <ColumnDefinition Width="64" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
@@ -196,7 +198,7 @@
                     <ComboBoxItem Content=""/>
                 </ComboBox>
                 <Label Grid.Row="2" Grid.Column="3" Content="create date"/>
-                <TextBox Grid.Row="2" Grid.Column="4" Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
+                <TextBox Grid.Row="2" Grid.Column="4" Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True"/>
                 <Label Grid.Row="3" Grid.Column="0" Content="status"/>
                 <ComboBox  Grid.Row="3" Grid.Column="1" x:Name="ep_statusBox" Width="120" IsReadOnly="True" SelectedIndex="0" Height="23" >
                     <ComboBoxItem Content="Active"/>
@@ -204,7 +206,7 @@
                     <ComboBoxItem Content="Deffered"/>
                 </ComboBox>
                 <Label Grid.Row="3" Grid.Column="3" Content="due date"/>
-                <TextBox Grid.Row="3" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="120" IsReadOnly="True"/>
+                <TextBox Grid.Row="3" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True"/>
                 <Button Grid.Row="3" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left" />
                 <StackPanel Grid.Row="2" Grid.Column="6" Orientation="Horizontal">
                     <Label Content="tick "/>

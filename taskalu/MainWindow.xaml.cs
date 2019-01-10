@@ -14,6 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.Globalization;
+using System.Configuration;
+
 
 namespace Taskalu
 
@@ -662,6 +666,67 @@ namespace Taskalu
             }
         }
 
+        // //////////////////////////////////////////////////////////////////////////
 
+        /// <summary>
+        /// Language Settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LanguageSettings_Click(object sender, RoutedEventArgs e)
+        {
+            LanguageSettingsWindow dlg = new LanguageSettingsWindow();
+
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            if (ConfigurationManager.AppSettings["Language_Setting"] == "ja-JP")
+            {
+                LanguageSettingsWindow.language = "Japanese";
+            }
+            else
+            {
+                LanguageSettingsWindow.language = "English";
+            }
+
+            // Open the dialog box modally 
+            if (dlg.ShowDialog() == true)
+            {
+                // window is closed OK
+                //MessageBox.Show(LanguageSettingsWindow.language);
+
+                if (LanguageSettingsWindow.language == "Japanese")
+                {
+                    AddUpdateAppSettings("Language_Setting","ja-JP");
+                }
+                else
+                {
+                    AddUpdateAppSettings("Language_Setting", "en-US");
+                }
+            }
+        }
+        static void AddUpdateAppSettings(string key, string value)
+        {
+            try
+            {
+                var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var settings = configFile.AppSettings.Settings;
+                if (settings[key] == null)
+                {
+                    settings.Add(key, value);
+                }
+                else
+                {
+                    settings[key].Value = value;
+                }
+                configFile.Save(ConfigurationSaveMode.Modified);
+                ConfigurationManager.RefreshSection(configFile.AppSettings.SectionInformation.Name);
+            }
+            catch (ConfigurationErrorsException)
+            {
+                Console.WriteLine("Error writing app settings");
+            }
+        }
     }
+
 }

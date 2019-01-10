@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Globalization;
+
 
 namespace Taskalu
 {
@@ -25,6 +27,19 @@ namespace Taskalu
                 mutex.Close();
                 mutex = null;
                 this.Shutdown();
+            }
+
+            // Language Setting
+            string lang = ConfigurationManager.AppSettings["Language_Setting"];
+            if (lang == "ja-JP")
+            {
+                CultureInfo.CurrentCulture = new CultureInfo("ja-JP");
+                CultureInfo.CurrentUICulture = new CultureInfo("ja-JP");
+            }
+            else
+            {
+                CultureInfo.CurrentCulture = new CultureInfo("en-US");
+                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
             }
         }
 

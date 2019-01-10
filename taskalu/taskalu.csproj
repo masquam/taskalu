@@ -57,6 +57,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.109.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.109.2\lib\net46\System.Data.SQLite.dll</HintPath>
@@ -96,6 +97,9 @@
     <Compile Include="DueDateWindow.xaml.cs">
       <DependentUpon>DueDateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LanguageSettingsWindow.xaml.cs">
+      <DependentUpon>LanguageSettingsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListDateDetails.cs" />
     <Compile Include="ListDateSum.cs" />
     <Compile Include="ListTaskMemo.cs" />
@@ -121,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DueDateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LanguageSettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
