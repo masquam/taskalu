@@ -555,6 +555,7 @@ namespace Taskalu
         private void updateEditTimerLabel(TimeSpan ts)
         {
             string str;
+            /*
             if ((ts.Days == 0) && (ts.Hours == 0)) {
                 str = ts.ToString(@"m\m\i\n\u\t\e\s");
             }
@@ -566,6 +567,8 @@ namespace Taskalu
             {
                 str = ts.ToString(@"d\d\a\y\ h\h\o\u\r\ m\m\i\n\u\t\e\s");
             }
+            */
+            str = ts.ToString(@"hh\:mm\:ss");
             editTimerLabel.Content = str;
         }
 

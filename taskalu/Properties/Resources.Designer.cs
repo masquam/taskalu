@@ -142,6 +142,42 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Add に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Add {
+            get {
+                return ResourceManager.GetString("MW_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Cancel に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Cancel {
+            get {
+                return ResourceManager.GetString("MW_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   create date に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_CreateDate {
+            get {
+                return ResourceManager.GetString("MW_CreateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   date に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Date {
+            get {
+                return ResourceManager.GetString("MW_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   due date に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_DueDate {
@@ -169,11 +205,29 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Open Work Holder に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_OpenWorkHolder {
+            get {
+                return ResourceManager.GetString("MW_OpenWorkHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   priority に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_Priority {
             get {
                 return ResourceManager.GetString("MW_Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Save に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Save {
+            get {
+                return ResourceManager.GetString("MW_Save", resourceCulture);
             }
         }
         
@@ -196,11 +250,29 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Task Details に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_TaskDetail {
+            get {
+                return ResourceManager.GetString("MW_TaskDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Task Summary に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_TaskSummary {
             get {
                 return ResourceManager.GetString("MW_TaskSummary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   tick に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Tick {
+            get {
+                return ResourceManager.GetString("MW_Tick", resourceCulture);
             }
         }
         

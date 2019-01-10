@@ -144,6 +144,18 @@
   <data name="Menu_NewTask" xml:space="preserve">
     <value>New Task</value>
   </data>
+  <data name="MW_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="MW_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="MW_CreateDate" xml:space="preserve">
+    <value>create date</value>
+  </data>
+  <data name="MW_Date" xml:space="preserve">
+    <value>date</value>
+  </data>
   <data name="MW_DueDate" xml:space="preserve">
     <value>due date</value>
   </data>
@@ -153,8 +165,14 @@
   <data name="MW_More" xml:space="preserve">
     <value>More</value>
   </data>
+  <data name="MW_OpenWorkHolder" xml:space="preserve">
+    <value>Open Work Holder</value>
+  </data>
   <data name="MW_Priority" xml:space="preserve">
     <value>priority</value>
+  </data>
+  <data name="MW_Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="MW_Search" xml:space="preserve">
     <value>Search</value>
@@ -162,8 +180,14 @@
   <data name="MW_Status" xml:space="preserve">
     <value>status</value>
   </data>
+  <data name="MW_TaskDetail" xml:space="preserve">
+    <value>Task Details</value>
+  </data>
   <data name="MW_TaskSummary" xml:space="preserve">
     <value>Task Summary</value>
+  </data>
+  <data name="MW_Tick" xml:space="preserve">
+    <value>tick</value>
   </data>
   <data name="MW_Title" xml:space="preserve">
     <value>title</value>
