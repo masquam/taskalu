@@ -295,7 +295,7 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
-        ///   tick に類似しているローカライズされた文字列を検索します。
+        ///   duration に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_Tick {
             get {
