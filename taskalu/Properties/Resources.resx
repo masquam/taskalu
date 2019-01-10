@@ -201,6 +201,12 @@
   <data name="DD_SelectDateTime" xml:space="preserve">
     <value>Select the Date/time</value>
   </data>
+  <data name="DS_EndDate" xml:space="preserve">
+    <value>end date</value>
+  </data>
+  <data name="DS_StartDate" xml:space="preserve">
+    <value>start date</value>
+  </data>
   <data name="NW_Ok" xml:space="preserve">
     <value>Ok</value>
   </data>

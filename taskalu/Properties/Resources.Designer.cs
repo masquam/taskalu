@@ -133,6 +133,24 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   end date に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DS_EndDate {
+            get {
+                return ResourceManager.GetString("DS_EndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   start date に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DS_StartDate {
+            get {
+                return ResourceManager.GetString("DS_StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Copy に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string Menu_Copy {
