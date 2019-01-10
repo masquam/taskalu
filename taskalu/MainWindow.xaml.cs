@@ -568,7 +568,7 @@ namespace Taskalu
                 str = ts.ToString(@"d\d\a\y\ h\h\o\u\r\ m\m\i\n\u\t\e\s");
             }
             */
-            str = ts.ToString(@"hh\:mm\:ss");
+            str = ts.ToString(@"hh\:mm");
             editTimerLabel.Content = str;
         }
 
