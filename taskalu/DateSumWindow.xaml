@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:DateSumViewModel}}"
-        Title="Date Summary - taskaru" Height="602" Width="600" MinWidth="600">
+        Title="Date Summary - taskaru" Height="602" Width="480" MinWidth="480" MaxWidth="480">
     <Grid>
         <DockPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="24" VerticalAlignment="Bottom">
@@ -71,7 +71,7 @@
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Duration}" Width="256" >
+                        <GridViewColumn DisplayMemberBinding="{Binding Duration}" Width="128" >
                             <GridViewColumnHeader Click="Duration_Click" Content="{x:Static properties:Resources.MW_Tick}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DurationCM">
