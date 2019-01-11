@@ -97,6 +97,8 @@
     <Compile Include="DueDateWindow.xaml.cs">
       <DependentUpon>DueDateWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HyperLink.cs" />
+    <Compile Include="HyperLinkString.cs" />
     <Compile Include="LanguageSettingsWindow.xaml.cs">
       <DependentUpon>LanguageSettingsWindow.xaml</DependentUpon>
     </Compile>

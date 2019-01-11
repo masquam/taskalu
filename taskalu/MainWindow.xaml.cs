@@ -378,6 +378,8 @@ namespace Taskalu
         /// <param name="args"></param>
         void ListSelectionChanged(object sender, SelectionChangedEventArgs args)
         {
+            var HLList = new List<HyperLinkString>();
+
             ListViewFile lbf = ((sender as ListBox).SelectedItem as ListViewFile);
 
             if (lbf == null)
@@ -397,7 +399,7 @@ namespace Taskalu
 
                 epId = lbf.Id;
                 ep_name.Text = lbf.Name;
-                ep_description.Text = lbf.Description;
+                ep_description.Text = "";
                 ep_memo.Text = "";
                 ep_priorityBox.SelectedIndex = 5 - priorityLen;
                 ep_createdate.Text = lbf.CreateDate;
@@ -411,6 +413,10 @@ namespace Taskalu
                 // Memo
                 listviewTaskMemo.DataContext = TaskMemoViewModel.tmv;
                 ExecuteFirstSelectTableTaskMemo(epId);
+
+                // HyperLink
+                HLList = HyperLink.CreateHyperLinkList(lbf.Description);
+                HyperLink.FillHyperLinks(ep_description, HLList);
             }
         }
 
