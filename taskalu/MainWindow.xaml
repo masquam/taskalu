@@ -215,7 +215,7 @@
                     <Button x:Name="TaskDetails" Content="..." Width="32" Height="23" Click="TaskDetails_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 </StackPanel>
                 <Label Grid.Row="4" Grid.Column="0" Content="{x:Static properties:Resources.MW_Description}"/>
-                <TextBlock Grid.ColumnSpan="6" Grid.Row="4" Grid.Column="1" x:Name="ep_description" TextWrapping="Wrap" Text="" Width="620" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" />
+                <TextBlock Grid.ColumnSpan="6" Grid.Row="4" Grid.Column="1" x:Name="ep_description" TextWrapping="Wrap" Text="" Width="620" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" Hyperlink.RequestNavigate="RequestNavigateEventHandler"/>
                 <Label Grid.Row="5" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
                 <TextBox Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1" x:Name="ep_memo" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767"/>
                 <Button  Grid.Row="5" Grid.Column="6" x:Name="SaveMemo" Content="{x:Static properties:Resources.MW_Add}" Width="96" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>

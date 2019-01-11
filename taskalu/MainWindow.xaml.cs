@@ -775,6 +775,12 @@ namespace Taskalu
                 // window is closed
             }
         }
+
+        private void RequestNavigateEventHandler(object sender, RequestNavigateEventArgs e)
+        {
+
+            System.Diagnostics.Process.Start(e.Uri.ToString());
+        }
     }
 
 }
