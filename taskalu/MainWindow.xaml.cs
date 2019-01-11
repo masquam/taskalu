@@ -746,6 +746,11 @@ namespace Taskalu
             Properties.Settings.Default.Save();
         }
 
+
+        // ////////////////////////////////////////////////////////////////////////
+        //
+        // Task Details
+
         private void TaskDetails_Click(object sender, RoutedEventArgs e)
         {
             TaskDetailsWindow dlg = new TaskDetailsWindow();
