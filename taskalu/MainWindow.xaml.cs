@@ -128,10 +128,10 @@ namespace Taskalu
             if (dlg.ShowDialog() == true)
             {
                 // new task window is closed
-
-                // MessageBox.Show("OK button pressed");
-                // TODO: 詳細パネルが開いていた場合の処理
-                ExecuteFirstSelectTable();
+                if (editpanel.Visibility != Visibility.Visible)
+                {
+                    ExecuteFirstSelectTable();
+                }
             }
         }
 
