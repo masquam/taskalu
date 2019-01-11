@@ -111,6 +111,12 @@
       <DependentUpon>NewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQLite.cs" />
+    <Compile Include="SQLite_DateDetails.cs" />
+    <Compile Include="SQLite_DateSum.cs" />
+    <Compile Include="SQLite_TaskDetails.cs" />
+    <Compile Include="SQLite_TaskList.cs" />
+    <Compile Include="SQLite_TaskMemo.cs" />
+    <Compile Include="SQLite_TaskTime.cs" />
     <Compile Include="TaskDetailsViewModel.cs" />
     <Compile Include="TaskDetailsWindow.xaml.cs">
       <DependentUpon>TaskDetailsWindow.xaml</DependentUpon>
