@@ -41,10 +41,25 @@ namespace Taskalu
                 CultureInfo.CurrentCulture = new CultureInfo("ja-JP");
                 CultureInfo.CurrentUICulture = new CultureInfo("ja-JP");
             }
-            else
+            else if (settingvalue == "en-US")
             {
                 CultureInfo.CurrentCulture = new CultureInfo("en-US");
                 CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+            }
+            else
+            {
+                if (CultureInfo.CurrentUICulture.Name == "ja-JP")
+                {
+                    CultureInfo.CurrentCulture = new CultureInfo("ja-JP");
+                    CultureInfo.CurrentUICulture = new CultureInfo("ja-JP");
+                    AddUpdateAppSettings("Language_Setting", "ja-JP");
+                }
+                else
+                {
+                    CultureInfo.CurrentCulture = new CultureInfo("en-US");
+                    CultureInfo.CurrentUICulture = new CultureInfo("en-US");
+                    AddUpdateAppSettings("Language_Setting", "en-US");
+                }
             }
 
             InitializeComponent();
