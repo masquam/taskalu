@@ -31,6 +31,8 @@ namespace Taskalu
         public Int64 epId = 0;
         public string workHolder = "";
 
+        public string tmpDescription = "";
+
         public MainWindow()
         {
             // Language Setting
@@ -378,8 +380,6 @@ namespace Taskalu
         /// <param name="args"></param>
         void ListSelectionChanged(object sender, SelectionChangedEventArgs args)
         {
-            var HLList = new List<HyperLinkString>();
-
             ListViewFile lbf = ((sender as ListBox).SelectedItem as ListViewFile);
 
             if (lbf == null)
@@ -415,8 +415,8 @@ namespace Taskalu
                 ExecuteFirstSelectTableTaskMemo(epId);
 
                 // HyperLink
-                HLList = HyperLink.CreateHyperLinkList(lbf.Description);
-                HyperLink.FillHyperLinks(ep_description, HLList);
+                tmpDescription = lbf.Description;
+                HyperLink.FillHyperLinks(ep_description, HyperLink.CreateHyperLinkList(lbf.Description));
             }
         }
 
@@ -776,10 +776,17 @@ namespace Taskalu
             }
         }
 
+        // ////////////////////////////////////////////////////////////////////////
+
         private void RequestNavigateEventHandler(object sender, RequestNavigateEventArgs e)
         {
 
             System.Diagnostics.Process.Start(e.Uri.ToString());
+        }
+
+        private void UpdateDescriptionButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

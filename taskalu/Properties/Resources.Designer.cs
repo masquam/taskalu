@@ -367,6 +367,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Updzte に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Update {
+            get {
+                return ResourceManager.GetString("MW_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ok に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string NW_Ok {

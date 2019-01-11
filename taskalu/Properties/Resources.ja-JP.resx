@@ -228,4 +228,7 @@
   <data name="MW_Description" xml:space="preserve">
     <value>内容</value>
   </data>
+  <data name="MW_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
 </root>
