@@ -118,7 +118,7 @@
                             </GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="256" >
-                            <GridViewColumnHeader Click="Description_Click" Content="{x:Static properties:Resources.MW_Memo}">
+                            <GridViewColumnHeader Click="Description_Click" Content="{x:Static properties:Resources.MW_Description}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DescriptionCM">
                                         <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="DescriptionAsc_Click"/>
@@ -170,6 +170,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="40" />
                     <RowDefinition Height="42" />
@@ -213,10 +214,12 @@
                     <TextBox x:Name="editTimerTextBox" Height="23" TextWrapping="NoWrap" Text="" IsReadOnly="True"/>
                     <Button x:Name="TaskDetails" Content="..." Width="32" Height="23" Click="TaskDetails_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 </StackPanel>
-                <Label Grid.Row="4" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
-                <TextBox Grid.ColumnSpan="5" Grid.Row="4" Grid.Column="1" x:Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767"/>
-                <Button  Grid.Row="4" Grid.Column="6" x:Name="SaveMemo" Content="{x:Static properties:Resources.MW_Add}" Width="96" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
-                <ListView Grid.ColumnSpan="6" Grid.Row="5" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="620">
+                <Label Grid.Row="4" Grid.Column="0" Content="{x:Static properties:Resources.MW_Description}"/>
+                <TextBox Grid.ColumnSpan="6" Grid.Row="4" Grid.Column="1" x:Name="ep_description" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="620" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767"/>
+                <Label Grid.Row="5" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
+                <TextBox Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1" x:Name="ep_memo" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767"/>
+                <Button  Grid.Row="5" Grid.Column="6" x:Name="SaveMemo" Content="{x:Static properties:Resources.MW_Add}" Width="96" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
+                <ListView Grid.ColumnSpan="6" Grid.Row="6" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="620">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Height" Value="38" />
@@ -234,11 +237,11 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Grid.Row="6" Grid.Column="4" Visibility="Collapsed" x:Name="TaskMemoMoreButton" Content="{x:Static properties:Resources.MW_More}" Click="TaskMemoMoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
-                <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></StackPanel>
-                <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="{x:Static properties:Resources.MW_OpenWorkHolder}" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
-                <Button Grid.Row="7" Grid.Column="4" Name="ep_save" Content="{x:Static properties:Resources.MW_Save}" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
-                <Button Grid.Row="7" Grid.Column="6" Name="ep_close" Content="{x:Static properties:Resources.MW_Cancel}" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="7" Grid.Column="4" Visibility="Collapsed" x:Name="TaskMemoMoreButton" Content="{x:Static properties:Resources.MW_More}" Click="TaskMemoMoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
+                <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="7" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></StackPanel>
+                <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="{x:Static properties:Resources.MW_OpenWorkHolder}" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="8" Grid.Column="4" Name="ep_save" Content="{x:Static properties:Resources.MW_Save}" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
+                <Button Grid.Row="8" Grid.Column="6" Name="ep_close" Content="{x:Static properties:Resources.MW_Cancel}" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
             </Grid>
         </DockPanel>
     </Grid>

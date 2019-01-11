@@ -108,6 +108,7 @@ namespace Taskalu
             return ret;
         }
 
+        /*
         public static void UpdateTaskListDescription(Int64 id, string memo)
         {
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
@@ -130,6 +131,6 @@ namespace Taskalu
                 con.Close();
             }
         }
-
+        */
     }
 }

@@ -250,6 +250,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   description に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Description {
+            get {
+                return ResourceManager.GetString("MW_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   due date に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_DueDate {

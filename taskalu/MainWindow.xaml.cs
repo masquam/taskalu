@@ -397,7 +397,8 @@ namespace Taskalu
 
                 epId = lbf.Id;
                 ep_name.Text = lbf.Name;
-                ep_description.Text = ""; // memo
+                ep_description.Text = lbf.Description;
+                ep_memo.Text = "";
                 ep_priorityBox.SelectedIndex = 5 - priorityLen;
                 ep_createdate.Text = lbf.CreateDate;
                 ep_duedate.Text = lbf.DueDate;
@@ -461,6 +462,7 @@ namespace Taskalu
             ListViewFile lbf = new ListViewFile();
             lbf.Id = epId;
             lbf.Name = ep_name.Text;
+            lbf.Description = ep_description.Text;
             lbf.Priority = String.Concat(Enumerable.Repeat("\u272e", 5 - ep_priorityBox.SelectedIndex));
             lbf.CreateDate = ep_createdate.Text;
             lbf.DueDate = ep_duedate.Text;
@@ -666,9 +668,9 @@ namespace Taskalu
 
         private void saveMemo_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.ExecuteInsertTableTaskMemo(epId, ep_description.Text);
-            SQLiteClass.UpdateTaskListDescription(epId, ep_description.Text);
-            ep_description.Text = "";
+            SQLiteClass.ExecuteInsertTableTaskMemo(epId, ep_memo.Text);
+            //SQLiteClass.UpdateTaskListDescription(epId, ep_memo.Text);
+            ep_memo.Text = "";
             ExecuteFirstSelectTableTaskMemo(epId);
         }
 

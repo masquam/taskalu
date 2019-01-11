@@ -225,4 +225,7 @@
   <data name="TD_TaskDetails" xml:space="preserve">
     <value>タスク詳細</value>
   </data>
+  <data name="MW_Description" xml:space="preserve">
+    <value>内容</value>
+  </data>
 </root>

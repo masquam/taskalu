@@ -196,9 +196,10 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist set name=@name, priority=@priority, createdate=@createdate, duedate=@duedate, status=@status, workholder=@workholder where id=@id", con);
+            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist set name=@name, description=@description, priority=@priority, createdate=@createdate, duedate=@duedate, status=@status, workholder=@workholder where id=@id", con);
             com.Parameters.Add(sqliteParamInt64(com, "@id", lvFile.Id));
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
+            com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
             com.Parameters.Add(sqliteParam(com, "@createdate", getUTCString(lvFile.CreateDate)));
             com.Parameters.Add(sqliteParam(com, "@duedate", getUTCString(lvFile.DueDate)));
