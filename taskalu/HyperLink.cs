@@ -15,18 +15,10 @@ namespace Taskalu
         public static List<HyperLinkString> CreateHyperLinkList(string text)
         {
             var HLList = new List<HyperLinkString>();
-
-            string[] lines = text.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-            for (int i = 0; i < lines.Length; i++)
-            {
-                splitRegex(
-                    lines[i],
-                    @"http(s)?://([\w-]+\.)+[\w-]+(/[A-Z0-9-.,_/?%&=]*)?",
-                    HLList);
-                if (i < lines.Length - 1) {
-                    HLList.Add(new HyperLinkString("CRLF", HyperLinkString.Attr.CRLF));
-                }
-            }
+            splitRegex(
+                text,
+                @"http(s)?://([\w-]+\.)+[\w-]+(/[A-Z0-9-.,_/?%&=]*)?",
+                HLList);
             return HLList;
         }
 
