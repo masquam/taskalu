@@ -231,4 +231,7 @@
   <data name="MW_Edit" xml:space="preserve">
     <value>編集</value>
   </data>
+  <data name="DS_EditDescription" xml:space="preserve">
+    <value>内容の編集</value>
+  </data>
 </root>

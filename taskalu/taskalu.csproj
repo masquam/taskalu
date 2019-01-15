@@ -94,6 +94,9 @@
       <DependentUpon>DateSumWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DateToColorConverter.cs" />
+    <Compile Include="DescriptionWindow.xaml.cs">
+      <DependentUpon>DescriptionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DueDateWindow.xaml.cs">
       <DependentUpon>DueDateWindow.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DateSumWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DescriptionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

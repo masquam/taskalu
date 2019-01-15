@@ -450,6 +450,38 @@ namespace Taskalu
         }
 
         /// <summary>
+        /// editpanel Edit description button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void EditDescriptionButton_Click(object sender, RoutedEventArgs e)
+        {
+            DescriptionWindow dlg = new DescriptionWindow();
+
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            dlg.descriptionString = tmpDescription;
+
+            if (dlg.ShowDialog() == true)
+            {
+                tmpDescription = dlg.descriptionString;
+                ep_description.Text = "";
+                HyperLink.FillHyperLinks(ep_description, HyperLink.CreateHyperLinkList(tmpDescription));
+            }
+        }
+
+        /// <summary>
+        /// editpanel description URI click event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RequestNavigateEventHandler(object sender, RequestNavigateEventArgs e)
+        {
+            System.Diagnostics.Process.Start(e.Uri.ToString());
+        }
+
+        /// <summary>
         /// editpanel Save button is clicked
         /// </summary>
         /// <param name="sender"></param>
@@ -776,18 +808,9 @@ namespace Taskalu
             }
         }
 
-        // ////////////////////////////////////////////////////////////////////////
 
-        private void RequestNavigateEventHandler(object sender, RequestNavigateEventArgs e)
-        {
 
-            System.Diagnostics.Process.Start(e.Uri.ToString());
-        }
 
-        private void UpdateDescriptionButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 
 }

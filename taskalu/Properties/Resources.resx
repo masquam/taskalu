@@ -228,4 +228,7 @@
   <data name="MW_Edit" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="DS_EditDescription" xml:space="preserve">
+    <value>Edit Description</value>
+  </data>
 </root>

@@ -142,6 +142,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Edit Description に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string DS_EditDescription {
+            get {
+                return ResourceManager.GetString("DS_EditDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   end date に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string DS_EndDate {
