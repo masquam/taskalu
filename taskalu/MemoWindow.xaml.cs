@@ -30,12 +30,8 @@ namespace Taskalu
         private void MemoWindow_Loaded(object sender, RoutedEventArgs e)
         {
             DateTextBox.Text = date;
-            MemoTextBox.Text = memo;
-        }
-
-        private void MemoOkButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            MemoTextBox.Text = "";
+            HyperLink.FillHyperLinks(MemoTextBox, HyperLink.CreateHyperLinkList(memo));
         }
     }
 }
