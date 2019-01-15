@@ -268,6 +268,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Edit に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Edit {
+            get {
+                return ResourceManager.GetString("MW_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   memo に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_Memo {
@@ -363,15 +372,6 @@ namespace Taskalu.Properties {
         public static string MW_Title {
             get {
                 return ResourceManager.GetString("MW_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Updzte に類似しているローカライズされた文字列を検索します。
-        /// </summary>
-        public static string MW_Update {
-            get {
-                return ResourceManager.GetString("MW_Update", resourceCulture);
             }
         }
         
