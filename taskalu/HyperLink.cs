@@ -15,11 +15,21 @@ namespace Taskalu
         public static List<HyperLinkString> CreateHyperLinkList(string text)
         {
             var HLList = new List<HyperLinkString>();
+            var HLList2 = new List<HyperLinkString>();
+            var HLList3 = new List<HyperLinkString>();
             splitRegex(
                 text,
                 @"http(s)?://([\w-]+\.)+[\w-]+(/[A-Z0-9-.,_/?%&=]*)?",
                 HLList);
-            return HLList;
+            splitRegex(
+                HLList,
+                @"([a-zA-Z]:\\[\w\\\.]*|""[a-zA-Z]:\\[\w\.].*"")",
+                HLList2);
+            splitRegex(
+                HLList2,
+                @"(\\\\[\w\$\\\.]*|""\\\\[\w\$\.].*"")",
+                HLList3);
+            return HLList3;
         }
 
         private static void splitRegex(string text, string regexp, List<HyperLinkString> HLList)
@@ -45,6 +55,21 @@ namespace Taskalu
                 if (!string.IsNullOrEmpty(text))
                 {
                     HLList.Add(new HyperLinkString(text, HyperLinkString.Attr.String));
+                }
+            }
+        }
+
+        private static void splitRegex(List<HyperLinkString> HLListBefore, string regexp, List<HyperLinkString> HLList)
+        {
+            foreach(HyperLinkString HLstring in HLListBefore)
+            {
+                if (HLstring.Attribute == HyperLinkString.Attr.URI)
+                {
+                    HLList.Add(HLstring);
+                }
+                else if (HLstring.Attribute == HyperLinkString.Attr.String)
+                {
+                    splitRegex(HLstring.String, regexp, HLList);
                 }
             }
         }

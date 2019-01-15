@@ -478,7 +478,14 @@ namespace Taskalu
         /// <param name="e"></param>
         private void RequestNavigateEventHandler(object sender, RequestNavigateEventArgs e)
         {
-            System.Diagnostics.Process.Start(e.Uri.ToString());
+            try
+            {
+                System.Diagnostics.Process.Start(e.Uri.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>
