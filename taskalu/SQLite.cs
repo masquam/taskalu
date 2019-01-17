@@ -12,8 +12,10 @@ namespace Taskalu
 {
     partial class SQLiteClass
     {
-        public static string dbdirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
-        public static string dbpath = dbdirectory + "\\taskaludb.sqlite";
+        //public static string dbdirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
+        //public static string dbpath = dbdirectory + "\\taskaludb.sqlite";
+        public static string dbdirectory = "";
+        public static string dbpath = "";
 
         /// <summary>
         /// "touch" database - directory initialize, create table, index
@@ -22,7 +24,17 @@ namespace Taskalu
         {
             //MessageBox.Show("The folder where database flle will be created: " + dbpath);
 
-            Directory.CreateDirectory(dbdirectory);
+            try
+            {
+                Directory.CreateDirectory(dbdirectory);
+            }
+            catch (Exception)
+            {
+                Properties.Settings.Default["Database_Folder"] = "";
+                Properties.Settings.Default.Save();
+                MessageBox.Show("database folder create error!\n");
+                return false;
+            }
 
             if (File.Exists(dbpath))
             {

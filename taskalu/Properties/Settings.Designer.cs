@@ -34,5 +34,29 @@ namespace Taskalu.Properties {
                 this["Language_Setting"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Database_Folder {
+            get {
+                return ((string)(this["Database_Folder"]));
+            }
+            set {
+                this["Database_Folder"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Work_Folder {
+            get {
+                return ((string)(this["Work_Folder"]));
+            }
+            set {
+                this["Work_Folder"] = value;
+            }
+        }
     }
 }

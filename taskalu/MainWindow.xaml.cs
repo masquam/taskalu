@@ -18,7 +18,6 @@ using System.Threading;
 using System.Globalization;
 using System.Configuration;
 
-
 namespace Taskalu
 
 {
@@ -35,7 +34,48 @@ namespace Taskalu
 
         public MainWindow()
         {
-            // Language Setting
+            setLanguageSettings();
+
+            if (string.IsNullOrEmpty(Properties.Settings.Default.Database_Folder))
+            {
+                ShowWelcomeWindow();
+            }
+
+            if (!setDBFolderSettings())
+            {
+                MessageBox.Show("database folder is not selected.");
+                Environment.Exit(1);
+            }
+
+            if (!setWorkFolderSettings())
+            {
+                MessageBox.Show("work folder is not selected.");
+                Environment.Exit(2);
+            }
+
+            InitializeComponent();
+
+            Microsoft.Win32.SystemEvents.PowerModeChanged +=
+                new Microsoft.Win32.PowerModeChangedEventHandler(PowerModeChanged);
+
+            if (!SQLiteClass.TouchDB())
+            {
+                MessageBox.Show("database creation error.");
+                Environment.Exit(3);
+            }
+            this.DataContext = MainViewModel.mv;
+            ExecuteFirstSelectTable();
+        }
+
+        private void ShowWelcomeWindow()
+        {
+            WelcomeWindow dlg = new WelcomeWindow();
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            dlg.ShowDialog();
+        }
+
+        private void setLanguageSettings()
+        {
             string settingvalue = Properties.Settings.Default.Language_Setting;
 
             if (settingvalue == "ja-JP")
@@ -63,19 +103,56 @@ namespace Taskalu
                     AddUpdateAppSettings("Language_Setting", "en-US");
                 }
             }
+        }
 
-            InitializeComponent();
-
-            Microsoft.Win32.SystemEvents.PowerModeChanged +=
-                new Microsoft.Win32.PowerModeChangedEventHandler(PowerModeChanged);
-
-            if (!SQLiteClass.TouchDB())
+        private Boolean setDBFolderSettings()
+        {
+            if (string.IsNullOrEmpty(Properties.Settings.Default.Database_Folder))
             {
-                MessageBox.Show("database creation error.");
-                Application.Current.Shutdown();
+                var dlg = new System.Windows.Forms.FolderBrowserDialog();
+                dlg.Description = "Select a folder for sqlite database.\nUnless there are any problems leave default. A folder 'taskalu' will be created on the selected folder.";
+                dlg.SelectedPath = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    AddUpdateAppSettings("Database_Folder", dlg.SelectedPath + "\\taskalu");
+                    SQLiteClass.dbdirectory = dlg.SelectedPath + "\\taskalu";
+                    SQLiteClass.dbpath = SQLiteClass.dbdirectory + "\\taskaludb.sqlite";
+                }
+                else
+                {
+                    return false;
+                }
             }
-            this.DataContext = MainViewModel.mv;
-            ExecuteFirstSelectTable();
+            else
+            {
+                SQLiteClass.dbdirectory = Properties.Settings.Default.Database_Folder;
+                SQLiteClass.dbpath = SQLiteClass.dbdirectory + "\\taskaludb.sqlite";
+            }
+            return true;
+        }
+
+        private Boolean setWorkFolderSettings()
+        {
+            if (string.IsNullOrEmpty(Properties.Settings.Default.Work_Folder))
+            {
+                var dlg = new System.Windows.Forms.FolderBrowserDialog();
+                dlg.Description = "Select a folder for work folder.\nUnless there are any problems leave default. A folder 'taskalu' will be created on the selected folder.";
+                dlg.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    AddUpdateAppSettings("Work_Folder", dlg.SelectedPath + "\\taskalu");
+                    WorkHolder.workDirectory = dlg.SelectedPath + "\\taskalu";
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                WorkHolder.workDirectory = Properties.Settings.Default.Work_Folder;
+            }
+            return true;
         }
 
         private void PowerModeChanged(object sender, Microsoft.Win32.PowerModeChangedEventArgs e)
