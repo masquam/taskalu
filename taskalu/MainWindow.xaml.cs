@@ -241,6 +241,15 @@ namespace Taskalu
             SQLiteClass.searchStringDescription = textboxDescription.Text;
         }
 
+        /// <summary>
+        /// textbox memo changed event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textboxMemo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SQLiteClass.searchStringMemo = textboxMemo.Text;
+        }
 
         /// <summary>
         /// search button click event

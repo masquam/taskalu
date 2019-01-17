@@ -22,7 +22,8 @@ namespace Taskalu
         public static string where_status { get; set; } = "Active";
         public static string searchStringName { get; set; } = "";
         public static string searchStringDescription { get; set; } = "";
-
+        public static string searchStringMemo { get; set; } = "";
+        
         public static int moreCount { get; set; }
         public static int moreSize = 10;
 
@@ -78,7 +79,17 @@ namespace Taskalu
 
         public static Boolean ExecuteFirstSelectTable()
         {
-            string sql = selectTaskListSql + addWhereClause();
+            string sql = "";
+            if (string.IsNullOrEmpty(searchStringMemo))
+            {
+                sql = selectTaskListSql + addWhereClause();
+            }
+            else
+            {
+                sql = "SELECT * FROM tasklist t INNER JOIN taskmemo m"
+                     + " ON m.memo LIKE @memo AND m.tasklist_id = t.id AND t.status = 'Active' "
+                     + addONClause();
+            }
             sql += " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString();
             return SQLiteClass.ExecuteSelectTable(MainViewModel.mv, sql);
@@ -86,7 +97,16 @@ namespace Taskalu
 
         public static Boolean ExecuteMoreSelectTable()
         {
-            string sql = selectTaskListSql + addWhereClause();
+            string sql = "";
+            if (string.IsNullOrEmpty(searchStringMemo)) {
+                sql = selectTaskListSql + addWhereClause();
+            }
+            else
+            {
+                sql = "SELECT * FROM tasklist t INNER JOIN taskmemo m"
+                     + " ON m.memo LIKE @memo AND m.tasklist_id = t.id AND t.status = 'Active' "
+                     + addONClause();
+            }
             sql += " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString()
                 + " offset " + SQLiteClass.moreCount.ToString();
@@ -107,6 +127,21 @@ namespace Taskalu
             return sql;
         }
 
+        public static string addONClause()
+        {
+            string sql = " AND t.status = '" + where_status + "'";
+            if (!String.IsNullOrEmpty(searchStringName))
+            {
+                sql += " AND t.name LIKE @name";
+            }
+            if (!String.IsNullOrEmpty(searchStringDescription))
+            {
+                sql += " AND t.description LIKE @description";
+            }
+            return sql;
+        }
+
+
         public static Boolean ExecuteSelectTable(MainViewModel mv, string sql)
         {
             // return value true: More button visibie
@@ -123,6 +158,10 @@ namespace Taskalu
             if (!String.IsNullOrEmpty(searchStringDescription))
             {
                 com.Parameters.Add(sqliteParam(com, "@description", "%" + searchStringDescription + "%"));
+            }
+            if (!String.IsNullOrEmpty(searchStringMemo))
+            {
+                com.Parameters.Add(sqliteParam(com, "@memo", "%" + searchStringMemo + "%"));
             }
 
             try
