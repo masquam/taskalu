@@ -110,7 +110,7 @@ namespace Taskalu
             if (string.IsNullOrEmpty(Properties.Settings.Default.Database_Folder))
             {
                 var dlg = new System.Windows.Forms.FolderBrowserDialog();
-                dlg.Description = "Select a folder for sqlite database.\nUnless there are any problems leave default. A folder 'taskalu' will be created on the selected folder.";
+                dlg.Description = Properties.Resources.WC_DatabaseFolder; ;
                 dlg.SelectedPath = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -136,7 +136,7 @@ namespace Taskalu
             if (string.IsNullOrEmpty(Properties.Settings.Default.Work_Folder))
             {
                 var dlg = new System.Windows.Forms.FolderBrowserDialog();
-                dlg.Description = "Select a folder for work folder.\nUnless there are any problems leave default. A folder 'taskalu' will be created on the selected folder.";
+                dlg.Description = Properties.Resources.WC_WorkFolder;
                 dlg.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {

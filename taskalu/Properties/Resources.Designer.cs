@@ -403,6 +403,16 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Select a folder for sqlite database.
+        ///Unless there are any problems leave default. A folder &apos;taskalu&apos; will be created on the selected folder. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WC_DatabaseFolder {
+            get {
+                return ResourceManager.GetString("WC_DatabaseFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Welcome に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string WC_Welcome {
@@ -419,6 +429,16 @@ namespace Taskalu.Properties {
         public static string WC_WelcomeMessage {
             get {
                 return ResourceManager.GetString("WC_WelcomeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Select a folder for work folder.
+        ///Unless there are any problems leave default. A folder &apos;taskalu&apos; will be created on the selected folder. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WC_WorkFolder {
+            get {
+                return ResourceManager.GetString("WC_WorkFolder", resourceCulture);
             }
         }
     }

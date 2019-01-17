@@ -231,6 +231,10 @@
   <data name="DS_EditDescription" xml:space="preserve">
     <value>Edit Description</value>
   </data>
+  <data name="WC_DatabaseFolder" xml:space="preserve">
+    <value>Select a folder for sqlite database.
+Unless there are any problems leave default. A folder 'taskalu' will be created on the selected folder.</value>
+  </data>
   <data name="WC_Welcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
@@ -238,5 +242,9 @@
     <value>Welcome to taskalu, a tiny task management application for Windows desktop.
 
 Please select folders for database and working folder with following dialogs, usually default is reasonable.</value>
+  </data>
+  <data name="WC_WorkFolder" xml:space="preserve">
+    <value>Select a folder for work folder.
+Unless there are any problems leave default. A folder 'taskalu' will be created on the selected folder.</value>
   </data>
 </root>
