@@ -304,7 +304,7 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
-        ///   Open Work Holder に類似しているローカライズされた文字列を検索します。
+        ///   Open Work Folder に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_OpenWorkHolder {
             get {
