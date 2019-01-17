@@ -231,4 +231,12 @@
   <data name="DS_EditDescription" xml:space="preserve">
     <value>Edit Description</value>
   </data>
+  <data name="WC_Welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="WC_WelcomeMessage" xml:space="preserve">
+    <value>Welcome to taskalu, a tiny task management application for Windows desktop.
+
+Please select folders for database and working folder with following dialogs, usually default is reasonable.</value>
+  </data>
 </root>

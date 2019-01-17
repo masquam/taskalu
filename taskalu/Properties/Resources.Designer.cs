@@ -401,5 +401,25 @@ namespace Taskalu.Properties {
                 return ResourceManager.GetString("TD_TaskDetails", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Welcome に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WC_Welcome {
+            get {
+                return ResourceManager.GetString("WC_Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Welcome to taskalu, a tiny task management application for Windows desktop.
+        ///
+        ///Please select folders for database and working folder with following dialogs, usually default is reasonable. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WC_WelcomeMessage {
+            get {
+                return ResourceManager.GetString("WC_WelcomeMessage", resourceCulture);
+            }
+        }
     }
 }

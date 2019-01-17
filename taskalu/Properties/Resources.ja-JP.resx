@@ -234,4 +234,12 @@
   <data name="DS_EditDescription" xml:space="preserve">
     <value>内容の編集</value>
   </data>
+  <data name="WC_Welcome" xml:space="preserve">
+    <value>ようこそ</value>
+  </data>
+  <data name="WC_WelcomeMessage" xml:space="preserve">
+    <value>Windowsデスクトップ向けタスク管理アプリケーションであるtaskaluをダウンロードいただきありがとうございます。
+
+次のダイアログにて、データベースとワークフォルダの指定を行ってください。通常はデフォルト値のままで問題ありません。</value>
+  </data>
 </root>
