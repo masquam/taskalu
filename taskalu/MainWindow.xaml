@@ -220,7 +220,7 @@
                 </ScrollViewer>
                 <Button  Grid.Row="4" Grid.Column="6" x:Name="UpdateDescriptionButton" Content="{x:Static properties:Resources.MW_Edit}" Width="96" Height="32" Click="EditDescriptionButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 <Label Grid.Row="5" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
-                <TextBox Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1" x:Name="ep_memo" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767"/>
+                <TextBox Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1" x:Name="ep_memo" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
                 <Button  Grid.Row="5" Grid.Column="6" x:Name="SaveMemo" Content="{x:Static properties:Resources.MW_Add}" Width="96" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 <ListView Grid.ColumnSpan="6" Grid.Row="6" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="620">
                     <ListView.ItemContainerStyle>
