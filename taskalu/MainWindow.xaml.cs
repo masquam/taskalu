@@ -36,6 +36,8 @@ namespace Taskalu
         {
             setLanguageSettings();
 
+            InitializeComponent();
+
             if (string.IsNullOrEmpty(Properties.Settings.Default.Database_Folder))
             {
                 ShowWelcomeWindow();
@@ -52,8 +54,6 @@ namespace Taskalu
                 MessageBox.Show("work folder is not selected.");
                 Environment.Exit(2);
             }
-
-            InitializeComponent();
 
             Microsoft.Win32.SystemEvents.PowerModeChanged +=
                 new Microsoft.Win32.PowerModeChangedEventHandler(PowerModeChanged);
