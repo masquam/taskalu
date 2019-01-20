@@ -8,6 +8,13 @@
         mc:Ignorable="d"
         Title="taskaru" Height="300" Width="600">
     <Grid FocusManager.FocusedElement="{Binding ElementName=NewTitleBox}">
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" />
+            </Style>
+        </Grid.Resources>
         <DockPanel>
             <StackPanel DockPanel.Dock="Top" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                 <Label Content="{x:Static properties:Resources.Menu_NewTask}" FontSize="16"></Label>
@@ -16,11 +23,11 @@
                 <Button Name="NewWindowOk" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="32" Margin="300,4,0,0" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonNewWindowOk_Click" />
                 <Button Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="96" Height="32" Margin="32,4,0,0" RenderTransformOrigin="1.259,3.535" IsCancel="True"/>
             </StackPanel>
-            <Grid>
+            <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                 <Label Content="{x:Static properties:Resources.MW_Title}" HorizontalAlignment="Left" Height="27" Margin="39,10,0,0" Width="79" VerticalAlignment="Top" RenderTransformOrigin="0.481,-0.074"/>
-                <TextBox Name="NewTitleBox" HorizontalAlignment="Left" Height="23" Margin="123,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" MaxLength="32767"/>
+                <TextBox Name="NewTitleBox" HorizontalAlignment="Left" Height="23" Margin="123,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                 <Label Content="{x:Static properties:Resources.MW_Description}" HorizontalAlignment="Left" Height="27" Margin="39,42,0,0" Width="79" VerticalAlignment="Top" RenderTransformOrigin="0.481,-0.074"/>
-                <TextBox Name="NewDescriptionBox" HorizontalAlignment="Left" Height="57" Margin="123,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" MaxLength="32767" AcceptsReturn="True"/>
+                <TextBox Name="NewDescriptionBox" HorizontalAlignment="Left" Height="57" Margin="123,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" MaxLength="32767" AcceptsReturn="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                 <Label Content="{x:Static properties:Resources.MW_DueDate}" HorizontalAlignment="Left" Height="27" Margin="39,108,0,0" Width="79" VerticalAlignment="Top"/>
                 <DatePicker x:Name="dateBox" HorizontalAlignment="Left" Margin="123,109,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="238,109,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" RenderTransformOrigin="0.417,1.682">

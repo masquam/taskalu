@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         Title="taskalu" Height="220" Width="300" Loaded="LanguageSettingsWindow_Loaded">
-    <Grid>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" >
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" />
+            </Style>
+        </Grid.Resources>
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="Language Settings" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">

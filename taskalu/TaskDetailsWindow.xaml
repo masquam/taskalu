@@ -8,7 +8,14 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:TaskDetailsViewModel}}"
         Title="taskalu" Height="450" Width="480" MinWidth="480" MaxWidth="480" Loaded="TaskDetailsWindow_Loaded">
-    <Grid>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" />
+            </Style>
+        </Grid.Resources>
         <DockPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="24" VerticalAlignment="Bottom">
                 <Label x:Name="textTaskDetailsStatusBar" Height="24"></Label>
@@ -30,7 +37,7 @@
                 <Label Content="{x:Static properties:Resources.TD_TaskDetails}" FontSize="16" Height="32"></Label>
             </StackPanel>
             <StackPanel x:Name="TaskDetailsBottomToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
-                <Button Visibility="Collapsed" x:Name="TaskDetailsMoreButton" Content="More" Click="TaskDetailsMoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32"/>
+                <Button Visibility="Collapsed" x:Name="TaskDetailsMoreButton" Content="{x:Static properties:Resources.MW_More}" Click="TaskDetailsMoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32"/>
             </StackPanel>
             <ListView x:Name="listviewTaskDetails" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Entries}" >
                 <ListView.ItemContainerStyle>

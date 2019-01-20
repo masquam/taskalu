@@ -7,7 +7,14 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         Title="taskalu" Height="378" Width="373">
-    <Grid>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" />
+            </Style>
+        </Grid.Resources>
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.WC_Welcome}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch">
@@ -15,7 +22,7 @@
             </StackPanel>
             <Image  DockPanel.Dock="Left" VerticalAlignment="Top" Source="taskal_icon.ico" Width="48" Height="48" Margin="8"></Image>
             <TextBox IsReadOnly="True" TextWrapping="Wrap" Focusable="False" BorderThickness="0" Margin="8"
-                     Text="{x:Static properties:Resources.WC_WelcomeMessage}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}"/>
+                     Text="{x:Static properties:Resources.WC_WelcomeMessage}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
         </DockPanel>
     </Grid>
 </Window>
