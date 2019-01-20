@@ -88,8 +88,8 @@ namespace Taskalu
             }
             else
             {
-                sql = "SELECT * FROM tasklist t INNER JOIN taskmemo m"
-                     + " ON m.memo LIKE @memo AND m.tasklist_id = t.id AND t.status = 'Active' "
+                sql = "SELECT * FROM tasklist t"
+                     + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @memo)"
                      + addONClause();
             }
             sql += " order by " + orderBy + " " + orderByDirection
@@ -105,8 +105,8 @@ namespace Taskalu
             }
             else
             {
-                sql = "SELECT * FROM tasklist t INNER JOIN taskmemo m"
-                     + " ON m.memo LIKE @memo AND m.tasklist_id = t.id AND t.status = 'Active' "
+                sql = "SELECT * FROM tasklist t"
+                     + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @memo)"
                      + addONClause();
             }
             sql += " order by " + orderBy + " " + orderByDirection
