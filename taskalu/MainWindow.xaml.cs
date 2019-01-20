@@ -802,8 +802,7 @@ namespace Taskalu
                 if (!string.IsNullOrEmpty(dlg.memoString))
                 {
                     SQLiteClass.ExecuteInsertTableTaskMemo(epId, dlg.memoString);
-                    //SQLiteClass.UpdateTaskListDescription(epId, ep_memo.Text);
-                    //ep_memo.Text = "";
+                    SQLiteClass.ExecuteUpdateTaskListMemo(epId, dlg.memoString);
                     ExecuteFirstSelectTableTaskMemo(epId);
                 }
             }

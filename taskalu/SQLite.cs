@@ -66,7 +66,7 @@ namespace Taskalu
                     return false;
                 }
 
-                if (!ExecuteCreateTable("CREATE TABLE tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT, workholder TEXT)"))
+                if (!ExecuteCreateTable("CREATE TABLE tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, memo TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT, workholder TEXT)"))
                 {
                     return false;
                 }
@@ -75,6 +75,10 @@ namespace Taskalu
                     return false;
                 }
                 if (!ExecuteCreateIndex("tasklist", "index_tasklist_description", "description"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateIndex("tasklist", "index_tasklist_memo", "memo"))
                 {
                     return false;
                 }

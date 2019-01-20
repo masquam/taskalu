@@ -32,9 +32,10 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (name, description, priority, createdate, duedate, status, workholder) VALUES (@name, @description, @priority, @createdate, @duedate, @status, @workholder)", con);
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (name, description, memo, priority, createdate, duedate, status, workholder) VALUES (@name, @description, @memo, @priority, @createdate, @duedate, @status, @workholder)", con);
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
+            com.Parameters.Add(sqliteParam(com, "@memo", lvFile.Memo));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
             com.Parameters.Add(sqliteParam(com, "@createdate", System.DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));
             com.Parameters.Add(sqliteParam(com, "@duedate", lvFile.DueDate));
@@ -177,6 +178,7 @@ namespace Taskalu
                         lvFile.Id = (Int64)sdr["id"];
                         lvFile.Name = (string)sdr["name"];
                         lvFile.Description = (string)sdr["description"];
+                        lvFile.Memo = (string)sdr["memo"];
                         lvFile.Priority = (string)sdr["priority"];
 
                         DateTime utc = (DateTime)sdr["createdate"];
@@ -280,6 +282,33 @@ namespace Taskalu
             catch (Exception ex)
             {
                 MessageBox.Show("database table description update error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
+
+        public static Boolean ExecuteUpdateTaskListMemo(Int64 id, string memo)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist set memo=@memo where id=@id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
+            com.Parameters.Add(sqliteParam(com, "@memo", memo));
+
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table memo update error!\n" + ex.Message);
             }
             finally
             {

@@ -135,8 +135,8 @@
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
                         </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Width="256" >
-                            <GridViewColumnHeader Click="Description_Click" Content="{x:Static properties:Resources.MW_Description}">
+                        <GridViewColumn DisplayMemberBinding="{Binding Memo}" Width="256" >
+                            <GridViewColumnHeader Click="Description_Click" Content="{x:Static properties:Resources.MW_Memo}">
                                 <GridViewColumnHeader.ContextMenu>
                                     <ContextMenu Name="DescriptionCM">
                                         <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="DescriptionAsc_Click"/>
