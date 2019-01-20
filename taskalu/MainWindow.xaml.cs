@@ -379,22 +379,22 @@ namespace Taskalu
             ExecuteFirstSelectTable();
         }
 
-        private void Description_Click(object sender, RoutedEventArgs e)
+        private void Memo_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.nameOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.nameOrderByDirection);
-            SQLiteClass.SetOrderBy("description", SQLiteClass.nameOrderByDirection);
+            SQLiteClass.memoOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.memoOrderByDirection);
+            SQLiteClass.SetOrderBy("memo", SQLiteClass.memoOrderByDirection);
             ExecuteFirstSelectTable();
         }
-        private void DescriptionAsc_Click(object sender, RoutedEventArgs e)
+        private void MemoAsc_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.nameOrderByDirection = "ASC";
-            SQLiteClass.SetOrderBy("description", "ASC");
+            SQLiteClass.memoOrderByDirection = "ASC";
+            SQLiteClass.SetOrderBy("memo", "ASC");
             ExecuteFirstSelectTable();
         }
-        private void DescriptionDes_Click(object sender, RoutedEventArgs e)
+        private void MemoDes_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.nameOrderByDirection = "DESC";
-            SQLiteClass.SetOrderBy("description", "DESC");
+            SQLiteClass.memoOrderByDirection = "DESC";
+            SQLiteClass.SetOrderBy("memo", "DESC");
             ExecuteFirstSelectTable();
         }
 

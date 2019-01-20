@@ -136,11 +136,11 @@
                             </GridViewColumnHeader>
                         </GridViewColumn>
                         <GridViewColumn DisplayMemberBinding="{Binding Memo}" Width="256" >
-                            <GridViewColumnHeader Click="Description_Click" Content="{x:Static properties:Resources.MW_Memo}">
+                            <GridViewColumnHeader Click="Memo_Click" Content="{x:Static properties:Resources.MW_Memo}">
                                 <GridViewColumnHeader.ContextMenu>
-                                    <ContextMenu Name="DescriptionCM">
-                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="DescriptionAsc_Click"/>
-                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="DescriptionDes_Click"/>
+                                    <ContextMenu Name="MemoCM">
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="MemoAsc_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="MemoDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>

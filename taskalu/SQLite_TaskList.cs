@@ -17,6 +17,7 @@ namespace Taskalu
         public static string orderByDirection { get; set; } = "ASC";
         public static string priorityOrderByDirection { get; set; } = "ASC";
         public static string nameOrderByDirection { get; set; } = "ASC";
+        public static string memoOrderByDirection { get; set; } = "ASC";
         public static string duedateOrderByDirection { get; set; } = "ASC";
 
         public static string where_status { get; set; } = "Active";
