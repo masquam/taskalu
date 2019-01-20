@@ -543,6 +543,8 @@ namespace Taskalu
                 tmpDescription = dlg.descriptionString;
                 ep_description.Text = "";
                 HyperLink.FillHyperLinks(ep_description, HyperLink.CreateHyperLinkList(tmpDescription));
+
+                SQLiteClass.ExecuteUpdateTable_Description(epId, tmpDescription);
             }
         }
 

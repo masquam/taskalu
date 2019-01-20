@@ -261,6 +261,33 @@ namespace Taskalu
             return ret;
         }
 
+        public static Boolean ExecuteUpdateTable_Description(Int64 id, string description)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist set description=@description where id=@id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
+            com.Parameters.Add(sqliteParam(com, "@description", description));
+
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table description update error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
+
         private static string getUTCString(string localTime)
         {
             DateTime date;
