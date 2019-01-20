@@ -21,7 +21,7 @@
                 <Button x:Name="DescriptionOk" Content="OK" HorizontalAlignment="Left" Margin="200,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="DescriptionOk_Click"  />
                 <Button Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="32,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
             </StackPanel>
-            <TextBox x:Name="DescriptionTextBox" DockPanel.Dock="Left" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Width="620" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBox>
+            <TextBox x:Name="DescriptionTextBox" DockPanel.Dock="Left" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Width="620" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" MaxLength="32767"></TextBox>
         </DockPanel>
     </Grid>
 </Window>
