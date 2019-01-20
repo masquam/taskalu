@@ -40,7 +40,9 @@
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" />
+                                    <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
+                                    <Setter Property ="Rectangle.Fill" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
+                                    <Setter Property="Rectangle.Opacity" Value="0.5" TargetName="outerRectangle" />
                                     <Setter Property="ContentPresenter.BitmapEffect" TargetName="myContentPresenter">
                                         <Setter.Value>
                                             <BlurBitmapEffect Radius="1" />
@@ -48,7 +50,7 @@
                                     </Setter>
                                 </Trigger>
                                 <Trigger Property="IsFocused" Value="true">
-                                    <Setter Property="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}" />
+                                    <Setter Property="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
