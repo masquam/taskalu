@@ -110,6 +110,9 @@
     <Compile Include="ListDateSum.cs" />
     <Compile Include="ListTaskDetails.cs" />
     <Compile Include="ListTaskMemo.cs" />
+    <Compile Include="MemoAddWindow.xaml.cs">
+      <DependentUpon>MemoAddWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MemoWindow.xaml.cs">
       <DependentUpon>MemoWindow.xaml</DependentUpon>
     </Compile>
@@ -170,6 +173,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MemoAddWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MemoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

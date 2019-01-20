@@ -486,7 +486,7 @@ namespace Taskalu
                 epId = lbf.Id;
                 ep_name.Text = lbf.Name;
                 ep_description.Text = "";
-                ep_memo.Text = "";
+                //ep_memo.Text = "";
                 ep_priorityBox.SelectedIndex = 5 - priorityLen;
                 ep_createdate.Text = lbf.CreateDate;
                 ep_duedate.Text = lbf.DueDate;
@@ -799,10 +799,20 @@ namespace Taskalu
 
         private void saveMemo_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteClass.ExecuteInsertTableTaskMemo(epId, ep_memo.Text);
-            //SQLiteClass.UpdateTaskListDescription(epId, ep_memo.Text);
-            ep_memo.Text = "";
-            ExecuteFirstSelectTableTaskMemo(epId);
+            MemoAddWindow dlg = new MemoAddWindow();
+
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            //dlg.MemoString = tmpDescription;
+
+            if (dlg.ShowDialog() == true)
+            {
+                SQLiteClass.ExecuteInsertTableTaskMemo(epId, dlg.memoString);
+                //SQLiteClass.UpdateTaskListDescription(epId, ep_memo.Text);
+                //ep_memo.Text = "";
+                ExecuteFirstSelectTableTaskMemo(epId);
+            }
         }
 
         private void ExecuteFirstSelectTableTaskMemo(Int64 id)

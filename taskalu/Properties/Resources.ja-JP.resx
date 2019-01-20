@@ -250,4 +250,7 @@
     <value>ワークフォルダ用のフォルダを選択してください。
 通常はデフォルトのままで問題ありません。'taskalu' という名前のフォルダがこのフォルダに作成されます。</value>
   </data>
+  <data name="MW_AddMemo" xml:space="preserve">
+    <value>メモの追加</value>
+  </data>
 </root>

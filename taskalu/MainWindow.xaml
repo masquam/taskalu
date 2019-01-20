@@ -177,7 +177,6 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="40" />
                     <RowDefinition Height="42" />
@@ -222,14 +221,13 @@
                     <Button x:Name="TaskDetails" Content="..." Width="32" Height="23" Click="TaskDetails_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 </StackPanel>
                 <Label Grid.Row="4" Grid.Column="0" Content="{x:Static properties:Resources.MW_Description}"/>
-                <ScrollViewer Grid.ColumnSpan="5" Grid.Row="4" Grid.Column="1" Width="454" Height="80" Margin="0,4,0,4" Padding="4" VerticalScrollBarVisibility="Auto" Background="White" >
+                <ScrollViewer Grid.ColumnSpan="6" Grid.Row="4" Grid.Column="1" Width="620" Height="150" Margin="0,4,0,4" Padding="4" VerticalScrollBarVisibility="Auto" Background="White" HorizontalAlignment="Left">
                     <TextBlock  x:Name="ep_description" TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Hyperlink.RequestNavigate="RequestNavigateEventHandler"/>
                 </ScrollViewer>
-                <Button  Grid.Row="4" Grid.Column="6" x:Name="UpdateDescriptionButton" Content="{x:Static properties:Resources.MW_Edit}" Width="96" Height="32" Click="EditDescriptionButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
+                <Button  Grid.Row="4" Grid.Column="0" x:Name="UpdateDescriptionButton" Content="{x:Static properties:Resources.MW_Edit}" Width="80" Height="32" Click="EditDescriptionButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,32,0,4"></Button>
                 <Label Grid.Row="5" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
-                <TextBox Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1" x:Name="ep_memo" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
-                <Button  Grid.Row="5" Grid.Column="6" x:Name="SaveMemo" Content="{x:Static properties:Resources.MW_Add}" Width="96" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
-                <ListView Grid.ColumnSpan="6" Grid.Row="6" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="620" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <Button  Grid.Row="5" Grid.Column="0" x:Name="SaveMemo" Content="{x:Static properties:Resources.MW_Add}" Width="80" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,32,0,4"></Button>
+                <ListView Grid.ColumnSpan="6" Grid.Row="5" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="620" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Height" Value="38" />
@@ -247,11 +245,11 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Grid.Row="7" Grid.Column="4" Visibility="Collapsed" x:Name="TaskMemoMoreButton" Content="{x:Static properties:Resources.MW_More}" Click="TaskMemoMoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
-                <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="7" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></StackPanel>
-                <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="{x:Static properties:Resources.MW_OpenWorkHolder}" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
-                <Button Grid.Row="8" Grid.Column="4" Name="ep_save" Content="{x:Static properties:Resources.MW_Save}" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
-                <Button Grid.Row="8" Grid.Column="6" Name="ep_close" Content="{x:Static properties:Resources.MW_Cancel}" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="6" Grid.Column="4" Visibility="Collapsed" x:Name="TaskMemoMoreButton" Content="{x:Static properties:Resources.MW_More}" Click="TaskMemoMoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
+                <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></StackPanel>
+                <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Content="{x:Static properties:Resources.MW_OpenWorkHolder}" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="7" Grid.Column="4" Name="ep_save" Content="{x:Static properties:Resources.MW_Save}" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
+                <Button Grid.Row="7" Grid.Column="6" Name="ep_close" Content="{x:Static properties:Resources.MW_Cancel}" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
             </Grid>
         </DockPanel>
     </Grid>

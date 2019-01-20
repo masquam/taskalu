@@ -214,6 +214,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Add Memo に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_AddMemo {
+            get {
+                return ResourceManager.GetString("MW_AddMemo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ascending に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_Ascending {

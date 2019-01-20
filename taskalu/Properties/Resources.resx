@@ -247,4 +247,7 @@ Please select folders for database and working folder with following dialogs, us
     <value>Select a folder for work folder.
 Unless there are any problems leave default. A folder 'taskalu' will be created on the selected folder.</value>
   </data>
+  <data name="MW_AddMemo" xml:space="preserve">
+    <value>Add Memo</value>
+  </data>
 </root>
