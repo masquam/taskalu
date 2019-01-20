@@ -430,6 +430,7 @@ namespace Taskalu
                     ep_name.Text,
                     ep_priorityBox.Text,
                     ep_statusBox.Text,
+                    ep_description.Text,
                     ep_createdate.Text,
                     ep_duedate.Text,
                     workHolder,

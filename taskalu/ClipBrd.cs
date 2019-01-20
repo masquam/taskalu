@@ -15,7 +15,7 @@ namespace Taskalu
 
             foreach (ListViewFile file in MainViewModel.mv.Files)
             {
-                str += file.Priority + "\t" + file.Name + "\t\"" + file.Description + "\"\t" + file.DueDate + "\n";
+                str += file.Priority + "\t" + file.Name + "\t\"" + file.Memo + "\"\t" + file.DueDate + "\n";
             }
             if (!string.IsNullOrEmpty(str))
             {
@@ -63,13 +63,14 @@ namespace Taskalu
             string name,
             string priority,
             string status,
+            string description,
             string createdate,
             string duedate,
             string workHolder,
             TaskMemoViewModel tmv)
         {
             string str = "";
-            str = name + "\t" + priority + "\t" + status + "\t" + createdate + "\t" + duedate + "\t" + workHolder;
+            str = name + "\t" + priority + "\t" + status + "\t\"" + description + "\"\t" + createdate + "\t" + duedate + "\t" + workHolder;
 
             foreach (ListTaskMemo ltm in TaskMemoViewModel.tmv.Memos)
             {
