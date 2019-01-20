@@ -178,16 +178,6 @@ namespace Taskalu
             }
         }
 
-        /*
-         * TODO: ウィンドウ幅に応じて textbox の幅を変更する
-         * textblock1 が　現在のコンテキストに存在しない　エラーとなる
-        void MainWindowSizeChanged(object sender, SizeChangedEventArgs args)
-        {
-            // change width of TextBlock Description
-            textblock1.width = ActualWidth - 100;
-        }
-        */
-
         // Toolbar - New Task button
         private void NewButton_Click(object sender, RoutedEventArgs e)
         {
@@ -289,7 +279,6 @@ namespace Taskalu
                 editTimer_start(epId);
             }
         }
-
 
         // status combobox is changed
         private void statusBox_DropDownClosed(object sender, EventArgs e)
@@ -808,10 +797,13 @@ namespace Taskalu
 
             if (dlg.ShowDialog() == true)
             {
-                SQLiteClass.ExecuteInsertTableTaskMemo(epId, dlg.memoString);
-                //SQLiteClass.UpdateTaskListDescription(epId, ep_memo.Text);
-                //ep_memo.Text = "";
-                ExecuteFirstSelectTableTaskMemo(epId);
+                if (!string.IsNullOrEmpty(dlg.memoString))
+                {
+                    SQLiteClass.ExecuteInsertTableTaskMemo(epId, dlg.memoString);
+                    //SQLiteClass.UpdateTaskListDescription(epId, ep_memo.Text);
+                    //ep_memo.Text = "";
+                    ExecuteFirstSelectTableTaskMemo(epId);
+                }
             }
         }
 
