@@ -6,15 +6,15 @@
         xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="taskalu" Height="300" Width="454" Loaded="DescriptionWindow_Loaded">
+        Title="taskalu" Height="400" Width="648" Loaded="DescriptionWindow_Loaded">
     <Grid>
-        <DockPanel>
+        <DockPanel Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.DS_EditDescription}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel x:Name="DescriptionBottomToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
-                <Button x:Name="DescriptionOk" Content="OK" HorizontalAlignment="Left" Margin="110,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="DescriptionOk_Click"  />
+                <Button x:Name="DescriptionOk" Content="OK" HorizontalAlignment="Left" Margin="200,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="DescriptionOk_Click"  />
                 <Button Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="32,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
             </StackPanel>
-            <TextBox x:Name="DescriptionTextBox" DockPanel.Dock="Left" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True"></TextBox>
+            <TextBox x:Name="DescriptionTextBox" DockPanel.Dock="Left" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" Width="620" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBox>
         </DockPanel>
     </Grid>
 </Window>

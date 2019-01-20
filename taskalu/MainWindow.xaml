@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:MainViewModel}}" 
-        Title="taskalu" Height="596" Width="760" MinWidth="760" MaxWidth="760" x:Name="Main_Window">
+        Title="taskalu" Height="596" Width="760" MinWidth="760" MaxWidth="760" MinHeight="520" x:Name="Main_Window">
     <Window.Resources>
         <local:DateToColorConverter x:Key="DateToColorConverter" />
     </Window.Resources>
@@ -194,7 +194,7 @@
                     <Label Content="{x:Static properties:Resources.MW_TaskDetail}" FontSize="16" Height="32"/>
                 </StackPanel>
                 <Label Grid.Row="1" Grid.Column="0" Content="{x:Static properties:Resources.MW_Title}" Margin="0,4,0,4"/>
-                <TextBox Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,8,8,4" FontSize="20" Width="620" HorizontalAlignment="Left" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                <TextBox Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,8,8,4" FontSize="20" Width="652" HorizontalAlignment="Left" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                 <Label Grid.Row="2" Grid.Column="0" Content="{x:Static properties:Resources.MW_Priority}"/>
                 <ComboBox Grid.Row="2" Grid.Column="1" x:Name="ep_priorityBox" SelectedIndex="5" Foreground="#FF9B9B00" Width="120" Height="23" HorizontalAlignment="Left" Margin="0,4,0,4">
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
@@ -221,13 +221,13 @@
                     <Button x:Name="TaskDetails" Content="..." Width="32" Height="23" Click="TaskDetails_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 </StackPanel>
                 <Label Grid.Row="4" Grid.Column="0" Content="{x:Static properties:Resources.MW_Description}"/>
-                <ScrollViewer Grid.ColumnSpan="6" Grid.Row="4" Grid.Column="1" Width="620" Height="150" Margin="0,4,0,4" Padding="4" VerticalScrollBarVisibility="Auto" Background="White" HorizontalAlignment="Left">
+                <ScrollViewer Grid.ColumnSpan="6" Grid.Row="4" Grid.Column="1" Width="652" Height="135" Margin="0,4,0,4" Padding="4" VerticalScrollBarVisibility="Auto" Background="White" HorizontalAlignment="Left">
                     <TextBlock  x:Name="ep_description" TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Hyperlink.RequestNavigate="RequestNavigateEventHandler"/>
                 </ScrollViewer>
                 <Button  Grid.Row="4" Grid.Column="0" x:Name="UpdateDescriptionButton" Content="{x:Static properties:Resources.MW_Edit}" Width="80" Height="32" Click="EditDescriptionButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,32,0,4"></Button>
                 <Label Grid.Row="5" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
                 <Button  Grid.Row="5" Grid.Column="0" x:Name="SaveMemo" Content="{x:Static properties:Resources.MW_Add}" Width="80" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,32,0,4"></Button>
-                <ListView Grid.ColumnSpan="6" Grid.Row="5" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="620" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <ListView Grid.ColumnSpan="6" Grid.Row="5" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="654" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Height" Value="38" />
