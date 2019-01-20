@@ -9,7 +9,7 @@
                         <Polygon x:Name="ButtonBG" Points="0,20 15,0 30,20 0,20"
                                 Stroke="{DynamicResource {x:Static SystemColors.ControlDarkDarkBrushKey}}" StrokeThickness="1">
                             <Polygon.Fill>
-                                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlDarkDarkColorKey}}"/>
+                                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.GradientActiveCaptionColorKey}}"/>
                             </Polygon.Fill>
                         </Polygon>
                         <ContentPresenter Margin="0,6,0,0" TextBlock.FontSize="12"
