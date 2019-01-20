@@ -50,7 +50,7 @@
                 <Button Name="DateDetailButton" Content="{x:Static properties:Resources.Menu_DateDetails}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateDetailsButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
-            <StackPanel x:Name="listviewTopToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Vertical" Height="58">
+            <StackPanel x:Name="listviewTopToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Vertical" Height="62">
                 <Label Content="{x:Static properties:Resources.MW_TaskSummary}" FontSize="16" Height="32"></Label>
                 <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
                     <Label Content="{x:Static properties:Resources.MW_Status}"></Label>
@@ -60,11 +60,11 @@
                         <ComboBoxItem Content="Deffered"/>
                     </ComboBox>
                     <Label Content="{x:Static properties:Resources.MW_Title}"></Label>
-                    <TextBox x:Name="textboxTitle" TextChanged="textboxTitle_TextChanged" Width="100" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767"></TextBox>
+                    <TextBox x:Name="textboxTitle" TextChanged="textboxTitle_TextChanged" Width="100" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBox>
                     <Label Content="{x:Static properties:Resources.MW_Description}"></Label>
-                    <TextBox x:Name="textboxDescription" TextChanged="textboxDescription_TextChanged" Width="100" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767"></TextBox>
+                    <TextBox x:Name="textboxDescription" TextChanged="textboxDescription_TextChanged" Width="100" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBox>
                     <Label Content="{x:Static properties:Resources.MW_Memo}"></Label>
-                    <TextBox x:Name="textboxMemo" TextChanged="textboxMemo_TextChanged" Width="100" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767"></TextBox>
+                    <TextBox x:Name="textboxMemo" TextChanged="textboxMemo_TextChanged" Width="100" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBox>
                     <Button x:Name="ButtonSearch" Content="{x:Static properties:Resources.MW_Search}" Click="ButtonSearch_Click" Width="96" Margin="0,2,0,0" ></Button>
                 </StackPanel>
             </StackPanel>
@@ -160,7 +160,7 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Grid DockPanel.Dock="Top" Name="editpanel" Visibility="Collapsed" >
+            <Grid DockPanel.Dock="Top" Name="editpanel" Visibility="Collapsed" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" >
                 <Grid.Resources >
                     <Style TargetType="TextBox" >
                         <Setter Property="Margin" Value="0,4,0,4" />
@@ -190,7 +190,7 @@
                     <Label Content="{x:Static properties:Resources.MW_TaskDetail}" FontSize="16" Height="32"/>
                 </StackPanel>
                 <Label Grid.Row="1" Grid.Column="0" Content="{x:Static properties:Resources.MW_Title}" Margin="0,4,0,4"/>
-                <TextBox Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,8,8,4" FontSize="20" Width="620" HorizontalAlignment="Left" MaxLength="32767"/>
+                <TextBox Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,8,8,4" FontSize="20" Width="620" HorizontalAlignment="Left" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                 <Label Grid.Row="2" Grid.Column="0" Content="{x:Static properties:Resources.MW_Priority}"/>
                 <ComboBox Grid.Row="2" Grid.Column="1" x:Name="ep_priorityBox" SelectedIndex="5" Foreground="#FF9B9B00" Width="120" Height="23" HorizontalAlignment="Left" Margin="0,4,0,4">
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
@@ -201,7 +201,7 @@
                     <ComboBoxItem Content=""/>
                 </ComboBox>
                 <Label Grid.Row="2" Grid.Column="3" Content="{x:Static properties:Resources.MW_CreateDate}"/>
-                <TextBox Grid.Row="2" Grid.Column="4" Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True" />
+                <TextBox Grid.Row="2" Grid.Column="4" Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
                 <Label Grid.Row="3" Grid.Column="0" Content="{x:Static properties:Resources.MW_Status}"/>
                 <ComboBox  Grid.Row="3" Grid.Column="1" x:Name="ep_statusBox" Width="120" IsReadOnly="True" SelectedIndex="0" Height="23" >
                     <ComboBoxItem Content="Active"/>
@@ -209,22 +209,22 @@
                     <ComboBoxItem Content="Deffered"/>
                 </ComboBox>
                 <Label Grid.Row="3" Grid.Column="3" Content="{x:Static properties:Resources.MW_DueDate}"/>
-                <TextBox Grid.Row="3" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True"/>
+                <TextBox Grid.Row="3" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                 <Button Grid.Row="3" Grid.Column="5" Name="ep_changeduedate" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left" />
                 <StackPanel Grid.Row="2" Grid.Column="6" Orientation="Horizontal">
                     <Label Content="{x:Static properties:Resources.MW_Tick}"/>
-                    <TextBox x:Name="editTimerTextBox" Height="23" TextWrapping="NoWrap" Text="" IsReadOnly="True"/>
+                    <TextBox x:Name="editTimerTextBox" Height="23" TextWrapping="NoWrap" Text="" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                     <Button x:Name="TaskDetails" Content="..." Width="32" Height="23" Click="TaskDetails_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 </StackPanel>
                 <Label Grid.Row="4" Grid.Column="0" Content="{x:Static properties:Resources.MW_Description}"/>
-                <ScrollViewer Grid.ColumnSpan="5" Grid.Row="4" Grid.Column="1" Width="454" Height="64" Margin="0,4,0,8" Padding="4" VerticalScrollBarVisibility="Auto" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <ScrollViewer Grid.ColumnSpan="5" Grid.Row="4" Grid.Column="1" Width="454" Height="80" Margin="0,4,0,4" Padding="4" VerticalScrollBarVisibility="Auto" Background="White" >
                     <TextBlock  x:Name="ep_description" TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Hyperlink.RequestNavigate="RequestNavigateEventHandler"/>
                 </ScrollViewer>
                 <Button  Grid.Row="4" Grid.Column="6" x:Name="UpdateDescriptionButton" Content="{x:Static properties:Resources.MW_Edit}" Width="96" Height="32" Click="EditDescriptionButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 <Label Grid.Row="5" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
-                <TextBox Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1" x:Name="ep_memo" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                <TextBox Grid.ColumnSpan="5" Grid.Row="5" Grid.Column="1" x:Name="ep_memo" TextWrapping="Wrap" AcceptsReturn="True" Text="" Width="454" Height="64" HorizontalAlignment="Left" Margin="0,4,0,8" MaxLength="32767" ScrollViewer.VerticalScrollBarVisibility="Auto" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
                 <Button  Grid.Row="5" Grid.Column="6" x:Name="SaveMemo" Content="{x:Static properties:Resources.MW_Add}" Width="96" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
-                <ListView Grid.ColumnSpan="6" Grid.Row="6" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="620">
+                <ListView Grid.ColumnSpan="6" Grid.Row="6" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="620" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Height" Value="38" />
