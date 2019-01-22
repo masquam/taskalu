@@ -12,27 +12,33 @@ namespace Taskalu
 {
     class HyperLink
     {
+        private static long runsLimit = 101;
+
         public static List<HyperLinkString> CreateHyperLinkList(string text)
         {
             var HLList = new List<HyperLinkString>();
             var HLList2 = new List<HyperLinkString>();
             var HLList3 = new List<HyperLinkString>();
+            long runs = 0;
             splitRegex(
                 text,
                 @"http(s)?://([\w-]+\.)+[\w-]+(/[A-Z0-9-.,_/?%&=]*)?",
-                HLList);
+                HLList,
+                runs);
             splitRegex(
                 HLList,
                 @"([a-zA-Z]:\\[\w\\\.]*|""[a-zA-Z]:\\[\w\.].*"")",
-                HLList2);
+                HLList2,
+                runs);
             splitRegex(
                 HLList2,
                 @"(\\\\[\w\$\\\.]*|""\\\\[\w\$\.].*"")",
-                HLList3);
+                HLList3,
+                runs);
             return HLList3;
         }
 
-        private static void splitRegex(string text, string regexp, List<HyperLinkString> HLList)
+        private static void splitRegex(string text, string regexp, List<HyperLinkString> HLList, long runs)
         {
             var regex = new Regex(regexp, RegexOptions.IgnoreCase | RegexOptions.Singleline);
             var match = regex.Match(text);
@@ -48,7 +54,15 @@ namespace Taskalu
                 }
                 HLList.Add(new HyperLinkString(matchedstring, HyperLinkString.Attr.URI));
 
-                splitRegex(poststring, regexp, HLList);
+                runs++;
+                if (runs < runsLimit)
+                {
+                    splitRegex(poststring, regexp, HLList, runs);
+                }
+                else
+                {
+                    HLList.Add(new HyperLinkString(poststring, HyperLinkString.Attr.String));
+                }
             }
             else
             {
@@ -59,7 +73,7 @@ namespace Taskalu
             }
         }
 
-        private static void splitRegex(List<HyperLinkString> HLListBefore, string regexp, List<HyperLinkString> HLList)
+        private static void splitRegex(List<HyperLinkString> HLListBefore, string regexp, List<HyperLinkString> HLList, long runs)
         {
             foreach(HyperLinkString HLstring in HLListBefore)
             {
@@ -69,7 +83,8 @@ namespace Taskalu
                 }
                 else if (HLstring.Attribute == HyperLinkString.Attr.String)
                 {
-                    splitRegex(HLstring.String, regexp, HLList);
+                    runs++;
+                    splitRegex(HLstring.String, regexp, HLList, runs);
                 }
             }
         }
