@@ -175,9 +175,9 @@
                     <Label Content="{x:Static properties:Resources.MW_TaskDetail}" FontSize="16" Height="32"/>
                 </StackPanel>
                 <Label Grid.Row="1" Grid.Column="0" Content="{x:Static properties:Resources.MW_Title}" Margin="0,4,0,4"/>
-                <TextBox Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,8,8,4" FontSize="20" Width="652" HorizontalAlignment="Left" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                <TextBox Grid.ColumnSpan="6" Grid.Row="1" Grid.Column="1" Name="ep_name" TextWrapping="NoWrap" Text="" Margin="0,8,8,4" FontSize="20" Width="652" HorizontalAlignment="Left" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TextChanged="titleChanged"/>
                 <Label Grid.Row="2" Grid.Column="0" Content="{x:Static properties:Resources.MW_Priority}"/>
-                <ComboBox Grid.Row="2" Grid.Column="1" x:Name="ep_priorityBox" SelectedIndex="5" Foreground="#FF9B9B00" Width="120" Height="23" HorizontalAlignment="Left" Margin="0,4,0,4">
+                <ComboBox Grid.Row="2" Grid.Column="1" x:Name="ep_priorityBox" SelectedIndex="5" Foreground="#FF9B9B00" Width="120" Height="23" HorizontalAlignment="Left" Margin="0,4,0,4" SelectionChanged="priorityChanged" >
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;"/>
@@ -188,13 +188,13 @@
                 <Label Grid.Row="2" Grid.Column="3" Content="{x:Static properties:Resources.MW_CreateDate}"/>
                 <TextBox Grid.Row="2" Grid.Column="4" Name="ep_createdate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
                 <Label Grid.Row="3" Grid.Column="0" Content="{x:Static properties:Resources.MW_Status}"/>
-                <ComboBox  Grid.Row="3" Grid.Column="1" x:Name="ep_statusBox" Width="120" IsReadOnly="True" SelectedIndex="0" Height="23" >
+                <ComboBox  Grid.Row="3" Grid.Column="1" x:Name="ep_statusBox" Width="120" IsReadOnly="True" SelectedIndex="0" Height="23" SelectionChanged="statusChanged">
                     <ComboBoxItem Content="Active"/>
                     <ComboBoxItem Content="Closed"/>
                     <ComboBoxItem Content="Deffered"/>
                 </ComboBox>
                 <Label Grid.Row="3" Grid.Column="3" Content="{x:Static properties:Resources.MW_DueDate}"/>
-                <TextBox Grid.Row="3" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+                <TextBox Grid.Row="3" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TextChanged="duedateChanged"/>
                 <Button Grid.Row="3" Grid.Column="5" Name="ep_changeduedate" Style="{StaticResource RoundedButton}" Content="..." Width="32" Height="23" Click="ep_changeduedate_Click" HorizontalAlignment="Left" />
                 <StackPanel Grid.Row="2" Grid.Column="6" Orientation="Horizontal">
                     <Label Content="{x:Static properties:Resources.MW_Tick}"/>

@@ -253,4 +253,7 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="MW_Title_Memo" xml:space="preserve">
     <value>Title / memo</value>
   </data>
+  <data name="MW_Changed" xml:space="preserve">
+    <value>Some parameters are changed. Do you discard them?</value>
+  </data>
 </root>

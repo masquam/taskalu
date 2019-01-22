@@ -241,6 +241,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Some parameters are changed. Do you discard them? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Changed {
+            get {
+                return ResourceManager.GetString("MW_Changed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   create date に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_CreateDate {

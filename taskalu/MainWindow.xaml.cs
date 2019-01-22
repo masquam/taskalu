@@ -29,8 +29,8 @@ namespace Taskalu
         // data behind detail window
         public Int64 epId = 0;
         public string workHolder = "";
-
         public string tmpDescription = "";
+        public bool taskChanged = false;
 
         public MainWindow()
         {
@@ -496,6 +496,8 @@ namespace Taskalu
                 // HyperLink
                 tmpDescription = lbf.Description;
                 HyperLink.FillHyperLinks(ep_description, HyperLink.CreateHyperLinkList(lbf.Description));
+
+                taskChanged = false;
             }
         }
 
@@ -614,6 +616,18 @@ namespace Taskalu
         {
             ep_save.IsEnabled = false;
             ep_close.IsEnabled = false;
+
+            if (taskChanged)
+            {
+                MessageBoxResult result = MessageBox.Show(Properties.Resources.MW_Changed,
+                     "taskalu", MessageBoxButton.YesNo, MessageBoxImage.Exclamation );
+                if (result == MessageBoxResult.No)
+                {
+                    ep_save.IsEnabled = true;
+                    ep_close.IsEnabled = true;
+                    return;
+                }
+            }
 
             editTimer_stop();
 
@@ -969,6 +983,30 @@ namespace Taskalu
         private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             SaveWindowSize();
+        }
+
+        private void priorityChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //MessageBox.Show("priority changed");
+            taskChanged = true;
+        }
+
+        private void statusChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //MessageBox.Show("status changed");
+            taskChanged = true;
+        }
+
+        private void titleChanged(object sender, TextChangedEventArgs e)
+        {
+            //MessageBox.Show("title changed");
+            taskChanged = true;
+        }
+
+        private void duedateChanged(object sender, TextChangedEventArgs e)
+        {
+            //MessageBox.Show("duedate changed");
+            taskChanged = true;
         }
     }
 

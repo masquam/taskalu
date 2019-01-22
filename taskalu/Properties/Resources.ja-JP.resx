@@ -256,4 +256,7 @@
   <data name="MW_Title_Memo" xml:space="preserve">
     <value>タイトル / メモ</value>
   </data>
+  <data name="MW_Changed" xml:space="preserve">
+    <value>更新された項目があります。破棄しますか？</value>
+  </data>
 </root>
