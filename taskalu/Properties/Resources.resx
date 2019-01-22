@@ -250,4 +250,7 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="MW_AddMemo" xml:space="preserve">
     <value>Add Memo</value>
   </data>
+  <data name="MW_Title_Memo" xml:space="preserve">
+    <value>Title / memo</value>
+  </data>
 </root>

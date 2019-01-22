@@ -394,6 +394,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Title / memo に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Title_Memo {
+            get {
+                return ResourceManager.GetString("MW_Title_Memo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ok に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string NW_Ok {

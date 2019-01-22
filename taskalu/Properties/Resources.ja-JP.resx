@@ -253,4 +253,7 @@
   <data name="MW_AddMemo" xml:space="preserve">
     <value>メモの追加</value>
   </data>
+  <data name="MW_Title_Memo" xml:space="preserve">
+    <value>タイトル / メモ</value>
+  </data>
 </root>

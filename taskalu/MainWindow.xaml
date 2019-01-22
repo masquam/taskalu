@@ -123,6 +123,14 @@
                         <Setter Property="VerticalContentAlignment" Value="Top"/>
                     </Style>
                 </ListView.ItemContainerStyle>
+                <ListView.Resources>
+                    <DataTemplate x:Key="titleCellTemplate">
+                        <StackPanel>
+                            <Label Content="{Binding Path=Name}" Padding="0" FontWeight="Bold"/>
+                            <Label Content="{Binding Path=Memo}" Padding="0"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.Resources>
                 <ListView.View>
                     <GridView AllowsColumnReorder="true">
                         <GridViewColumn Width="64">
@@ -136,26 +144,6 @@
                                     <ContextMenu Name="PriorityCM">
                                         <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="PriorityAsc_Click"/>
                                         <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="PriorityDes_Click"/>
-                                    </ContextMenu>
-                                </GridViewColumnHeader.ContextMenu>
-                            </GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Width="256">
-                            <GridViewColumnHeader Click="Name_Click" Content="{x:Static properties:Resources.MW_Title}">
-                                <GridViewColumnHeader.ContextMenu>
-                                    <ContextMenu Name="NameCM">
-                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="NameAsc_Click"/>
-                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="NameDes_Click"/>
-                                    </ContextMenu>
-                                </GridViewColumnHeader.ContextMenu>
-                            </GridViewColumnHeader>
-                        </GridViewColumn>
-                        <GridViewColumn DisplayMemberBinding="{Binding Memo}" Width="256" >
-                            <GridViewColumnHeader Click="Memo_Click" Content="{x:Static properties:Resources.MW_Memo}">
-                                <GridViewColumnHeader.ContextMenu>
-                                    <ContextMenu Name="MemoCM">
-                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="MemoAsc_Click"/>
-                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="MemoDes_Click"/>
                                     </ContextMenu>
                                 </GridViewColumnHeader.ContextMenu>
                             </GridViewColumnHeader>
@@ -187,6 +175,16 @@
                                     </ContentControl>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn CellTemplate="{StaticResource titleCellTemplate}" Width="512">
+                            <GridViewColumnHeader Click="Name_Click" Content="{x:Static properties:Resources.MW_Title_Memo}">
+                                <GridViewColumnHeader.ContextMenu>
+                                    <ContextMenu Name="NameCM">
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Ascending}" Click="NameAsc_Click"/>
+                                        <MenuItem Header="{x:Static properties:Resources.MW_Descending}" Click="NameDes_Click"/>
+                                    </ContextMenu>
+                                </GridViewColumnHeader.ContextMenu>
+                            </GridViewColumnHeader>
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
