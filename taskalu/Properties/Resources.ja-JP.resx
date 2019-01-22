@@ -262,4 +262,7 @@
   <data name="MW_NoEntry" xml:space="preserve">
     <value>該当するタスクがありません。</value>
   </data>
+  <data name="MW_Keyword" xml:space="preserve">
+    <value>キーワード</value>
+  </data>
 </root>

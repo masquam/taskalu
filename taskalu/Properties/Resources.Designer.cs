@@ -304,6 +304,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   keyword に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_Keyword {
+            get {
+                return ResourceManager.GetString("MW_Keyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   memo に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_Memo {

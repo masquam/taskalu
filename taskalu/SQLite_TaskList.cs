@@ -129,14 +129,14 @@ namespace Taskalu
             return "SELECT * FROM tasklist WHERE id IN ("
                     + "SELECT id FROM tasklist"
                     + " WHERE status = '" + status + "'"
-                    + " AND name LIKE @string "
+                    + " AND name LIKE @string1 "
                     + "UNION "
                     + "SELECT id FROM tasklist"
                     + " WHERE status = '" + status + "'"
-                    + " AND description LIKE @string "
+                    + " AND description LIKE @string2 "
                     + "UNION "
                     + "SELECT id FROM tasklist t "
-                    + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @string)"
+                    + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @string3)"
                     + " AND t.status = '" + status + "'"
                     + ")";
         }
@@ -158,7 +158,9 @@ namespace Taskalu
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                com.Parameters.Add(sqliteParam(com, "@string", "%" + searchString + "%"));
+                com.Parameters.Add(sqliteParam(com, "@string1", "%" + searchString + "%"));
+                com.Parameters.Add(sqliteParam(com, "@string2", "%" + searchString + "%"));
+                com.Parameters.Add(sqliteParam(com, "@string3", "%" + searchString + "%"));
             }
 
             try

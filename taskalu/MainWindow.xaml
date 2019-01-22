@@ -62,7 +62,8 @@
                         <ComboBoxItem Content="Closed"/>
                         <ComboBoxItem Content="Deffered"/>
                     </ComboBox>
-                    <TextBox x:Name="textboxMemo" KeyDown="textBoxKeyDown" TextChanged="textboxMemo_TextChanged" Width="420" Margin="8,2,0,0" Padding="0,2,0,0" MaxLength="32767" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBox>
+                    <Label Content="{x:Static properties:Resources.MW_Keyword}" Width="60" Margin="8,2,0,0"></Label>
+                    <TextBox x:Name="textboxMemo" KeyDown="textBoxKeyDown" TextChanged="textboxMemo_TextChanged" Width="350" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="256" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBox>
                     <Button x:Name="ButtonSearch" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Search}" Click="ButtonSearch_Click" Width="96" Margin="0,2,0,0" ></Button>
                 </StackPanel>
             </StackPanel>
