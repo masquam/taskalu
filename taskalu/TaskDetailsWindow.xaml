@@ -8,40 +8,10 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:TaskDetailsViewModel}}"
         Title="taskalu" Height="450" Width="480" MinWidth="480" MaxWidth="480" Loaded="TaskDetailsWindow_Loaded">
+    <Window.Resources>
+        <ResourceDictionary Source="ResourceDictionary1.xaml"/>
+    </Window.Resources>
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-        <Grid.Resources>
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                                <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="6" RadiusY="6" Fill="{TemplateBinding Background}"/>
-                                <DockPanel Name="myContentPresenterDockPanel">
-                                    <ContentPresenter x:Name="myContentPresenter" Content="{TemplateBinding  Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </DockPanel>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property ="Rectangle.Fill" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property="Rectangle.Opacity" Value="0.5" TargetName="outerRectangle" />
-                                    <Setter Property="ContentPresenter.BitmapEffect" TargetName="myContentPresenter">
-                                        <Setter.Value>
-                                            <BlurBitmapEffect Radius="1" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="true">
-                                    <Setter Property="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Grid.Resources>
         <DockPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="24" VerticalAlignment="Bottom">
                 <Label x:Name="textTaskDetailsStatusBar" Height="24"></Label>
@@ -57,13 +27,13 @@
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_Exit}" Click="Exit_Click" />
                     </MenuItem>
                 </Menu>
-                <Button x:Name="TaskDetailsCopyButton" Content="{x:Static properties:Resources.Menu_Copy}" Click="TaskDetailsCopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Button x:Name="TaskDetailsCopyButton" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.Menu_Copy}" Click="TaskDetailsCopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
             <StackPanel x:Name="TaskDetailsTopToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Vertical" Height="32">
                 <Label Content="{x:Static properties:Resources.TD_TaskDetails}" FontSize="16" Height="32"></Label>
             </StackPanel>
             <StackPanel x:Name="TaskDetailsBottomToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
-                <Button Visibility="Collapsed" x:Name="TaskDetailsMoreButton" Content="{x:Static properties:Resources.MW_More}" Click="TaskDetailsMoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32"/>
+                <Button Visibility="Collapsed" x:Name="TaskDetailsMoreButton" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_More}" Click="TaskDetailsMoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32"/>
             </StackPanel>
             <ListView x:Name="listviewTaskDetails" DockPanel.Dock="Top" BorderThickness="0" Margin="0,0,0,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Entries}" >
                 <ListView.ItemContainerStyle>

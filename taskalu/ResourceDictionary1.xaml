@@ -24,6 +24,33 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
+    </Style>
+    <Style x:Key="RoundedButton" TargetType="{x:Type Button}">
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="6" RadiusY="6" Fill="{TemplateBinding Background}"/>
+                        <DockPanel Name="myContentPresenterDockPanel">
+                            <ContentPresenter x:Name="myContentPresenter" Content="{TemplateBinding  Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </DockPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
+                            <Setter Property ="Rectangle.Fill" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
+                            <Setter Property="Rectangle.Opacity" Value="0.5" TargetName="outerRectangle" />
+                            <Setter Property="ContentPresenter.BitmapEffect" TargetName="myContentPresenter">
+                                <Setter.Value>
+                                    <BlurBitmapEffect Radius="1" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

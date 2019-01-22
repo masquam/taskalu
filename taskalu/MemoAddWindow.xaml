@@ -7,46 +7,17 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         Title="MemoAddWindow" Height="300" Width="472">
+    <Window.Resources>
+        <ResourceDictionary Source="ResourceDictionary1.xaml"/>
+    </Window.Resources>
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-        <Grid.Resources>
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                                <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="6" RadiusY="6" Fill="{TemplateBinding Background}"/>
-                                <DockPanel Name="myContentPresenterDockPanel">
-                                    <ContentPresenter x:Name="myContentPresenter" Content="{TemplateBinding  Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </DockPanel>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property ="Rectangle.Fill" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property="Rectangle.Opacity" Value="0.5" TargetName="outerRectangle" />
-                                    <Setter Property="ContentPresenter.BitmapEffect" TargetName="myContentPresenter">
-                                        <Setter.Value>
-                                            <BlurBitmapEffect Radius="1" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="true">
-                                    <Setter Property="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Grid.Resources>
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.MW_AddMemo}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel x:Name="AddMemoBottomToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
-                <Button x:Name="AddMemoOk" Content="OK" HorizontalAlignment="Left" Margin="110,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="AddMemoOk_Click"  />
-                <Button Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="32,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+                <Button x:Name="AddMemoOk" Style="{StaticResource RoundedButton}" Content="OK" HorizontalAlignment="Left" Margin="110,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="AddMemoOk_Click"  />
+                <Button Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="32,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
             </StackPanel>
             <TextBox x:Name="AddMemoTextBox" Width="454" DockPanel.Dock="Left" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" MaxLength="32767"></TextBox>
-        </DockPanel>    </Grid>
+        </DockPanel>
+    </Grid>
 </Window>

@@ -3,48 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         Title="taskalu" Height="320" Width="500" Loaded="MemoWindow_Loaded"  >
+    <Window.Resources>
+        <ResourceDictionary Source="ResourceDictionary1.xaml"/>
+    </Window.Resources>
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
-        <Grid.Resources>
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                                <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="6" RadiusY="6" Fill="{TemplateBinding Background}"/>
-                                <DockPanel Name="myContentPresenterDockPanel">
-                                    <ContentPresenter x:Name="myContentPresenter" Content="{TemplateBinding  Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </DockPanel>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property ="Rectangle.Fill" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property="Rectangle.Opacity" Value="0.5" TargetName="outerRectangle" />
-                                    <Setter Property="ContentPresenter.BitmapEffect" TargetName="myContentPresenter">
-                                        <Setter.Value>
-                                            <BlurBitmapEffect Radius="1" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="true">
-                                    <Setter Property="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Grid.Resources>
         <DockPanel>
-            <Label DockPanel.Dock="Top" Content="Memo" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
+            <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.MW_Memo}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <TextBox DockPanel.Dock="Top" x:Name="DateTextBox" IsReadOnly="True" Margin="8,8,8,4" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
             <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch">
-                <Button x:Name="MemoOkButton" Content="Ok" IsCancel="True" HorizontalAlignment="Center" Margin="4" Width="96" Height="32"/>
+                <Button x:Name="MemoOkButton" Style="{StaticResource RoundedButton}" Content="Ok" IsCancel="True" HorizontalAlignment="Center" Margin="4" Width="96" Height="32"/>
             </StackPanel>
                 <TextBox DockPanel.Dock="Left" x:Name="MemoTextBox" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="8,4,8,8" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
         </DockPanel>

@@ -8,40 +8,10 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:DateSumViewModel}}"
         Title="Date Summary - taskaru" Height="602" Width="480" MinWidth="480" MaxWidth="480">
+    <Window.Resources>
+        <ResourceDictionary Source="ResourceDictionary1.xaml"/>
+    </Window.Resources>
     <Grid>
-        <Grid.Resources>
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                                <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="6" RadiusY="6" Fill="{TemplateBinding Background}"/>
-                                <DockPanel Name="myContentPresenterDockPanel">
-                                    <ContentPresenter x:Name="myContentPresenter" Content="{TemplateBinding  Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </DockPanel>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property ="Rectangle.Fill" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property="Rectangle.Opacity" Value="0.5" TargetName="outerRectangle" />
-                                    <Setter Property="ContentPresenter.BitmapEffect" TargetName="myContentPresenter">
-                                        <Setter.Value>
-                                            <BlurBitmapEffect Radius="1" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="true">
-                                    <Setter Property="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Grid.Resources>
         <DockPanel>
             <StatusBar DockPanel.Dock="Bottom" Height="24" VerticalAlignment="Bottom">
                 <Label x:Name="textDateSumStatusBar" Height="24"></Label>
@@ -57,14 +27,14 @@
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_Exit}" Click="Exit_Click" />
                     </MenuItem>
                 </Menu>
-                <Button x:Name="DateSumCopyButton" Content="{x:Static properties:Resources.Menu_Copy}" Click="DateSumCopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
+                <Button x:Name="DateSumCopyButton" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.Menu_Copy}" Click="DateSumCopyButton_Click" HorizontalAlignment="Right" Width="96" Height="32" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
             <StackPanel x:Name="DateSumTopToolbar" Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Vertical" Height="58">
                 <Label Content="{x:Static properties:Resources.Menu_DateSummary}" FontSize="16" Height="32"></Label>
                 <StackPanel Background="#FFF1EDED" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">
                     <Label Content="{x:Static properties:Resources.DD_Date}"></Label>
                 <TextBox x:Name="textboxDateSum" Width="120" Height="23" Margin="0,2,0,0" Padding="0,2,0,0" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBox>
-                <Button x:Name="buttonDateSumChange" Content="..." Click="buttonDateSumChange_Click" Width="32" Height="23" Margin="0,2,0,0" ></Button>
+                    <Button x:Name="buttonDateSumChange" Style="{StaticResource RoundedButton}" Content="..." Click="buttonDateSumChange_Click" Width="32" Height="23" Margin="0,2,0,0" ></Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel x:Name="DateSumBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="32"  HorizontalAlignment="Stretch">
@@ -78,7 +48,7 @@
 
                     </StackPanel>
                     <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch">
-                        <Button Visibility="Collapsed" x:Name="DateSumMoreButton" Content="{x:Static properties:Resources.MW_More}" Click="DateSumMoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32"/>
+                        <Button Visibility="Collapsed" x:Name="DateSumMoreButton" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_More}" Click="DateSumMoreButton_Click" HorizontalAlignment="Center" Width="96" Height="32"/>
                     </StackPanel>
                     <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Right">
                     </StackPanel>

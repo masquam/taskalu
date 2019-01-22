@@ -15,7 +15,7 @@ namespace Taskalu
 
             foreach (ListViewFile file in MainViewModel.mv.Files)
             {
-                str += file.Priority + "\t" + file.Name + "\t\"" + file.Memo + "\"\t" + file.DueDate + "\n";
+                str += file.Priority + "\t" + file.DueDate + "\t" + file.Name + "\t\"" + file.Memo + "\"" +"\n";
             }
             if (!string.IsNullOrEmpty(str))
             {

@@ -11,44 +11,11 @@
         <ResourceDictionary Source="ResourceDictionary1.xaml"/>
     </Window.Resources>
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" >
-        <Grid.Resources>
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
-                <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.GradientActiveCaptionBrushKey}}" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Grid Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" ClipToBounds="True">
-                                <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}" RadiusX="6" RadiusY="6" Fill="{TemplateBinding Background}"/>
-                                <DockPanel Name="myContentPresenterDockPanel">
-                                    <ContentPresenter x:Name="myContentPresenter" Content="{TemplateBinding  Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                                </DockPanel>
-                            </Grid>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property ="Rectangle.Fill" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                    <Setter Property="Rectangle.Opacity" Value="0.5" TargetName="outerRectangle" />
-                                    <Setter Property="ContentPresenter.BitmapEffect" TargetName="myContentPresenter">
-                                        <Setter.Value>
-                                            <BlurBitmapEffect Radius="1" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="IsFocused" Value="true">
-                                    <Setter Property="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Grid.Resources>
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.DD_SelectDateTime}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
-                <Button x:Name="DueDateOk" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click"  />
-                <Button x:Name="DueDateCancel" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+                <Button x:Name="DueDateOk" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click"  />
+                <Button x:Name="DueDateCancel" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
             </StackPanel>
             <Label Content="{x:Static properties:Resources.MW_DueDate}" HorizontalAlignment="Left" Height="27" Margin="32,42,0,0" Width="79" VerticalAlignment="Top"/>
             <StackPanel Orientation="Vertical">
