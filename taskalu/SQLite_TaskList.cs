@@ -21,8 +21,7 @@ namespace Taskalu
         public static string duedateOrderByDirection { get; set; } = "ASC";
 
         public static string where_status { get; set; } = "Active";
-        public static string searchStringName { get; set; } = "";
-        public static string searchStringDescription { get; set; } = "";
+
         public static string searchStringMemo { get; set; } = "";
         
         public static int moreCount { get; set; }
@@ -92,9 +91,7 @@ namespace Taskalu
             }
             else
             {
-                sql = "SELECT * FROM tasklist t"
-                     + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @memo)"
-                     + addONClause();
+                sql = stringSearchSQL(where_status);
             }
             sql += " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString();
@@ -113,9 +110,7 @@ namespace Taskalu
             }
             else
             {
-                sql = "SELECT * FROM tasklist t"
-                     + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @memo)"
-                     + addONClause();
+                sql = stringSearchSQL(where_status);
             }
             sql += " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString()
@@ -126,29 +121,24 @@ namespace Taskalu
         public static string addWhereClause()
         {
             string sql = " WHERE status = '" + where_status + "'";
-            if (!String.IsNullOrEmpty(searchStringName))
-            {
-                sql += " AND name LIKE @name";
-            }
-            if (!String.IsNullOrEmpty(searchStringDescription))
-            {
-                sql += " AND description LIKE @description";
-            }
             return sql;
         }
 
-        public static string addONClause()
+        private static string stringSearchSQL(string status)
         {
-            string sql = " AND t.status = '" + where_status + "'";
-            if (!String.IsNullOrEmpty(searchStringName))
-            {
-                sql += " AND t.name LIKE @name";
-            }
-            if (!String.IsNullOrEmpty(searchStringDescription))
-            {
-                sql += " AND t.description LIKE @description";
-            }
-            return sql;
+            return "SELECT * FROM tasklist WHERE id IN ("
+                    + "SELECT id FROM tasklist"
+                    + " WHERE status = '" + status + "'"
+                    + " AND name LIKE @memo "
+                    + "UNION "
+                    + "SELECT id FROM tasklist"
+                    + " WHERE status = '" + status + "'"
+                    + " AND description LIKE @memo "
+                    + "UNION "
+                    + "SELECT id FROM tasklist t "
+                    + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @memo)"
+                    + " AND t.status = '" + status + "'"
+                    + ")";
         }
 
         /// <summary>
@@ -165,14 +155,7 @@ namespace Taskalu
             con.Open();
 
             SQLiteCommand com = new SQLiteCommand(sql, con);
-            if (!String.IsNullOrEmpty(searchStringName))
-            {
-                com.Parameters.Add(sqliteParam(com, "@name", "%" + searchStringName + "%"));
-            }
-            if (!String.IsNullOrEmpty(searchStringDescription))
-            {
-                com.Parameters.Add(sqliteParam(com, "@description", "%" + searchStringDescription + "%"));
-            }
+
             if (!String.IsNullOrEmpty(searchStringMemo))
             {
                 com.Parameters.Add(sqliteParam(com, "@memo", "%" + searchStringMemo + "%"));

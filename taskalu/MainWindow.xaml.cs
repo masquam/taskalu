@@ -300,26 +300,6 @@ namespace Taskalu
         }
 
         /// <summary>
-        /// textbox title changed event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textboxTitle_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            SQLiteClass.searchStringName = textboxTitle.Text;
-        }
-
-        /// <summary>
-        /// textbox description changed event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textboxDescription_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            SQLiteClass.searchStringDescription = textboxDescription.Text;
-        }
-
-        /// <summary>
         /// textbox memo changed event
         /// </summary>
         /// <param name="sender"></param>
@@ -1016,6 +996,14 @@ namespace Taskalu
         {
             //MessageBox.Show("duedate changed");
             taskChanged = true;
+        }
+
+        private void textBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                ExecuteFirstSelectTable();
+            }
         }
     }
 
