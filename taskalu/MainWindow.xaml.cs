@@ -1,4 +1,4 @@
-﻿                                    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,6 +63,9 @@ namespace Taskalu
                 MessageBox.Show("database creation error.");
                 Environment.Exit(3);
             }
+
+            RecoverWindowSize();
+
             this.DataContext = MainViewModel.mv;
             ExecuteFirstSelectTable();
         }
@@ -906,8 +909,61 @@ namespace Taskalu
         }
 
 
+        // /////////////////////////////////////////////////////////////////////////
+        //
+        // Window size management
 
+        /// <summary>
+        /// save window size
+        /// </summary>
+        void SaveWindowSize()
+        {
+            var settings = Properties.Settings.Default;
+            settings.WindowMaximized = WindowState == WindowState.Maximized;
+            //WindowState = WindowState.Normal; // to get size below
+            settings.WindowLeft = Left;
+            settings.WindowTop = Top;
+            settings.WindowWidth = Width;
+            settings.WindowHeight = Height;
+            settings.Save();
+        }
 
+        /// <summary>
+        /// recover window size
+        /// </summary>
+        void RecoverWindowSize()
+        {
+            var settings = Properties.Settings.Default;
+            if (settings.WindowLeft >= 0 &&
+                (settings.WindowLeft + settings.WindowWidth) < SystemParameters.VirtualScreenWidth)
+            {
+                Left = settings.WindowLeft;
+            }
+            if (settings.WindowTop >= 0 &&
+                (settings.WindowTop + settings.WindowHeight) < SystemParameters.VirtualScreenHeight)
+            {
+                Top = settings.WindowTop;
+            }
+            if (settings.WindowWidth > 0 &&
+                settings.WindowWidth <= SystemParameters.WorkArea.Width)
+            {
+                Width = settings.WindowWidth;
+            }
+            if (settings.WindowHeight > 0 &&
+                settings.WindowHeight <= SystemParameters.WorkArea.Height)
+            {
+                Height = settings.WindowHeight;
+            }
+            if (settings.WindowMaximized)
+            {
+                Loaded += (o, e) => WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void WindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            SaveWindowSize();
+        }
     }
 
 }
