@@ -12,8 +12,6 @@ namespace Taskalu
 {
     partial class SQLiteClass
     {
-        //public static string dbdirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\taskalu";
-        //public static string dbpath = dbdirectory + "\\taskaludb.sqlite";
         public static string dbdirectory = "";
         public static string dbpath = "";
 
@@ -22,8 +20,6 @@ namespace Taskalu
         /// </summary>
         public static Boolean TouchDB()
         {
-            //MessageBox.Show("The folder where database flle will be created: " + dbpath);
-
             try
             {
                 Directory.CreateDirectory(dbdirectory);
@@ -38,7 +34,6 @@ namespace Taskalu
 
             if (File.Exists(dbpath))
             {
-                //MessageBox.Show("'" + dbpath + "' already exists.");
                 // check database scheme
                 if (!CheckTable("tasklist")){
                     return false;
