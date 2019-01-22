@@ -12,7 +12,7 @@ namespace Taskalu
 {
     class HyperLink
     {
-        private static long runsLimit = 101;
+        private static long runsLimit = 100;
 
         public static List<HyperLinkString> CreateHyperLinkList(string text)
         {
@@ -54,9 +54,9 @@ namespace Taskalu
                 }
                 HLList.Add(new HyperLinkString(matchedstring, HyperLinkString.Attr.URI));
 
-                runs++;
                 if (runs < runsLimit)
                 {
+                    runs++;
                     splitRegex(poststring, regexp, HLList, runs);
                 }
                 else
