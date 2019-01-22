@@ -306,7 +306,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void textboxMemo_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SQLiteClass.searchStringMemo = textboxMemo.Text;
+            SQLiteClass.searchString = textboxMemo.Text;
         }
 
         /// <summary>

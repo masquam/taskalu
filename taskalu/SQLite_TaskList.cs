@@ -22,7 +22,7 @@ namespace Taskalu
 
         public static string where_status { get; set; } = "Active";
 
-        public static string searchStringMemo { get; set; } = "";
+        public static string searchString { get; set; } = "";
         
         public static int moreCount { get; set; }
         public static int moreSize = 10;
@@ -85,7 +85,7 @@ namespace Taskalu
         public static Boolean ExecuteFirstSelectTable()
         {
             string sql = "";
-            if (string.IsNullOrEmpty(searchStringMemo))
+            if (string.IsNullOrEmpty(searchString))
             {
                 sql = selectTaskListSql + addWhereClause();
             }
@@ -105,7 +105,7 @@ namespace Taskalu
         public static Boolean ExecuteMoreSelectTable()
         {
             string sql = "";
-            if (string.IsNullOrEmpty(searchStringMemo)) {
+            if (string.IsNullOrEmpty(searchString)) {
                 sql = selectTaskListSql + addWhereClause();
             }
             else
@@ -129,14 +129,14 @@ namespace Taskalu
             return "SELECT * FROM tasklist WHERE id IN ("
                     + "SELECT id FROM tasklist"
                     + " WHERE status = '" + status + "'"
-                    + " AND name LIKE @memo "
+                    + " AND name LIKE @string "
                     + "UNION "
                     + "SELECT id FROM tasklist"
                     + " WHERE status = '" + status + "'"
-                    + " AND description LIKE @memo "
+                    + " AND description LIKE @string "
                     + "UNION "
                     + "SELECT id FROM tasklist t "
-                    + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @memo)"
+                    + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @string)"
                     + " AND t.status = '" + status + "'"
                     + ")";
         }
@@ -156,9 +156,9 @@ namespace Taskalu
 
             SQLiteCommand com = new SQLiteCommand(sql, con);
 
-            if (!String.IsNullOrEmpty(searchStringMemo))
+            if (!String.IsNullOrEmpty(searchString))
             {
-                com.Parameters.Add(sqliteParam(com, "@memo", "%" + searchStringMemo + "%"));
+                com.Parameters.Add(sqliteParam(com, "@string", "%" + searchString + "%"));
             }
 
             try
