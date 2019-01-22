@@ -925,6 +925,7 @@ namespace Taskalu
             settings.WindowTop = Top;
             settings.WindowWidth = Width;
             settings.WindowHeight = Height;
+            settings.DescriptionHeight = descriptionHeight.ActualHeight;
             settings.Save();
         }
 
@@ -934,6 +935,11 @@ namespace Taskalu
         void RecoverWindowSize()
         {
             var settings = Properties.Settings.Default;
+            if (settings.DescriptionHeight > 0 &&
+                (settings.WindowTop + settings.WindowHeight) < SystemParameters.VirtualScreenHeight)
+            {
+                descriptionHeight.Height = new GridLength(settings.DescriptionHeight);
+            }
             if (settings.WindowLeft >= 0 &&
                 (settings.WindowLeft + settings.WindowWidth) < SystemParameters.VirtualScreenWidth)
             {

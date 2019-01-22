@@ -156,6 +156,7 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="135" MinHeight="135" x:Name="descriptionHeight"/>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="40" />
@@ -201,13 +202,14 @@
                     <Button x:Name="TaskDetails" Style="{StaticResource RoundedButton}" Content="..." Width="32" Height="23" Click="TaskDetails_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,4"></Button>
                 </StackPanel>
                 <Label Grid.Row="4" Grid.Column="0" Content="{x:Static properties:Resources.MW_Description}"/>
-                <ScrollViewer Grid.ColumnSpan="6" Grid.Row="4" Grid.Column="1" Width="652" Height="135" Margin="0,4,0,4" Padding="4" VerticalScrollBarVisibility="Auto" Background="White" HorizontalAlignment="Left">
+                <ScrollViewer Grid.ColumnSpan="6" Grid.Row="4" Grid.Column="1" Width="652"  Margin="0,4,0,4" Padding="4" VerticalScrollBarVisibility="Auto" Background="White" HorizontalAlignment="Left">
                     <TextBlock  x:Name="ep_description" TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Hyperlink.RequestNavigate="RequestNavigateEventHandler"/>
                 </ScrollViewer>
                 <Button  Grid.Row="4" Grid.Column="0" x:Name="UpdateDescriptionButton" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Edit}" Width="80" Height="32" Click="EditDescriptionButton_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,32,0,4"></Button>
-                <Label Grid.Row="5" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
-                <Button  Grid.Row="5" Grid.Column="0" x:Name="SaveMemo" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Add}" Width="80" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,32,0,4"></Button>
-                <ListView Grid.ColumnSpan="6" Grid.Row="5" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="654" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
+                <GridSplitter ResizeDirection="Rows" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="6" Height="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <Label Grid.Row="6" Grid.Column="0" Content="{x:Static properties:Resources.MW_Memo}"/>
+                <Button  Grid.Row="6" Grid.Column="0" x:Name="SaveMemo" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Add}" Width="80" Height="32" Click="saveMemo_Click" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4,32,0,4"></Button>
+                <ListView Grid.ColumnSpan="6" Grid.Row="6" Grid.Column="1" x:Name="listviewTaskMemo" BorderThickness="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Memos}" SelectionChanged="ListTaskMemoSelectionChanged" HorizontalAlignment="Left" Width="654" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
                     <ListView.ItemContainerStyle>
                         <Style TargetType="ListViewItem">
                             <Setter Property="Height" Value="38" />
@@ -225,11 +227,11 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-                <Button Grid.Row="6" Grid.Column="4" Visibility="Collapsed" Style="{StaticResource RoundedButton}" x:Name="TaskMemoMoreButton" Content="{x:Static properties:Resources.MW_More}" Click="TaskMemoMoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
-                <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="7" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></StackPanel>
-                <Button Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_OpenWorkHolder}" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
-                <Button Grid.Row="7" Grid.Column="4" Name="ep_save" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Save}" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
-                <Button Grid.Row="7" Grid.Column="6" Name="ep_close" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="7" Grid.Column="4" Visibility="Collapsed" Style="{StaticResource RoundedButton}" x:Name="TaskMemoMoreButton" Content="{x:Static properties:Resources.MW_More}" Click="TaskMemoMoreButton_Click" HorizontalAlignment="Left" Width="96" Height="32" />
+                <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="7" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></StackPanel>
+                <Button Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" Name="ep_openWorkFolder" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_OpenWorkHolder}" Width="160" Height="32" Click="ep_openWorkFolder_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
+                <Button Grid.Row="8" Grid.Column="4" Name="ep_save" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Save}" Width="96" Height="32" Click="ep_save_Click" HorizontalAlignment="Left" Margin="0,4,0,4"  />
+                <Button Grid.Row="8" Grid.Column="6" Name="ep_close" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" Width="96" Height="32" Click="ep_close_Click" HorizontalAlignment="Left" Margin="0,4,0,4" />
             </Grid>
         </DockPanel>
     </Grid>

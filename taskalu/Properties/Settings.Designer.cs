@@ -118,5 +118,17 @@ namespace Taskalu.Properties {
                 this["WindowMaximized"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("-1")]
+        public double DescriptionHeight {
+            get {
+                return ((double)(this["DescriptionHeight"]));
+            }
+            set {
+                this["DescriptionHeight"] = value;
+            }
+        }
     }
 }
