@@ -58,7 +58,7 @@ namespace Taskalu
                 try
                 {
                     SQLiteConnection.CreateFile(dbpath);
-                    MessageBox.Show("database file created.");
+                    //MessageBox.Show("database file created.");
                 }
                 catch (Exception ex)
                 {
