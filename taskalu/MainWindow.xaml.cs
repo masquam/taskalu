@@ -472,6 +472,7 @@ namespace Taskalu
                 ep_priorityBox.SelectedIndex = 5 - priorityLen;
                 ep_createdate.Text = lbf.CreateDate;
                 ep_duedate.Text = lbf.DueDate;
+                dueDateColorConvert();
                 ep_statusBox.Text = lbf.Status;
                 editpanel.Visibility = Visibility.Visible;
                 workHolder = lbf.WorkHolder;
@@ -487,6 +488,31 @@ namespace Taskalu
                 HyperLink.FillHyperLinks(ep_description, HyperLink.CreateHyperLinkList(lbf.Description));
 
                 taskChanged = false;
+            }
+        }
+
+        private void dueDateColorConvert()
+        {
+            string datestring = ep_duedate.Text;
+
+            DateTime date;
+            DateTime.TryParseExact(datestring,
+                "G",
+                System.Globalization.CultureInfo.CurrentCulture,
+                System.Globalization.DateTimeStyles.None,
+                out date);
+
+            if (DateTime.Compare(DateTime.Now, date) > 0)
+            {
+                ep_duedate.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            }
+            else if (DateTime.Compare(DateTime.Today, date.Date) == 0)
+            {
+                ep_duedate.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
+            }
+            else
+            {
+                ep_duedate.Foreground = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Black);
             }
         }
 
@@ -507,6 +533,7 @@ namespace Taskalu
             {
                 // due date window is closed
                 ep_duedate.Text = dlg.dueDateString;
+                dueDateColorConvert();
             }
         }
 
