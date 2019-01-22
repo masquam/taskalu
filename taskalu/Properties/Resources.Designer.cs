@@ -322,6 +322,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   No entry found. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_NoEntry {
+            get {
+                return ResourceManager.GetString("MW_NoEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Open Work Folder に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_OpenWorkHolder {

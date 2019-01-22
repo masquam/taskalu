@@ -50,7 +50,9 @@
                 <Button x:Name="DateSumButton" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.Menu_DateSummary}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateSumButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
                 <Button x:Name="DateDetailButton" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.Menu_DateDetails}" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="96" Height="32" Click="DateDetailsButton_Click" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Foreground="{DynamicResource {x:Static SystemColors.HighlightTextBrushKey}}" />
             </WrapPanel>
-            <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom"/>
+            <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom">
+                <Label x:Name="MainWindowStatusBarLabel" Padding="0" />
+            </StatusBar>
             <StackPanel x:Name="listviewTopToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Top" HorizontalAlignment="Stretch" Orientation="Vertical" Height="62">
                 <Label Content="{x:Static properties:Resources.MW_TaskSummary}" FontSize="16" Height="32"></Label>
                 <StackPanel HorizontalAlignment="Stretch" Orientation="Horizontal" Height="26">

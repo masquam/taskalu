@@ -79,6 +79,10 @@ namespace Taskalu
             return param;
         }
 
+        /// <summary>
+        /// Execute first select table
+        /// </summary>
+        /// <returns>return value true: More button visibie</returns>
         public static Boolean ExecuteFirstSelectTable()
         {
             string sql = "";
@@ -97,6 +101,10 @@ namespace Taskalu
             return SQLiteClass.ExecuteSelectTable(MainViewModel.mv, sql);
         }
 
+        /// <summary>
+        /// Execute more select table
+        /// </summary>
+        /// <returns>return value true: More button visibie</returns>
         public static Boolean ExecuteMoreSelectTable()
         {
             string sql = "";
@@ -143,10 +151,14 @@ namespace Taskalu
             return sql;
         }
 
-
+        /// <summary>
+        /// Execute select table
+        /// </summary>
+        /// <param name="mv"></param>
+        /// <param name="sql"></param>
+        /// <returns>return value true: More button visibie</returns>
         public static Boolean ExecuteSelectTable(MainViewModel mv, string sql)
         {
-            // return value true: More button visibie
             Boolean ret = false;
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");

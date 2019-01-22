@@ -211,6 +211,7 @@ namespace Taskalu
         {
             MainViewModel.mv.Files.Clear();
             SQLiteClass.moreCount = 0;
+
             if (SQLiteClass.ExecuteFirstSelectTable())
             {
                 MoreButton.Visibility = Visibility.Visible;
@@ -218,6 +219,14 @@ namespace Taskalu
             else
             {
                 MoreButton.Visibility = Visibility.Collapsed;
+            }
+            if (MainViewModel.mv.Files.Count == 0)
+            {
+                MainWindowStatusBarLabel.Content = Properties.Resources.MW_NoEntry;
+            }
+            else
+            {
+                MainWindowStatusBarLabel.Content = "";
             }
             refreshTimer_start();
         }

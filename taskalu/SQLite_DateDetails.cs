@@ -24,6 +24,7 @@ namespace Taskalu
 
         public static Boolean ExecuteFirstSelecttDateDetailsTableTaskTime(DateTime dt)
         {
+            SumTimeSpanDateDetails = new TimeSpan(0, 0, 0);
             string sql = selectDateDetailsTaskTimeSql;
             sql += " ORDER BY " + DateDetailsOrderBy + " " + DateDetailsOrderByDirection
                 + " LIMIT " + (SQLiteClass.DateDetailsMoreSize + 1).ToString();

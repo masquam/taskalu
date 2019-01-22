@@ -13,8 +13,8 @@
     </Window.Resources>
     <Grid>
         <DockPanel>
-            <StatusBar DockPanel.Dock="Bottom" Height="24" VerticalAlignment="Bottom">
-                <Label x:Name="textDateSumStatusBar" Height="24"></Label>
+            <StatusBar DockPanel.Dock="Bottom" Height="20" VerticalAlignment="Bottom">
+                <Label x:Name="textDateSumStatusBar" Padding="0"></Label>
             </StatusBar>
             <WrapPanel DockPanel.Dock="Top" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.MenuHighlightBrushKey}}" Height="32">
                 <Menu VerticalAlignment="Top">

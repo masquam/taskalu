@@ -256,4 +256,7 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="MW_Changed" xml:space="preserve">
     <value>Some parameters are changed. Do you discard them?</value>
   </data>
+  <data name="MW_NoEntry" xml:space="preserve">
+    <value>No entry found.</value>
+  </data>
 </root>
