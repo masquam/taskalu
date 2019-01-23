@@ -119,9 +119,11 @@
     <Compile Include="NewWindow.xaml.cs">
       <DependentUpon>NewWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ngram.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLite_DateDetails.cs" />
     <Compile Include="SQLite_DateSum.cs" />
+    <Compile Include="SQLite_Fts.cs" />
     <Compile Include="SQLite_TaskDetails.cs" />
     <Compile Include="SQLite_TaskList.cs" />
     <Compile Include="SQLite_TaskMemo.cs" />

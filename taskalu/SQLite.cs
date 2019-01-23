@@ -125,6 +125,10 @@ namespace Taskalu
                 {
                     return false;
                 }
+                if (!ExecuteCreateTable("CREATE VIRTUAL TABLE strings_fts USING fts4 (id INTEGER, type TEXT, str TEXT)"))
+                {
+                    return false;
+                }
             }
             return true;
         }

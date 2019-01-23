@@ -33,6 +33,8 @@ namespace Taskalu
 
         private void ButtonNewWindowOk_Click(object sender, RoutedEventArgs e)
         {
+            Int64 retId;
+
             NewWindowOk.IsEnabled = false;
 
             DateTime due = (DateTime)dateBox.SelectedDate;
@@ -48,7 +50,9 @@ namespace Taskalu
                 Status = "Active",
                 WorkHolder = WorkHolder.CreateWorkHolder(NewTitleBox.Text)
             };
-            SQLiteClass.ExecuteInsertTable(lvFile);
+            retId = SQLiteClass.ExecuteInsertTable(lvFile);
+            SQLiteClass.ExecuteInsertTableFTSString(retId, "tasklist_name", Ngram.getNgramText(NewTitleBox.Text, 2));
+            SQLiteClass.ExecuteInsertTableFTSString(retId, "tasklist_description", Ngram.getNgramText(NewDescriptionBox.Text, 2));
 
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;

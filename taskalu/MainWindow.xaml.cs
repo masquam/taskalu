@@ -567,6 +567,9 @@ namespace Taskalu
                 HyperLink.FillHyperLinks(ep_description, HyperLink.CreateHyperLinkList(tmpDescription));
 
                 SQLiteClass.ExecuteUpdateTable_Description(epId, tmpDescription);
+                SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_description", Ngram.getNgramText(tmpDescription, 2));
+
+
             }
         }
 
@@ -615,6 +618,7 @@ namespace Taskalu
 
             if (SQLiteClass.ExecuteUpdateTable(lbf))
             {
+                SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_name", Ngram.getNgramText(ep_name.Text, 2));
                 ep_CloseWindow();
                 ExecuteFirstSelectTable();
             }
@@ -822,6 +826,11 @@ namespace Taskalu
             }
         }
 
+        /// <summary>
+        /// show Memo Add window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveMemo_Click(object sender, RoutedEventArgs e)
         {
             MemoAddWindow dlg = new MemoAddWindow();
@@ -837,6 +846,7 @@ namespace Taskalu
                 {
                     SQLiteClass.ExecuteInsertTableTaskMemo(epId, dlg.memoString);
                     SQLiteClass.ExecuteUpdateTaskListMemo(epId, dlg.memoString);
+                    SQLiteClass.ExecuteInsertTableFTSString(epId, "taskmemo", dlg.memoString);
                     ExecuteFirstSelectTableTaskMemo(epId);
                 }
             }

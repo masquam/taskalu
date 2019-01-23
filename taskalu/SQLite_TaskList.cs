@@ -27,12 +27,15 @@ namespace Taskalu
         public static int moreCount { get; set; }
         public static int moreSize = 10;
 
-        public static void ExecuteInsertTable(ListViewFile lvFile)
+        public static Int64 ExecuteInsertTable(ListViewFile lvFile)
         {
+            object obj;
+            Int64 retId;
+
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (name, description, memo, priority, createdate, duedate, status, workholder) VALUES (@name, @description, @memo, @priority, @createdate, @duedate, @status, @workholder)", con);
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO tasklist (name, description, memo, priority, createdate, duedate, status, workholder) VALUES (@name, @description, @memo, @priority, @createdate, @duedate, @status, @workholder); SELECT last_insert_rowid();", con);
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@memo", lvFile.Memo));
@@ -41,19 +44,23 @@ namespace Taskalu
             com.Parameters.Add(sqliteParam(com, "@duedate", lvFile.DueDate));
             com.Parameters.Add(sqliteParam(com, "@status", lvFile.Status));
             com.Parameters.Add(sqliteParam(com, "@workholder", lvFile.WorkHolder));
+            
 
             try
             {
-                com.ExecuteNonQuery();
+                obj = com.ExecuteScalar();
+                retId = Int64.Parse(obj.ToString());
             }
             catch (Exception ex)
             {
                 MessageBox.Show("database table insert error!\n" + ex.Message);
+                retId = 0;
             }
             finally
             {
                 con.Close();
             }
+            return retId;
         }
 
         private static SQLiteParameter sqliteParam(SQLiteCommand com, string paramName, string field)
@@ -126,6 +133,7 @@ namespace Taskalu
 
         private static string stringSearchSQL(string status)
         {
+            /*
             return "SELECT * FROM tasklist WHERE id IN ("
                     + "SELECT id FROM tasklist"
                     + " WHERE status = '" + status + "'"
@@ -139,6 +147,10 @@ namespace Taskalu
                     + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @string3)"
                     + " AND t.status = '" + status + "'"
                     + ")";
+                    */
+
+            return "SELECT * FROM tasklist WHERE status = '" + status + "' AND id IN ("
+                    + "SELECT id FROM strings_fts WHERE str MATCH @str)";
         }
 
         /// <summary>
@@ -158,9 +170,12 @@ namespace Taskalu
 
             if (!String.IsNullOrEmpty(searchString))
             {
+                /*
                 com.Parameters.Add(sqliteParam(com, "@string1", "%" + searchString + "%"));
                 com.Parameters.Add(sqliteParam(com, "@string2", "%" + searchString + "%"));
                 com.Parameters.Add(sqliteParam(com, "@string3", "%" + searchString + "%"));
+                */
+                com.Parameters.Add(sqliteParam(com, "@str", Ngram.getNgramText(searchString, 2)));
             }
 
             try
