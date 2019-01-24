@@ -57,6 +57,8 @@ namespace Taskalu
                 }
                 catch (Exception ex)
                 {
+                    Properties.Settings.Default["Database_Folder"] = "";
+                    Properties.Settings.Default.Save();
                     MessageBox.Show("database file create error!\n" + ex.Message);
                     return false;
                 }

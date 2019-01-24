@@ -175,7 +175,7 @@ namespace Taskalu
                 com.Parameters.Add(sqliteParam(com, "@string2", "%" + searchString + "%"));
                 com.Parameters.Add(sqliteParam(com, "@string3", "%" + searchString + "%"));
                 */
-                com.Parameters.Add(sqliteParam(com, "@str", Ngram.getNgramText(searchString, 2)));
+                com.Parameters.Add(sqliteParam(com, "@str", Ngram.getNgramTextSpaceSeparated(searchString, 2)));
             }
 
             try
