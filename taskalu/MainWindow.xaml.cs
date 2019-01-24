@@ -34,7 +34,7 @@ namespace Taskalu
 
         public MainWindow()
         {
-            setLanguageSettings();
+            MainWindowUtil.setLanguageSettings();
 
             InitializeComponent();
 
@@ -77,37 +77,6 @@ namespace Taskalu
             dlg.ShowDialog();
         }
 
-        private void setLanguageSettings()
-        {
-            string settingvalue = Properties.Settings.Default.Language_Setting;
-
-            if (settingvalue == "ja-JP")
-            {
-                CultureInfo.CurrentCulture = new CultureInfo("ja-JP");
-                CultureInfo.CurrentUICulture = new CultureInfo("ja-JP");
-            }
-            else if (settingvalue == "en-US")
-            {
-                CultureInfo.CurrentCulture = new CultureInfo("en-US");
-                CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-            }
-            else
-            {
-                if (CultureInfo.CurrentUICulture.Name == "ja-JP")
-                {
-                    CultureInfo.CurrentCulture = new CultureInfo("ja-JP");
-                    CultureInfo.CurrentUICulture = new CultureInfo("ja-JP");
-                    AddUpdateAppSettings("Language_Setting", "ja-JP");
-                }
-                else
-                {
-                    CultureInfo.CurrentCulture = new CultureInfo("en-US");
-                    CultureInfo.CurrentUICulture = new CultureInfo("en-US");
-                    AddUpdateAppSettings("Language_Setting", "en-US");
-                }
-            }
-        }
-
         private Boolean setDBFolderSettings()
         {
             if (string.IsNullOrEmpty(Properties.Settings.Default.Database_Folder))
@@ -117,7 +86,7 @@ namespace Taskalu
                 dlg.SelectedPath = System.Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    AddUpdateAppSettings("Database_Folder", dlg.SelectedPath + "\\taskalu");
+                    MainWindowUtil.AddUpdateAppSettings("Database_Folder", dlg.SelectedPath + "\\taskalu");
                     SQLiteClass.dbdirectory = dlg.SelectedPath + "\\taskalu";
                     SQLiteClass.dbpath = SQLiteClass.dbdirectory + "\\taskaludb.sqlite";
                 }
@@ -143,7 +112,7 @@ namespace Taskalu
                 dlg.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    AddUpdateAppSettings("Work_Folder", dlg.SelectedPath + "\\taskalu");
+                    MainWindowUtil.AddUpdateAppSettings("Work_Folder", dlg.SelectedPath + "\\taskalu");
                     WorkHolder.workDirectory = dlg.SelectedPath + "\\taskalu";
                 }
                 else
@@ -912,19 +881,15 @@ namespace Taskalu
 
                 if (LanguageSettingsWindow.language == "Japanese")
                 {
-                    AddUpdateAppSettings("Language_Setting","ja-JP");
+                    MainWindowUtil.AddUpdateAppSettings("Language_Setting","ja-JP");
                 }
                 else
                 {
-                    AddUpdateAppSettings("Language_Setting", "en-US");
+                    MainWindowUtil.AddUpdateAppSettings("Language_Setting", "en-US");
                 }
             }
         }
-        static void AddUpdateAppSettings(string key, string value)
-        {
-            Properties.Settings.Default[key] = value;
-            Properties.Settings.Default.Save();
-        }
+
 
 
         // ////////////////////////////////////////////////////////////////////////

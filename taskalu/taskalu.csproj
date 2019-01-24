@@ -110,6 +110,7 @@
     <Compile Include="ListDateSum.cs" />
     <Compile Include="ListTaskDetails.cs" />
     <Compile Include="ListTaskMemo.cs" />
+    <Compile Include="MainWindowUtil.cs" />
     <Compile Include="MemoAddWindow.xaml.cs">
       <DependentUpon>MemoAddWindow.xaml</DependentUpon>
     </Compile>
