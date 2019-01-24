@@ -32,6 +32,9 @@ namespace Taskalu
         public string tmpDescription = "";
         public bool taskChanged = false;
 
+        /// <summary>
+        /// MainWindow
+        /// </summary>
         public MainWindow()
         {
             MainWindowUtil.setLanguageSettings();
@@ -70,6 +73,9 @@ namespace Taskalu
             ExecuteFirstSelectTable();
         }
 
+        /// <summary>
+        /// Show Welcome window
+        /// </summary>
         private void ShowWelcomeWindow()
         {
             WelcomeWindow dlg = new WelcomeWindow();
@@ -77,6 +83,10 @@ namespace Taskalu
             dlg.ShowDialog();
         }
 
+        /// <summary>
+        /// Show DB folder setting window and set settings
+        /// </summary>
+        /// <returns>success/fail to set</returns>
         private Boolean setDBFolderSettings()
         {
             if (string.IsNullOrEmpty(Properties.Settings.Default.Database_Folder))
@@ -103,6 +113,10 @@ namespace Taskalu
             return true;
         }
 
+        /// <summary>
+        /// Show Work folder setting window and set settings
+        /// </summary>
+        /// <returns>success/fail to set</returns>
         private Boolean setWorkFolderSettings()
         {
             if (string.IsNullOrEmpty(Properties.Settings.Default.Work_Folder))
@@ -127,6 +141,11 @@ namespace Taskalu
             return true;
         }
 
+        /// <summary>
+        /// PowerModeChanged; manage editTimer
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PowerModeChanged(object sender, Microsoft.Win32.PowerModeChangedEventArgs e)
         {
             switch (e.Mode)
@@ -150,25 +169,18 @@ namespace Taskalu
             }
         }
 
-        // Toolbar - New Task button
+        /// <summary>
+        /// Toolbar - New Task button is clicked, show New Task window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NewButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenNewTaskWindow();
-        }
-
-        void OpenNewTaskWindow()
-        {
-            // Instantiate the dialog box
             NewWindow dlg = new NewWindow();
-
-            // Configure the dialog box
             dlg.Owner = this;
             dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-            // Open the dialog box modally 
             if (dlg.ShowDialog() == true)
             {
-                // new task window is closed
                 if (editpanel.Visibility != Visibility.Visible)
                 {
                     ExecuteFirstSelectTable();
