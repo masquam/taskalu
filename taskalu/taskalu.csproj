@@ -134,6 +134,9 @@
       <DependentUpon>TaskDetailsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TaskMemoViewModel.cs" />
+    <Compile Include="TemplateEditWindow.xaml.cs">
+      <DependentUpon>TemplateEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TaskDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateEditWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

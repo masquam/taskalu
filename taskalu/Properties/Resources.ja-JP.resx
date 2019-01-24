@@ -265,4 +265,10 @@
   <data name="MW_Keyword" xml:space="preserve">
     <value>キーワード</value>
   </data>
+  <data name="ContextMenu_TemplateEdit" xml:space="preserve">
+    <value>テンプレートの編集...</value>
+  </data>
+  <data name="TE_TemplateEdit" xml:space="preserve">
+    <value>テンプレートの編集</value>
+  </data>
 </root>

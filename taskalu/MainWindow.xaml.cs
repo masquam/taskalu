@@ -559,9 +559,7 @@ namespace Taskalu
                 tmpDescription = dlg.descriptionString;
                 ep_description.Text = "";
                 HyperLink.FillHyperLinks(ep_description, HyperLink.CreateHyperLinkList(tmpDescription));
-
-                SQLiteClass.ExecuteUpdateTable_Description(epId, tmpDescription);
-                SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_description", Ngram.getNgramText(tmpDescription, 2));
+                taskChanged = true;
             }
         }
 
@@ -601,7 +599,7 @@ namespace Taskalu
             ListViewFile lbf = new ListViewFile();
             lbf.Id = epId;
             lbf.Name = ep_name.Text;
-            lbf.Description = ep_description.Text;
+            lbf.Description = tmpDescription;
             lbf.Priority = String.Concat(Enumerable.Repeat("\u272e", 5 - ep_priorityBox.SelectedIndex));
             lbf.CreateDate = ep_createdate.Text;
             lbf.DueDate = ep_duedate.Text;
@@ -611,6 +609,7 @@ namespace Taskalu
             if (SQLiteClass.ExecuteUpdateTable(lbf))
             {
                 SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_name", Ngram.getNgramText(ep_name.Text, 2));
+                SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_description", Ngram.getNgramText(tmpDescription, 2));
                 ep_CloseWindow();
                 ExecuteFirstSelectTable();
             }
@@ -1031,6 +1030,28 @@ namespace Taskalu
             if (e.Key == Key.Return)
             {
                 ExecuteFirstSelectTable();
+            }
+        }
+
+        // ///////////////////////////////////////////////////////////////////////
+
+        /// <summary>
+        /// open Edit Template window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TemplateEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            TemplateEditWindow dlg = new TemplateEditWindow();
+
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            //dlg.descriptionString = tmpDescription;
+
+            if (dlg.ShowDialog() == true)
+            {
+                //
             }
         }
     }

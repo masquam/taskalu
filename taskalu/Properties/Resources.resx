@@ -262,4 +262,10 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="MW_Keyword" xml:space="preserve">
     <value>keyword</value>
   </data>
+  <data name="ContextMenu_TemplateEdit" xml:space="preserve">
+    <value>Edit _Template...</value>
+  </data>
+  <data name="TE_TemplateEdit" xml:space="preserve">
+    <value>Edit Template</value>
+  </data>
 </root>

@@ -40,6 +40,7 @@
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_DateSummary}" Click="DateSumButton_Click" />
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_DateDetails}" Click="DateDetailsButton_Click" />
                         <Separator />
+                        <MenuItem Header="{x:Static properties:Resources.ContextMenu_TemplateEdit}" Click="TemplateEditButton_Click" />
                         <MenuItem Header="Language Settings..." Click="LanguageSettings_Click" />
                         <Separator />
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_Exit}" Click="Exit_Click" />
