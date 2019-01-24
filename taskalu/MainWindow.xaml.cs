@@ -188,6 +188,9 @@ namespace Taskalu
             }
         }
 
+        /// <summary>
+        /// Execute fiest query for tasklist
+        /// </summary>
         private void ExecuteFirstSelectTable()
         {
             MainViewModel.mv.Files.Clear();
@@ -219,11 +222,6 @@ namespace Taskalu
         /// <param name="e"></param>
         private void DateSumButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenDateSumWindow();
-        }
-
-        void OpenDateSumWindow()
-        {
             OpenDatesWindow(new DateSumWindow());
         }
 
@@ -234,16 +232,14 @@ namespace Taskalu
         /// <param name="e"></param>
         private void DateDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenDateDetailsWindow();
-        }
-
-        void OpenDateDetailsWindow()
-        {
             OpenDatesWindow(new DateDetailsWindow());
-
         }
 
-        void OpenDatesWindow(Window dlg)
+        /// <summary>
+        /// common routine for opening Date Summary/Details
+        /// </summary>
+        /// <param name="dlg"></param>
+        private void OpenDatesWindow(Window dlg)
         {
             bool timerOnOff = false;
             if (editpanel.Visibility == Visibility.Visible)
@@ -273,7 +269,11 @@ namespace Taskalu
             }
         }
 
-        // status combobox is changed
+        /// <summary>
+        /// status combobox changed event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void statusBox_DropDownClosed(object sender, EventArgs e)
         {
             SQLiteClass.where_status = statusBox.Text;
@@ -300,7 +300,12 @@ namespace Taskalu
             ExecuteFirstSelectTable();
         }
 
-        // More button
+
+        /// <summary>
+        /// More button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {
             if (SQLiteClass.ExecuteMoreSelectTable())
@@ -416,7 +421,11 @@ namespace Taskalu
 
         }
 
-        // Menu - Exit
+        /// <summary>
+        ///  Menu - Exit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -472,6 +481,9 @@ namespace Taskalu
             }
         }
 
+        /// <summary>
+        /// Change forecolor of due date in editpanel
+        /// </summary>
         private void dueDateColorConvert()
         {
             string datestring = ep_duedate.Text;
@@ -497,28 +509,29 @@ namespace Taskalu
             }
         }
 
-        // editpanel change due date button
+        /// <summary>
+        /// editpanel change due date button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ep_changeduedate_Click(object sender, RoutedEventArgs e)
         {
-            // Instantiate the dialog box
             DueDateWindow dlg = new DueDateWindow();
-
-            // Configure the dialog box
             dlg.Owner = this;
             dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
             dlg.dueDateString = ep_duedate.Text;
-
-            // Open the dialog box modally 
             if (dlg.ShowDialog() == true)
             {
-                // due date window is closed
                 ep_duedate.Text = dlg.dueDateString;
                 dueDateColorConvert();
             }
         }
 
-        // editpanel open work folder button
+        /// <summary>
+        /// editpanel open work folder button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ep_openWorkFolder_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(workHolder)){
@@ -549,8 +562,6 @@ namespace Taskalu
 
                 SQLiteClass.ExecuteUpdateTable_Description(epId, tmpDescription);
                 SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_description", Ngram.getNgramText(tmpDescription, 2));
-
-
             }
         }
 
@@ -644,6 +655,9 @@ namespace Taskalu
             ep_close.IsEnabled = true;
         }
 
+        /// <summary>
+        /// close editpanel
+        /// </summary>
         private void ep_CloseWindow()
         {
             listview1.UnselectAll();
@@ -781,24 +795,25 @@ namespace Taskalu
         //
         // Memo
 
+        /// <summary>
+        /// taskmemo in editpanel is selected
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListTaskMemoSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListTaskMemo ltm = ((sender as ListView).SelectedItem as ListTaskMemo);
 
             if (ltm != null)
             {
-                // Instantiate the dialog box
                 MemoWindow dlg = new MemoWindow();
 
                 dlg.memo = ltm.Memo;
                 dlg.date = ltm.Date;
 
-                // Configure the dialog box
                 dlg.Owner = this;
-
                 dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
-                // Open the dialog box modally 
                 if (dlg.ShowDialog() == true)
                 {
                     // window is closed
@@ -815,12 +830,8 @@ namespace Taskalu
         private void saveMemo_Click(object sender, RoutedEventArgs e)
         {
             MemoAddWindow dlg = new MemoAddWindow();
-
             dlg.Owner = this;
             dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-            //dlg.MemoString = tmpDescription;
-
             if (dlg.ShowDialog() == true)
             {
                 if (!string.IsNullOrEmpty(dlg.memoString))
@@ -833,6 +844,10 @@ namespace Taskalu
             }
         }
 
+        /// <summary>
+        /// execute taskmemo query
+        /// </summary>
+        /// <param name="id"></param>
         private void ExecuteFirstSelectTableTaskMemo(Int64 id)
         {
             TaskMemoViewModel.tmv.Memos.Clear();
@@ -847,6 +862,11 @@ namespace Taskalu
             }
         }
 
+        /// <summary>
+        /// taskmemo more button clicked event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TaskMemoMoreButton_Click(object sender, RoutedEventArgs e)
         {
             if (SQLiteClass.ExecuteMoreSelectTableTaskMemo(epId))
@@ -869,11 +889,8 @@ namespace Taskalu
         private void LanguageSettings_Click(object sender, RoutedEventArgs e)
         {
             LanguageSettingsWindow dlg = new LanguageSettingsWindow();
-
             dlg.Owner = this;
             dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-            // Language Configuration
             string settingvalue = Properties.Settings.Default.Language_Setting;
 
             if (settingvalue == "ja-JP")
@@ -885,12 +902,8 @@ namespace Taskalu
                 LanguageSettingsWindow.language = "English";
             }
 
-            // Open the dialog box modally 
             if (dlg.ShowDialog() == true)
             {
-                // window is closed OK
-                //MessageBox.Show(LanguageSettingsWindow.language);
-
                 if (LanguageSettingsWindow.language == "Japanese")
                 {
                     MainWindowUtil.AddUpdateAppSettings("Language_Setting","ja-JP");
@@ -908,17 +921,19 @@ namespace Taskalu
         //
         // Task Details
 
+        /// <summary>
+        /// task details button clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TaskDetails_Click(object sender, RoutedEventArgs e)
         {
             TaskDetailsWindow dlg = new TaskDetailsWindow();
-
-            // Configure the dialog box
             dlg.Owner = this;
             dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             TaskDetailsWindow.id = epId;
 
-            // Open the dialog box modally 
             if (dlg.ShowDialog() == true)
             {
                 // window is closed
@@ -933,7 +948,7 @@ namespace Taskalu
         /// <summary>
         /// save window size
         /// </summary>
-        void SaveWindowSize()
+        public void SaveWindowSize()
         {
             var settings = Properties.Settings.Default;
             settings.WindowMaximized = WindowState == WindowState.Maximized;
@@ -990,25 +1005,21 @@ namespace Taskalu
 
         private void priorityChanged(object sender, SelectionChangedEventArgs e)
         {
-            //MessageBox.Show("priority changed");
             taskChanged = true;
         }
 
         private void statusChanged(object sender, SelectionChangedEventArgs e)
         {
-            //MessageBox.Show("status changed");
             taskChanged = true;
         }
 
         private void titleChanged(object sender, TextChangedEventArgs e)
         {
-            //MessageBox.Show("title changed");
             taskChanged = true;
         }
 
         private void duedateChanged(object sender, TextChangedEventArgs e)
         {
-            //MessageBox.Show("duedate changed");
             taskChanged = true;
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Globalization;
 
 namespace Taskalu
@@ -45,5 +46,7 @@ namespace Taskalu
             Properties.Settings.Default[key] = value;
             Properties.Settings.Default.Save();
         }
+
+
     }
 }
