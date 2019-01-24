@@ -701,7 +701,7 @@ namespace Taskalu
         {
             dTimer = new DispatcherTimer();
             dTimer.Tick += new EventHandler(editTimer_Tick);
-            dTimer.Interval = new TimeSpan(0, 1, 0);
+            dTimer.Interval = new TimeSpan(0, 0, 10);
             dTimer.Start();
 
             // TimeSpan init
@@ -733,6 +733,9 @@ namespace Taskalu
             // else UPDATE the tasktime table
             // use for WHERE tasklist_id and editTimerStartDateTime
             SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
+
+            // for duedate color change
+            dueDateColorConvert();
 
             // Forcing the CommandManager to raise the RequerySuggested event
             System.Windows.Input.CommandManager.InvalidateRequerySuggested();
