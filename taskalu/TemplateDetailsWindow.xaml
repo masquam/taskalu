@@ -10,16 +10,16 @@
     <Window.Resources>
         <ResourceDictionary Source="ResourceDictionary1.xaml"/>
     </Window.Resources>
-    <Grid>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.TE_TemplateEdit}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Label Content="name" Width="64"></Label>
-                <TextBox x:Name="templateName" Width="300" MaxLength="32767"></TextBox>
+                <Label Content="name" Width="80"></Label>
+                <TextBox x:Name="templateName" Width="300" MaxLength="32767" Margin="4"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Label Content="description" Width="64"></Label>
-                <TextBox x:Name="templateDescription" Width="300" Height="100" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxLength="32767"></TextBox>
+                <Label Content="description" Width="80"></Label>
+                <TextBox x:Name="templateDescription" Width="300" Height="100" Margin="4" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxLength="32767"></TextBox>
             </StackPanel>
             <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
                 <Button x:Name="TemplateDetailsOk" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonTemplateDetailsOk_Click"  />
