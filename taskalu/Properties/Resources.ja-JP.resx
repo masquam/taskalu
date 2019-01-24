@@ -268,7 +268,19 @@
   <data name="ContextMenu_TemplateEdit" xml:space="preserve">
     <value>テンプレートの編集...</value>
   </data>
+  <data name="TE_Add" xml:space="preserve">
+    <value>追加...</value>
+  </data>
+  <data name="TE_Edit" xml:space="preserve">
+    <value>編集...</value>
+  </data>
+  <data name="TE_Template" xml:space="preserve">
+    <value>テンプレート</value>
+  </data>
   <data name="TE_TemplateEdit" xml:space="preserve">
     <value>テンプレートの編集</value>
+  </data>
+  <data name="TE_Delete" xml:space="preserve">
+    <value>削除...</value>
   </data>
 </root>

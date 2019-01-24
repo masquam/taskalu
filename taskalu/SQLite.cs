@@ -46,6 +46,10 @@ namespace Taskalu
                 {
                     return false;
                 }
+                if (!CheckTable("template"))
+                {
+                    return false;
+                }
             }
             else
             {
@@ -128,6 +132,22 @@ namespace Taskalu
                     return false;
                 }
                 if (!ExecuteCreateTable("CREATE VIRTUAL TABLE strings_fts USING fts4 (id INTEGER, type TEXT, str TEXT)"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateTable("CREATE TABLE template (id INTEGER NOT NULL PRIMARY KEY, torder INTEGER, name TEXT, template TEXT)"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateIndex("template", "index_template_order", "torder"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateTable("CREATE TABLE template_path (id INTEGER NOT NULL PRIMARY KEY, torder INTEGER, path TEXT)"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateIndex("template_path", "index_template_path_order", "torder"))
                 {
                     return false;
                 }

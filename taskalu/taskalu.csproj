@@ -110,6 +110,7 @@
     <Compile Include="ListDateSum.cs" />
     <Compile Include="ListTaskDetails.cs" />
     <Compile Include="ListTaskMemo.cs" />
+    <Compile Include="ListTemplate.cs" />
     <Compile Include="MainWindowUtil.cs" />
     <Compile Include="MemoAddWindow.xaml.cs">
       <DependentUpon>MemoAddWindow.xaml</DependentUpon>
@@ -129,14 +130,19 @@
     <Compile Include="SQLite_TaskList.cs" />
     <Compile Include="SQLite_TaskMemo.cs" />
     <Compile Include="SQLite_TaskTime.cs" />
+    <Compile Include="SQLite_template.cs" />
     <Compile Include="TaskDetailsViewModel.cs" />
     <Compile Include="TaskDetailsWindow.xaml.cs">
       <DependentUpon>TaskDetailsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TaskMemoViewModel.cs" />
+    <Compile Include="TemplateDetailsWindow.xaml.cs">
+      <DependentUpon>TemplateDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TemplateEditWindow.xaml.cs">
       <DependentUpon>TemplateEditWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TemplateListViewModel.cs" />
     <Compile Include="WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
@@ -196,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TaskDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TemplateDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

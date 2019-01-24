@@ -265,7 +265,19 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="ContextMenu_TemplateEdit" xml:space="preserve">
     <value>Edit _Template...</value>
   </data>
+  <data name="TE_Add" xml:space="preserve">
+    <value>Add...</value>
+  </data>
+  <data name="TE_Edit" xml:space="preserve">
+    <value>Edit...</value>
+  </data>
+  <data name="TE_Template" xml:space="preserve">
+    <value>Template</value>
+  </data>
   <data name="TE_TemplateEdit" xml:space="preserve">
     <value>Edit Template</value>
+  </data>
+  <data name="TE_Delete" xml:space="preserve">
+    <value>Delete...</value>
   </data>
 </root>

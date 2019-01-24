@@ -22,11 +22,129 @@ namespace Taskalu
         public TemplateEditWindow()
         {
             InitializeComponent();
+
+            TemplateList.DataContext = TemplateListViewModel.tlv;
+
+            // TODO: for test
+            /*
+            var tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world2";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world3";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world4";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world5";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world6";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world789012345678901234567890123456789012345678901234567890";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world8";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world9";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world10";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            tmpLT = new ListTemplate();
+            tmpLT.Name = "hello world11";
+            TemplateListViewModel.tlv.Entries.Add(tmpLT);
+            */
+            TemplateListViewModel.tlv.Entries.Clear();
+            SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
         }
 
         private void ButtonTemplateEditOk_Click(object sender, RoutedEventArgs e)
         {
+            Int64 newOrder = 0;
+            foreach(ListTemplate entry in TemplateListViewModel.tlv.Entries)
+            {
+                newOrder++;
+                entry.Order = newOrder;
+                SQLiteClass.ExecuteUpdateTableTemplate(entry);
+            }
+
             this.DialogResult = true;
+        }
+
+        private void TriangleButton_Template_Up_Click(object sender, RoutedEventArgs e)
+        {
+            var currentIndex = TemplateList.SelectedIndex;
+            if (currentIndex > 0) {
+                TemplateListViewModel.tlv.Entries.Move(currentIndex, currentIndex - 1);
+            }
+        }
+
+        private void TriangleButton_Template_Down_Click(object sender, RoutedEventArgs e)
+        {
+            var currentIndex = TemplateList.SelectedIndex;
+            if ((currentIndex >= 0) &&
+                (currentIndex < TemplateListViewModel.tlv.Entries.Count - 1))
+            {
+                TemplateListViewModel.tlv.Entries.Move(currentIndex, currentIndex + 1);
+            }
+        }
+
+        private void EditTheTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            TemplateDetailsWindow dlg = new TemplateDetailsWindow();
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            int ind = TemplateList.SelectedIndex;
+            dlg.theTemplate.Id = TemplateListViewModel.tlv.Entries[ind].Id;
+            dlg.theTemplate.Order = TemplateListViewModel.tlv.Entries[ind].Order;
+            dlg.theTemplate.Name = TemplateListViewModel.tlv.Entries[ind].Name;
+            dlg.theTemplate.Template = TemplateListViewModel.tlv.Entries[ind].Template;
+
+            if (dlg.ShowDialog() == true)
+            {
+                SQLiteClass.ExecuteUpdateTableTemplate(dlg.theTemplate);
+
+                TemplateListViewModel.tlv.Entries.Clear();
+                SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+            }
+        }
+
+        private void TemplateSelected(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(TemplateList.SelectedIndex.ToString());
+        }
+
+        private void DeleteTheTemplate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddNewTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            TemplateDetailsWindow dlg = new TemplateDetailsWindow();
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            dlg.theTemplate.Id = 0;
+            dlg.theTemplate.Order = SQLiteClass.ExecuteSelectMaxTemplate() + 1;
+            dlg.theTemplate.Name = "";
+            dlg.theTemplate.Template = "";
+
+            if (dlg.ShowDialog() == true)
+            {
+                SQLiteClass.ExecuteInsertTableTemplate(dlg.theTemplate);
+                //
+                TemplateListViewModel.tlv.Entries.Clear();
+                SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+            }
         }
     }
 }

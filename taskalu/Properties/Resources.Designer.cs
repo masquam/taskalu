@@ -457,6 +457,42 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Add... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TE_Add {
+            get {
+                return ResourceManager.GetString("TE_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Delete... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TE_Delete {
+            get {
+                return ResourceManager.GetString("TE_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Edit... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TE_Edit {
+            get {
+                return ResourceManager.GetString("TE_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Template に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TE_Template {
+            get {
+                return ResourceManager.GetString("TE_Template", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Edit Template に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TE_TemplateEdit {

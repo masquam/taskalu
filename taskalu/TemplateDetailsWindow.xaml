@@ -1,0 +1,30 @@
+﻿<Window x:Class="Taskalu.TemplateDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:Taskalu.Properties"
+        xmlns:local="clr-namespace:Taskalu"
+        mc:Ignorable="d"
+        Title="TemplateDetailsWindow" Height="450" Width="800" Loaded="templateDetailsLoaded">
+    <Window.Resources>
+        <ResourceDictionary Source="ResourceDictionary1.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <DockPanel>
+            <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.TE_TemplateEdit}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                <Label Content="name" Width="64"></Label>
+                <TextBox x:Name="templateName" Width="300" MaxLength="32767"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                <Label Content="description" Width="64"></Label>
+                <TextBox x:Name="templateDescription" Width="300" Height="100" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxLength="32767"></TextBox>
+            </StackPanel>
+            <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
+                <Button x:Name="TemplateDetailsOk" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonTemplateDetailsOk_Click"  />
+                <Button x:Name="TemplateDetailsCancel" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>
