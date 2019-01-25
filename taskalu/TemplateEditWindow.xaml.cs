@@ -103,17 +103,21 @@ namespace Taskalu
             dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             int ind = TemplateList.SelectedIndex;
-            dlg.theTemplate.Id = TemplateListViewModel.tlv.Entries[ind].Id;
-            dlg.theTemplate.Order = TemplateListViewModel.tlv.Entries[ind].Order;
-            dlg.theTemplate.Name = TemplateListViewModel.tlv.Entries[ind].Name;
-            dlg.theTemplate.Template = TemplateListViewModel.tlv.Entries[ind].Template;
 
-            if (dlg.ShowDialog() == true)
+            if (ind >= 0)
             {
-                SQLiteClass.ExecuteUpdateTableTemplate(dlg.theTemplate);
+                dlg.theTemplate.Id = TemplateListViewModel.tlv.Entries[ind].Id;
+                dlg.theTemplate.Order = TemplateListViewModel.tlv.Entries[ind].Order;
+                dlg.theTemplate.Name = TemplateListViewModel.tlv.Entries[ind].Name;
+                dlg.theTemplate.Template = TemplateListViewModel.tlv.Entries[ind].Template;
 
-                TemplateListViewModel.tlv.Entries.Clear();
-                SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+                if (dlg.ShowDialog() == true)
+                {
+                    SQLiteClass.ExecuteUpdateTableTemplate(dlg.theTemplate);
+
+                    TemplateListViewModel.tlv.Entries.Clear();
+                    SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+                }
             }
         }
 
