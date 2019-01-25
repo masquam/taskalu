@@ -283,4 +283,16 @@
   <data name="TE_Delete" xml:space="preserve">
     <value>削除...</value>
   </data>
+  <data name="TD_Description" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="TD_Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="TD_Path" xml:space="preserve">
+    <value>ファイルパス</value>
+  </data>
+  <data name="TD_PathForFolder" xml:space="preserve">
+    <value>ワークフォルダにコピーするファイルパス</value>
+  </data>
 </root>

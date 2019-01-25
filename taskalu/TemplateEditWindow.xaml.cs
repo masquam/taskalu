@@ -98,14 +98,12 @@ namespace Taskalu
 
         private void EditTheTemplate_Click(object sender, RoutedEventArgs e)
         {
-            TemplateDetailsWindow dlg = new TemplateDetailsWindow();
-            dlg.Owner = this;
-            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
             int ind = TemplateList.SelectedIndex;
-
             if (ind >= 0)
             {
+                TemplateDetailsWindow dlg = new TemplateDetailsWindow();
+                dlg.Owner = this;
+                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 dlg.theTemplate.Id = TemplateListViewModel.tlv.Entries[ind].Id;
                 dlg.theTemplate.Order = TemplateListViewModel.tlv.Entries[ind].Order;
                 dlg.theTemplate.Name = TemplateListViewModel.tlv.Entries[ind].Name;

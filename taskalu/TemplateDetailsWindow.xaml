@@ -6,7 +6,7 @@
         xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="TemplateDetailsWindow" Height="450" Width="800" Loaded="templateDetailsLoaded">
+        Title="TemplateDetailsWindow" Height="410" MinHeight="410" MaxHeight="410" Width="760" MinWidth="760" MaxWidth="760" Loaded="templateDetailsLoaded">
     <Window.Resources>
         <ResourceDictionary Source="ResourceDictionary1.xaml"/>
     </Window.Resources>
@@ -14,16 +14,54 @@
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.TE_TemplateEdit}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Label Content="name" Width="80"></Label>
-                <TextBox x:Name="templateName" Width="300" MaxLength="32767" Margin="4"></TextBox>
+                <Label Content="{x:Static properties:Resources.TD_Name}" Width="80"></Label>
+                <TextBox x:Name="templateName" Width="450" MaxLength="32767" Margin="4"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Label Content="description" Width="80"></Label>
-                <TextBox x:Name="templateDescription" Width="300" Height="100" Margin="4" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxLength="32767"></TextBox>
+                <Label Content="{x:Static properties:Resources.TD_Description}" Width="80"></Label>
+                <TextBox x:Name="templateDescription" Width="450" Height="100" Margin="4" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxLength="32767"></TextBox>
             </StackPanel>
             <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
-                <Button x:Name="TemplateDetailsOk" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonTemplateDetailsOk_Click"  />
+                <Button x:Name="TemplateDetailsOk" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="220,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonTemplateDetailsOk_Click"  />
                 <Button x:Name="TemplateDetailsCancel" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+            </StackPanel>
+            <StackPanel x:Name="NewTemplatePathPanel" Orientation="Horizontal" Visibility="Collapsed">
+                <TextBlock Padding="6" Width="80" HorizontalAlignment="Left" TextWrapping="Wrap" Text="File path for workfolder"></TextBlock>
+                <TextBlock Padding="6" Width="300" HorizontalAlignment="Left" TextWrapping="Wrap" Text="This setting will be available after the template is saved."></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                <Label Width="340"></Label>
+                <Button x:Name="EditTheTemplatePath" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.TE_Edit}" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" Click="EditTheTemplatePath_Click"  />
+                <Button x:Name="DeleteTheTemplatePath" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.TE_Delete}" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" Click="DeleteTheTemplatePath_Click"  />
+                <Button x:Name="AddNewTemplatePath" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.TE_Add}" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" Click="AddNewTemplatePath_Click"  />
+            </StackPanel>
+            <StackPanel x:Name="EditTemplatePathPanel" Orientation="Horizontal">
+                <TextBlock Padding="6" Width="80" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{x:Static properties:Resources.TD_PathForFolder}"></TextBlock>
+                <ListView x:Name="TemplatePathList" ItemsSource="{Binding Entries}"  HorizontalAlignment="Left" Width="600" Height="120" Margin="4" VerticalAlignment="Top" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="TemplatePathSelected">
+                    <ListView.Resources>
+                        <DataTemplate x:Key="TemplatePathListDataTemplate">
+                            <StackPanel>
+                                <Label Content="{Binding Name}" Padding="0" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.Resources>
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn CellTemplate="{StaticResource TemplatePathListDataTemplate}">
+                                <GridViewColumnHeader Content="{x:Static properties:Resources.TD_Path}">
+                                </GridViewColumnHeader>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <StackPanel Orientation="Vertical">
+                    <Button Style="{StaticResource TriangleButton}" Margin="10,40,0,8" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TriangleButton_TemplatePath_Up_Click" />
+                    <Button Style="{StaticResource TriangleButton}" Margin="10,28,0,6" HorizontalAlignment="Left" VerticalAlignment="Top" Click="TriangleButton_TemplatePath_Down_Click" >
+                        <Button.RenderTransform>
+                            <ScaleTransform ScaleY="-1" />
+                        </Button.RenderTransform>
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </DockPanel>
     </Grid>

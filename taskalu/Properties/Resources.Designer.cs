@@ -448,6 +448,42 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   description に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TD_Description {
+            get {
+                return ResourceManager.GetString("TD_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   name に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TD_Name {
+            get {
+                return ResourceManager.GetString("TD_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   file path に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TD_Path {
+            get {
+                return ResourceManager.GetString("TD_Path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   File path copied to workfolder に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TD_PathForFolder {
+            get {
+                return ResourceManager.GetString("TD_PathForFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Task Details に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TD_TaskDetails {

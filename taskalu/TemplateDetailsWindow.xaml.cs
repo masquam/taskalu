@@ -39,5 +39,35 @@ namespace Taskalu
 
             this.DialogResult = true;
         }
+
+        private void TriangleButton_TemplatePath_Up_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TriangleButton_TemplatePath_Down_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditTheTemplatePath_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteTheTemplatePath_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddNewTemplatePath_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TemplatePathSelected(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
