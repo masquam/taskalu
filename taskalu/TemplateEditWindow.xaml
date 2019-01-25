@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance {x:Type local:TemplateListViewModel}}" 
-        Title="taskalu" Height="360" Width="500">
+        Title="taskalu" Height="360" MinHeight="360" MaxHeight="360" Width="500" MinWidth="500" MaxWidth="500">
     <Window.Resources>
         <ResourceDictionary Source="ResourceDictionary1.xaml"/>
     </Window.Resources>

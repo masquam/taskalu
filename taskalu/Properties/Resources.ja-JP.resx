@@ -295,4 +295,7 @@
   <data name="TD_PathForFolder" xml:space="preserve">
     <value>ワークフォルダにコピーするファイルパス</value>
   </data>
+  <data name="TD_Caution" xml:space="preserve">
+    <value>この設定はテンプレートを一旦保存した後に有効になります。</value>
+  </data>
 </root>

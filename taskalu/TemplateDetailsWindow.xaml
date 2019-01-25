@@ -6,7 +6,7 @@
         xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="TemplateDetailsWindow" Height="410" MinHeight="410" MaxHeight="410" Width="760" MinWidth="760" MaxWidth="760" Loaded="templateDetailsLoaded">
+        Title="taskalu" Height="410" MinHeight="410" MaxHeight="410" Width="752" MinWidth="752" MaxWidth="752" Loaded="templateDetailsLoaded">
     <Window.Resources>
         <ResourceDictionary Source="ResourceDictionary1.xaml"/>
     </Window.Resources>
@@ -26,10 +26,10 @@
                 <Button x:Name="TemplateDetailsCancel" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
             </StackPanel>
             <StackPanel x:Name="NewTemplatePathPanel" Orientation="Horizontal" Visibility="Collapsed">
-                <TextBlock Padding="6" Width="80" HorizontalAlignment="Left" TextWrapping="Wrap" Text="File path for workfolder"></TextBlock>
-                <TextBlock Padding="6" Width="300" HorizontalAlignment="Left" TextWrapping="Wrap" Text="This setting will be available after the template is saved."></TextBlock>
+                <TextBlock Padding="6" Width="80" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{x:Static properties:Resources.TD_PathForFolder}"></TextBlock>
+                <TextBlock Padding="6" Width="300" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{x:Static properties:Resources.TD_Caution}"></TextBlock>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+            <StackPanel x:Name="EditTemplatePathButtonsPanel" Orientation="Horizontal" DockPanel.Dock="Bottom">
                 <Label Width="340"></Label>
                 <Button x:Name="EditTheTemplatePath" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.TE_Edit}" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" Click="EditTheTemplatePath_Click"  />
                 <Button x:Name="DeleteTheTemplatePath" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.TE_Delete}" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" Click="DeleteTheTemplatePath_Click"  />

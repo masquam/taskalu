@@ -30,6 +30,19 @@ namespace Taskalu
         {
             templateName.Text = theTemplate.Name;
             templateDescription.Text = theTemplate.Template;
+
+            if (theTemplate.Id == 0)
+            {
+                EditTemplatePathButtonsPanel.Visibility = Visibility.Collapsed;
+                EditTemplatePathPanel.Visibility = Visibility.Collapsed;
+                NewTemplatePathPanel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                NewTemplatePathPanel.Visibility = Visibility.Collapsed;
+                EditTemplatePathButtonsPanel.Visibility = Visibility.Visible;
+                EditTemplatePathPanel.Visibility = Visibility.Visible;
+            }
         }
 
         private void ButtonTemplateDetailsOk_Click(object sender, RoutedEventArgs e)

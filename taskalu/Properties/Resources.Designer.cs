@@ -448,6 +448,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   This setting will be available after the template is saved. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TD_Caution {
+            get {
+                return ResourceManager.GetString("TD_Caution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   description に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TD_Description {
