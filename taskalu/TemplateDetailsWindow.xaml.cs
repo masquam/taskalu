@@ -56,6 +56,14 @@ namespace Taskalu
             theTemplate.Name = templateName.Text;
             theTemplate.Template = templateDescription.Text;
 
+            Int64 newOrder = 0;
+            foreach (ListTemplatePath entry in TemplatePathListViewModel.tplv.Entries)
+            {
+                newOrder++;
+                entry.Order = newOrder;
+                SQLiteClass.ExecuteUpdateTableTemplatePath(entry);
+            }
+
             this.DialogResult = true;
         }
 
@@ -72,34 +80,9 @@ namespace Taskalu
         {
             var currentIndex = TemplatePathList.SelectedIndex;
             if ((currentIndex >= 0) &&
-                (currentIndex < TemplateListViewModel.tlv.Entries.Count - 1))
+                (currentIndex < TemplatePathListViewModel.tplv.Entries.Count - 1))
             {
                 TemplatePathListViewModel.tplv.Entries.Move(currentIndex, currentIndex + 1);
-            }
-        }
-
-        private void EditTheTemplatePath_Click(object sender, RoutedEventArgs e)
-        {
-            int ind = TemplatePathList.SelectedIndex;
-            if (ind >= 0)
-            {
-                /*
-                TemplateDetailsWindow dlg = new TemplateDetailsWindow();
-                dlg.Owner = this;
-                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-                dlg.theTemplate.Id = TemplateListViewModel.tlv.Entries[ind].Id;
-                dlg.theTemplate.Order = TemplateListViewModel.tlv.Entries[ind].Order;
-                dlg.theTemplate.Name = TemplateListViewModel.tlv.Entries[ind].Name;
-                dlg.theTemplate.Template = TemplateListViewModel.tlv.Entries[ind].Template;
-
-                if (dlg.ShowDialog() == true)
-                {
-                    SQLiteClass.ExecuteUpdateTableTemplate(dlg.theTemplate);
-
-                    TemplateListViewModel.tlv.Entries.Clear();
-                    SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
-                }
-                */
             }
         }
 
@@ -110,25 +93,6 @@ namespace Taskalu
 
         private void AddNewTemplatePath_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            TemplateDetailsWindow dlg = new TemplateDetailsWindow();
-            dlg.Owner = this;
-            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-            dlg.theTemplate.Id = 0;
-            dlg.theTemplate.Order = SQLiteClass.ExecuteSelectMaxTemplate() + 1;
-            dlg.theTemplate.Name = "";
-            dlg.theTemplate.Template = "";
-
-            if (dlg.ShowDialog() == true)
-            {
-                SQLiteClass.ExecuteInsertTableTemplate(dlg.theTemplate);
-                //
-                TemplateListViewModel.tlv.Entries.Clear();
-                SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
-            }
-            */
-
             OpenFileDialog dlg = new OpenFileDialog();
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
@@ -144,7 +108,6 @@ namespace Taskalu
 
                 TemplatePathListViewModel.tplv.Entries.Clear();
                 SQLiteClass.ExecuteSelectTableTemplatePath(TemplatePathListViewModel.tplv, theTemplate.Id);
-
             }
         }
 

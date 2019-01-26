@@ -83,7 +83,7 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("SELECT MAX(torder) FROM template WHERE template_id = @template_id", con);
+            SQLiteCommand com = new SQLiteCommand("SELECT MAX(torder) FROM template_path WHERE template_id = @template_id", con);
 
             try
             {
@@ -108,11 +108,18 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("UPDATE template set template_id=@template_id, torder=@torder, path=@path where id=@id", con);
+            SQLiteCommand com = new SQLiteCommand("UPDATE template_path SET template_id=@template_id, torder=@torder, path=@path where id=@id", con);
             com.Parameters.Add(sqliteParamInt64(com, "@id", lt.Id));
-            com.Parameters.Add(sqliteParamInt64(com, "@tenplate_id", lt.Template_Id));
+            com.Parameters.Add(sqliteParamInt64(com, "@template_id", lt.Template_Id));
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
             com.Parameters.Add(sqliteParam(com, "@path", lt.Path));
+
+/*
+            MessageBox.Show(lt.Id.ToString());
+            MessageBox.Show(lt.Template_Id.ToString());
+            MessageBox.Show(lt.Order.ToString());
+            MessageBox.Show(lt.Path.ToString());
+            */
 
             try
             {

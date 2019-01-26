@@ -31,8 +31,7 @@
                 <TextBlock Padding="6" Width="300" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{x:Static properties:Resources.TD_Caution}"></TextBlock>
             </StackPanel>
             <StackPanel x:Name="EditTemplatePathButtonsPanel" Orientation="Horizontal" DockPanel.Dock="Bottom">
-                <Label Width="340"></Label>
-                <Button x:Name="EditTheTemplatePath" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.TE_Edit}" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" Click="EditTheTemplatePath_Click"  />
+                <Label Width="460"></Label>
                 <Button x:Name="DeleteTheTemplatePath" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.TE_Delete}" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" Click="DeleteTheTemplatePath_Click"  />
                 <Button x:Name="AddNewTemplatePath" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.TE_Add}" HorizontalAlignment="Left" Margin="10,0,10,10" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" Click="AddNewTemplatePath_Click"  />
             </StackPanel>

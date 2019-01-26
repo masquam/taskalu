@@ -83,13 +83,6 @@ namespace Taskalu
             }
         }
 
-        /*
-        private void TemplateSelected(object sender, RoutedEventArgs e)
-        {
-            //MessageBox.Show(TemplateList.SelectedIndex.ToString());
-        }
-        */
-
         private void DeleteTheTemplate_Click(object sender, RoutedEventArgs e)
         {
 
