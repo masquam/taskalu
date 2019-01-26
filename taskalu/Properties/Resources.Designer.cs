@@ -621,5 +621,14 @@ namespace Taskalu.Properties {
                 return ResourceManager.GetString("WC_WorkFolder", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   The file already exists that has the same filename as the template. Overwrite it? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string WH_AlreadyExists {
+            get {
+                return ResourceManager.GetString("WH_AlreadyExists", resourceCulture);
+            }
+        }
     }
 }

@@ -310,4 +310,7 @@
   <data name="NW_Template_Overwrite" xml:space="preserve">
     <value>内容はテンプレートによって上書きされます。続行しますか？</value>
   </data>
+  <data name="WH_AlreadyExists" xml:space="preserve">
+    <value>テンプレートと同名のファイルがワークフォルダに既に存在します。上書きしますか？</value>
+  </data>
 </root>

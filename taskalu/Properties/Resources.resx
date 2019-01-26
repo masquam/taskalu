@@ -307,4 +307,7 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="NW_Template_Overwrite" xml:space="preserve">
     <value>The description will be overwritten by the template. Proceed?</value>
   </data>
+  <data name="WH_AlreadyExists" xml:space="preserve">
+    <value>The file already exists that has the same filename as the template. Overwrite it?</value>
+  </data>
 </root>

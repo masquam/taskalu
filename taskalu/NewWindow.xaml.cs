@@ -55,7 +55,7 @@ namespace Taskalu
                 (!string.IsNullOrEmpty(NewDescriptionBox.Text)) &&
                 (!string.IsNullOrEmpty(selectedTemplate.Template)))
             {
-                var result = MessageBox.Show(Properties.Resources.NW_Template_Overwrite, "taskalu",
+                var result = MessageBox.Show(Properties.Resources.WH_AlreadyExists, "taskalu",
                     MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.No)
                 {
@@ -85,7 +85,11 @@ namespace Taskalu
             SQLiteClass.ExecuteInsertTableFTSString(retId, "tasklist_name", Ngram.getNgramText(NewTitleBox.Text, 2));
             SQLiteClass.ExecuteInsertTableFTSString(retId, "tasklist_description", Ngram.getNgramText(NewDescriptionBox.Text, 2));
 
-            // TODO: copy template path
+            // copy template path
+            if (selectedTemplate.Id > -1) {
+                string workHolder = WorkHolder.CreateWorkHolder(NewTitleBox.Text);
+                WorkHolder.CopyTemplatePathToWorkFolder(selectedTemplate.Id, workHolder);
+            }
 
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;

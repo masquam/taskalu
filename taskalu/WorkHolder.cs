@@ -10,7 +10,6 @@ namespace Taskalu
 {
     class WorkHolder
     {
-        // TODO: ユーザーが指定可能にする
         public static string workDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal) + "\\taskalu";
 
         /// <summary>
@@ -81,6 +80,36 @@ namespace Taskalu
         public static string SafeFilename(string filename)
         {
             return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
+        }
+
+
+        public static void CopyTemplatePathToWorkFolder(Int64 template_id, string workHolder)
+        {
+            TemplatePathListViewModel tplv = new TemplatePathListViewModel();
+            SQLiteClass.ExecuteSelectTableTemplatePath(tplv, template_id);
+
+            foreach (ListTemplatePath entry in tplv.Entries)
+            {
+                string theFilename = Path.GetFileName(entry.Path);
+                string copyFileName = workHolder + "\\" + theFilename;
+                if (File.Exists(copyFileName))
+                {
+                    var result = MessageBox.Show(Properties.Resources.NW_Template_Overwrite, "taskalu",
+                                        MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    if (result == MessageBoxResult.No)
+                    {
+                        continue;
+                    }
+                }
+                try
+                {
+                    File.Copy(entry.Path, copyFileName, true);
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+            }
         }
 
     }
