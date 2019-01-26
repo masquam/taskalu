@@ -6,7 +6,8 @@
         xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="taskaru" Height="300" Width="600">
+        d:DataContext="{d:DesignInstance {x:Type local:TemplateListViewModel}}" 
+        Title="taskaru" Height="330" Width="600">
     <Window.Resources>
         <ResourceDictionary Source="ResourceDictionary1.xaml"/>
     </Window.Resources>
@@ -75,6 +76,9 @@
                     <ComboBoxItem Content="&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;"/>
                     <ComboBoxItem Content=""/>
+                </ComboBox>
+                <Label Content="{x:Static properties:Resources.TE_Template}" HorizontalAlignment="Left" Height="27" Margin="39,185,0,0" Width="79" VerticalAlignment="Top"/>
+                <ComboBox x:Name="templateBox" ItemsSource="{Binding Entries}" DisplayMemberPath="Name"  SelectedIndex="0" HorizontalAlignment="Left" Margin="123,187,0,0" VerticalAlignment="Top" Width="400" Foreground="#FF9B9B00">
                 </ComboBox>
             </Grid>
         </DockPanel>

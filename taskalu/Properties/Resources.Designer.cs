@@ -439,11 +439,29 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   (none) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NW_None {
+            get {
+                return ResourceManager.GetString("NW_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ok に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string NW_Ok {
             get {
                 return ResourceManager.GetString("NW_Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   The description will be overwritten by the template. Proceed? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string NW_Template_Overwrite {
+            get {
+                return ResourceManager.GetString("NW_Template_Overwrite", resourceCulture);
             }
         }
         

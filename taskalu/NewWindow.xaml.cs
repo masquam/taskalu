@@ -29,6 +29,18 @@ namespace Taskalu
 
             hourBox.SelectedIndex = Int32.Parse(due.ToString("HH"));
             minuteBox.SelectedIndex = Int32.Parse(due.ToString("mm")) / 5;
+
+            // add combobox tempplate item
+            templateBox.DataContext = TemplateListViewModel.tlv;
+            TemplateListViewModel.tlv.Entries.Clear();
+            var noneTemplate = new ListTemplate();
+            noneTemplate.Id = 0;
+            noneTemplate.Name = Properties.Resources.NW_None;
+            noneTemplate.Order = -1;
+            noneTemplate.Template = "";
+            TemplateListViewModel.tlv.Entries.Add(noneTemplate);
+
+            SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
         }
 
         private void ButtonNewWindowOk_Click(object sender, RoutedEventArgs e)
@@ -37,6 +49,21 @@ namespace Taskalu
 
             NewWindowOk.IsEnabled = false;
 
+            // template description update check
+            var selectedTemplate = (ListTemplate)templateBox.SelectedItem;
+            if ((selectedTemplate.Id > -1) &&
+                (!string.IsNullOrEmpty(NewDescriptionBox.Text)) &&
+                (!string.IsNullOrEmpty(selectedTemplate.Template)))
+            {
+                var result = MessageBox.Show(Properties.Resources.NW_Template_Overwrite, "taskalu",
+                    MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.No)
+                {
+                    NewWindowOk.IsEnabled = true;
+                    return;
+                }
+            }
+            
             DateTime due = (DateTime)dateBox.SelectedDate;
             DateTime dueDate = new DateTime(due.Year, due.Month, due.Day, hourBox.SelectedIndex, (minuteBox.SelectedIndex * 5), 0);
 
@@ -50,9 +77,15 @@ namespace Taskalu
                 Status = "Active",
                 WorkHolder = WorkHolder.CreateWorkHolder(NewTitleBox.Text)
             };
-            retId = SQLiteClass.ExecuteInsertTable(lvFile);
+            if (!string.IsNullOrEmpty(selectedTemplate.Template))
+            {
+                lvFile.Description = selectedTemplate.Template;
+            }
+                retId = SQLiteClass.ExecuteInsertTable(lvFile);
             SQLiteClass.ExecuteInsertTableFTSString(retId, "tasklist_name", Ngram.getNgramText(NewTitleBox.Text, 2));
             SQLiteClass.ExecuteInsertTableFTSString(retId, "tasklist_description", Ngram.getNgramText(NewDescriptionBox.Text, 2));
+
+            // TODO: copy template path
 
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;

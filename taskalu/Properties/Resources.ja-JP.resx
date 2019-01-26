@@ -304,4 +304,10 @@
   <data name="TD_Path_Caution" xml:space="preserve">
     <value>既に登録されています。</value>
   </data>
+  <data name="NW_None" xml:space="preserve">
+    <value>(なし)</value>
+  </data>
+  <data name="NW_Template_Overwrite" xml:space="preserve">
+    <value>内容はテンプレートによって上書きされます。続行しますか？</value>
+  </data>
 </root>

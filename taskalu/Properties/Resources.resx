@@ -301,4 +301,10 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="TD_Path_Caution" xml:space="preserve">
     <value>The file is already registerd.</value>
   </data>
+  <data name="NW_None" xml:space="preserve">
+    <value>(none)</value>
+  </data>
+  <data name="NW_Template_Overwrite" xml:space="preserve">
+    <value>The description will be overwritten by the template. Proceed?</value>
+  </data>
 </root>
