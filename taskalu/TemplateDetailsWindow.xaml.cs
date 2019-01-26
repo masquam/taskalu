@@ -88,7 +88,21 @@ namespace Taskalu
 
         private void DeleteTheTemplatePath_Click(object sender, RoutedEventArgs e)
         {
+            var currentIndex = TemplatePathList.SelectedIndex;
+            if (currentIndex >= 0)
+            {
+                MessageBox.Show(TemplatePathListViewModel.tplv.Entries[currentIndex].Path);
 
+                var result =  MessageBox.Show(Properties.Resources.TE_DeleteCaution, "taskalu",
+                                    MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    if (SQLiteClass.ExecuteDeleteTableTemplatePath(TemplatePathListViewModel.tplv.Entries[currentIndex].Id))
+                    {
+                        TemplatePathListViewModel.tplv.Entries.RemoveAt(currentIndex);
+                    }
+                }
+            }
         }
 
         private void AddNewTemplatePath_Click(object sender, RoutedEventArgs e)

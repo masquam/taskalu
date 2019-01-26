@@ -520,6 +520,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Are you okay to delete it? に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TE_DeleteCaution {
+            get {
+                return ResourceManager.GetString("TE_DeleteCaution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Edit... に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TE_Edit {

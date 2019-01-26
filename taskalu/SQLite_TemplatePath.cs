@@ -92,7 +92,7 @@ namespace Taskalu
             catch (Exception)
             {
                 // if no record, return DBNull -> exception raised
-                torder = 0;
+                torder = -1;
             }
             finally
             {
@@ -114,13 +114,6 @@ namespace Taskalu
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
             com.Parameters.Add(sqliteParam(com, "@path", lt.Path));
 
-/*
-            MessageBox.Show(lt.Id.ToString());
-            MessageBox.Show(lt.Template_Id.ToString());
-            MessageBox.Show(lt.Order.ToString());
-            MessageBox.Show(lt.Path.ToString());
-            */
-
             try
             {
                 com.ExecuteNonQuery();
@@ -136,5 +129,32 @@ namespace Taskalu
             }
             return ret;
         }
+
+        public static Boolean ExecuteDeleteTableTemplatePath(Int64 id)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("DELETE FROM template_path WHERE id=@id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
+
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table template path delete error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
+
     }
 }

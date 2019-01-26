@@ -91,7 +91,7 @@ namespace Taskalu
             catch (Exception)
             {
                 // if no record, return DBNull -> exception raised
-                torder = 0;
+                torder = -1;
             }
             finally
             {

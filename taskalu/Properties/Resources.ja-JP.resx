@@ -298,4 +298,7 @@
   <data name="TD_Caution" xml:space="preserve">
     <value>この設定はテンプレートを一旦保存した後に有効になります。</value>
   </data>
+  <data name="TE_DeleteCaution" xml:space="preserve">
+    <value>削除してもよろしいですか？</value>
+  </data>
 </root>

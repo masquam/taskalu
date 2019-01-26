@@ -295,4 +295,7 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="TD_Caution" xml:space="preserve">
     <value>This setting will be available after the template is saved.</value>
   </data>
+  <data name="TE_DeleteCaution" xml:space="preserve">
+    <value>Are you okay to delete it?</value>
+  </data>
 </root>
