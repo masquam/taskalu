@@ -284,7 +284,7 @@
     <value>削除...</value>
   </data>
   <data name="TD_Description" xml:space="preserve">
-    <value>内容</value>
+    <value>タスクの内容にコピーするテキスト</value>
   </data>
   <data name="TD_Name" xml:space="preserve">
     <value>名称</value>

@@ -6,6 +6,7 @@
         xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance {x:Type local:TemplatePathListViewModel}}" 
         Title="taskalu" Height="410" MinHeight="410" MaxHeight="410" Width="752" MinWidth="752" MaxWidth="752" Loaded="templateDetailsLoaded">
     <Window.Resources>
         <ResourceDictionary Source="ResourceDictionary1.xaml"/>
@@ -18,7 +19,7 @@
                 <TextBox x:Name="templateName" Width="450" MaxLength="32767" Margin="4"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Label Content="{x:Static properties:Resources.TD_Description}" Width="80"></Label>
+                <TextBlock Padding="6" Width="80" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{x:Static properties:Resources.TD_Description}"></TextBlock>
                 <TextBox x:Name="templateDescription" Width="450" Height="100" Margin="4" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" MaxLength="32767"></TextBox>
             </StackPanel>
             <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
@@ -37,11 +38,11 @@
             </StackPanel>
             <StackPanel x:Name="EditTemplatePathPanel" Orientation="Horizontal">
                 <TextBlock Padding="6" Width="80" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{x:Static properties:Resources.TD_PathForFolder}"></TextBlock>
-                <ListView x:Name="TemplatePathList" ItemsSource="{Binding Entries}"  HorizontalAlignment="Left" Width="600" Height="120" Margin="4" VerticalAlignment="Top" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="TemplatePathSelected">
+                <ListView x:Name="TemplatePathList" ItemsSource="{Binding Entries}"  HorizontalAlignment="Left" Width="600" Height="120" Margin="4" VerticalAlignment="Top" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
                     <ListView.Resources>
                         <DataTemplate x:Key="TemplatePathListDataTemplate">
                             <StackPanel>
-                                <Label Content="{Binding Name}" Padding="0" />
+                                <Label Content="{Binding Path}" Padding="0" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.Resources>

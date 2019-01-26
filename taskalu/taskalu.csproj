@@ -111,6 +111,7 @@
     <Compile Include="ListTaskDetails.cs" />
     <Compile Include="ListTaskMemo.cs" />
     <Compile Include="ListTemplate.cs" />
+    <Compile Include="ListTemplatePath.cs" />
     <Compile Include="MainWindowUtil.cs" />
     <Compile Include="MemoAddWindow.xaml.cs">
       <DependentUpon>MemoAddWindow.xaml</DependentUpon>
@@ -131,6 +132,7 @@
     <Compile Include="SQLite_TaskMemo.cs" />
     <Compile Include="SQLite_TaskTime.cs" />
     <Compile Include="SQLite_template.cs" />
+    <Compile Include="SQLite_TemplatePath.cs" />
     <Compile Include="TaskDetailsViewModel.cs" />
     <Compile Include="TaskDetailsWindow.xaml.cs">
       <DependentUpon>TaskDetailsWindow.xaml</DependentUpon>
@@ -143,6 +145,7 @@
       <DependentUpon>TemplateEditWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TemplateListViewModel.cs" />
+    <Compile Include="TemplatePathListViewModel.cs" />
     <Compile Include="WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>

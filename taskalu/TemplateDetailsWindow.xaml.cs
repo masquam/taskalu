@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace Taskalu
 {
@@ -24,6 +25,8 @@ namespace Taskalu
         public TemplateDetailsWindow()
         {
             InitializeComponent();
+
+            TemplatePathList.DataContext = TemplatePathListViewModel.tplv;
         }
 
         private void templateDetailsLoaded(object sender, RoutedEventArgs e)
@@ -42,6 +45,9 @@ namespace Taskalu
                 NewTemplatePathPanel.Visibility = Visibility.Collapsed;
                 EditTemplatePathButtonsPanel.Visibility = Visibility.Visible;
                 EditTemplatePathPanel.Visibility = Visibility.Visible;
+
+                TemplatePathListViewModel.tplv.Entries.Clear();
+                SQLiteClass.ExecuteSelectTableTemplatePath(TemplatePathListViewModel.tplv, theTemplate.Id);
             }
         }
 
@@ -55,17 +61,46 @@ namespace Taskalu
 
         private void TriangleButton_TemplatePath_Up_Click(object sender, RoutedEventArgs e)
         {
-
+            var currentIndex = TemplatePathList.SelectedIndex;
+            if (currentIndex > 0)
+            {
+                TemplatePathListViewModel.tplv.Entries.Move(currentIndex, currentIndex - 1);
+            }
         }
 
         private void TriangleButton_TemplatePath_Down_Click(object sender, RoutedEventArgs e)
         {
-
+            var currentIndex = TemplatePathList.SelectedIndex;
+            if ((currentIndex >= 0) &&
+                (currentIndex < TemplateListViewModel.tlv.Entries.Count - 1))
+            {
+                TemplatePathListViewModel.tplv.Entries.Move(currentIndex, currentIndex + 1);
+            }
         }
 
         private void EditTheTemplatePath_Click(object sender, RoutedEventArgs e)
         {
+            int ind = TemplatePathList.SelectedIndex;
+            if (ind >= 0)
+            {
+                /*
+                TemplateDetailsWindow dlg = new TemplateDetailsWindow();
+                dlg.Owner = this;
+                dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                dlg.theTemplate.Id = TemplateListViewModel.tlv.Entries[ind].Id;
+                dlg.theTemplate.Order = TemplateListViewModel.tlv.Entries[ind].Order;
+                dlg.theTemplate.Name = TemplateListViewModel.tlv.Entries[ind].Name;
+                dlg.theTemplate.Template = TemplateListViewModel.tlv.Entries[ind].Template;
 
+                if (dlg.ShowDialog() == true)
+                {
+                    SQLiteClass.ExecuteUpdateTableTemplate(dlg.theTemplate);
+
+                    TemplateListViewModel.tlv.Entries.Clear();
+                    SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+                }
+                */
+            }
         }
 
         private void DeleteTheTemplatePath_Click(object sender, RoutedEventArgs e)
@@ -75,12 +110,43 @@ namespace Taskalu
 
         private void AddNewTemplatePath_Click(object sender, RoutedEventArgs e)
         {
+            /*
+            TemplateDetailsWindow dlg = new TemplateDetailsWindow();
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
+            dlg.theTemplate.Id = 0;
+            dlg.theTemplate.Order = SQLiteClass.ExecuteSelectMaxTemplate() + 1;
+            dlg.theTemplate.Name = "";
+            dlg.theTemplate.Template = "";
+
+            if (dlg.ShowDialog() == true)
+            {
+                SQLiteClass.ExecuteInsertTableTemplate(dlg.theTemplate);
+                //
+                TemplateListViewModel.tlv.Entries.Clear();
+                SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+            }
+            */
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                //MessageBox.Show(dlg.FileName);
+                ListTemplatePath newTP = new ListTemplatePath();
+                newTP.Id = 0; //dummy
+                newTP.Template_Id = theTemplate.Id;
+                newTP.Order = SQLiteClass.ExecuteSelectMaxTemplatePath(theTemplate.Id) + 1;
+                newTP.Path = dlg.FileName;
+
+                SQLiteClass.ExecuteInsertTableTemplatePath(newTP);
+
+                TemplatePathListViewModel.tplv.Entries.Clear();
+                SQLiteClass.ExecuteSelectTableTemplatePath(TemplatePathListViewModel.tplv, theTemplate.Id);
+
+            }
         }
 
-        private void TemplatePathSelected(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

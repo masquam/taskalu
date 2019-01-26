@@ -25,42 +25,6 @@ namespace Taskalu
 
             TemplateList.DataContext = TemplateListViewModel.tlv;
 
-            // TODO: for test
-            /*
-            var tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world2";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world3";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world4";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world5";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world6";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world789012345678901234567890123456789012345678901234567890";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world8";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world9";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world10";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            tmpLT = new ListTemplate();
-            tmpLT.Name = "hello world11";
-            TemplateListViewModel.tlv.Entries.Add(tmpLT);
-            */
             TemplateListViewModel.tlv.Entries.Clear();
             SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
         }
@@ -119,10 +83,12 @@ namespace Taskalu
             }
         }
 
+        /*
         private void TemplateSelected(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show(TemplateList.SelectedIndex.ToString());
         }
+        */
 
         private void DeleteTheTemplate_Click(object sender, RoutedEventArgs e)
         {

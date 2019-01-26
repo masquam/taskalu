@@ -50,6 +50,10 @@ namespace Taskalu
                 {
                     return false;
                 }
+                if (!CheckTable("template_path"))
+                {
+                    return false;
+                }
             }
             else
             {
@@ -143,7 +147,7 @@ namespace Taskalu
                 {
                     return false;
                 }
-                if (!ExecuteCreateTable("CREATE TABLE template_path (id INTEGER NOT NULL PRIMARY KEY, torder INTEGER, path TEXT)"))
+                if (!ExecuteCreateTable("CREATE TABLE template_path (id INTEGER NOT NULL PRIMARY KEY, template_id INTEGER, torder INTEGER, path TEXT)"))
                 {
                     return false;
                 }

@@ -11,17 +11,17 @@ namespace Taskalu
 {
     partial class SQLiteClass
     {
-        public static void ExecuteInsertTableTemplate(ListTemplate lt)
+        public static void ExecuteInsertTableTemplatePath(ListTemplatePath lt)
         {
             object obj;
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO template (torder, name, template) VALUES (@torder, @name, @template)", con);
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO template_path (template_id, torder, path) VALUES (@template_id, @torder, @path)", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@template_id", lt.Template_Id));
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
-            com.Parameters.Add(sqliteParam(com, "@name", lt.Name));
-            com.Parameters.Add(sqliteParam(com, "@template", lt.Template));
+            com.Parameters.Add(sqliteParam(com, "@path", lt.Path));
 
             try
             {
@@ -29,7 +29,7 @@ namespace Taskalu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("database table template insert error!\n" + ex.Message);
+                MessageBox.Show("database table template path insert error!\n" + ex.Message);
             }
             finally
             {
@@ -37,16 +37,17 @@ namespace Taskalu
             }
         }
 
-        public static Boolean ExecuteSelectTableTemplate(TemplateListViewModel tlv)
+        public static Boolean ExecuteSelectTableTemplatePath(TemplatePathListViewModel tplv, Int64 template_id)
         {
             Boolean ret = false;
 
-            string sql = "SELECT * from template ORDER BY torder ASC";
+            string sql = "SELECT * from template_path WHERE template_id = @template_id ORDER BY torder ASC";
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
             SQLiteCommand com = new SQLiteCommand(sql, con);
+            com.Parameters.Add(sqliteParamInt64(com, "@template_id", template_id));
 
             try
             {
@@ -54,18 +55,18 @@ namespace Taskalu
 
                 while (sdr.Read() == true)
                 {
-                    ListTemplate lt = new ListTemplate();
+                    ListTemplatePath lt = new ListTemplatePath();
                     lt.Id = (Int64)sdr["id"];
+                    lt.Template_Id = (Int64)sdr["template_id"];
                     lt.Order = (Int64)sdr["torder"];
-                    lt.Name = (string)sdr["name"];
-                    lt.Template = (string)sdr["template"];
-                    tlv.Entries.Add(lt);
+                    lt.Path = (string)sdr["path"];
+                    tplv.Entries.Add(lt);
                 }
                 sdr.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("database table template select error!\n" + ex.Message);
+                MessageBox.Show("database table template path select error!\n" + ex.Message);
             }
             finally
             {
@@ -75,14 +76,14 @@ namespace Taskalu
             return ret;
         }
 
-        public static Int64 ExecuteSelectMaxTemplate()
+        public static Int64 ExecuteSelectMaxTemplatePath(Int64 template_id)
         {
             Int64 torder = 0;
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("SELECT MAX(torder) FROM template", con);
+            SQLiteCommand com = new SQLiteCommand("SELECT MAX(torder) FROM template WHERE template_id = @template_id", con);
 
             try
             {
@@ -100,18 +101,18 @@ namespace Taskalu
             return torder;
         }
 
-        public static Boolean ExecuteUpdateTableTemplate(ListTemplate lt)
+        public static Boolean ExecuteUpdateTableTemplatePath(ListTemplatePath lt)
         {
             Boolean ret = false;
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("UPDATE template set torder=@torder, name=@name, template=@template where id=@id", con);
+            SQLiteCommand com = new SQLiteCommand("UPDATE template set template_id=@template_id, torder=@torder, path=@path where id=@id", con);
             com.Parameters.Add(sqliteParamInt64(com, "@id", lt.Id));
+            com.Parameters.Add(sqliteParamInt64(com, "@tenplate_id", lt.Template_Id));
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
-            com.Parameters.Add(sqliteParam(com, "@name", lt.Name));
-            com.Parameters.Add(sqliteParam(com, "@template", lt.Template));
+            com.Parameters.Add(sqliteParam(com, "@path", lt.Path));
 
             try
             {
@@ -120,7 +121,7 @@ namespace Taskalu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("database table template update error!\n" + ex.Message);
+                MessageBox.Show("database table template path update error!\n" + ex.Message);
             }
             finally
             {
