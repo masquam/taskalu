@@ -301,4 +301,7 @@
   <data name="TE_DeleteCaution" xml:space="preserve">
     <value>削除してもよろしいですか？</value>
   </data>
+  <data name="TD_Path_Caution" xml:space="preserve">
+    <value>既に登録されています。</value>
+  </data>
 </root>

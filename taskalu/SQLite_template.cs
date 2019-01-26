@@ -128,5 +128,32 @@ namespace Taskalu
             }
             return ret;
         }
+
+        public static Boolean ExecuteDeleteTableTemplate(Int64 id)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("DELETE FROM template WHERE id=@id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
+
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table template delete error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
+
     }
 }

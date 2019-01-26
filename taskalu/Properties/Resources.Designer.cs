@@ -484,6 +484,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   The file is already registerd. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TD_Path_Caution {
+            get {
+                return ResourceManager.GetString("TD_Path_Caution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   File path copied to workfolder に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TD_PathForFolder {

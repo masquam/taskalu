@@ -59,9 +59,9 @@ namespace Taskalu
             Int64 newOrder = 0;
             foreach (ListTemplatePath entry in TemplatePathListViewModel.tplv.Entries)
             {
-                newOrder++;
                 entry.Order = newOrder;
                 SQLiteClass.ExecuteUpdateTableTemplatePath(entry);
+                newOrder++;
             }
 
             this.DialogResult = true;
@@ -91,8 +91,6 @@ namespace Taskalu
             var currentIndex = TemplatePathList.SelectedIndex;
             if (currentIndex >= 0)
             {
-                MessageBox.Show(TemplatePathListViewModel.tplv.Entries[currentIndex].Path);
-
                 var result =  MessageBox.Show(Properties.Resources.TE_DeleteCaution, "taskalu",
                                     MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
@@ -111,7 +109,12 @@ namespace Taskalu
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
-                //MessageBox.Show(dlg.FileName);
+                if (SQLiteClass.ExecuteSelectCountTemplatePath(theTemplate.Id, dlg.FileName) > 0)
+                {
+                    MessageBox.Show(Properties.Resources.TD_Path_Caution);
+                    return;
+                }
+
                 ListTemplatePath newTP = new ListTemplatePath();
                 newTP.Id = 0; //dummy
                 newTP.Template_Id = theTemplate.Id;

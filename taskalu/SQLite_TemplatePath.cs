@@ -84,14 +84,16 @@ namespace Taskalu
             con.Open();
 
             SQLiteCommand com = new SQLiteCommand("SELECT MAX(torder) FROM template_path WHERE template_id = @template_id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@template_id", template_id));
 
             try
             {
                 torder = (Int64)com.ExecuteScalar();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 // if no record, return DBNull -> exception raised
+                MessageBox.Show(e.Message);
                 torder = -1;
             }
             finally
@@ -99,6 +101,34 @@ namespace Taskalu
                 con.Close();
             }
             return torder;
+        }
+
+        public static Int64 ExecuteSelectCountTemplatePath(Int64 template_id, string path)
+        {
+            Int64 count = 0;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("SELECT count(*) FROM template_path WHERE template_id = @template_id AND path = @path", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@template_id", template_id));
+            com.Parameters.Add(sqliteParam(com, "@path", path));
+
+            try
+            {
+                count = (Int64)com.ExecuteScalar();
+            }
+            catch (Exception e)
+            {
+                // if no record, return DBNull -> exception raised
+                MessageBox.Show(e.Message);
+                count = -1;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return count;
         }
 
         public static Boolean ExecuteUpdateTableTemplatePath(ListTemplatePath lt)
@@ -156,5 +186,30 @@ namespace Taskalu
             return ret;
         }
 
+        public static Boolean ExecuteDeleteTableTemplatePathFromTemplateId(Int64 id)
+        {
+            Boolean ret = false;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("DELETE FROM template_path WHERE template_id=@id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
+
+            try
+            {
+                com.ExecuteNonQuery();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table template path delete error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ret;
+        }
     }
 }

@@ -29,7 +29,7 @@
                     </ListView.Resources>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn CellTemplate="{StaticResource TemplateListDataTemplate}">
+                            <GridViewColumn CellTemplate="{StaticResource TemplateListDataTemplate}" Width="272">
                                 <GridViewColumnHeader Content="{x:Static properties:Resources.TE_Template}">
                                 </GridViewColumnHeader>
                             </GridViewColumn>

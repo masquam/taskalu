@@ -47,7 +47,7 @@
                     </ListView.Resources>
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn CellTemplate="{StaticResource TemplatePathListDataTemplate}">
+                            <GridViewColumn CellTemplate="{StaticResource TemplatePathListDataTemplate}" Width="572">
                                 <GridViewColumnHeader Content="{x:Static properties:Resources.TD_Path}">
                                 </GridViewColumnHeader>
                             </GridViewColumn>

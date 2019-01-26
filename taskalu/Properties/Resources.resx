@@ -298,4 +298,7 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="TE_DeleteCaution" xml:space="preserve">
     <value>Are you okay to delete it?</value>
   </data>
+  <data name="TD_Path_Caution" xml:space="preserve">
+    <value>The file is already registerd.</value>
+  </data>
 </root>

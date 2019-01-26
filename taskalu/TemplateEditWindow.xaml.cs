@@ -32,13 +32,12 @@ namespace Taskalu
         private void ButtonTemplateEditOk_Click(object sender, RoutedEventArgs e)
         {
             Int64 newOrder = 0;
-            foreach(ListTemplate entry in TemplateListViewModel.tlv.Entries)
+            foreach (ListTemplate entry in TemplateListViewModel.tlv.Entries)
             {
-                newOrder++;
                 entry.Order = newOrder;
                 SQLiteClass.ExecuteUpdateTableTemplate(entry);
+                newOrder++;
             }
-
             this.DialogResult = true;
         }
 
@@ -85,7 +84,22 @@ namespace Taskalu
 
         private void DeleteTheTemplate_Click(object sender, RoutedEventArgs e)
         {
+            var currentIndex = TemplateList.SelectedIndex;
+            if (currentIndex >= 0)
+            {
+                var result = MessageBox.Show(Properties.Resources.TE_DeleteCaution, "taskalu",
+                                    MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Int64 id = TemplateListViewModel.tlv.Entries[currentIndex].Id;
+                    if (SQLiteClass.ExecuteDeleteTableTemplate(id))
+                    {
+                        SQLiteClass.ExecuteDeleteTableTemplatePathFromTemplateId(id);
 
+                        TemplateListViewModel.tlv.Entries.RemoveAt(currentIndex);
+                    }
+                }
+            }
         }
 
         private void AddNewTemplate_Click(object sender, RoutedEventArgs e)
