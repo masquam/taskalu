@@ -196,7 +196,7 @@ namespace Taskalu
             MainViewModel.mv.Files.Clear();
             SQLiteClass.moreCount = 0;
 
-            if (SQLiteClass.ExecuteFirstSelectTable(SQLiteClass.dbpath))
+            if (SQLiteClass.ExecuteFirstSelectTable(SQLiteClass.dbpath, SQLiteClass.searchString))
             {
                 MoreButton.Visibility = Visibility.Visible;
             }
@@ -308,7 +308,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectTable(SQLiteClass.dbpath))
+            if (SQLiteClass.ExecuteMoreSelectTable(SQLiteClass.dbpath, SQLiteClass.searchString))
             {
                 MoreButton.Visibility = Visibility.Visible;
             }
@@ -606,7 +606,7 @@ namespace Taskalu
             lbf.Status = ep_statusBox.Text;
             lbf.WorkHolder = workHolder;
 
-            if (SQLiteClass.ExecuteUpdateTable(lbf))
+            if (SQLiteClass.ExecuteUpdateTable(SQLiteClass.dbpath, lbf))
             {
                 SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_name", Ngram.getNgramText(ep_name.Text, 2));
                 SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_description", Ngram.getNgramText(tmpDescription, 2));

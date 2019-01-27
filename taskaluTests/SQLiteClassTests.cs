@@ -34,6 +34,7 @@ namespace Taskalu.Tests
         }
 
         /*
+        // manually only, MessageBox is used
         [TestMethod()]
         public void TouchDB2Test()
         {
@@ -74,6 +75,7 @@ namespace Taskalu.Tests
         }
 
         /*
+        // manually only, MessageBox is used
         [TestMethod()]
         public void CheckTable2Test()
         {
@@ -162,7 +164,7 @@ namespace Taskalu.Tests
             }
 
             string path = Path.GetTempPath() + "\\" + dbfile;
-            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path, SQLiteClass.searchString));
         }
 
         [TestMethod()]
@@ -190,9 +192,7 @@ namespace Taskalu.Tests
             InsertTableTaskList(dbfile, "ogem", 11);
             SQLiteClass.ExecuteInsertTableFTSString(path, 11, "tasklist_name", Ngram.getNgramText("ogem", 2));
 
-            SQLiteClass.searchString = "oge";
-
-            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path, "oge"));
         }
 
         [TestMethod()]
@@ -209,15 +209,15 @@ namespace Taskalu.Tests
             }
 
             string path = Path.GetTempPath() + "\\" + dbfile;
-            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path, SQLiteClass.searchString));
         }
 
         [TestMethod()]
         public void ExecuteMoreSelectTableFTSTest()
         {
-            string dbfile = "taskaludb.sqlite.9";
+            string dbfile = "taskaludb.sqlite.11";
             string dir = Path.GetTempPath();
-            string path = dir + "\\" + dbfile;
+            string path = Path.GetTempPath() + "\\" + dbfile;
             try
             {
                 File.Delete(path);
@@ -237,9 +237,30 @@ namespace Taskalu.Tests
             InsertTableTaskList(dbfile, "ogem", 21);
             SQLiteClass.ExecuteInsertTableFTSString(path, 21, "tasklist_name", Ngram.getNgramText("ogem", 2));
 
-            SQLiteClass.searchString = "oge";
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path, "oge"));
+        }
 
-            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
+        [TestMethod()]
+        public void ExecuteUpdateTableTest()
+        {
+            string dbfile = "taskaludb.sqlite.12";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            CreateSQLiteDBFlie(dbfile);
+            CreateTableTaskList(dbfile);
+            InsertTableTaskList(dbfile, "hoge", 0);
+
+            ListViewFile lvf = new ListViewFile();
+            lvf.CreateDate = new DateTime(2018, 1, 1, 9, 0, 0, DateTimeKind.Utc).ToString("yyyy-MM-dd HH:mm:ss"); //dummy
+            lvf.Description = "description2";
+            lvf.DueDate = new DateTime(2019, 1, 1, 9, 1, 0, DateTimeKind.Utc).ToString("yyyy-MM-dd HH:mm:ss");
+            lvf.Id = 0; //dummy
+            lvf.Memo = "memo2";
+            lvf.Name = "name2";
+            lvf.Priority = "";
+            lvf.Status = "Active";
+            lvf.WorkHolder = Path.GetTempPath();
+
+            Debug.Assert(SQLiteClass.ExecuteUpdateTable(path, lvf));
         }
     }
 }

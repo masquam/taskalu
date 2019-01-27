@@ -88,7 +88,7 @@ namespace Taskalu
         /// Execute first select table
         /// </summary>
         /// <returns>return value true: More button visibie</returns>
-        public static Boolean ExecuteFirstSelectTable(string dbpath)
+        public static Boolean ExecuteFirstSelectTable(string dbpath, string searchString)
         {
             string sql = "";
             if (string.IsNullOrEmpty(searchString))
@@ -101,14 +101,14 @@ namespace Taskalu
             }
             sql += " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString();
-            return SQLiteClass.ExecuteSelectTable(dbpath, MainViewModel.mv, sql);
+            return SQLiteClass.ExecuteSelectTable(dbpath, MainViewModel.mv, sql, searchString);
         }
 
         /// <summary>
         /// Execute more select table
         /// </summary>
         /// <returns>return value true: More button visibie</returns>
-        public static Boolean ExecuteMoreSelectTable(string dbpath)
+        public static Boolean ExecuteMoreSelectTable(string dbpath, string searchString)
         {
             string sql = "";
             if (string.IsNullOrEmpty(searchString)) {
@@ -121,7 +121,7 @@ namespace Taskalu
             sql += " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString()
                 + " offset " + SQLiteClass.moreCount.ToString();
-            return SQLiteClass.ExecuteSelectTable(dbpath, MainViewModel.mv, sql);
+            return SQLiteClass.ExecuteSelectTable(dbpath, MainViewModel.mv, sql, searchString);
         }
 
         public static string addWhereClause()
@@ -158,7 +158,7 @@ namespace Taskalu
         /// <param name="mv"></param>
         /// <param name="sql"></param>
         /// <returns>return value true: More button visibie</returns>
-        public static Boolean ExecuteSelectTable(string dbpath, MainViewModel mv, string sql)
+        public static Boolean ExecuteSelectTable(string dbpath, MainViewModel mv, string sql, string searchString)
         {
             Boolean ret = false;
 
@@ -242,7 +242,7 @@ namespace Taskalu
             }
         }
 
-        public static Boolean ExecuteUpdateTable(ListViewFile lvFile)
+        public static Boolean ExecuteUpdateTable(string dbpath, ListViewFile lvFile)
         {
             Boolean ret = false;
 
