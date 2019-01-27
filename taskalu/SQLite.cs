@@ -18,7 +18,7 @@ namespace Taskalu
         /// <summary>
         /// "touch" database - directory initialize, create table, index
         /// </summary>
-        public static Boolean TouchDB()
+        public static Boolean TouchDB(string dbdirectory, string dbpath)
         {
             try
             {

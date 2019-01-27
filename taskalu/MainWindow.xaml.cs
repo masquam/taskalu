@@ -61,7 +61,7 @@ namespace Taskalu
             Microsoft.Win32.SystemEvents.PowerModeChanged +=
                 new Microsoft.Win32.PowerModeChangedEventHandler(PowerModeChanged);
 
-            if (!SQLiteClass.TouchDB())
+            if (!SQLiteClass.TouchDB(SQLiteClass.dbdirectory, SQLiteClass.dbpath))
             {
                 MessageBox.Show("database creation error.");
                 Environment.Exit(3);
