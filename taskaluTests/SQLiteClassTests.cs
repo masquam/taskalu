@@ -22,7 +22,7 @@ namespace Taskalu.Tests
             {
                 File.Delete(path);
             }
-            catch(Exception)
+            catch (Exception)
             {
                 // preperation fail
                 Assert.Fail();
@@ -30,6 +30,46 @@ namespace Taskalu.Tests
 
             var result = SQLiteClass.TouchDB(dir, path);
             Debug.Assert(result);
+        }
+
+        [TestMethod()]
+        public void TouchDB2Test()
+        {
+            string dir = Path.GetTempPath();
+            string path = dir + "\\taskaludb.sqlite";
+            try
+            {
+                File.Delete(path);
+            }
+            catch (Exception)
+            {
+                // preperation fail
+                Assert.Fail();
+            }
+            FileStream fs = File.Create(path);
+            fs.Close();
+
+            var result = SQLiteClass.TouchDB(dir, path);
+            Debug.Assert(result == false);
+        }
+
+        [TestMethod()]
+        public void CheckTableTest()
+        {
+            string dir = Path.GetTempPath();
+            string path = dir + "\\taskaludb.sqlite";
+            try
+            {
+                File.Delete(path);
+            }
+            catch (Exception)
+            {
+                // preperation fail
+                Assert.Fail();
+            }
+            var result = SQLiteClass.TouchDB(dir, path);
+
+            Debug.Assert(SQLiteClass.CheckTable(path, "tasklist"));
         }
     }
 }
