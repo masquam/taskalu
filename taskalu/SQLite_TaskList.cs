@@ -25,7 +25,7 @@ namespace Taskalu
         public static string searchString { get; set; } = "";
         
         public static int moreCount { get; set; }
-        public static int moreSize = 10;
+        public static int moreSize = 100;
 
         public static Int64 ExecuteInsertTable(string dbpath, ListViewFile lvFile)
         {
@@ -88,7 +88,7 @@ namespace Taskalu
         /// Execute first select table
         /// </summary>
         /// <returns>return value true: More button visibie</returns>
-        public static Boolean ExecuteFirstSelectTable()
+        public static Boolean ExecuteFirstSelectTable(string dbpath)
         {
             string sql = "";
             if (string.IsNullOrEmpty(searchString))
@@ -101,14 +101,14 @@ namespace Taskalu
             }
             sql += " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString();
-            return SQLiteClass.ExecuteSelectTable(MainViewModel.mv, sql);
+            return SQLiteClass.ExecuteSelectTable(dbpath, MainViewModel.mv, sql);
         }
 
         /// <summary>
         /// Execute more select table
         /// </summary>
         /// <returns>return value true: More button visibie</returns>
-        public static Boolean ExecuteMoreSelectTable()
+        public static Boolean ExecuteMoreSelectTable(string dbpath)
         {
             string sql = "";
             if (string.IsNullOrEmpty(searchString)) {
@@ -121,7 +121,7 @@ namespace Taskalu
             sql += " order by " + orderBy + " " + orderByDirection
                 + " limit " + (SQLiteClass.moreSize + 1).ToString()
                 + " offset " + SQLiteClass.moreCount.ToString();
-            return SQLiteClass.ExecuteSelectTable(MainViewModel.mv, sql);
+            return SQLiteClass.ExecuteSelectTable(dbpath, MainViewModel.mv, sql);
         }
 
         public static string addWhereClause()
@@ -158,7 +158,7 @@ namespace Taskalu
         /// <param name="mv"></param>
         /// <param name="sql"></param>
         /// <returns>return value true: More button visibie</returns>
-        public static Boolean ExecuteSelectTable(MainViewModel mv, string sql)
+        public static Boolean ExecuteSelectTable(string dbpath, MainViewModel mv, string sql)
         {
             Boolean ret = false;
 

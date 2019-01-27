@@ -196,7 +196,7 @@ namespace Taskalu
             MainViewModel.mv.Files.Clear();
             SQLiteClass.moreCount = 0;
 
-            if (SQLiteClass.ExecuteFirstSelectTable())
+            if (SQLiteClass.ExecuteFirstSelectTable(SQLiteClass.dbpath))
             {
                 MoreButton.Visibility = Visibility.Visible;
             }
@@ -308,7 +308,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void MoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectTable())
+            if (SQLiteClass.ExecuteMoreSelectTable(SQLiteClass.dbpath))
             {
                 MoreButton.Visibility = Visibility.Visible;
             }
