@@ -71,5 +71,26 @@ namespace Taskalu.Tests
 
             Debug.Assert(SQLiteClass.CheckTable(path, "tasklist"));
         }
+
+        [TestMethod()]
+        public void CheckTable2Test()
+        {
+            string dir = Path.GetTempPath();
+            string path = dir + "\\taskaludb.sqlite";
+            try
+            {
+                File.Delete(path);
+            }
+            catch (Exception)
+            {
+                // preperation fail
+                Assert.Fail();
+            }
+            FileStream fs = File.Create(path);
+            fs.Close();
+
+            Debug.Assert(SQLiteClass.CheckTable(path, "tasklist") == false);
+        }
+
     }
 }
