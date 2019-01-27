@@ -839,7 +839,7 @@ namespace Taskalu
                 if (!string.IsNullOrEmpty(dlg.memoString))
                 {
                     SQLiteClass.ExecuteInsertTableTaskMemo(epId, dlg.memoString);
-                    SQLiteClass.ExecuteUpdateTaskListMemo(epId, dlg.memoString);
+                    SQLiteClass.ExecuteUpdateTaskListMemo(SQLiteClass.dbpath, epId, dlg.memoString);
                     SQLiteClass.ExecuteInsertTableFTSString(SQLiteClass.dbpath, epId, "taskmemo", dlg.memoString);
                     ExecuteFirstSelectTableTaskMemo(epId);
                 }

@@ -132,22 +132,6 @@ namespace Taskalu
 
         private static string stringSearchSQL(string status)
         {
-            /*
-            return "SELECT * FROM tasklist WHERE id IN ("
-                    + "SELECT id FROM tasklist"
-                    + " WHERE status = '" + status + "'"
-                    + " AND name LIKE @string1 "
-                    + "UNION "
-                    + "SELECT id FROM tasklist"
-                    + " WHERE status = '" + status + "'"
-                    + " AND description LIKE @string2 "
-                    + "UNION "
-                    + "SELECT id FROM tasklist t "
-                    + " WHERE t.id IN (SELECT DISTINCT tasklist_id FROM taskmemo WHERE memo LIKE @string3)"
-                    + " AND t.status = '" + status + "'"
-                    + ")";
-                    */
-
             return "SELECT * FROM tasklist WHERE status = '" + status + "' AND id IN ("
                     + "SELECT id FROM strings_fts WHERE str MATCH @str)";
         }
@@ -169,11 +153,6 @@ namespace Taskalu
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                /*
-                com.Parameters.Add(sqliteParam(com, "@string1", "%" + searchString + "%"));
-                com.Parameters.Add(sqliteParam(com, "@string2", "%" + searchString + "%"));
-                com.Parameters.Add(sqliteParam(com, "@string3", "%" + searchString + "%"));
-                */
                 com.Parameters.Add(sqliteParam(com, "@str", Ngram.getNgramTextSpaceSeparated(searchString, 2)));
             }
 
@@ -275,7 +254,8 @@ namespace Taskalu
             return ret;
         }
 
-        public static Boolean ExecuteUpdateTable_Description(Int64 id, string description)
+        /*
+        public static Boolean ExecuteUpdateTable_Description(string dbpath, Int64 id, string description)
         {
             Boolean ret = false;
 
@@ -301,8 +281,9 @@ namespace Taskalu
             }
             return ret;
         }
+        */
 
-        public static Boolean ExecuteUpdateTaskListMemo(Int64 id, string memo)
+        public static Boolean ExecuteUpdateTaskListMemo(string dbpath, Int64 id, string memo)
         {
             Boolean ret = false;
 

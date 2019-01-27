@@ -262,5 +262,17 @@ namespace Taskalu.Tests
 
             Debug.Assert(SQLiteClass.ExecuteUpdateTable(path, lvf));
         }
+
+        [TestMethod()]
+        public void ExecuteUpdateTaskListMemoTest()
+        {
+            string dbfile = "taskaludb.sqlite.13";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            CreateSQLiteDBFlie(dbfile);
+            CreateTableTaskList(dbfile);
+            InsertTableTaskList(dbfile, "hoge", 0);
+
+            Debug.Assert(SQLiteClass.ExecuteUpdateTaskListMemo(path, 1, "hoge"));
+        }
     }
 }
