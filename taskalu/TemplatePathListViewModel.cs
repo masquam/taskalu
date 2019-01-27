@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Taskalu
 {
-    class TemplatePathListViewModel
+    public class TemplatePathListViewModel
     {
         public static TemplatePathListViewModel tplv = new TemplatePathListViewModel();
 

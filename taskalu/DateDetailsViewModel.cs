@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Taskalu
 {
-    class DateDetailsViewModel
+    public class DateDetailsViewModel
     {
         public static DateDetailsViewModel dsv = new DateDetailsViewModel();
 

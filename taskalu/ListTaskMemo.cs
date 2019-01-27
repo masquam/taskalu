@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Taskalu
 {
-    class ListTaskMemo
+    public class ListTaskMemo
     {
         public Int64 Tasklist_Id { get; set; }
         public string Date { get; set; }

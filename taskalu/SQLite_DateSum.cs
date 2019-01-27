@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Taskalu
 {
-    partial class SQLiteClass
+    public partial class SQLiteClass
     {
         public static int DateSumMoreCount { get; set; }
         public static int DateSumMoreSize = 20;

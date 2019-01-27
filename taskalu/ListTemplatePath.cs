@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Taskalu
 {
-    class ListTemplatePath
+    public class ListTemplatePath
     {
         public Int64 Id { get; set; }
         public Int64 Template_Id { get; set; }

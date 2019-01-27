@@ -10,7 +10,7 @@ using System.IO;
 
 namespace Taskalu
 {
-    partial class SQLiteClass
+    public partial class SQLiteClass
     {
         public static string dbdirectory = "";
         public static string dbpath = "";
@@ -35,22 +35,22 @@ namespace Taskalu
             if (File.Exists(dbpath))
             {
                 // check database scheme
-                if (!CheckTable("tasklist")){
+                if (!CheckTable(dbpath, "tasklist")){
                     return false;
                 }
-                if (!CheckTable("tasktime"))
+                if (!CheckTable(dbpath, "tasktime"))
                 {
                     return false;
                 }
-                if (!CheckTable("taskmemo"))
+                if (!CheckTable(dbpath, "taskmemo"))
                 {
                     return false;
                 }
-                if (!CheckTable("template"))
+                if (!CheckTable(dbpath, "template"))
                 {
                     return false;
                 }
-                if (!CheckTable("template_path"))
+                if (!CheckTable(dbpath, "template_path"))
                 {
                     return false;
                 }
@@ -71,87 +71,87 @@ namespace Taskalu
                     return false;
                 }
 
-                if (!ExecuteCreateTable("CREATE TABLE tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, memo TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT, workholder TEXT)"))
+                if (!ExecuteCreateTable(dbpath, "CREATE TABLE tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, memo TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT, workholder TEXT)"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_tasklist_name", "name"))
+                if (!ExecuteCreateIndex(dbpath, "tasklist", "index_tasklist_name", "name"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_tasklist_description", "description"))
+                if (!ExecuteCreateIndex(dbpath, "tasklist", "index_tasklist_description", "description"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_tasklist_memo", "memo"))
+                if (!ExecuteCreateIndex(dbpath, "tasklist", "index_tasklist_memo", "memo"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_tasklist_priority", "priority"))
+                if (!ExecuteCreateIndex(dbpath, "tasklist", "index_tasklist_priority", "priority"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_tasklist_createdate", "createdate"))
+                if (!ExecuteCreateIndex(dbpath, "tasklist", "index_tasklist_createdate", "createdate"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_tasklist_duedate", "duedate"))
+                if (!ExecuteCreateIndex(dbpath, "tasklist", "index_tasklist_duedate", "duedate"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasklist", "index_tasklist_status", "status"))
+                if (!ExecuteCreateIndex(dbpath, "tasklist", "index_tasklist_status", "status"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateTable("CREATE TABLE tasktime (id INTEGER NOT NULL PRIMARY KEY, tasklist_id INTEGER, date TEXT, start_date TEXT, end_date TEXT, duration INTEGER)"))
+                if (!ExecuteCreateTable(dbpath, "CREATE TABLE tasktime (id INTEGER NOT NULL PRIMARY KEY, tasklist_id INTEGER, date TEXT, start_date TEXT, end_date TEXT, duration INTEGER)"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasktime", "index_tasktime_tasklist_id", "tasklist_id"))
+                if (!ExecuteCreateIndex(dbpath, "tasktime", "index_tasktime_tasklist_id", "tasklist_id"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasktime", "index_tasktime_date", "date"))
+                if (!ExecuteCreateIndex(dbpath, "tasktime", "index_tasktime_date", "date"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasktime", "index_tasktime_start_date", "start_date"))
+                if (!ExecuteCreateIndex(dbpath, "tasktime", "index_tasktime_start_date", "start_date"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("tasktime", "index_tasktime_end_date", "end_date"))
+                if (!ExecuteCreateIndex(dbpath, "tasktime", "index_tasktime_end_date", "end_date"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateTable("CREATE TABLE taskmemo (id INTEGER NOT NULL PRIMARY KEY, tasklist_id INTEGER, date TEXT, memo TEXT)"))
+                if (!ExecuteCreateTable(dbpath, "CREATE TABLE taskmemo (id INTEGER NOT NULL PRIMARY KEY, tasklist_id INTEGER, date TEXT, memo TEXT)"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("taskmemo", "index_taskmemo_tasklist_id", "tasklist_id"))
+                if (!ExecuteCreateIndex(dbpath, "taskmemo", "index_taskmemo_tasklist_id", "tasklist_id"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("taskmemo", "index_taskmemo_date", "date"))
+                if (!ExecuteCreateIndex(dbpath, "taskmemo", "index_taskmemo_date", "date"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateTable("CREATE VIRTUAL TABLE strings_fts USING fts4 (id INTEGER, type TEXT, str TEXT)"))
+                if (!ExecuteCreateTable(dbpath, "CREATE VIRTUAL TABLE strings_fts USING fts4 (id INTEGER, type TEXT, str TEXT)"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateTable("CREATE TABLE template (id INTEGER NOT NULL PRIMARY KEY, torder INTEGER, name TEXT, template TEXT)"))
+                if (!ExecuteCreateTable(dbpath, "CREATE TABLE template (id INTEGER NOT NULL PRIMARY KEY, torder INTEGER, name TEXT, template TEXT)"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("template", "index_template_order", "torder"))
+                if (!ExecuteCreateIndex(dbpath, "template", "index_template_order", "torder"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateTable("CREATE TABLE template_path (id INTEGER NOT NULL PRIMARY KEY, template_id INTEGER, torder INTEGER, path TEXT)"))
+                if (!ExecuteCreateTable(dbpath, "CREATE TABLE template_path (id INTEGER NOT NULL PRIMARY KEY, template_id INTEGER, torder INTEGER, path TEXT)"))
                 {
                     return false;
                 }
-                if (!ExecuteCreateIndex("template_path", "index_template_path_order", "torder"))
+                if (!ExecuteCreateIndex(dbpath, "template_path", "index_template_path_order", "torder"))
                 {
                     return false;
                 }
@@ -159,7 +159,13 @@ namespace Taskalu
             return true;
         }
 
-        public static Boolean CheckTable(string tablename)
+        /// <summary>
+        /// check if the table exists
+        /// </summary>
+        /// <param name="dbpath"></param>
+        /// <param name="tablename"></param>
+        /// <returns></returns>
+        public static Boolean CheckTable(string dbpath, string tablename)
         {
             Boolean ret = false;
             Int64 count = 0;
@@ -190,7 +196,13 @@ namespace Taskalu
             return ret;
         }
 
-        public static Boolean ExecuteCreateTable(string sql)
+        /// <summary>
+        /// create table
+        /// </summary>
+        /// <param name="dbpath"></param>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public static Boolean ExecuteCreateTable(string dbpath, string sql)
         {
             Boolean ret = false;
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
@@ -215,11 +227,12 @@ namespace Taskalu
         /// <summary>
         /// create index
         /// </summary>
-        /// <param name="tablename">table name</param>
-        /// <param name="indexname">index name</param>
-        /// <param name="indexfield">index field</param>
+        /// <param name="dbpath"></param>
+        /// <param name="tablename"></param>
+        /// <param name="indexname"></param>
+        /// <param name="indexfield"></param>
         /// <returns></returns>
-        public static Boolean ExecuteCreateIndex(string tablename, string indexname, string indexfield)
+        public static Boolean ExecuteCreateIndex(string dbpath, string tablename, string indexname, string indexfield)
         {
             Boolean ret = false;
 

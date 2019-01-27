@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Taskalu
 {
-    partial class SQLiteClass
+    public partial class SQLiteClass
     {
         public static int TaskMemoMoreCount { get; set; }
         public static int TaskMemoMoreSize = 10;

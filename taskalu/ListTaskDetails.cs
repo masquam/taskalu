@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Taskalu
 {
-    class ListTaskDetails
+    public class ListTaskDetails
     {
         public string StartDate { get; set; }
         public string EndDate { get; set; }

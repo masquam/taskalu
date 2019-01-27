@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Taskalu
 {
-    class TaskMemoViewModel
+    public class TaskMemoViewModel
     {
         public static TaskMemoViewModel tmv = new TaskMemoViewModel();
 

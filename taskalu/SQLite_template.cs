@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Taskalu
 {
-    partial class SQLiteClass
+    public partial class SQLiteClass
     {
         public static void ExecuteInsertTableTemplate(ListTemplate lt)
         {

@@ -8,7 +8,7 @@ using System.ComponentModel;
 
 namespace Taskalu
 {
-    class TemplateListViewModel
+    public class TemplateListViewModel
     {
         public static TemplateListViewModel tlv = new TemplateListViewModel();
 

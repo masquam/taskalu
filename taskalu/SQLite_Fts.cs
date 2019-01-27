@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Taskalu
 {
-    partial class SQLiteClass
+    public partial class SQLiteClass
     {
         public static Boolean ExecuteInsertTableFTSString(Int64 id, string type, string str)
         {

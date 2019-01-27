@@ -9,7 +9,7 @@ using System.IO;
 
 namespace Taskalu
 {
-    partial class SQLiteClass
+    public partial class SQLiteClass
     {
         // for TasskTime Timer
         public static DateTime editTimerStartDateTime { get; set; }
