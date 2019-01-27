@@ -27,7 +27,7 @@ namespace Taskalu
         public static int moreCount { get; set; }
         public static int moreSize = 10;
 
-        public static Int64 ExecuteInsertTable(ListViewFile lvFile)
+        public static Int64 ExecuteInsertTable(string dbpath, ListViewFile lvFile)
         {
             object obj;
             Int64 retId;
@@ -45,7 +45,6 @@ namespace Taskalu
             com.Parameters.Add(sqliteParam(com, "@status", lvFile.Status));
             com.Parameters.Add(sqliteParam(com, "@workholder", lvFile.WorkHolder));
             
-
             try
             {
                 obj = com.ExecuteScalar();

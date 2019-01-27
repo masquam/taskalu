@@ -81,7 +81,7 @@ namespace Taskalu
             {
                 lvFile.Description = selectedTemplate.Template;
             }
-                retId = SQLiteClass.ExecuteInsertTable(lvFile);
+            retId = SQLiteClass.ExecuteInsertTable(SQLiteClass.dbpath, lvFile);
             SQLiteClass.ExecuteInsertTableFTSString(retId, "tasklist_name", Ngram.getNgramText(NewTitleBox.Text, 2));
             SQLiteClass.ExecuteInsertTableFTSString(retId, "tasklist_description", Ngram.getNgramText(NewDescriptionBox.Text, 2));
 
