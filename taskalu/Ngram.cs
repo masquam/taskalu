@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Taskalu
 {
-    class Ngram
+    public class Ngram
     {
         public static String getNgramText(String text, int ngr)
         {

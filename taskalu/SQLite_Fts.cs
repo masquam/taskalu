@@ -11,7 +11,7 @@ namespace Taskalu
 {
     public partial class SQLiteClass
     {
-        public static Boolean ExecuteInsertTableFTSString(Int64 id, string type, string str)
+        public static Boolean ExecuteInsertTableFTSString(string dbpath, Int64 id, string type, string str)
         {
             Boolean ret = false;
 

@@ -163,13 +163,42 @@ namespace Taskalu.Tests
 
             string path = Path.GetTempPath() + "\\" + dbfile;
             Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
+        }
 
+        [TestMethod()]
+        public void ExecuteFirstSelectTableFTSTest()
+        {
+            string dbfile = "taskaludb.sqlite.9";
+            string dir = Path.GetTempPath();
+            string path = dir + "\\" + dbfile;
+            try
+            {
+                File.Delete(path);
+            }
+            catch (Exception)
+            {
+                // preperation
+            }
+            SQLiteClass.TouchDB(dir, path);
+
+            SQLiteClass.moreSize = 10;
+            for (int i = 1; i <= 10; i++)
+            {
+                InsertTableTaskList(dbfile, "hoge", i);
+                SQLiteClass.ExecuteInsertTableFTSString(path, i, "tasklist_name", Ngram.getNgramText("hoge", 2));
+            }
+            InsertTableTaskList(dbfile, "ogem", 11);
+            SQLiteClass.ExecuteInsertTableFTSString(path, 11, "tasklist_name", Ngram.getNgramText("ogem", 2));
+
+            SQLiteClass.searchString = "oge";
+
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
         }
 
         [TestMethod()]
         public void ExecuteMoreSelectTableTest()
         {
-            string dbfile = "taskaludb.sqlite.9";
+            string dbfile = "taskaludb.sqlite.10";
             CreateSQLiteDBFlie(dbfile);
             CreateTableTaskList(dbfile);
 
@@ -180,6 +209,36 @@ namespace Taskalu.Tests
             }
 
             string path = Path.GetTempPath() + "\\" + dbfile;
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
+        }
+
+        [TestMethod()]
+        public void ExecuteMoreSelectTableFTSTest()
+        {
+            string dbfile = "taskaludb.sqlite.9";
+            string dir = Path.GetTempPath();
+            string path = dir + "\\" + dbfile;
+            try
+            {
+                File.Delete(path);
+            }
+            catch (Exception)
+            {
+                // preperation
+            }
+            SQLiteClass.TouchDB(dir, path);
+
+            SQLiteClass.moreSize = 10;
+            for (int i = 1; i <= 20; i++)
+            {
+                InsertTableTaskList(dbfile, "hoge", i);
+                SQLiteClass.ExecuteInsertTableFTSString(path, i, "tasklist_name", Ngram.getNgramText("hoge", 2));
+            }
+            InsertTableTaskList(dbfile, "ogem", 21);
+            SQLiteClass.ExecuteInsertTableFTSString(path, 21, "tasklist_name", Ngram.getNgramText("ogem", 2));
+
+            SQLiteClass.searchString = "oge";
+
             Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
         }
     }
