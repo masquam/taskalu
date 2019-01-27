@@ -109,5 +109,25 @@ namespace Taskalu.Tests
 
             Debug.Assert(SQLiteClass.ExecuteCreateTable(path, "CREATE TABLE tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, memo TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT, workholder TEXT)"));
         }
+
+        [TestMethod()]
+        public void ExecuteCreateIndexTest()
+        {
+            string dir = Path.GetTempPath();
+            string path = dir + "\\taskaludb.sqlite";
+            try
+            {
+                File.Delete(path);
+            }
+            catch (Exception)
+            {
+                // preperation fail
+                Assert.Fail();
+            }
+            SQLiteConnection.CreateFile(path);
+            SQLiteClass.ExecuteCreateTable(path, "CREATE TABLE tasklist (id INTEGER NOT NULL PRIMARY KEY, name TEXT, description TEXT, memo TEXT, priority TEXT, createdate DATETIME, duedate DATETIME, status TEXT, workholder TEXT)");
+
+            Debug.Assert(SQLiteClass.ExecuteCreateIndex(path, "tasklist", "index_tasklist_name", "name"));
+        }
     }
 }
