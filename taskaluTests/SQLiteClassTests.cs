@@ -151,25 +151,36 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteFirstSelectTableTest()
         {
-            CreateSQLiteDBFlie("taskaludb.sqlite.8");
-            CreateTableTaskList("taskaludb.sqlite.8");
+            string dbfile = "taskaludb.sqlite.8";
+            CreateSQLiteDBFlie(dbfile);
+            CreateTableTaskList(dbfile);
 
             SQLiteClass.moreSize = 10;
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 0);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 1);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 2);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 3);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 4);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 5);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 6);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 7);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 8);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 9);
-            InsertTableTaskList("taskaludb.sqlite.8", "hoge", 10);
+            for (int i = 0; i <= 10; i++)
+            {
+                InsertTableTaskList(dbfile, "hoge", i);
+            }
 
-            string path = Path.GetTempPath() + "\\taskaludb.sqlite.8";
+            string path = Path.GetTempPath() + "\\" + dbfile;
             Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
 
+        }
+
+        [TestMethod()]
+        public void ExecuteMoreSelectTableTest()
+        {
+            string dbfile = "taskaludb.sqlite.9";
+            CreateSQLiteDBFlie(dbfile);
+            CreateTableTaskList(dbfile);
+
+            SQLiteClass.moreSize = 10;
+            for (int i = 0; i <= 20; i++)
+            {
+                InsertTableTaskList(dbfile, "hoge", i);
+            }
+
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path));
         }
     }
 }
