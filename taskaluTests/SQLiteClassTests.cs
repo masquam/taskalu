@@ -274,5 +274,14 @@ namespace Taskalu.Tests
 
             Debug.Assert(SQLiteClass.ExecuteUpdateTaskListMemo(path, 1, "hoge"));
         }
+
+        [TestMethod()]
+        public void getUTCStringTest()
+        {
+            Debug.Assert(
+                string.Compare(
+                    SQLiteClass.getUTCString("2019/02/01 08:59:59", new System.Globalization.CultureInfo("ja-JP")),
+                    "2019-01-31 23:59:59") == 0);
+        }
     }
 }
