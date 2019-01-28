@@ -233,8 +233,8 @@ namespace Taskalu
             com.Parameters.Add(sqliteParam(com, "@name", lvFile.Name));
             com.Parameters.Add(sqliteParam(com, "@description", lvFile.Description));
             com.Parameters.Add(sqliteParam(com, "@priority", lvFile.Priority));
-            com.Parameters.Add(sqliteParam(com, "@createdate", getUTCString(lvFile.CreateDate, System.Globalization.CultureInfo.CurrentCulture)));
-            com.Parameters.Add(sqliteParam(com, "@duedate", getUTCString(lvFile.DueDate, System.Globalization.CultureInfo.CurrentCulture)));
+            com.Parameters.Add(sqliteParam(com, "@createdate", DateCalc.getUTCString(lvFile.CreateDate, System.Globalization.CultureInfo.CurrentCulture)));
+            com.Parameters.Add(sqliteParam(com, "@duedate", DateCalc.getUTCString(lvFile.DueDate, System.Globalization.CultureInfo.CurrentCulture)));
             com.Parameters.Add(sqliteParam(com, "@status", lvFile.Status));
             com.Parameters.Add(sqliteParam(com, "@workholder", lvFile.WorkHolder));
 
@@ -309,7 +309,7 @@ namespace Taskalu
             }
             return ret;
         }
-
+        /*
         public static string getUTCString(string localTime, System.Globalization.CultureInfo culture)
         {
             DateTime date;
@@ -321,6 +321,6 @@ namespace Taskalu
             return date.ToUniversalTime()
                 .ToString("yyyy-MM-dd HH:mm:ss");
         }
-
+        */
     }
 }

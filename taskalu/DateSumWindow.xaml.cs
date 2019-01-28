@@ -67,7 +67,7 @@ namespace Taskalu
             {
                 // due date window is closed
                 textboxDateSum.Text = dlg.dateString;
-                ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text));
+                ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture));
             }
         }
 
@@ -78,7 +78,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void DateSumMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text)))
+            if (SQLiteClass.ExecuteMoreSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture)))
             {
                 DateSumMoreButton.Visibility = Visibility.Visible;
                 textDateSumStatusBar.Content = "";
@@ -94,38 +94,38 @@ namespace Taskalu
         {
             SQLiteClass.DateSumNameOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.DateSumNameOrderByDirection);
             SQLiteClass.DateSumSetOrderBy("name", SQLiteClass.DateSumNameOrderByDirection);
-            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text));
+            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture));
         }
         private void NameAsc_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.DateSumNameOrderByDirection = "ASC";
             SQLiteClass.DateSumSetOrderBy("name", "ASC");
-            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text));
+            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture));
         }
         private void NameDes_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.DateSumNameOrderByDirection = "DESC";
             SQLiteClass.DateSumSetOrderBy("name", "DESC");
-            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text));
+            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture));
         }
 
         private void Duration_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.DateSumNameOrderByDirection = SQLiteClass.toggleDirection(SQLiteClass.DateSumNameOrderByDirection);
             SQLiteClass.DateSumSetOrderBy("duration", SQLiteClass.DateSumNameOrderByDirection);
-            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text));
+            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture));
         }
         private void DurationAsc_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.DateSumNameOrderByDirection = "ASC";
             SQLiteClass.DateSumSetOrderBy("duration", "ASC");
-            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text));
+            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture));
         }
         private void DurationDes_Click(object sender, RoutedEventArgs e)
         {
             SQLiteClass.DateSumNameOrderByDirection = "DESC";
             SQLiteClass.DateSumSetOrderBy("duration", "DESC");
-            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text));
+            ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture));
         }
 
         private void DateSumCopyButton_Click(object sender, RoutedEventArgs e)

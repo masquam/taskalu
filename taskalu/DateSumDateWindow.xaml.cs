@@ -28,7 +28,7 @@ namespace Taskalu
 
         private void DateSumDateWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            DateTime due = DateCalc.StringToDate(dateString);
+            DateTime due = DateCalc.StringToDate(dateString, System.Globalization.CultureInfo.CurrentCulture);
             DateSumDateBox.SelectedDate = due;
         }
 

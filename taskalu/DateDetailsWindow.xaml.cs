@@ -67,7 +67,7 @@ namespace Taskalu
             {
                 // due date window is closed
                 textboxDateDetails.Text = dlg.dateString;
-                ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateDetails.Text));
+                ExecuteFirstSelectTableTaskTime(DateCalc.StringToDate(textboxDateDetails.Text, System.Globalization.CultureInfo.CurrentCulture));
             }
         }
 
@@ -78,7 +78,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void DateDetailsMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectDateDetailsTableTaskTime(DateCalc.StringToDate(textboxDateDetails.Text)))
+            if (SQLiteClass.ExecuteMoreSelectDateDetailsTableTaskTime(DateCalc.StringToDate(textboxDateDetails.Text, System.Globalization.CultureInfo.CurrentCulture)))
             {
                 DateDetailsMoreButton.Visibility = Visibility.Visible;
                 textDateDetailsStatusBar.Content = "";
