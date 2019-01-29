@@ -10,7 +10,7 @@ using System.Windows.Documents;
 
 namespace Taskalu
 {
-    class HyperLink
+    public class HyperLink
     {
         private static long runsLimit = 100;
 
