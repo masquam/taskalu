@@ -157,7 +157,10 @@ namespace Taskalu
 
                         // TaskTimeInserted is false then INSERT
                         // else UPDATE the tasktime table
-                        SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
+                        SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(
+                            SQLiteClass.TaskTimeInserted,
+                            SQLiteClass.tasklist_id,
+                            SQLiteClass.editTimerStartDateTime);
                     }
                     break;
                 case Microsoft.Win32.PowerModes.Resume:
@@ -248,7 +251,10 @@ namespace Taskalu
 
                 // TaskTimeInserted is false then INSERT
                 // else UPDATE the tasktime table
-                SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
+                SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(
+                    SQLiteClass.TaskTimeInserted,
+                    SQLiteClass.tasklist_id,
+                    SQLiteClass.editTimerStartDateTime);
 
                 timerOnOff = true;
             }
@@ -594,7 +600,10 @@ namespace Taskalu
 
             // TaskTimeInserted is false then INSERT
             // else UPDATE the tasktime table
-            SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
+            SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(
+                SQLiteClass.TaskTimeInserted,
+                SQLiteClass.tasklist_id,
+                SQLiteClass.editTimerStartDateTime);
 
             ListViewFile lbf = new ListViewFile();
             lbf.Id = epId;
@@ -644,7 +653,10 @@ namespace Taskalu
 
             // TaskTimeInserted is false then INSERT
             // else UPDATE the tasktime table
-            SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
+            SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(
+                SQLiteClass.TaskTimeInserted,
+                SQLiteClass.tasklist_id,
+                SQLiteClass.editTimerStartDateTime);
 
             ep_CloseWindow();
 
@@ -678,7 +690,12 @@ namespace Taskalu
             Int64 tasklist_id,
             DateTime editTimerStartDateTime)
         {
-            return SQLiteClass.InsertOrUpdateTaskTime(TaskTimeInserted, tasklist_id, editTimerStartDateTime);
+            return SQLiteClass.InsertOrUpdateTaskTime(
+                SQLiteClass.dbpath, 
+                TaskTimeInserted, 
+                tasklist_id, 
+                editTimerStartDateTime, 
+                DateTime.UtcNow);
         }
 
         // ///////////////////////////////////////////////////////////////////////
@@ -708,7 +725,7 @@ namespace Taskalu
 
             // for label(summary)
             editTimerStartDateTimeForLabel = SQLiteClass.editTimerStartDateTime;
-            editTimerSpan = SQLiteClass.ExecuteSumTaskTime(tlist_id);
+            editTimerSpan = SQLiteClass.ExecuteSumTaskTime(SQLiteClass.dbpath, tlist_id);
             updateEditTimerLabel(editTimerSpan);
 
             // for tasktime
@@ -731,7 +748,10 @@ namespace Taskalu
             // TaskTimeInserted is false then INSERT
             // else UPDATE the tasktime table
             // use for WHERE tasklist_id and editTimerStartDateTime
-            SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(SQLiteClass.TaskTimeInserted, SQLiteClass.tasklist_id, SQLiteClass.editTimerStartDateTime);
+            SQLiteClass.TaskTimeInserted = InsertOrUpdateTaskTime(
+                SQLiteClass.TaskTimeInserted, 
+                SQLiteClass.tasklist_id, 
+                SQLiteClass.editTimerStartDateTime);
 
             // for duedate color change
             dueDateColorConvert();

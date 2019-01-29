@@ -18,7 +18,7 @@ namespace Taskalu.Tests
         public void TouchDBTest()
         {
             string dir = Path.GetTempPath();
-            string path = dir + "\\taskaludb.sqlite.1";
+            string path = dir + "\\taskaludb1.sqlite";
             try
             {
                 File.Delete(path);
@@ -39,7 +39,7 @@ namespace Taskalu.Tests
         public void TouchDB2Test()
         {
             string dir = Path.GetTempPath();
-            string path = dir + "\\taskaludb.sqlite.2";
+            string path = dir + "\\taskaludb2.sqlite";
             try
             {
                 File.Delete(path);
@@ -60,7 +60,7 @@ namespace Taskalu.Tests
         public void CheckTableTest()
         {
             string dir = Path.GetTempPath();
-            string path = dir + "\\taskaludb.sqlite.3";
+            string path = dir + "\\taskaludb3.sqlite";
             try
             {
                 File.Delete(path);
@@ -79,7 +79,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void CheckTable2Test()
         {
-            string path = Path.GetTempPath() + "\\taskaludb.sqlite.4";
+            string path = Path.GetTempPath() + "\\taskaludb4.sqlite";
             CreateSQLiteDBFlie();
 
             Debug.Assert(SQLiteClass.CheckTable(path, "tasklist") == false);
@@ -89,8 +89,9 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteCreateTableTest()
         {
-            CreateSQLiteDBFlie("taskaludb.sqlite.5");
-            var result = CreateTableTaskList("taskaludb.sqlite.5");
+            string dbfile = "taskaludb5.sqlite";
+            CreateSQLiteDBFlie(dbfile);
+            var result = CreateTableTaskList(dbfile);
             Debug.Assert(result);
         }
 
@@ -117,20 +118,22 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteCreateIndexTest()
         {
-            CreateSQLiteDBFlie("taskaludb.sqlite.6");
-            CreateTableTaskList("taskaludb.sqlite.6");
+            string dbfile = "taskaludb6.sqlite";
+            CreateSQLiteDBFlie(dbfile);
+            CreateTableTaskList(dbfile);
 
-            string path = Path.GetTempPath() + "\\taskaludb.sqlite.6";
+            string path = Path.GetTempPath() + "\\" + dbfile;
             Debug.Assert(SQLiteClass.ExecuteCreateIndex(path, "tasklist", "index_tasklist_name", "name"));
         }
 
         [TestMethod()]
         public void ExecuteInsertTableTest()
         {
-            CreateSQLiteDBFlie("taskaludb.sqlite.7");
-            CreateTableTaskList("taskaludb.sqlite.7");
+            string dbfile = "taskaludb7.sqlite";
+            CreateSQLiteDBFlie(dbfile);
+            CreateTableTaskList(dbfile);
 
-            Debug.Assert(InsertTableTaskList("taskaludb.sqlite.7", "hoge", 0) == 1);
+            Debug.Assert(InsertTableTaskList(dbfile, "hoge", 0) == 1);
         }
 
         public Int64 InsertTableTaskList(string filename, string name, Int32 minute)
@@ -153,7 +156,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteFirstSelectTableTest()
         {
-            string dbfile = "taskaludb.sqlite.8";
+            string dbfile = "taskaludb8.sqlite";
             CreateSQLiteDBFlie(dbfile);
             CreateTableTaskList(dbfile);
 
@@ -170,7 +173,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteFirstSelectTableFTSTest()
         {
-            string dbfile = "taskaludb.sqlite.9";
+            string dbfile = "taskaludb9.sqlite";
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
 
@@ -189,7 +192,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteMoreSelectTableTest()
         {
-            string dbfile = "taskaludb.sqlite.10";
+            string dbfile = "taskaludb10.sqlite";
             CreateSQLiteDBFlie(dbfile);
             CreateTableTaskList(dbfile);
 
@@ -206,7 +209,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteMoreSelectTableFTSTest()
         {
-            string dbfile = "taskaludb.sqlite.11";
+            string dbfile = "taskaludb11.sqlite";
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
 
@@ -241,7 +244,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteUpdateTableTest()
         {
-            string dbfile = "taskaludb.sqlite.12";
+            string dbfile = "taskaludb12.sqlite";
             string path = Path.GetTempPath() + "\\" + dbfile;
             CreateSQLiteDBFlie(dbfile);
             CreateTableTaskList(dbfile);
@@ -264,7 +267,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteUpdateTaskListMemoTest()
         {
-            string dbfile = "taskaludb.sqlite.13";
+            string dbfile = "taskaludb13.sqlite";
             string path = Path.GetTempPath() + "\\" + dbfile;
             CreateSQLiteDBFlie(dbfile);
             CreateTableTaskList(dbfile);
@@ -276,7 +279,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteInsertTableTaskMemoTest()
         {
-            string dbfile = "taskaludb.sqlite.14";
+            string dbfile = "taskaludb14.sqlite";
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
             Debug.Assert(SQLiteClass.ExecuteInsertTableTaskMemo(path, 1, "memo"));
@@ -285,7 +288,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteFirstSelectTableTaskMemoTest()
         {
-            string dbfile = "taskaludb.sqlite.15";
+            string dbfile = "taskaludb15.sqlite";
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
 
@@ -302,11 +305,11 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteMoreSelectTableTaskMemoTest()
         {
-            string dbfile = "taskaludb.sqlite.16";
+            string dbfile = "taskaludb16.sqlite";
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
-
             InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+
             SQLiteClass.TaskMemoMoreSize = 10;
             for (int i = 1; i <= 21; i++)
             {
@@ -314,6 +317,121 @@ namespace Taskalu.Tests
             }
 
             Debug.Assert(SQLiteClass.ExecuteFirstSelectTableTaskMemo(path, 1));
+        }
+
+        [TestMethod()]
+        public void InsertOrUpdateTaskTime1Test()
+        {
+            string dbfile = "taskaludb17.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+            InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+
+            var result = SQLiteClass.InsertOrUpdateTaskTime(
+                path, false, 1,
+                new DateTime(2019, 2, 1, 0, 0, 0, DateTimeKind.Utc),
+                new DateTime(2019, 2, 1, 14, 59, 59, DateTimeKind.Utc));
+            Debug.Assert(result == true);
+            Debug.Assert(table_rows_count(path, "tasktime") == 1);
+        }
+
+        [TestMethod()]
+        public void InsertOrUpdateTaskTime2Test()
+        {
+            string dbfile = "taskaludb18.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+            InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+
+            var result = SQLiteClass.InsertOrUpdateTaskTime(
+                path, false, 1,
+                new DateTime(2019, 2, 1, 0, 0, 0, DateTimeKind.Utc),
+                new DateTime(2019, 2, 1, 15, 0, 0, DateTimeKind.Utc));
+            Debug.Assert(result == false);
+            Debug.Assert(table_rows_count(path, "tasktime") == 2);
+        }
+
+        [TestMethod()]
+        public void InsertOrUpdateTaskTime3Test()
+        {
+            string dbfile = "taskaludb19.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+            InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+
+            // insert a tasktime for testdata
+            SQLiteClass.InsertOrUpdateTaskTime(
+                path, false, 1,
+                new DateTime(2019, 2, 1, 0, 0, 0, DateTimeKind.Utc),
+                new DateTime(2019, 2, 1, 0, 0, 1, DateTimeKind.Utc));
+
+            var result = SQLiteClass.InsertOrUpdateTaskTime(
+                path, true, 1,
+                new DateTime(2019, 2, 1, 0, 0, 0, DateTimeKind.Utc),
+                new DateTime(2019, 2, 1, 14, 59, 59, DateTimeKind.Utc));
+            Debug.Assert(result == true);
+            Debug.Assert(table_rows_count(path, "tasktime") == 1);
+        }
+
+        [TestMethod()]
+        public void InsertOrUpdateTaskTime4Test()
+        {
+            string dbfile = "taskaludb20.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+            InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+
+            // insert a tasktime for testdata
+            SQLiteClass.InsertOrUpdateTaskTime(
+                path, false, 1,
+                new DateTime(2019, 2, 1, 0, 0, 0, DateTimeKind.Utc),
+                new DateTime(2019, 2, 1, 0, 0, 1, DateTimeKind.Utc));
+
+            var result = SQLiteClass.InsertOrUpdateTaskTime(
+                path, true, 1,
+                new DateTime(2019, 2, 1, 0, 0, 0, DateTimeKind.Utc),
+                new DateTime(2019, 2, 1, 15, 0, 0, DateTimeKind.Utc));
+            Debug.Assert(result == false);
+            Debug.Assert(table_rows_count(path, "tasktime") == 2);
+        }
+
+        public static Int64 table_rows_count(string dbpath, string tablename)
+        {
+            Int64 count = 0;
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+            SQLiteCommand com = new SQLiteCommand("SELECT count(*) FROM " + tablename, con);
+            try
+            {
+                count = (Int64)com.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                // if no record, return DBNull -> exception raised
+                count = -1;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return count;
+        }
+
+        [TestMethod()]
+        public void ExecuteSumTaskTimeTest()
+        {
+            string dbfile = "taskaludb21.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+            InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+
+            SQLiteClass.InsertOrUpdateTaskTime(
+                path, false, 1,
+                new DateTime(2019, 2, 1, 0, 0, 0, DateTimeKind.Utc),
+                new DateTime(2019, 2, 1, 16, 0, 0, DateTimeKind.Utc));
+
+            TimeSpan result = SQLiteClass.ExecuteSumTaskTime(path, 1);
+            Debug.Assert(TimeSpan.Compare(result, new TimeSpan(16, 0, 0)) == 0);
         }
     }
 }

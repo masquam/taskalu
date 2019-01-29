@@ -22,50 +22,53 @@ namespace Taskalu
         /// <param name="TaskTimeInserted">TaskTimeInserted flag</param>
         /// <param name="tasklist_id">tasklist_id</param>
         /// <param name="start_date">start_date</param>
+        /// <param name="end_date_UTCNow">end_date; paticurally DateTime.UTCNow</param>
         /// <returns>TaskTimeInserted flag: success of insert is true</returns>
         public static Boolean InsertOrUpdateTaskTime(
+            string dbpath,
             Boolean TaskTimeInserted,
             Int64 tasklist_id,
-            DateTime start_date)
+            DateTime start_date,
+            DateTime end_date_UTCNow)
         {
             Boolean ret = false;
 
-            DateTime end_date = DateTime.UtcNow;
-            TimeSpan duration = end_date - start_date;
+            //DateTime end_date = DateTime.UtcNow;
+            TimeSpan duration = end_date_UTCNow - start_date;
 
             if (TaskTimeInserted)
             {
-                if (start_date.ToLocalTime().Date == end_date.ToLocalTime().Date)
+                if (start_date.ToLocalTime().Date == end_date_UTCNow.ToLocalTime().Date)
                 {
-                    ExecuteUpdateTableTaskTime(tasklist_id, start_date, end_date, duration);
+                    ExecuteUpdateTableTaskTime(dbpath, tasklist_id, start_date, end_date_UTCNow, duration);
                     ret = true;
                 }
                 else
                 {
-                    DateTime tmp_start_date = start_date.ToLocalTime().Date + new TimeSpan(1, 0, 0, 0);
-                    ExecuteUpdateTableTaskTime(tasklist_id, start_date, tmp_start_date, tmp_start_date - start_date);
+                    DateTime tmp_start_date = (start_date.ToLocalTime().Date + new TimeSpan(1, 0, 0, 0)).ToUniversalTime();
+                    ExecuteUpdateTableTaskTime(dbpath, tasklist_id, start_date, tmp_start_date, tmp_start_date - start_date);
                     start_date = tmp_start_date; // update the argument
-                    InsertOrUpdateTaskTime(false, tasklist_id, start_date);
+                    InsertOrUpdateTaskTime(dbpath, false, tasklist_id, start_date, end_date_UTCNow);
                 }
             }
             else
             {
-                if (start_date.ToLocalTime().Date == end_date.ToLocalTime().Date)
+                if (start_date.ToLocalTime().Date == end_date_UTCNow.ToLocalTime().Date)
                 {
-                    ret = ExecuteInsertTableTaskTime(tasklist_id, start_date, end_date, duration);
+                    ret = ExecuteInsertTableTaskTime(dbpath, tasklist_id, start_date, end_date_UTCNow, duration);
                 }
                 else
                 {
-                    DateTime tmp_start_date = start_date.ToLocalTime().Date + new TimeSpan(1, 0, 0, 0);
-                    ExecuteInsertTableTaskTime(tasklist_id, start_date, tmp_start_date, tmp_start_date - start_date);
+                    DateTime tmp_start_date = (start_date.ToLocalTime().Date + new TimeSpan(1, 0, 0, 0)).ToUniversalTime();
+                    ExecuteInsertTableTaskTime(dbpath, tasklist_id, start_date, tmp_start_date, tmp_start_date - start_date);
                     start_date = tmp_start_date; // update the argument
-                    InsertOrUpdateTaskTime(false, tasklist_id, start_date);
+                    InsertOrUpdateTaskTime(dbpath, false, tasklist_id, start_date, end_date_UTCNow);
                 }
             }
             return ret;
         }
 
-        private static Boolean ExecuteInsertTableTaskTime(Int64 tasklist_id, DateTime start_date, DateTime end_date, TimeSpan duration)
+        private static Boolean ExecuteInsertTableTaskTime(string dbpath, Int64 tasklist_id, DateTime start_date, DateTime end_date, TimeSpan duration)
         {
             Boolean ret = false;
 
@@ -95,7 +98,7 @@ namespace Taskalu
             return ret;
         }
 
-        private static Boolean ExecuteUpdateTableTaskTime(Int64 tasklist_id, DateTime start_date, DateTime end_date, TimeSpan duration)
+        private static Boolean ExecuteUpdateTableTaskTime(string dbpath, Int64 tasklist_id, DateTime start_date, DateTime end_date, TimeSpan duration)
         {
             Boolean ret = false;
 
@@ -124,7 +127,7 @@ namespace Taskalu
             return ret;
         }
 
-        public static TimeSpan ExecuteSumTaskTime(Int64 tasklist_id)
+        public static TimeSpan ExecuteSumTaskTime(string dbpath, Int64 tasklist_id)
         {
             Int64 tick = 0;
 
