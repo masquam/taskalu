@@ -422,7 +422,7 @@ namespace Taskalu
             }
             else
             {
-                ClipBrd.CopyMvToClipBoard();
+                ClipBrd.CopyMvToClipBoard(MainViewModel.mv);
             }
 
         }

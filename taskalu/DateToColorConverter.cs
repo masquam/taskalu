@@ -49,12 +49,3 @@ namespace Taskalu
     }
 }
 
-/*
-
-                                                    <DataTrigger Binding="{Binding DueDate, Converter={StaticResource DateToColorConverter}}" Value="2000-01-01 00:00:00">
-                                                        <Setter Property="Foreground" Value="Red" />
-                                                    </DataTrigger>
-                                                    <DataTrigger Binding="{Binding DueDate, Converter={StaticResource DateToColorConverter}}" Value="2000-01-02 00:00:00">
-                                                        <Setter Property="Foreground" Value="Blue" />
-                                                    </DataTrigger>
- */

@@ -7,13 +7,13 @@ using System.Windows;
 
 namespace Taskalu
 {
-    class ClipBrd
+    public class ClipBrd
     {
-        public static void CopyMvToClipBoard()
+        public static void CopyMvToClipBoard(MainViewModel mv)
         {
             string str = "";
 
-            foreach (ListViewFile file in MainViewModel.mv.Files)
+            foreach (ListViewFile file in mv.Files)
             {
                 str += file.Priority + "\t" + file.DueDate + "\t" + file.Name + "\t\"" + file.Memo + "\"" +"\n";
             }
