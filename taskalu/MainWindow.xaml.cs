@@ -617,8 +617,8 @@ namespace Taskalu
 
             if (SQLiteClass.ExecuteUpdateTable(SQLiteClass.dbpath, lbf))
             {
-                SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_name", Ngram.getNgramText(ep_name.Text, 2));
-                SQLiteClass.ExecuteUpdateTableFTSString(epId, "tasklist_description", Ngram.getNgramText(tmpDescription, 2));
+                SQLiteClass.ExecuteUpdateTableFTSString(SQLiteClass.dbpath, epId, "tasklist_name", Ngram.getNgramText(ep_name.Text, 2));
+                SQLiteClass.ExecuteUpdateTableFTSString(SQLiteClass.dbpath, epId, "tasklist_description", Ngram.getNgramText(tmpDescription, 2));
                 ep_CloseWindow();
                 ExecuteFirstSelectTable();
             }

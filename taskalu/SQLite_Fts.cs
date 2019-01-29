@@ -39,7 +39,7 @@ namespace Taskalu
             return ret;
         }
 
-        public static Boolean ExecuteUpdateTableFTSString(Int64 id, string type, string str)
+        public static Boolean ExecuteUpdateTableFTSString(string dbpath, Int64 id, string type, string str)
         {
             Boolean ret = false;
 

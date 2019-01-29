@@ -783,5 +783,26 @@ namespace Taskalu.Tests
 
             Debug.Assert(SQLiteClass.ExecuteDeleteTableTemplatePathFromTemplateId(path, 2));
         }
+
+        [TestMethod()]
+        public void ExecuteInsertTableFTSStringTest()
+        {
+            string dbfile = "taskaludb40.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            Debug.Assert(SQLiteClass.ExecuteInsertTableFTSString(path, 1, "tasklist_name", "str"));
+        }
+
+        [TestMethod()]
+        public void ExecuteUpdateTableFTSStringTest()
+        {
+            string dbfile = "taskaludb41.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+            SQLiteClass.ExecuteInsertTableFTSString(path, 1, "tasklist_name", "str");
+
+            Debug.Assert(SQLiteClass.ExecuteUpdateTableFTSString(path, 1, "tasklist_name", "str2"));
+        }
     }
 }
