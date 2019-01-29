@@ -17,10 +17,6 @@ namespace Taskalu
             {
                 return "";
             }
-            //if (length == 1)
-            //{
-            //    return text + "*";
-            //}
             if (length > ngr)
             {
                 int index = length - ngr;
