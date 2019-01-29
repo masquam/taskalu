@@ -171,17 +171,8 @@ namespace Taskalu.Tests
         public void ExecuteFirstSelectTableFTSTest()
         {
             string dbfile = "taskaludb.sqlite.9";
-            string dir = Path.GetTempPath();
-            string path = dir + "\\" + dbfile;
-            try
-            {
-                File.Delete(path);
-            }
-            catch (Exception)
-            {
-                // preperation
-            }
-            SQLiteClass.TouchDB(dir, path);
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
 
             SQLiteClass.moreSize = 10;
             for (int i = 1; i <= 10; i++)
@@ -216,17 +207,8 @@ namespace Taskalu.Tests
         public void ExecuteMoreSelectTableFTSTest()
         {
             string dbfile = "taskaludb.sqlite.11";
-            string dir = Path.GetTempPath();
             string path = Path.GetTempPath() + "\\" + dbfile;
-            try
-            {
-                File.Delete(path);
-            }
-            catch (Exception)
-            {
-                // preperation
-            }
-            SQLiteClass.TouchDB(dir, path);
+            TouchTestDB(dbfile);
 
             SQLiteClass.moreSize = 10;
             for (int i = 1; i <= 20; i++)
@@ -238,6 +220,22 @@ namespace Taskalu.Tests
             SQLiteClass.ExecuteInsertTableFTSString(path, 21, "tasklist_name", Ngram.getNgramText("ogem", 2));
 
             Debug.Assert(SQLiteClass.ExecuteFirstSelectTable(path, "oge"));
+        }
+
+        public void TouchTestDB(string filename)
+        {
+            string dbfile = filename;
+            string dir = Path.GetTempPath();
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            try
+            {
+                File.Delete(path);
+            }
+            catch (Exception)
+            {
+                // preperation
+            }
+            SQLiteClass.TouchDB(dir, path);
         }
 
         [TestMethod()]
@@ -275,6 +273,47 @@ namespace Taskalu.Tests
             Debug.Assert(SQLiteClass.ExecuteUpdateTaskListMemo(path, 1, "hoge"));
         }
 
+        [TestMethod()]
+        public void ExecuteInsertTableTaskMemoTest()
+        {
+            string dbfile = "taskaludb.sqlite.14";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+            Debug.Assert(SQLiteClass.ExecuteInsertTableTaskMemo(path, 1, "memo"));
+        }
 
+        [TestMethod()]
+        public void ExecuteFirstSelectTableTaskMemoTest()
+        {
+            string dbfile = "taskaludb.sqlite.15";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+            SQLiteClass.TaskMemoMoreSize = 10;
+            for (int i = 1; i <= 11; i++)
+            {
+                SQLiteClass.ExecuteInsertTableTaskMemo(path, 1, "memo");
+            }
+
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTableTaskMemo(path, 1));
+        }
+
+        [TestMethod()]
+        public void ExecuteMoreSelectTableTaskMemoTest()
+        {
+            string dbfile = "taskaludb.sqlite.16";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+            SQLiteClass.TaskMemoMoreSize = 10;
+            for (int i = 1; i <= 21; i++)
+            {
+                SQLiteClass.ExecuteInsertTableTaskMemo(path, 1, "memo");
+            }
+
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTableTaskMemo(path, 1));
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace Taskalu
         public static int TaskMemoMoreCount { get; set; }
         public static int TaskMemoMoreSize = 10;
 
-        public static Boolean ExecuteInsertTableTaskMemo(Int64 tasklist_id, string memo)
+        public static Boolean ExecuteInsertTableTaskMemo(string dbpath, Int64 tasklist_id, string memo)
         {
             Boolean ret = false;
 
@@ -44,24 +44,24 @@ namespace Taskalu
 
         public static string selectTaskMemoSql = "SELECT tasklist_id, date, memo FROM taskmemo WHERE tasklist_id = @id";
 
-        public static Boolean ExecuteFirstSelectTableTaskMemo(Int64 id)
+        public static Boolean ExecuteFirstSelectTableTaskMemo(string dbpath, Int64 id)
         {
             string sql = selectTaskMemoSql;
             sql += " ORDER BY date DESC"
                 + " LIMIT " + (SQLiteClass.TaskMemoMoreSize + 1).ToString();
-            return SQLiteClass.ExecuteSelectTableTaskMemo(TaskMemoViewModel.tmv, sql, id);
+            return SQLiteClass.ExecuteSelectTableTaskMemo(dbpath, TaskMemoViewModel.tmv, sql, id);
         }
 
-        public static Boolean ExecuteMoreSelectTableTaskMemo(Int64 id)
+        public static Boolean ExecuteMoreSelectTableTaskMemo(string dbpath, Int64 id)
         {
             string sql = selectTaskMemoSql;
             sql += " ORDER BY date DESC"
                 + " LIMIT " + (SQLiteClass.TaskMemoMoreSize + 1).ToString()
                 + " OFFSET " + SQLiteClass.TaskMemoMoreCount.ToString();
-            return SQLiteClass.ExecuteSelectTableTaskMemo(TaskMemoViewModel.tmv, sql, id);
+            return SQLiteClass.ExecuteSelectTableTaskMemo(dbpath, TaskMemoViewModel.tmv, sql, id);
         }
 
-        public static Boolean ExecuteSelectTableTaskMemo(TaskMemoViewModel tmv, string sql, Int64 id)
+        public static Boolean ExecuteSelectTableTaskMemo(string dbpath, TaskMemoViewModel tmv, string sql, Int64 id)
         {
             // return value true: More button visibie
             Boolean ret = false;
@@ -108,29 +108,5 @@ namespace Taskalu
             return ret;
         }
 
-        /*
-        public static void UpdateTaskListDescription(Int64 id, string memo)
-        {
-            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
-            con.Open();
-
-            SQLiteCommand com = new SQLiteCommand("UPDATE tasklist SET description=@memo WHERE id=@id", con);
-            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
-            com.Parameters.Add(sqliteParam(com, "@memo", memo));
-
-            try
-            {
-                com.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("database table tasklist update description error!\n" + ex.Message);
-            }
-            finally
-            {
-                con.Close();
-            }
-        }
-        */
     }
 }

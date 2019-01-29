@@ -838,7 +838,7 @@ namespace Taskalu
             {
                 if (!string.IsNullOrEmpty(dlg.memoString))
                 {
-                    SQLiteClass.ExecuteInsertTableTaskMemo(epId, dlg.memoString);
+                    SQLiteClass.ExecuteInsertTableTaskMemo(SQLiteClass.dbpath, epId, dlg.memoString);
                     SQLiteClass.ExecuteUpdateTaskListMemo(SQLiteClass.dbpath, epId, dlg.memoString);
                     SQLiteClass.ExecuteInsertTableFTSString(SQLiteClass.dbpath, epId, "taskmemo", dlg.memoString);
                     ExecuteFirstSelectTableTaskMemo(epId);
@@ -854,7 +854,7 @@ namespace Taskalu
         {
             TaskMemoViewModel.tmv.Memos.Clear();
             SQLiteClass.TaskMemoMoreCount = 0;
-            if (SQLiteClass.ExecuteFirstSelectTableTaskMemo(id))
+            if (SQLiteClass.ExecuteFirstSelectTableTaskMemo(SQLiteClass.dbpath, id))
             {
                 TaskMemoMoreButton.Visibility = Visibility.Visible;
             }
@@ -871,7 +871,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void TaskMemoMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectTableTaskMemo(epId))
+            if (SQLiteClass.ExecuteMoreSelectTableTaskMemo(SQLiteClass.dbpath, epId))
             {
                 TaskMemoMoreButton.Visibility = Visibility.Visible;
             }
