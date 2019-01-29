@@ -47,7 +47,7 @@ namespace Taskalu
                 EditTemplatePathPanel.Visibility = Visibility.Visible;
 
                 TemplatePathListViewModel.tplv.Entries.Clear();
-                SQLiteClass.ExecuteSelectTableTemplatePath(TemplatePathListViewModel.tplv, theTemplate.Id);
+                SQLiteClass.ExecuteSelectTableTemplatePath(SQLiteClass.dbpath, TemplatePathListViewModel.tplv, theTemplate.Id);
             }
         }
 
@@ -60,7 +60,7 @@ namespace Taskalu
             foreach (ListTemplatePath entry in TemplatePathListViewModel.tplv.Entries)
             {
                 entry.Order = newOrder;
-                SQLiteClass.ExecuteUpdateTableTemplatePath(entry);
+                SQLiteClass.ExecuteUpdateTableTemplatePath(SQLiteClass.dbpath, entry);
                 newOrder++;
             }
 
@@ -95,7 +95,7 @@ namespace Taskalu
                                     MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    if (SQLiteClass.ExecuteDeleteTableTemplatePath(TemplatePathListViewModel.tplv.Entries[currentIndex].Id))
+                    if (SQLiteClass.ExecuteDeleteTableTemplatePath(SQLiteClass.dbpath, TemplatePathListViewModel.tplv.Entries[currentIndex].Id))
                     {
                         TemplatePathListViewModel.tplv.Entries.RemoveAt(currentIndex);
                     }
@@ -109,7 +109,7 @@ namespace Taskalu
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
-                if (SQLiteClass.ExecuteSelectCountTemplatePath(theTemplate.Id, dlg.FileName) > 0)
+                if (SQLiteClass.ExecuteSelectCountTemplatePath(SQLiteClass.dbpath, theTemplate.Id, dlg.FileName) > 0)
                 {
                     MessageBox.Show(Properties.Resources.TD_Path_Caution);
                     return;
@@ -118,13 +118,13 @@ namespace Taskalu
                 ListTemplatePath newTP = new ListTemplatePath();
                 newTP.Id = 0; //dummy
                 newTP.Template_Id = theTemplate.Id;
-                newTP.Order = SQLiteClass.ExecuteSelectMaxTemplatePath(theTemplate.Id) + 1;
+                newTP.Order = SQLiteClass.ExecuteSelectMaxTemplatePath(SQLiteClass.dbpath, theTemplate.Id) + 1;
                 newTP.Path = dlg.FileName;
 
-                SQLiteClass.ExecuteInsertTableTemplatePath(newTP);
+                SQLiteClass.ExecuteInsertTableTemplatePath(SQLiteClass.dbpath, newTP);
 
                 TemplatePathListViewModel.tplv.Entries.Clear();
-                SQLiteClass.ExecuteSelectTableTemplatePath(TemplatePathListViewModel.tplv, theTemplate.Id);
+                SQLiteClass.ExecuteSelectTableTemplatePath(SQLiteClass.dbpath, TemplatePathListViewModel.tplv, theTemplate.Id);
             }
         }
 

@@ -11,8 +11,10 @@ namespace Taskalu
 {
     public partial class SQLiteClass
     {
-        public static void ExecuteInsertTableTemplatePath(ListTemplatePath lt)
+        public static Boolean ExecuteInsertTableTemplatePath(string dbpath, ListTemplatePath lt)
         {
+            Boolean ret = false;
+
             object obj;
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
@@ -26,6 +28,7 @@ namespace Taskalu
             try
             {
                 obj = com.ExecuteNonQuery();
+                ret = true;
             }
             catch (Exception ex)
             {
@@ -35,9 +38,10 @@ namespace Taskalu
             {
                 con.Close();
             }
+            return ret;
         }
 
-        public static Boolean ExecuteSelectTableTemplatePath(TemplatePathListViewModel tplv, Int64 template_id)
+        public static Boolean ExecuteSelectTableTemplatePath(string dbpath, TemplatePathListViewModel tplv, Int64 template_id)
         {
             Boolean ret = false;
 
@@ -63,6 +67,7 @@ namespace Taskalu
                     tplv.Entries.Add(lt);
                 }
                 sdr.Close();
+                ret = true;
             }
             catch (Exception ex)
             {
@@ -76,7 +81,7 @@ namespace Taskalu
             return ret;
         }
 
-        public static Int64 ExecuteSelectMaxTemplatePath(Int64 template_id)
+        public static Int64 ExecuteSelectMaxTemplatePath(string dbpath, Int64 template_id)
         {
             Int64 torder = 0;
 
@@ -103,7 +108,7 @@ namespace Taskalu
             return torder;
         }
 
-        public static Int64 ExecuteSelectCountTemplatePath(Int64 template_id, string path)
+        public static Int64 ExecuteSelectCountTemplatePath(string dbpath, Int64 template_id, string path)
         {
             Int64 count = 0;
 
@@ -131,7 +136,7 @@ namespace Taskalu
             return count;
         }
 
-        public static Boolean ExecuteUpdateTableTemplatePath(ListTemplatePath lt)
+        public static Boolean ExecuteUpdateTableTemplatePath(string dbpath, ListTemplatePath lt)
         {
             Boolean ret = false;
 
@@ -160,7 +165,7 @@ namespace Taskalu
             return ret;
         }
 
-        public static Boolean ExecuteDeleteTableTemplatePath(Int64 id)
+        public static Boolean ExecuteDeleteTableTemplatePath(string dbpath, Int64 id)
         {
             Boolean ret = false;
 
@@ -186,7 +191,7 @@ namespace Taskalu
             return ret;
         }
 
-        public static Boolean ExecuteDeleteTableTemplatePathFromTemplateId(Int64 id)
+        public static Boolean ExecuteDeleteTableTemplatePathFromTemplateId(string dbpath, Int64 id)
         {
             Boolean ret = false;
 

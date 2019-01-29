@@ -86,7 +86,7 @@ namespace Taskalu
         public static void CopyTemplatePathToWorkFolder(Int64 template_id, string workHolder)
         {
             TemplatePathListViewModel tplv = new TemplatePathListViewModel();
-            SQLiteClass.ExecuteSelectTableTemplatePath(tplv, template_id);
+            SQLiteClass.ExecuteSelectTableTemplatePath(SQLiteClass.dbpath, tplv, template_id);
 
             foreach (ListTemplatePath entry in tplv.Entries)
             {

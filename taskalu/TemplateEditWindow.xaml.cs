@@ -94,7 +94,7 @@ namespace Taskalu
                     Int64 id = TemplateListViewModel.tlv.Entries[currentIndex].Id;
                     if (SQLiteClass.ExecuteDeleteTableTemplate(SQLiteClass.dbpath, id))
                     {
-                        SQLiteClass.ExecuteDeleteTableTemplatePathFromTemplateId(id);
+                        SQLiteClass.ExecuteDeleteTableTemplatePathFromTemplateId(SQLiteClass.dbpath, id);
 
                         TemplateListViewModel.tlv.Entries.RemoveAt(currentIndex);
                     }
