@@ -26,7 +26,7 @@ namespace Taskalu
             TemplateList.DataContext = TemplateListViewModel.tlv;
 
             TemplateListViewModel.tlv.Entries.Clear();
-            SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+            SQLiteClass.ExecuteSelectTableTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
         }
 
         private void ButtonTemplateEditOk_Click(object sender, RoutedEventArgs e)
@@ -35,7 +35,7 @@ namespace Taskalu
             foreach (ListTemplate entry in TemplateListViewModel.tlv.Entries)
             {
                 entry.Order = newOrder;
-                SQLiteClass.ExecuteUpdateTableTemplate(entry);
+                SQLiteClass.ExecuteUpdateTableTemplate(SQLiteClass.dbpath, entry);
                 newOrder++;
             }
             this.DialogResult = true;
@@ -74,10 +74,10 @@ namespace Taskalu
 
                 if (dlg.ShowDialog() == true)
                 {
-                    SQLiteClass.ExecuteUpdateTableTemplate(dlg.theTemplate);
+                    SQLiteClass.ExecuteUpdateTableTemplate(SQLiteClass.dbpath, dlg.theTemplate);
 
                     TemplateListViewModel.tlv.Entries.Clear();
-                    SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+                    SQLiteClass.ExecuteSelectTableTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
                 }
             }
         }
@@ -92,7 +92,7 @@ namespace Taskalu
                 if (result == MessageBoxResult.Yes)
                 {
                     Int64 id = TemplateListViewModel.tlv.Entries[currentIndex].Id;
-                    if (SQLiteClass.ExecuteDeleteTableTemplate(id))
+                    if (SQLiteClass.ExecuteDeleteTableTemplate(SQLiteClass.dbpath, id))
                     {
                         SQLiteClass.ExecuteDeleteTableTemplatePathFromTemplateId(id);
 
@@ -109,16 +109,16 @@ namespace Taskalu
             dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             dlg.theTemplate.Id = 0;
-            dlg.theTemplate.Order = SQLiteClass.ExecuteSelectMaxTemplate() + 1;
+            dlg.theTemplate.Order = SQLiteClass.ExecuteSelectMaxTemplate(SQLiteClass.dbpath) + 1;
             dlg.theTemplate.Name = "";
             dlg.theTemplate.Template = "";
 
             if (dlg.ShowDialog() == true)
             {
-                SQLiteClass.ExecuteInsertTableTemplate(dlg.theTemplate);
+                SQLiteClass.ExecuteInsertTableTemplate(SQLiteClass.dbpath, dlg.theTemplate);
                 //
                 TemplateListViewModel.tlv.Entries.Clear();
-                SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+                SQLiteClass.ExecuteSelectTableTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
             }
         }
     }

@@ -11,8 +11,9 @@ namespace Taskalu
 {
     public partial class SQLiteClass
     {
-        public static void ExecuteInsertTableTemplate(ListTemplate lt)
+        public static Boolean ExecuteInsertTableTemplate(string dbpath, ListTemplate lt)
         {
+            Boolean ret = false;
             object obj;
 
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
@@ -26,6 +27,7 @@ namespace Taskalu
             try
             {
                 obj = com.ExecuteNonQuery();
+                ret = true;
             }
             catch (Exception ex)
             {
@@ -35,9 +37,10 @@ namespace Taskalu
             {
                 con.Close();
             }
+            return ret;
         }
 
-        public static Boolean ExecuteSelectTableTemplate(TemplateListViewModel tlv)
+        public static Boolean ExecuteSelectTableTemplate(string dbpath, TemplateListViewModel tlv)
         {
             Boolean ret = false;
 
@@ -62,6 +65,7 @@ namespace Taskalu
                     tlv.Entries.Add(lt);
                 }
                 sdr.Close();
+                ret = true;
             }
             catch (Exception ex)
             {
@@ -75,7 +79,7 @@ namespace Taskalu
             return ret;
         }
 
-        public static Int64 ExecuteSelectMaxTemplate()
+        public static Int64 ExecuteSelectMaxTemplate(string dbpath)
         {
             Int64 torder = 0;
 
@@ -100,7 +104,7 @@ namespace Taskalu
             return torder;
         }
 
-        public static Boolean ExecuteUpdateTableTemplate(ListTemplate lt)
+        public static Boolean ExecuteUpdateTableTemplate(string dbpath, ListTemplate lt)
         {
             Boolean ret = false;
 
@@ -129,7 +133,7 @@ namespace Taskalu
             return ret;
         }
 
-        public static Boolean ExecuteDeleteTableTemplate(Int64 id)
+        public static Boolean ExecuteDeleteTableTemplate(string dbpath, Int64 id)
         {
             Boolean ret = false;
 

@@ -40,7 +40,7 @@ namespace Taskalu
             noneTemplate.Template = "";
             TemplateListViewModel.tlv.Entries.Add(noneTemplate);
 
-            SQLiteClass.ExecuteSelectTableTemplate(TemplateListViewModel.tlv);
+            SQLiteClass.ExecuteSelectTableTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
         }
 
         private void ButtonNewWindowOk_Click(object sender, RoutedEventArgs e)

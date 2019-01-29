@@ -557,5 +557,101 @@ namespace Taskalu.Tests
             }
             Debug.Assert(SQLiteClass.ExecuteMoreSelectDateDetailsTableTaskTime(path, new DateTime(2019, 2, 1)));
         }
+
+        [TestMethod()]
+        public void ExecuteInsertTableTemplateTest()
+        {
+            string dbfile = "taskaludb28.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListTemplate();
+            lt.Order = 1;
+            lt.Name = "name";
+            lt.Template = "template";
+
+            Debug.Assert(SQLiteClass.ExecuteInsertTableTemplate(path, lt));
+        }
+
+        [TestMethod()]
+        public void ExecuteSelectTableTemplateTest()
+        {
+            string dbfile = "taskaludb29.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListTemplate();
+            lt.Order = 1;
+            lt.Name = "name";
+            lt.Template = "template";
+            SQLiteClass.ExecuteInsertTableTemplate(path, lt);
+            var lt2 = new ListTemplate();
+            lt2.Order = 2;
+            lt2.Name = "name2";
+            lt2.Template = "template2";
+            SQLiteClass.ExecuteInsertTableTemplate(path, lt2);
+
+            var tlv = new TemplateListViewModel();
+            var result = SQLiteClass.ExecuteSelectTableTemplate(path, tlv);
+            Debug.Assert(result);
+            Debug.Assert(tlv.Entries.Count == 2);
+        }
+
+        [TestMethod()]
+        public void ExecuteSelectMaxTemplateTest()
+        {
+            string dbfile = "taskaludb30.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListTemplate();
+            lt.Order = 1;
+            lt.Name = "name";
+            lt.Template = "template";
+            SQLiteClass.ExecuteInsertTableTemplate(path, lt);
+            var lt2 = new ListTemplate();
+            lt2.Order = 2;
+            lt2.Name = "name2";
+            lt2.Template = "template2";
+            SQLiteClass.ExecuteInsertTableTemplate(path, lt2);
+
+            Debug.Assert(SQLiteClass.ExecuteSelectMaxTemplate(path) == 2);
+        }
+
+        [TestMethod()]
+        public void ExecuteUpdateTableTemplateTest()
+        {
+            string dbfile = "taskaludb31.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListTemplate();
+            lt.Order = 1;
+            lt.Name = "name";
+            lt.Template = "template";
+            SQLiteClass.ExecuteInsertTableTemplate(path, lt);
+            var lt2 = new ListTemplate();
+            lt2.Order = 2;
+            lt2.Name = "name2";
+            lt2.Template = "template2";
+
+            Debug.Assert(SQLiteClass.ExecuteUpdateTableTemplate(path, lt2));
+        }
+
+        [TestMethod()]
+        public void ExecuteDeleteTableTemplateTest()
+        {
+            string dbfile = "taskaludb32.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListTemplate();
+            lt.Order = 1;
+            lt.Name = "name";
+            lt.Template = "template";
+            SQLiteClass.ExecuteInsertTableTemplate(path, lt);
+
+            Debug.Assert(SQLiteClass.ExecuteDeleteTableTemplate(path, 1));
+        }
     }
 }
