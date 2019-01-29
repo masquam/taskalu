@@ -22,25 +22,25 @@ namespace Taskalu
         public static string selectDateDetailsTaskTimeSql = "SELECT t.tasklist_id, l.name name, t.start_date start_date, t.end_date end_date, t.duration duration FROM tasktime t, tasklist l WHERE t.tasklist_id = l.id AND t.date = @date";
         public static TimeSpan SumTimeSpanDateDetails = new TimeSpan(0, 0, 0);
 
-        public static Boolean ExecuteFirstSelecttDateDetailsTableTaskTime(DateTime dt)
+        public static Boolean ExecuteFirstSelecttDateDetailsTableTaskTime(string dbpath, DateTime dt)
         {
             SumTimeSpanDateDetails = new TimeSpan(0, 0, 0);
             string sql = selectDateDetailsTaskTimeSql;
             sql += " ORDER BY " + DateDetailsOrderBy + " " + DateDetailsOrderByDirection
                 + " LIMIT " + (SQLiteClass.DateDetailsMoreSize + 1).ToString();
-            return SQLiteClass.ExecuteSelectDateDetailsTableTaskTime(DateDetailsViewModel.dsv, sql, dt);
+            return SQLiteClass.ExecuteSelectDateDetailsTableTaskTime(dbpath, DateDetailsViewModel.dsv, sql, dt);
         }
 
-        public static Boolean ExecuteMoreSelectDateDetailsTableTaskTime(DateTime dt)
+        public static Boolean ExecuteMoreSelectDateDetailsTableTaskTime(string dbpath, DateTime dt)
         {
             string sql = selectDateDetailsTaskTimeSql;
             sql += " ORDER BY " + DateDetailsOrderBy + " " + DateDetailsOrderByDirection
                 + " LIMIT " + (SQLiteClass.DateDetailsMoreSize + 1).ToString()
                 + " OFFSET " + SQLiteClass.DateDetailsMoreCount.ToString();
-            return SQLiteClass.ExecuteSelectDateDetailsTableTaskTime(DateDetailsViewModel.dsv, sql, dt);
+            return SQLiteClass.ExecuteSelectDateDetailsTableTaskTime(dbpath, DateDetailsViewModel.dsv, sql, dt);
         }
 
-        public static Boolean ExecuteSelectDateDetailsTableTaskTime(DateDetailsViewModel dsv, string sql, DateTime dt)
+        public static Boolean ExecuteSelectDateDetailsTableTaskTime(string dbpath, DateDetailsViewModel dsv, string sql, DateTime dt)
         {
             // return value true: More button visibie
             Boolean ret = false;

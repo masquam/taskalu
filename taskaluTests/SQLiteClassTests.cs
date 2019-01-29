@@ -502,7 +502,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteMoreSelectTableTaskTimeTest()
         {
-            string dbfile = "taskaludb24.sqlite";
+            string dbfile = "taskaludb25.sqlite";
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
 
@@ -519,5 +519,43 @@ namespace Taskalu.Tests
             Debug.Assert(SQLiteClass.ExecuteMoreSelectTableTaskTime(path, new DateTime(2019, 2, 1)));
         }
 
+        [TestMethod()]
+        public void ExecuteFirstSelecttDateDetailsTableTaskTimeTest()
+        {
+            string dbfile = "taskaludb26.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            SQLiteClass.TaskDetailsMoreSize = 20;
+            for (int i = 1; i <= 21; i++)
+            {
+                InsertTableTaskList(dbfile, "hoge", i); // tasklist id = 1
+                SQLiteClass.InsertOrUpdateTaskTime(
+                    path, false, i,
+                    new DateTime(2019, 2, 1, 0, i, 0, DateTimeKind.Utc),
+                    new DateTime(2019, 2, 1, 0, i + 1, 0, DateTimeKind.Utc));
+            }
+            Debug.Assert(SQLiteClass.ExecuteFirstSelecttDateDetailsTableTaskTime(path, new DateTime(2019, 2, 1)));
+        }
+
+        [TestMethod()]
+        public void ExecuteMoreSelectDateDetailsTableTaskTimeTest()
+        {
+            string dbfile = "taskaludb27.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            SQLiteClass.TaskDetailsMoreSize = 20;
+            SQLiteClass.DateSumMoreCount = 20;
+            for (int i = 1; i <= 41; i++)
+            {
+                InsertTableTaskList(dbfile, "hoge", i); // tasklist id = 1
+                SQLiteClass.InsertOrUpdateTaskTime(
+                    path, false, i,
+                    new DateTime(2019, 2, 1, 0, i, 0, DateTimeKind.Utc),
+                    new DateTime(2019, 2, 1, 0, i + 1, 0, DateTimeKind.Utc));
+            }
+            Debug.Assert(SQLiteClass.ExecuteMoreSelectDateDetailsTableTaskTime(path, new DateTime(2019, 2, 1)));
+        }
     }
 }

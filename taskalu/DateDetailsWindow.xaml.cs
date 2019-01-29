@@ -34,7 +34,7 @@ namespace Taskalu
         {
             DateDetailsViewModel.dsv.Entries.Clear();
             SQLiteClass.DateDetailsMoreCount = 0;
-            if (SQLiteClass.ExecuteFirstSelecttDateDetailsTableTaskTime(dt))
+            if (SQLiteClass.ExecuteFirstSelecttDateDetailsTableTaskTime(SQLiteClass.dbpath, dt))
             {
                 DateDetailsMoreButton.Visibility = Visibility.Visible;
                 textDateDetailsStatusBar.Content = "";
@@ -78,7 +78,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void DateDetailsMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectDateDetailsTableTaskTime(DateCalc.StringToDate(textboxDateDetails.Text, System.Globalization.CultureInfo.CurrentCulture)))
+            if (SQLiteClass.ExecuteMoreSelectDateDetailsTableTaskTime(SQLiteClass.dbpath, DateCalc.StringToDate(textboxDateDetails.Text, System.Globalization.CultureInfo.CurrentCulture)))
             {
                 DateDetailsMoreButton.Visibility = Visibility.Visible;
                 textDateDetailsStatusBar.Content = "";
