@@ -17,24 +17,24 @@ namespace Taskalu
         public static string selectTaskDetailsTaskTimeSql = "SELECT start_date, end_date, duration FROM tasktime WHERE tasklist_id = @id";
         public static TimeSpan SumTimeSpanTaskDetails = new TimeSpan(0, 0, 0);
 
-        public static Boolean ExecuteFirstSelecttTaskDetailsTableTaskTime(Int64 id)
+        public static Boolean ExecuteFirstSelecttTaskDetailsTableTaskTime(string dbpath, Int64 id)
         {
             string sql = selectTaskDetailsTaskTimeSql;
             sql += " ORDER BY end_date"
                 + " LIMIT " + (SQLiteClass.TaskDetailsMoreSize + 1).ToString();
-            return SQLiteClass.ExecuteSelectTaskDetailsTableTaskTime(TaskDetailsViewModel.tdv, sql, id);
+            return SQLiteClass.ExecuteSelectTaskDetailsTableTaskTime(dbpath, TaskDetailsViewModel.tdv, sql, id);
         }
 
-        public static Boolean ExecuteMoreSelectTaskDetailsTableTaskTime(Int64 id)
+        public static Boolean ExecuteMoreSelectTaskDetailsTableTaskTime(string dbpath, Int64 id)
         {
             string sql = selectTaskDetailsTaskTimeSql;
             sql += " ORDER BY end_date"
                 + " LIMIT " + (SQLiteClass.TaskDetailsMoreSize + 1).ToString()
                 + " OFFSET " + SQLiteClass.TaskDetailsMoreCount.ToString();
-            return SQLiteClass.ExecuteSelectTaskDetailsTableTaskTime(TaskDetailsViewModel.tdv, sql, id);
+            return SQLiteClass.ExecuteSelectTaskDetailsTableTaskTime(dbpath, TaskDetailsViewModel.tdv, sql, id);
         }
 
-        public static Boolean ExecuteSelectTaskDetailsTableTaskTime(TaskDetailsViewModel tdv, string sql, Int64 id)
+        public static Boolean ExecuteSelectTaskDetailsTableTaskTime(string dbpath, TaskDetailsViewModel tdv, string sql, Int64 id)
         {
             // return value true: More button visibie
             Boolean ret = false;

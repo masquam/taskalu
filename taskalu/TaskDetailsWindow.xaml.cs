@@ -36,7 +36,7 @@ namespace Taskalu
         {
             TaskDetailsViewModel.tdv.Entries.Clear();
             SQLiteClass.DateDetailsMoreCount = 0;
-            if (SQLiteClass.ExecuteFirstSelecttTaskDetailsTableTaskTime(id))
+            if (SQLiteClass.ExecuteFirstSelecttTaskDetailsTableTaskTime(SQLiteClass.dbpath, id))
             {
                 TaskDetailsMoreButton.Visibility = Visibility.Visible;
                 textTaskDetailsStatusBar.Content = "";
@@ -50,7 +50,7 @@ namespace Taskalu
 
         private void TaskDetailsMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectTaskDetailsTableTaskTime(id))
+            if (SQLiteClass.ExecuteMoreSelectTaskDetailsTableTaskTime(SQLiteClass.dbpath, id))
             {
                 TaskDetailsMoreButton.Visibility = Visibility.Visible;
                 textTaskDetailsStatusBar.Content = "";

@@ -433,5 +433,44 @@ namespace Taskalu.Tests
             TimeSpan result = SQLiteClass.ExecuteSumTaskTime(path, 1);
             Debug.Assert(TimeSpan.Compare(result, new TimeSpan(16, 0, 0)) == 0);
         }
+
+        [TestMethod()]
+        public void ExecuteFirstSelecttTaskDetailsTableTaskTimeTest()
+        {
+            string dbfile = "taskaludb22.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+            InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+
+            SQLiteClass.TaskDetailsMoreSize = 20;
+            for (int i = 1; i <= 21; i++)
+            {
+                SQLiteClass.InsertOrUpdateTaskTime(
+                path, false, 1,
+                new DateTime(2019, 2, 1, 0, i, 0, DateTimeKind.Utc),
+                new DateTime(2019, 2, 1, 0, i + 1, 0, DateTimeKind.Utc));
+            }
+            Debug.Assert(SQLiteClass.ExecuteFirstSelecttTaskDetailsTableTaskTime(path, 1));
+        }
+
+        [TestMethod()]
+        public void ExecuteMoreSelectTaskDetailsTableTaskTimeTest()
+        {
+            string dbfile = "taskaludb22.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+            InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
+
+            SQLiteClass.TaskDetailsMoreSize = 20;
+            SQLiteClass.TaskDetailsMoreCount = 20;
+            for (int i = 1; i <= 41; i++)
+            {
+                SQLiteClass.InsertOrUpdateTaskTime(
+                path, false, 1,
+                new DateTime(2019, 2, 1, 0, i, 0, DateTimeKind.Utc),
+                new DateTime(2019, 2, 1, 0, i + 1, 0, DateTimeKind.Utc));
+            }
+            Debug.Assert(SQLiteClass.ExecuteMoreSelectTaskDetailsTableTaskTime(path, 1));
+        }
     }
 }
