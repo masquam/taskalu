@@ -25,7 +25,7 @@ namespace Taskalu
             this.DataContext = DateSumViewModel.dsv;
 
             DateTime dt = DateTime.Today;
-            textboxDateSum.Text = DateCalc.DateToString(dt);
+            textboxDateSum.Text = DateCalc.DateToString(dt, System.Globalization.CultureInfo.CurrentCulture);
 
             ExecuteFirstSelectTableTaskTime(dt.Date);
 

@@ -35,7 +35,7 @@ namespace Taskalu
         private void ButtonDateSumDateWindowOk_Click(object sender, RoutedEventArgs e)
         {
             DateTime due = (DateTime)DateSumDateBox.SelectedDate;
-            dateString = DateCalc.DateToString(due);
+            dateString = DateCalc.DateToString(due, System.Globalization.CultureInfo.CurrentCulture);
 
             // Dialog box accepted; ウィンドウを閉じる
             this.DialogResult = true;

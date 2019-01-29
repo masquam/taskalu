@@ -25,7 +25,7 @@ namespace Taskalu
             this.DataContext = DateDetailsViewModel.dsv;
 
             DateTime dt = DateTime.Today;
-            textboxDateDetails.Text = DateCalc.DateToString(dt);
+            textboxDateDetails.Text = DateCalc.DateToString(dt, System.Globalization.CultureInfo.CurrentCulture);
 
             ExecuteFirstSelectTableTaskTime(dt.Date);
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Taskalu
 {
-    class DateCalc
+    public class DateCalc
     {
         /// <summary>
         /// string -> date
@@ -26,13 +26,13 @@ namespace Taskalu
         }
 
         /// <summary>
-        /// date -> text
+        /// datetime -> text date only "d" format
         /// </summary>
         /// <param name="date"></param>
         /// <returns></returns>
-        public static string DateToString(DateTime date)
+        public static string DateToString(DateTime date, System.Globalization.CultureInfo culture)
         {
-            return date.Date.ToString("d", System.Globalization.CultureInfo.CurrentCulture);
+            return date.Date.ToString("d", culture);
         }
 
         /// <summary>
