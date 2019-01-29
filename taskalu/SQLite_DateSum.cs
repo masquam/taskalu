@@ -22,25 +22,25 @@ namespace Taskalu
         public static string selectTaskTimeSql = "SELECT t.tasklist_id, l.name name, SUM(t.duration) duration FROM tasktime t, tasklist l WHERE t.tasklist_id = l.id AND t.date = @date GROUP BY t.tasklist_id";
         public static TimeSpan SumTimeSpanDateSum = new TimeSpan(0, 0, 0);
 
-        public static Boolean ExecuteFirstSelectTableTaskTime(DateTime dt)
+        public static Boolean ExecuteFirstSelectTableTaskTime(string dbpath, DateTime dt)
         {
             SumTimeSpanDateSum = new TimeSpan(0, 0, 0);
             string sql = selectTaskTimeSql;
             sql += " ORDER BY " + DateSumOrderBy + " " + DateSumOrderByDirection
                 + " LIMIT " + (SQLiteClass.DateSumMoreSize + 1).ToString();
-            return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql, dt);
+            return SQLiteClass.ExecuteSelectTableTaskTime(dbpath, DateSumViewModel.dsv, sql, dt);
         }
 
-        public static Boolean ExecuteMoreSelectTableTaskTime(DateTime dt)
+        public static Boolean ExecuteMoreSelectTableTaskTime(string dbpath, DateTime dt)
         {
             string sql = selectTaskTimeSql;
             sql += " ORDER BY " + DateSumOrderBy + " " + DateSumOrderByDirection
                 + " LIMIT " + (SQLiteClass.DateSumMoreSize + 1).ToString()
                 + " OFFSET " + SQLiteClass.DateSumMoreCount.ToString();
-            return SQLiteClass.ExecuteSelectTableTaskTime(DateSumViewModel.dsv, sql, dt);
+            return SQLiteClass.ExecuteSelectTableTaskTime(dbpath, DateSumViewModel.dsv, sql, dt);
         }
 
-        public static Boolean ExecuteSelectTableTaskTime(DateSumViewModel dsv, string sql, DateTime dt)
+        public static Boolean ExecuteSelectTableTaskTime(string dbpath, DateSumViewModel dsv, string sql, DateTime dt)
         {
             // return value true: More button visibie
             Boolean ret = false;

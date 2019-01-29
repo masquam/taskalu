@@ -35,7 +35,7 @@ namespace Taskalu
         {
             DateSumViewModel.dsv.Entries.Clear();
             SQLiteClass.DateSumMoreCount = 0;
-            if (SQLiteClass.ExecuteFirstSelectTableTaskTime(dt))
+            if (SQLiteClass.ExecuteFirstSelectTableTaskTime(SQLiteClass.dbpath, dt))
             {
                 DateSumMoreButton.Visibility = Visibility.Visible;
                 textDateSumStatusBar.Content = "";            }
@@ -78,7 +78,7 @@ namespace Taskalu
         /// <param name="e"></param>
         private void DateSumMoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (SQLiteClass.ExecuteMoreSelectTableTaskTime(DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture)))
+            if (SQLiteClass.ExecuteMoreSelectTableTaskTime(SQLiteClass.dbpath, DateCalc.StringToDate(textboxDateSum.Text, System.Globalization.CultureInfo.CurrentCulture)))
             {
                 DateSumMoreButton.Visibility = Visibility.Visible;
                 textDateSumStatusBar.Content = "";

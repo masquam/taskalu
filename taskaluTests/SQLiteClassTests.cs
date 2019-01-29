@@ -319,6 +319,8 @@ namespace Taskalu.Tests
             Debug.Assert(SQLiteClass.ExecuteFirstSelectTableTaskMemo(path, 1));
         }
 
+
+        // only valid ini Japan
         [TestMethod()]
         public void InsertOrUpdateTaskTime1Test()
         {
@@ -335,6 +337,7 @@ namespace Taskalu.Tests
             Debug.Assert(table_rows_count(path, "tasktime") == 1);
         }
 
+        // only valid ini Japan
         [TestMethod()]
         public void InsertOrUpdateTaskTime2Test()
         {
@@ -351,6 +354,7 @@ namespace Taskalu.Tests
             Debug.Assert(table_rows_count(path, "tasktime") == 2);
         }
 
+        // only valid ini Japan
         [TestMethod()]
         public void InsertOrUpdateTaskTime3Test()
         {
@@ -373,6 +377,7 @@ namespace Taskalu.Tests
             Debug.Assert(table_rows_count(path, "tasktime") == 1);
         }
 
+        // only valid ini Japan
         [TestMethod()]
         public void InsertOrUpdateTaskTime4Test()
         {
@@ -456,7 +461,7 @@ namespace Taskalu.Tests
         [TestMethod()]
         public void ExecuteMoreSelectTaskDetailsTableTaskTimeTest()
         {
-            string dbfile = "taskaludb22.sqlite";
+            string dbfile = "taskaludb23.sqlite";
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
             InsertTableTaskList(dbfile, "hoge", 0); // tasklist id = 1
@@ -472,5 +477,47 @@ namespace Taskalu.Tests
             }
             Debug.Assert(SQLiteClass.ExecuteMoreSelectTaskDetailsTableTaskTime(path, 1));
         }
+
+        // valid only in Japan
+        [TestMethod()]
+        public void ExecuteFirstSelectTableTaskTimeTest()
+        {
+            string dbfile = "taskaludb24.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            SQLiteClass.TaskDetailsMoreSize = 20;
+            for (int i = 1; i <= 21; i++)
+            {
+                InsertTableTaskList(dbfile, "hoge", i); // tasklist id = 1
+                SQLiteClass.InsertOrUpdateTaskTime(
+                    path, false, i,
+                    new DateTime(2019, 2, 1, 0, i, 0, DateTimeKind.Utc),
+                    new DateTime(2019, 2, 1, 0, i + 1, 0, DateTimeKind.Utc));
+            }
+            Debug.Assert(SQLiteClass.ExecuteFirstSelectTableTaskTime(path, new DateTime(2019, 2, 1)));
+        }
+
+        // valid only in Japan
+        [TestMethod()]
+        public void ExecuteMoreSelectTableTaskTimeTest()
+        {
+            string dbfile = "taskaludb24.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            SQLiteClass.TaskDetailsMoreSize = 20;
+            SQLiteClass.DateSumMoreCount = 20;
+            for (int i = 1; i <= 41; i++)
+            {
+                InsertTableTaskList(dbfile, "hoge", i); // tasklist id = 1
+                SQLiteClass.InsertOrUpdateTaskTime(
+                    path, false, i,
+                    new DateTime(2019, 2, 1, 0, i, 0, DateTimeKind.Utc),
+                    new DateTime(2019, 2, 1, 0, i + 1, 0, DateTimeKind.Utc));
+            }
+            Debug.Assert(SQLiteClass.ExecuteMoreSelectTableTaskTime(path, new DateTime(2019, 2, 1)));
+        }
+
     }
 }
