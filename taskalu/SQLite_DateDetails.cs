@@ -12,7 +12,7 @@ namespace Taskalu
     public partial class SQLiteClass
     {
         public static int DateDetailsMoreCount { get; set; }
-        public static int DateDetailsMoreSize = 20;
+        public static int DateDetailsMoreSize = 100;
 
         public static string DateDetailsOrderBy { get; set; } = "start_date";
         public static string DateDetailsOrderByDirection { get; set; } = "ASC";
