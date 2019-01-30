@@ -321,6 +321,7 @@ namespace Taskalu.Tests
 
 
         // only valid ini Japan
+        /*
         [TestMethod()]
         public void InsertOrUpdateTaskTime1Test()
         {
@@ -336,8 +337,10 @@ namespace Taskalu.Tests
             Debug.Assert(result == true);
             Debug.Assert(table_rows_count(path, "tasktime") == 1);
         }
+        */
 
         // only valid ini Japan
+        /*
         [TestMethod()]
         public void InsertOrUpdateTaskTime2Test()
         {
@@ -353,8 +356,10 @@ namespace Taskalu.Tests
             Debug.Assert(result == false);
             Debug.Assert(table_rows_count(path, "tasktime") == 2);
         }
+        */
 
         // only valid ini Japan
+        /*
         [TestMethod()]
         public void InsertOrUpdateTaskTime3Test()
         {
@@ -376,8 +381,10 @@ namespace Taskalu.Tests
             Debug.Assert(result == true);
             Debug.Assert(table_rows_count(path, "tasktime") == 1);
         }
+        */
 
         // only valid ini Japan
+        /*
         [TestMethod()]
         public void InsertOrUpdateTaskTime4Test()
         {
@@ -399,6 +406,7 @@ namespace Taskalu.Tests
             Debug.Assert(result == false);
             Debug.Assert(table_rows_count(path, "tasktime") == 2);
         }
+        */
 
         public static Int64 table_rows_count(string dbpath, string tablename)
         {
@@ -803,6 +811,134 @@ namespace Taskalu.Tests
             SQLiteClass.ExecuteInsertTableFTSString(path, 1, "tasklist_name", "str");
 
             Debug.Assert(SQLiteClass.ExecuteUpdateTableFTSString(path, 1, "tasklist_name", "str2"));
+        }
+
+        [TestMethod()]
+        public void ExecuteInsertTableAutoGenerateTest()
+        {
+            string dbfile = "taskaludb42.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListAutoGenerate();
+            lt.Order = 1;
+            lt.Type = "type";
+            lt.Name = "name";
+            lt.Priority = "";
+            lt.Template = 1;
+            lt.Number1 = 0;
+            lt.Number2 = 0;
+
+            Debug.Assert(SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt));
+        }
+
+        [TestMethod()]
+        public void ExecuteSelectTableAutoGenerateTest()
+        {
+            string dbfile = "taskaludb43.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListAutoGenerate();
+            lt.Order = 1;
+            lt.Type = "type";
+            lt.Name = "name";
+            lt.Priority = "";
+            lt.Template = 1;
+            lt.Number1 = 0;
+            lt.Number2 = 0;
+            SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
+            var lt2 = new ListAutoGenerate();
+            lt2.Order = 2;
+            lt2.Type = "type2";
+            lt2.Name = "name2";
+            lt2.Priority = "";
+            lt2.Template = 1;
+            lt2.Number1 = 0;
+            lt2.Number2 = 0;
+            SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt2);
+
+            var aglv = new AutoGenerateListViewModel();
+            var result = SQLiteClass.ExecuteSelectTableAutoGenerate(path, aglv);
+            Debug.Assert(result);
+            Debug.Assert(aglv.Entries.Count == 2);
+        }
+
+        [TestMethod()]
+        public void ExecuteSelectMaxAutoGenerateTest()
+        {
+            string dbfile = "taskaludb44.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListAutoGenerate();
+            lt.Order = 1;
+            lt.Type = "type";
+            lt.Name = "name";
+            lt.Priority = "";
+            lt.Template = 1;
+            lt.Number1 = 0;
+            lt.Number2 = 0;
+            SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
+            var lt2 = new ListAutoGenerate();
+            lt2.Order = 2;
+            lt2.Type = "type2";
+            lt2.Name = "name2";
+            lt2.Priority = "";
+            lt2.Template = 1;
+            lt2.Number1 = 0;
+            lt2.Number2 = 0;
+            SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt2);
+
+            Debug.Assert(SQLiteClass.ExecuteSelectMaxAutoGenerate(path) == 2);
+        }
+
+        [TestMethod()]
+        public void ExecuteUpdateTableAutoGenerateTest()
+        {
+            string dbfile = "taskaludb45.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListAutoGenerate();
+            lt.Order = 1;
+            lt.Type = "type";
+            lt.Name = "name";
+            lt.Priority = "";
+            lt.Template = 1;
+            lt.Number1 = 0;
+            lt.Number2 = 0;
+            SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
+            var lt2 = new ListAutoGenerate();
+            lt2.Order = 2;
+            lt2.Type = "type2";
+            lt2.Name = "name2";
+            lt2.Priority = "";
+            lt2.Template = 1;
+            lt2.Number1 = 0;
+            lt2.Number2 = 0;
+
+            Debug.Assert(SQLiteClass.ExecuteUpdateTableAutoGenerate(path, lt2));
+        }
+
+        [TestMethod()]
+        public void ExecuteDeleteTableAutoGenerateTest()
+        {
+            string dbfile = "taskaludb46.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListAutoGenerate();
+            lt.Order = 1;
+            lt.Type = "type";
+            lt.Name = "name";
+            lt.Priority = "";
+            lt.Template = 1;
+            lt.Number1 = 0;
+            lt.Number2 = 0;
+            SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
+
+            Debug.Assert(SQLiteClass.ExecuteDeleteTableAutoGenerate(path, 1));
         }
     }
 }

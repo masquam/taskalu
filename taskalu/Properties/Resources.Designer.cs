@@ -61,6 +61,33 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   auto generate task に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_AutoGenerate {
+            get {
+                return ResourceManager.GetString("AG_AutoGenerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Edit auto generate tasks に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_AutoGenerateEdit {
+            get {
+                return ResourceManager.GetString("AG_AutoGenerateEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Edit auto generate tasks... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ContextMenu_AG_AutoGenerateEdit {
+            get {
+                return ResourceManager.GetString("ContextMenu_AG_AutoGenerateEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   _Copy に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ContextMenu_Copy {

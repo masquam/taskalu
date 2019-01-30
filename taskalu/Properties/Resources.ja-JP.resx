@@ -313,4 +313,13 @@
   <data name="WH_AlreadyExists" xml:space="preserve">
     <value>テンプレートと同名のファイルがワークフォルダに既に存在します。上書きしますか？</value>
   </data>
+  <data name="AG_AutoGenerate" xml:space="preserve">
+    <value>自動生成タスク</value>
+  </data>
+  <data name="AG_AutoGenerateEdit" xml:space="preserve">
+    <value>自動生成タスクの編集</value>
+  </data>
+  <data name="ContextMenu_AG_AutoGenerateEdit" xml:space="preserve">
+    <value>自動生成タスクの編集...</value>
+  </data>
 </root>

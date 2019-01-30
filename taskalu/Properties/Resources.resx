@@ -310,4 +310,13 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="WH_AlreadyExists" xml:space="preserve">
     <value>The file already exists that has the same filename as the template. Overwrite it?</value>
   </data>
+  <data name="AG_AutoGenerate" xml:space="preserve">
+    <value>auto generate task</value>
+  </data>
+  <data name="AG_AutoGenerateEdit" xml:space="preserve">
+    <value>Edit auto generate tasks</value>
+  </data>
+  <data name="ContextMenu_AG_AutoGenerateEdit" xml:space="preserve">
+    <value>Edit auto generate tasks...</value>
+  </data>
 </root>

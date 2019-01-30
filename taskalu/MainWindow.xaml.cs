@@ -1074,6 +1074,21 @@ namespace Taskalu
                 //
             }
         }
+
+        private void AutoGenerateEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            AutoGenerateEditWindow dlg = new AutoGenerateEditWindow();
+
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            //dlg.descriptionString = tmpDescription;
+
+            if (dlg.ShowDialog() == true)
+            {
+                //
+            }
+        }
     }
 
 }

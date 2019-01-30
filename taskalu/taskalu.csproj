@@ -81,6 +81,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AutoGenerateEditWindow.xaml.cs">
+      <DependentUpon>AutoGenerateEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AutoGenerateListViewModel.cs" />
     <Compile Include="ClipBrd.cs" />
     <Compile Include="DateCalc.cs" />
     <Compile Include="DateDetailsViewModel.cs" />
@@ -106,6 +110,7 @@
     <Compile Include="LanguageSettingsWindow.xaml.cs">
       <DependentUpon>LanguageSettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListAutoGenerate.cs" />
     <Compile Include="ListDateDetails.cs" />
     <Compile Include="ListDateSum.cs" />
     <Compile Include="ListTaskDetails.cs" />
@@ -124,6 +129,7 @@
     </Compile>
     <Compile Include="Ngram.cs" />
     <Compile Include="SQLite.cs" />
+    <Compile Include="SQLite_AutoGenerate.cs" />
     <Compile Include="SQLite_DateDetails.cs" />
     <Compile Include="SQLite_DateSum.cs" />
     <Compile Include="SQLite_Fts.cs" />
@@ -150,6 +156,10 @@
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="WorkHolder.cs" />
+    <Page Include="AutoGenerateEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DateDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

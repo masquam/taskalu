@@ -54,6 +54,10 @@ namespace Taskalu
                 {
                     return false;
                 }
+                if (!CheckTable(dbpath, "autogenerate"))
+                {
+                    return false;
+                }
             }
             else
             {
@@ -152,6 +156,14 @@ namespace Taskalu
                     return false;
                 }
                 if (!ExecuteCreateIndex(dbpath, "template_path", "index_template_path_order", "torder"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateTable(dbpath, "CREATE TABLE autogenerate (id INTEGER NOT NULL PRIMARY KEY, torder INTEGER, type TEXT, name TEXT, priority TEXT,  template INTEGER, number1 INTEGER, number2 INTEGER)"))
+                {
+                    return false;
+                }
+                if (!ExecuteCreateIndex(dbpath, "autogenerate", "index_autogenerate_order", "torder"))
                 {
                     return false;
                 }
