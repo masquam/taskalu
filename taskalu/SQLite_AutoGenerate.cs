@@ -25,8 +25,8 @@ namespace Taskalu
             com.Parameters.Add(sqliteParam(com, "@name", lt.Name));
             com.Parameters.Add(sqliteParam(com, "@priority", lt.Priority));
             com.Parameters.Add(sqliteParamInt64(com, "@template", lt.Template));
+            com.Parameters.Add(sqliteParamInt64(com, "@number0", lt.Number0));
             com.Parameters.Add(sqliteParamInt64(com, "@number1", lt.Number1));
-            com.Parameters.Add(sqliteParamInt64(com, "@number2", lt.Number2));
 
             try
             {
@@ -68,8 +68,8 @@ namespace Taskalu
                     lt.Name = (string)sdr["name"];
                     lt.Priority = (string)sdr["priority"];
                     lt.Template = (Int64)sdr["template"];
+                    lt.Number0 = (Int64)sdr["number0"];
                     lt.Number1 = (Int64)sdr["number1"];
-                    lt.Number2 = (Int64)sdr["number2"];
                     aglv.Entries.Add(lt);
                 }
                 sdr.Close();
@@ -126,8 +126,8 @@ namespace Taskalu
             com.Parameters.Add(sqliteParam(com, "@name", lt.Name));
             com.Parameters.Add(sqliteParam(com, "@priority", lt.Priority));
             com.Parameters.Add(sqliteParamInt64(com, "@template", lt.Template));
-            com.Parameters.Add(sqliteParamInt64(com, "@number1", lt.Number1));
-            com.Parameters.Add(sqliteParamInt64(com, "@number2", lt.Number2));
+            com.Parameters.Add(sqliteParamInt64(com, "@number1", lt.Number0));
+            com.Parameters.Add(sqliteParamInt64(com, "@number2", lt.Number1));
 
             try
             {

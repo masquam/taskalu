@@ -334,4 +334,25 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="AG_Weekday" xml:space="preserve">
     <value>weekday</value>
   </data>
+  <data name="AG_Friday" xml:space="preserve">
+    <value>Friday</value>
+  </data>
+  <data name="AG_Monday" xml:space="preserve">
+    <value>Monday</value>
+  </data>
+  <data name="AG_Saturday" xml:space="preserve">
+    <value>Saturday</value>
+  </data>
+  <data name="AG_Sunday" xml:space="preserve">
+    <value>Sunday</value>
+  </data>
+  <data name="AG_Thursday" xml:space="preserve">
+    <value>Thursday</value>
+  </data>
+  <data name="AG_Tuesday" xml:space="preserve">
+    <value>Tuesday</value>
+  </data>
+  <data name="AG_Wednesday" xml:space="preserve">
+    <value>Wednesday</value>
+  </data>
 </root>

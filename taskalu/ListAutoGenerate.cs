@@ -14,8 +14,8 @@ namespace Taskalu
         public string Name { get; set; }
         public string Priority { get; set; }
         public Int64 Template { get; set; }
+        public Int64 Number0 { get; set; }
         public Int64 Number1 { get; set; }
-        public Int64 Number2 { get; set; }
         public Int64 Due_hour { get; set; }
         public Int64 Due_minute { get; set; }
 

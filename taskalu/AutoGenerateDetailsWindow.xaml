@@ -23,7 +23,7 @@
             </StackPanel>
             <StackPanel x:Name="AutoGenerateType0Panel" Orientation="Horizontal" DockPanel.Dock="Top" >
                 <Label Content="{x:Static properties:Resources.AG_Day}" Width="80"></Label>
-                <ComboBox x:Name="dayBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" RenderTransformOrigin="0.417,1.682">
+                <ComboBox x:Name="dayBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" RenderTransformOrigin="0.417,1.682" SelectionChanged="dayBoxSelectionChanged">
                     <ComboBoxItem Content="01"/>
                     <ComboBoxItem Content="02"/>
                     <ComboBoxItem Content="03"/>
@@ -59,14 +59,14 @@
             </StackPanel>
             <StackPanel x:Name="AutoGenerateType1Panel" Orientation="Horizontal" DockPanel.Dock="Top" Visibility="Collapsed">
                 <Label Content="{x:Static properties:Resources.AG_Weekday}" Width="80"></Label>
-                <ComboBox x:Name="weekdayBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="100" IsReadOnly="True" RenderTransformOrigin="0.417,1.682">
-                    <ComboBoxItem Content="sunday"/>
-                    <ComboBoxItem Content="monday"/>
-                    <ComboBoxItem Content="tue"/>
-                    <ComboBoxItem Content="wed"/>
-                    <ComboBoxItem Content="thu"/>
-                    <ComboBoxItem Content="fri"/>
-                    <ComboBoxItem Content="sat"/>
+                <ComboBox x:Name="weekdayBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="100" IsReadOnly="True" RenderTransformOrigin="0.417,1.682" SelectionChanged="weekdayBoxSelectionChanged">
+                    <ComboBoxItem Content="{x:Static properties:Resources.AG_Sunday}"/>
+                    <ComboBoxItem Content="{x:Static properties:Resources.AG_Monday}"/>
+                    <ComboBoxItem Content="{x:Static properties:Resources.AG_Tuesday}"/>
+                    <ComboBoxItem Content="{x:Static properties:Resources.AG_Wednesday}"/>
+                    <ComboBoxItem Content="{x:Static properties:Resources.AG_Thursday}"/>
+                    <ComboBoxItem Content="{x:Static properties:Resources.AG_Friday}"/>
+                    <ComboBoxItem Content="{x:Static properties:Resources.AG_Saturday}"/>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
@@ -75,7 +75,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                 <Label Content="{x:Static properties:Resources.MW_DueDate}" Width="80"></Label>
-                <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" RenderTransformOrigin="0.417,1.682">
+                <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" RenderTransformOrigin="0.417,1.682" >
                     <ComboBoxItem Content="00"/>
                     <ComboBoxItem Content="01"/>
                     <ComboBoxItem Content="02"/>
@@ -102,7 +102,7 @@
                     <ComboBoxItem Content="23"/>
                 </ComboBox>
                 <Label Content=":" HorizontalAlignment="Left" Height="27" Margin="0,0,0,0" Width="19" VerticalAlignment="Top" RenderTransformOrigin="0.211,1.889"/>
-                <ComboBox x:Name="minuteBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True">
+                <ComboBox x:Name="minuteBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" >
                     <ComboBoxItem Content="00"/>
                     <ComboBoxItem Content="05"/>
                     <ComboBoxItem Content="10"/>
@@ -119,7 +119,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"  DockPanel.Dock="Top">
                 <Label Content="{x:Static properties:Resources.MW_Priority}" HorizontalAlignment="Left" Height="27" Margin="0,0,0,0" Width="79" VerticalAlignment="Top"/>
-                <ComboBox x:Name="priorityBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="92" Foreground="#FF9B9B00">
+                <ComboBox x:Name="priorityBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="92" Foreground="#FF9B9B00" >
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;&#x272e;"/>
                     <ComboBoxItem Content="&#x272e;&#x272e;&#x272e;"/>

@@ -88,6 +88,60 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   Friday に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Friday {
+            get {
+                return ResourceManager.GetString("AG_Friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Monday に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Monday {
+            get {
+                return ResourceManager.GetString("AG_Monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Saturday に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Saturday {
+            get {
+                return ResourceManager.GetString("AG_Saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sunday に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Sunday {
+            get {
+                return ResourceManager.GetString("AG_Sunday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Thursday に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Thursday {
+            get {
+                return ResourceManager.GetString("AG_Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Tuesday に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Tuesday {
+            get {
+                return ResourceManager.GetString("AG_Tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   type に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string AG_Type {
@@ -111,6 +165,15 @@ namespace Taskalu.Properties {
         public static string AG_Type1 {
             get {
                 return ResourceManager.GetString("AG_Type1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wednesday に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Wednesday {
+            get {
+                return ResourceManager.GetString("AG_Wednesday", resourceCulture);
             }
         }
         

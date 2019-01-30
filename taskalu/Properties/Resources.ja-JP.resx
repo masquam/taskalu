@@ -337,4 +337,25 @@
   <data name="AG_Weekday" xml:space="preserve">
     <value>曜日</value>
   </data>
+  <data name="AG_Friday" xml:space="preserve">
+    <value>金曜日</value>
+  </data>
+  <data name="AG_Monday" xml:space="preserve">
+    <value>月曜日</value>
+  </data>
+  <data name="AG_Saturday" xml:space="preserve">
+    <value>土曜日</value>
+  </data>
+  <data name="AG_Sunday" xml:space="preserve">
+    <value>日曜日</value>
+  </data>
+  <data name="AG_Thursday" xml:space="preserve">
+    <value>木曜日</value>
+  </data>
+  <data name="AG_Tuesday" xml:space="preserve">
+    <value>火曜日</value>
+  </data>
+  <data name="AG_Wednesday" xml:space="preserve">
+    <value>水曜日</value>
+  </data>
 </root>

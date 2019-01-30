@@ -35,7 +35,7 @@ namespace Taskalu
                 case (long)ListAutoGenerate.TypeName.A_Day_Of_Every_Month:
                     AutoGenerateType1Panel.Visibility = Visibility.Collapsed;
                     AutoGenerateType0Panel.Visibility = Visibility.Visible;
-                    dayBox.SelectedIndex = (int)theAutoGenerate.Number1 - 1;
+                    dayBox.SelectedIndex = (int)theAutoGenerate.Number0 - 1;
                     break;
                 case (long)ListAutoGenerate.TypeName.A_Weekday_In_Every_Week:
                     AutoGenerateType0Panel.Visibility = Visibility.Collapsed;
@@ -78,7 +78,7 @@ namespace Taskalu
                     {
                         AutoGenerateType1Panel.Visibility = Visibility.Collapsed;
                         AutoGenerateType0Panel.Visibility = Visibility.Visible;
-                        dayBox.SelectedIndex = (int)theAutoGenerate.Number1 - 1;
+                        dayBox.SelectedIndex = (int)theAutoGenerate.Number0 - 1;
                     }
                     break;
                 case (int)ListAutoGenerate.TypeName.A_Weekday_In_Every_Week:
@@ -91,5 +91,17 @@ namespace Taskalu
                     break;
             }
         }
+
+        private void dayBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            theAutoGenerate.Number0 = dayBox.SelectedIndex + 1;
+        }
+
+        private void weekdayBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            theAutoGenerate.Number1 = weekdayBox.SelectedIndex;
+        }
+
+
     }
 }

@@ -75,8 +75,8 @@ namespace Taskalu
                 dlg.theAutoGenerate.Name = AutoGenerateListViewModel.aglv.Entries[ind].Name;
                 dlg.theAutoGenerate.Priority = AutoGenerateListViewModel.aglv.Entries[ind].Priority;
                 dlg.theAutoGenerate.Template = AutoGenerateListViewModel.aglv.Entries[ind].Template;
+                dlg.theAutoGenerate.Number0 = AutoGenerateListViewModel.aglv.Entries[ind].Number0;
                 dlg.theAutoGenerate.Number1 = AutoGenerateListViewModel.aglv.Entries[ind].Number1;
-                dlg.theAutoGenerate.Number2 = AutoGenerateListViewModel.aglv.Entries[ind].Number2;
                 dlg.theAutoGenerate.Due_hour = AutoGenerateListViewModel.aglv.Entries[ind].Due_hour;
                 dlg.theAutoGenerate.Due_minute = AutoGenerateListViewModel.aglv.Entries[ind].Due_minute;
 
@@ -120,8 +120,8 @@ namespace Taskalu
             dlg.theAutoGenerate.Name = "Auto Generated Task";
             dlg.theAutoGenerate.Priority = "\u272e\u272e\u272e\u272e\u272e";
             dlg.theAutoGenerate.Template = 0;
-            dlg.theAutoGenerate.Number1 = 1;
-            dlg.theAutoGenerate.Number2 = 0;
+            dlg.theAutoGenerate.Number0 = 1;
+            dlg.theAutoGenerate.Number1 = 0;
             dlg.theAutoGenerate.Due_hour = 17;
             dlg.theAutoGenerate.Due_minute = 0;
 
