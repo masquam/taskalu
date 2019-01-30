@@ -322,4 +322,19 @@
   <data name="ContextMenu_AG_AutoGenerateEdit" xml:space="preserve">
     <value>自動生成タスクの編集...</value>
   </data>
+  <data name="AG_Day" xml:space="preserve">
+    <value>日付</value>
+  </data>
+  <data name="AG_Type" xml:space="preserve">
+    <value>タイプ</value>
+  </data>
+  <data name="AG_Type1" xml:space="preserve">
+    <value>毎月の特定の日</value>
+  </data>
+  <data name="AG_Type2" xml:space="preserve">
+    <value>毎週の特定の曜日</value>
+  </data>
+  <data name="AG_Weekday" xml:space="preserve">
+    <value>曜日</value>
+  </data>
 </root>

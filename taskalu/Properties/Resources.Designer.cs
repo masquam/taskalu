@@ -79,6 +79,51 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   day に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Day {
+            get {
+                return ResourceManager.GetString("AG_Day", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   type に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Type {
+            get {
+                return ResourceManager.GetString("AG_Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   A day of every month に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Type1 {
+            get {
+                return ResourceManager.GetString("AG_Type1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   A weekday of every week に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Type2 {
+            get {
+                return ResourceManager.GetString("AG_Type2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   weekday に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string AG_Weekday {
+            get {
+                return ResourceManager.GetString("AG_Weekday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Edit auto generate tasks... に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ContextMenu_AG_AutoGenerateEdit {

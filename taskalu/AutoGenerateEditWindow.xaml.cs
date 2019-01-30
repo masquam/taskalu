@@ -77,6 +77,8 @@ namespace Taskalu
                 dlg.theAutoGenerate.Template = AutoGenerateListViewModel.aglv.Entries[ind].Template;
                 dlg.theAutoGenerate.Number1 = AutoGenerateListViewModel.aglv.Entries[ind].Number1;
                 dlg.theAutoGenerate.Number2 = AutoGenerateListViewModel.aglv.Entries[ind].Number2;
+                dlg.theAutoGenerate.Due_hour = AutoGenerateListViewModel.aglv.Entries[ind].Due_hour;
+                dlg.theAutoGenerate.Due_minute = AutoGenerateListViewModel.aglv.Entries[ind].Due_minute;
 
                 if (dlg.ShowDialog() == true)
                 {
@@ -114,12 +116,14 @@ namespace Taskalu
 
             dlg.theAutoGenerate.Id = 0;
             dlg.theAutoGenerate.Order = SQLiteClass.ExecuteSelectMaxAutoGenerate(SQLiteClass.dbpath) + 1;
-            dlg.theAutoGenerate.Type = "";
-            dlg.theAutoGenerate.Name = "";
-            dlg.theAutoGenerate.Priority = "";
+            dlg.theAutoGenerate.Type = (Int64)ListAutoGenerate.TypeName.A_Day_Of_Every_Month;
+            dlg.theAutoGenerate.Name = "Auto Geneerated Task";
+            dlg.theAutoGenerate.Priority = "\u272e\u272e\u272e\u272e\u272e";
             dlg.theAutoGenerate.Template = 0;
             dlg.theAutoGenerate.Number1 = 0;
             dlg.theAutoGenerate.Number2 = 0;
+            dlg.theAutoGenerate.Due_hour = 17;
+            dlg.theAutoGenerate.Due_minute = 0;
 
             if (dlg.ShowDialog() == true)
             {

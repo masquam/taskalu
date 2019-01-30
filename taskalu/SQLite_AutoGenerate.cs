@@ -21,7 +21,7 @@ namespace Taskalu
 
             SQLiteCommand com = new SQLiteCommand("INSERT INTO autogenerate (torder, type, name, priority, template, number1, number2) VALUES (@torder, @type, @name, @priority, @template, @number1, @number2)", con);
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
-            com.Parameters.Add(sqliteParam(com, "@type", lt.Type));
+            com.Parameters.Add(sqliteParamInt64(com, "@type", lt.Type));
             com.Parameters.Add(sqliteParam(com, "@name", lt.Name));
             com.Parameters.Add(sqliteParam(com, "@priority", lt.Priority));
             com.Parameters.Add(sqliteParamInt64(com, "@template", lt.Template));
@@ -64,7 +64,7 @@ namespace Taskalu
                     ListAutoGenerate lt = new ListAutoGenerate();
                     lt.Id = (Int64)sdr["id"];
                     lt.Order = (Int64)sdr["torder"];
-                    lt.Type = (string)sdr["type"];
+                    lt.Type = (Int64)sdr["type"];
                     lt.Name = (string)sdr["name"];
                     lt.Priority = (string)sdr["priority"];
                     lt.Template = (Int64)sdr["template"];
@@ -122,7 +122,7 @@ namespace Taskalu
             SQLiteCommand com = new SQLiteCommand("UPDATE autogenerate set torder=@torder, type=@type, name=@name, priority=@priority, template=@template, number1=@number1, number2=@number2 where id=@id", con);
             com.Parameters.Add(sqliteParamInt64(com, "@id", lt.Id));
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
-            com.Parameters.Add(sqliteParam(com, "@type", lt.Type));
+            com.Parameters.Add(sqliteParamInt64(com, "@type", lt.Type));
             com.Parameters.Add(sqliteParam(com, "@name", lt.Name));
             com.Parameters.Add(sqliteParam(com, "@priority", lt.Priority));
             com.Parameters.Add(sqliteParamInt64(com, "@template", lt.Template));

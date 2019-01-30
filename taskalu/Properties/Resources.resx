@@ -319,4 +319,19 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="ContextMenu_AG_AutoGenerateEdit" xml:space="preserve">
     <value>Edit auto generate tasks...</value>
   </data>
+  <data name="AG_Day" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="AG_Type" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="AG_Type1" xml:space="preserve">
+    <value>A day of every month</value>
+  </data>
+  <data name="AG_Type2" xml:space="preserve">
+    <value>A weekday of every week</value>
+  </data>
+  <data name="AG_Weekday" xml:space="preserve">
+    <value>weekday</value>
+  </data>
 </root>

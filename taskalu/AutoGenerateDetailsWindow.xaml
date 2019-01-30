@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:Taskalu.Properties"
+        d:DataContext="{d:DesignInstance {x:Type local:TemplateListViewModel}}" 
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
         Title="taskalu" Height="280" MinHeight="280" MaxHeight="280" Width="500" MinWidth="500" MaxWidth="752" Loaded="AutoGenerateLoaded">
@@ -14,12 +15,14 @@
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.AG_AutoGenerateEdit}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel Orientation="Horizontal"  DockPanel.Dock="Top">
-                <Label Content="Type" HorizontalAlignment="Left" Height="27" Margin="0,0,0,0" Width="79" VerticalAlignment="Top"/>
-                <ComboBox x:Name="AutoGenerateTypeBox" ItemsSource="{Binding Entries}" DisplayMemberPath="Name"  SelectedIndex="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="400">
+                <Label Content="{x:Static properties:Resources.AG_Type}" HorizontalAlignment="Left" Height="27" Margin="0,0,0,0" Width="79" VerticalAlignment="Top"/>
+                <ComboBox x:Name="AutoGenerateTypeBox"  SelectedIndex="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="400" >
+                    <ComboBoxItem Content="{x:Static properties:Resources.AG_Type1}"/>
+                    <ComboBoxItem Content="{x:Static properties:Resources.AG_Type2}"/>
                 </ComboBox>
             </StackPanel>
             <StackPanel x:Name="AutoGenerateType1Panel" Orientation="Horizontal" DockPanel.Dock="Top" >
-                <Label Content="day" Width="80"></Label>
+                <Label Content="{x:Static properties:Resources.AG_Day}" Width="80"></Label>
                 <ComboBox x:Name="dayBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" RenderTransformOrigin="0.417,1.682">
                     <ComboBoxItem Content="00"/>
                     <ComboBoxItem Content="01"/>
@@ -56,7 +59,7 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel x:Name="AutoGenerateType2Panel" Orientation="Horizontal" DockPanel.Dock="Top" Visibility="Collapsed">
-                <Label Content="day" Width="80"></Label>
+                <Label Content="{x:Static properties:Resources.AG_Weekday}" Width="80"></Label>
                 <ComboBox x:Name="weekdayBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" RenderTransformOrigin="0.417,1.682">
                     <ComboBoxItem Content="sunday"/>
                     <ComboBoxItem Content="monday"/>
@@ -69,10 +72,10 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                 <Label Content="{x:Static properties:Resources.MW_Title}" Width="80"></Label>
-                <TextBox x:Name="templateName" Width="400" MaxLength="32767" Margin="4"></TextBox>
+                <TextBox x:Name="templateName" Width="400" MaxLength="32767" Margin="0"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Label Content="due(hour:minute)" Width="80"></Label>
+                <Label Content="{x:Static properties:Resources.MW_DueDate}" Width="80"></Label>
                 <ComboBox x:Name="hourBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" RenderTransformOrigin="0.417,1.682">
                     <ComboBoxItem Content="00"/>
                     <ComboBoxItem Content="01"/>
@@ -128,7 +131,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal"  DockPanel.Dock="Top">
                 <Label Content="{x:Static properties:Resources.TE_Template}" HorizontalAlignment="Left" Height="27" Margin="0,0,0,0" Width="79" VerticalAlignment="Top"/>
-                <ComboBox x:Name="templateBox" ItemsSource="{Binding Entries}" DisplayMemberPath="Name"  SelectedIndex="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="400">
+                <ComboBox x:Name="templateBox" ItemsSource="{Binding Entries}" DisplayMemberPath="Name" SelectedIndex="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="400">
                 </ComboBox>
             </StackPanel>
             <StackPanel x:Name="AutoGenerateBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
