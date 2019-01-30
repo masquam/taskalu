@@ -328,10 +328,10 @@
   <data name="AG_Type" xml:space="preserve">
     <value>タイプ</value>
   </data>
-  <data name="AG_Type1" xml:space="preserve">
+  <data name="AG_Type0" xml:space="preserve">
     <value>毎月の特定の日</value>
   </data>
-  <data name="AG_Type2" xml:space="preserve">
+  <data name="AG_Type1" xml:space="preserve">
     <value>毎週の特定の曜日</value>
   </data>
   <data name="AG_Weekday" xml:space="preserve">

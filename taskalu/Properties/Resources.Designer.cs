@@ -99,18 +99,18 @@ namespace Taskalu.Properties {
         /// <summary>
         ///   A day of every month に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string AG_Type1 {
+        public static string AG_Type0 {
             get {
-                return ResourceManager.GetString("AG_Type1", resourceCulture);
+                return ResourceManager.GetString("AG_Type0", resourceCulture);
             }
         }
         
         /// <summary>
         ///   A weekday of every week に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        public static string AG_Type2 {
+        public static string AG_Type1 {
             get {
-                return ResourceManager.GetString("AG_Type2", resourceCulture);
+                return ResourceManager.GetString("AG_Type1", resourceCulture);
             }
         }
         

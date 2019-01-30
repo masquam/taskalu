@@ -120,7 +120,7 @@ namespace Taskalu
             dlg.theAutoGenerate.Name = "Auto Geneerated Task";
             dlg.theAutoGenerate.Priority = "\u272e\u272e\u272e\u272e\u272e";
             dlg.theAutoGenerate.Template = 0;
-            dlg.theAutoGenerate.Number1 = 0;
+            dlg.theAutoGenerate.Number1 = 1;
             dlg.theAutoGenerate.Number2 = 0;
             dlg.theAutoGenerate.Due_hour = 17;
             dlg.theAutoGenerate.Due_minute = 0;

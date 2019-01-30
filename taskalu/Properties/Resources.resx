@@ -325,10 +325,10 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="AG_Type" xml:space="preserve">
     <value>type</value>
   </data>
-  <data name="AG_Type1" xml:space="preserve">
+  <data name="AG_Type0" xml:space="preserve">
     <value>A day of every month</value>
   </data>
-  <data name="AG_Type2" xml:space="preserve">
+  <data name="AG_Type1" xml:space="preserve">
     <value>A weekday of every week</value>
   </data>
   <data name="AG_Weekday" xml:space="preserve">
