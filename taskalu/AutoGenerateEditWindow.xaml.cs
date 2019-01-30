@@ -101,8 +101,6 @@ namespace Taskalu
                     // update is also executed
                     saveOrderOfAutoGelerate(SQLiteClass.dbpath, AutoGenerateListViewModel.aglv);
 
-                    //SQLiteClass.ExecuteUpdateTableAutoGenerate(SQLiteClass.dbpath, dlg.theAutoGenerate);
-
                     AutoGenerateListViewModel.aglv.Entries.Clear();
                     SQLiteClass.ExecuteSelectTableAutoGenerate(SQLiteClass.dbpath, AutoGenerateListViewModel.aglv);
                 }

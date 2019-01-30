@@ -79,8 +79,12 @@ namespace Taskalu
 
                 if (dlg.ShowDialog() == true)
                 {
-                    SQLiteClass.ExecuteUpdateTableTemplate(SQLiteClass.dbpath, dlg.theTemplate);
+                    TemplateListViewModel.tlv.Entries[ind].Id = dlg.theTemplate.Id;
+                    TemplateListViewModel.tlv.Entries[ind].Order = dlg.theTemplate.Order;
+                    TemplateListViewModel.tlv.Entries[ind].Name = dlg.theTemplate.Name;
+                    TemplateListViewModel.tlv.Entries[ind].Template = dlg.theTemplate.Template;
 
+                    // update is also executed
                     saveOrderOfTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
 
                     TemplateListViewModel.tlv.Entries.Clear();
