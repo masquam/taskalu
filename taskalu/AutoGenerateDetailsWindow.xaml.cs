@@ -28,46 +28,44 @@ namespace Taskalu
 
         private void AutoGenerateLoaded(object sender, RoutedEventArgs e)
         {
-            if (theAutoGenerate.Id == 0)
+            AutoGenerateTypeBox.SelectedIndex = (int)theAutoGenerate.Type;
+            switch (theAutoGenerate.Type)
             {
-                AutoGenerateTypeBox.SelectedIndex = (int)theAutoGenerate.Type;
-                switch (theAutoGenerate.Type)
-                {
-                    case (long)ListAutoGenerate.TypeName.A_Day_Of_Every_Month:
-                        AutoGenerateType1Panel.Visibility = Visibility.Collapsed;
-                        AutoGenerateType0Panel.Visibility = Visibility.Visible;
-                        dayBox.SelectedIndex = (int)theAutoGenerate.Number0 - 1;
-                        break;
-                    case (long)ListAutoGenerate.TypeName.A_Weekday_In_Every_Week:
-                        AutoGenerateType0Panel.Visibility = Visibility.Collapsed;
-                        AutoGenerateType1Panel.Visibility = Visibility.Visible;
-                        weekdayBox.SelectedIndex = (int)theAutoGenerate.Number1;
-                        break;
-                }
-                AutoGenerateName.Text = theAutoGenerate.Name;
-                hourBox.SelectedIndex = (int)theAutoGenerate.Due_hour;
-                minuteBox.SelectedIndex = (int)theAutoGenerate.Due_minute / 5;
-
-                int priorityLen = theAutoGenerate.Priority.Length;
-                if (priorityLen > 5) priorityLen = 5;
-                priorityBox.SelectedIndex = 5 - priorityLen;
-
-                // add combobox tempplate item
-                templateBox.DataContext = TemplateListViewModel.tlv;
-                TemplateListViewModel.tlv.Entries.Clear();
-                var noneTemplate = new ListTemplate();
-                noneTemplate.Id = 0;
-                noneTemplate.Name = Properties.Resources.NW_None;
-                noneTemplate.Order = -1;
-                noneTemplate.Template = "";
-                TemplateListViewModel.tlv.Entries.Add(noneTemplate);
-
-                SQLiteClass.ExecuteSelectTableTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
+                case (long)ListAutoGenerate.TypeName.A_Day_Of_Every_Month:
+                    AutoGenerateType1Panel.Visibility = Visibility.Collapsed;
+                    AutoGenerateType0Panel.Visibility = Visibility.Visible;
+                    dayBox.SelectedIndex = (int)theAutoGenerate.Number0 - 1;
+                    break;
+                case (long)ListAutoGenerate.TypeName.A_Weekday_In_Every_Week:
+                    AutoGenerateType0Panel.Visibility = Visibility.Collapsed;
+                    AutoGenerateType1Panel.Visibility = Visibility.Visible;
+                    weekdayBox.SelectedIndex = (int)theAutoGenerate.Number1;
+                    break;
             }
-            else
-            {
-                // TODO
-            }
+            AutoGenerateName.Text = theAutoGenerate.Name;
+            hourBox.SelectedIndex = (int)theAutoGenerate.Due_hour;
+            minuteBox.SelectedIndex = (int)theAutoGenerate.Due_minute / 5;
+
+            int priorityLen = theAutoGenerate.Priority.Length;
+            if (priorityLen > 5) priorityLen = 5;
+            priorityBox.SelectedIndex = 5 - priorityLen;
+
+            // add combobox tempplate item
+            templateBox.DataContext = TemplateListViewModel.tlv;
+            TemplateListViewModel.tlv.Entries.Clear();
+            var noneTemplate = new ListTemplate();
+            noneTemplate.Id = 0;
+            noneTemplate.Name = Properties.Resources.NW_None;
+            noneTemplate.Order = -1;
+            noneTemplate.Template = "";
+            TemplateListViewModel.tlv.Entries.Add(noneTemplate);
+
+            SQLiteClass.ExecuteSelectTableTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);                                   
+
+            // reflect the ID of template
+            templateBox.SelectedIndex = 
+                (int)SQLiteClass.ExecuteSelectTemplateOrderFromID(
+                    SQLiteClass.dbpath, theAutoGenerate.Template) + 1;
         }
 
         private void AutoGenerateTypeBoxSelectionChanged(object sender, SelectionChangedEventArgs e)

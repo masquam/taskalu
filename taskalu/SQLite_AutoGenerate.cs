@@ -19,7 +19,7 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO autogenerate (torder, type, name, priority, template, number0, number1) VALUES (@torder, @type, @name, @priority, @template, @number0, @number1)", con);
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO autogenerate (torder, type, name, priority, template, number0, number1, due_hour, due_minute) VALUES (@torder, @type, @name, @priority, @template, @number0, @number1, @due_hour, @due_minute)", con);
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
             com.Parameters.Add(sqliteParamInt64(com, "@type", lt.Type));
             com.Parameters.Add(sqliteParam(com, "@name", lt.Name));
@@ -27,6 +27,8 @@ namespace Taskalu
             com.Parameters.Add(sqliteParamInt64(com, "@template", lt.Template));
             com.Parameters.Add(sqliteParamInt64(com, "@number0", lt.Number0));
             com.Parameters.Add(sqliteParamInt64(com, "@number1", lt.Number1));
+            com.Parameters.Add(sqliteParamInt64(com, "@due_hour", lt.Due_hour));
+            com.Parameters.Add(sqliteParamInt64(com, "@due_minute", lt.Due_minute));
 
             try
             {
@@ -68,8 +70,10 @@ namespace Taskalu
                     lt.Name = (string)sdr["name"];
                     lt.Priority = (string)sdr["priority"];
                     lt.Template = (Int64)sdr["template"];
-                    lt.Number0 = (Int64)sdr["number0"];
+                    lt.Number0 = (Int64)sdr["number0"];                       
                     lt.Number1 = (Int64)sdr["number1"];
+                    lt.Due_hour = (Int64)sdr["due_hour"];
+                    lt.Due_minute = (Int64)sdr["due_minute"];
                     aglv.Entries.Add(lt);
                 }
                 sdr.Close();
@@ -119,7 +123,7 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("UPDATE autogenerate set torder=@torder, type=@type, name=@name, priority=@priority, template=@template, number0=@number0, number1=@number1 where id=@id", con);
+            SQLiteCommand com = new SQLiteCommand("UPDATE autogenerate set torder=@torder, type=@type, name=@name, priority=@priority, template=@template, number0=@number0, number1=@number1, due_hour=@due_hour, due_minute=@due_minute where id=@id", con);
             com.Parameters.Add(sqliteParamInt64(com, "@id", lt.Id));
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
             com.Parameters.Add(sqliteParamInt64(com, "@type", lt.Type));
@@ -128,6 +132,8 @@ namespace Taskalu
             com.Parameters.Add(sqliteParamInt64(com, "@template", lt.Template));
             com.Parameters.Add(sqliteParamInt64(com, "@number0", lt.Number0));
             com.Parameters.Add(sqliteParamInt64(com, "@number1", lt.Number1));
+            com.Parameters.Add(sqliteParamInt64(com, "@due_hour", lt.Due_hour));
+            com.Parameters.Add(sqliteParamInt64(com, "@due_minute", lt.Due_minute));
 
             try
             {

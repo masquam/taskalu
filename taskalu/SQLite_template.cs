@@ -159,5 +159,29 @@ namespace Taskalu
             return ret;
         }
 
+        public static Int64 ExecuteSelectTemplateOrderFromID(string dbpath, Int64 id)
+        {
+            Int64 torder = 0;
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand("SELECT torder FROM template WHERE id = @id", con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
+
+            try
+            {
+                torder = (Int64)com.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                torder = -1;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return torder;
+        }
     }
 }

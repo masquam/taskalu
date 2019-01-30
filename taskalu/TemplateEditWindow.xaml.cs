@@ -81,6 +81,8 @@ namespace Taskalu
                 {
                     SQLiteClass.ExecuteUpdateTableTemplate(SQLiteClass.dbpath, dlg.theTemplate);
 
+                    saveOrderOfTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
+
                     TemplateListViewModel.tlv.Entries.Clear();
                     SQLiteClass.ExecuteSelectTableTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
                 }

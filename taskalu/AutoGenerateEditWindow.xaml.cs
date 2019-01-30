@@ -87,7 +87,21 @@ namespace Taskalu
 
                 if (dlg.ShowDialog() == true)
                 {
-                    SQLiteClass.ExecuteUpdateTableAutoGenerate(SQLiteClass.dbpath, dlg.theAutoGenerate);
+                    AutoGenerateListViewModel.aglv.Entries[ind].Id = dlg.theAutoGenerate.Id;
+                    AutoGenerateListViewModel.aglv.Entries[ind].Order = dlg.theAutoGenerate.Order;
+                    AutoGenerateListViewModel.aglv.Entries[ind].Type = dlg.theAutoGenerate.Type;
+                    AutoGenerateListViewModel.aglv.Entries[ind].Name = dlg.theAutoGenerate.Name;
+                    AutoGenerateListViewModel.aglv.Entries[ind].Priority = dlg.theAutoGenerate.Priority;
+                    AutoGenerateListViewModel.aglv.Entries[ind].Template = dlg.theAutoGenerate.Template;
+                    AutoGenerateListViewModel.aglv.Entries[ind].Number0 = dlg.theAutoGenerate.Number0;
+                    AutoGenerateListViewModel.aglv.Entries[ind].Number1 = dlg.theAutoGenerate.Number1;
+                    AutoGenerateListViewModel.aglv.Entries[ind].Due_hour = dlg.theAutoGenerate.Due_hour;
+                    AutoGenerateListViewModel.aglv.Entries[ind].Due_minute = dlg.theAutoGenerate.Due_minute;
+
+                    // update is also executed
+                    saveOrderOfAutoGelerate(SQLiteClass.dbpath, AutoGenerateListViewModel.aglv);
+
+                    //SQLiteClass.ExecuteUpdateTableAutoGenerate(SQLiteClass.dbpath, dlg.theAutoGenerate);
 
                     AutoGenerateListViewModel.aglv.Entries.Clear();
                     SQLiteClass.ExecuteSelectTableAutoGenerate(SQLiteClass.dbpath, AutoGenerateListViewModel.aglv);
@@ -135,7 +149,7 @@ namespace Taskalu
                 saveOrderOfAutoGelerate(SQLiteClass.dbpath, AutoGenerateListViewModel.aglv);
 
                 SQLiteClass.ExecuteInsertTableAutoGenerate(SQLiteClass.dbpath, dlg.theAutoGenerate);
-                //
+                
                 AutoGenerateListViewModel.aglv.Entries.Clear();
                 SQLiteClass.ExecuteSelectTableAutoGenerate(SQLiteClass.dbpath, AutoGenerateListViewModel.aglv);
             }
