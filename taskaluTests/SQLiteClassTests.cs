@@ -494,7 +494,7 @@ namespace Taskalu.Tests
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
 
-            SQLiteClass.TaskDetailsMoreSize = 20;
+            SQLiteClass.DateSumMoreSize = 20;
             for (int i = 1; i <= 21; i++)
             {
                 InsertTableTaskList(dbfile, "hoge", i); // tasklist id = 1
@@ -514,7 +514,7 @@ namespace Taskalu.Tests
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
 
-            SQLiteClass.TaskDetailsMoreSize = 20;
+            SQLiteClass.DateSumMoreSize = 20;
             SQLiteClass.DateSumMoreCount = 20;
             for (int i = 1; i <= 41; i++)
             {
@@ -534,7 +534,7 @@ namespace Taskalu.Tests
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
 
-            SQLiteClass.TaskDetailsMoreSize = 20;
+            SQLiteClass.DateDetailsMoreSize = 20;
             for (int i = 1; i <= 21; i++)
             {
                 InsertTableTaskList(dbfile, "hoge", i); // tasklist id = 1
@@ -553,8 +553,8 @@ namespace Taskalu.Tests
             string path = Path.GetTempPath() + "\\" + dbfile;
             TouchTestDB(dbfile);
 
-            SQLiteClass.TaskDetailsMoreSize = 20;
-            SQLiteClass.DateSumMoreCount = 20;
+            SQLiteClass.DateDetailsMoreSize = 20;
+            SQLiteClass.DateDetailsMoreCount = 20;
             for (int i = 1; i <= 41; i++)
             {
                 InsertTableTaskList(dbfile, "hoge", i); // tasklist id = 1
@@ -822,12 +822,12 @@ namespace Taskalu.Tests
 
             var lt = new ListAutoGenerate();
             lt.Order = 1;
-            lt.Type = "type";
+            lt.Type = 0;
             lt.Name = "name";
             lt.Priority = "";
             lt.Template = 1;
+            lt.Number0 = 0;
             lt.Number1 = 0;
-            lt.Number2 = 0;
 
             Debug.Assert(SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt));
         }
@@ -841,21 +841,21 @@ namespace Taskalu.Tests
 
             var lt = new ListAutoGenerate();
             lt.Order = 1;
-            lt.Type = "type";
+            lt.Type = 0;
             lt.Name = "name";
             lt.Priority = "";
             lt.Template = 1;
+            lt.Number0 = 0;
             lt.Number1 = 0;
-            lt.Number2 = 0;
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
             var lt2 = new ListAutoGenerate();
             lt2.Order = 2;
-            lt2.Type = "type2";
+            lt2.Type = 1;
             lt2.Name = "name2";
             lt2.Priority = "";
             lt2.Template = 1;
+            lt2.Number0 = 0;
             lt2.Number1 = 0;
-            lt2.Number2 = 0;
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt2);
 
             var aglv = new AutoGenerateListViewModel();
@@ -873,21 +873,21 @@ namespace Taskalu.Tests
 
             var lt = new ListAutoGenerate();
             lt.Order = 1;
-            lt.Type = "type";
+            lt.Type = 0;
             lt.Name = "name";
             lt.Priority = "";
             lt.Template = 1;
+            lt.Number0 = 0;
             lt.Number1 = 0;
-            lt.Number2 = 0;
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
             var lt2 = new ListAutoGenerate();
             lt2.Order = 2;
-            lt2.Type = "type2";
+            lt2.Type = 1;
             lt2.Name = "name2";
             lt2.Priority = "";
             lt2.Template = 1;
+            lt2.Number0 = 0;
             lt2.Number1 = 0;
-            lt2.Number2 = 0;
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt2);
 
             Debug.Assert(SQLiteClass.ExecuteSelectMaxAutoGenerate(path) == 2);
@@ -902,21 +902,21 @@ namespace Taskalu.Tests
 
             var lt = new ListAutoGenerate();
             lt.Order = 1;
-            lt.Type = "type";
+            lt.Type = 0;
             lt.Name = "name";
             lt.Priority = "";
             lt.Template = 1;
+            lt.Number0 = 0;
             lt.Number1 = 0;
-            lt.Number2 = 0;
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
             var lt2 = new ListAutoGenerate();
             lt2.Order = 2;
-            lt2.Type = "type2";
+            lt2.Type = 1;
             lt2.Name = "name2";
             lt2.Priority = "";
             lt2.Template = 1;
+            lt2.Number0 = 0;
             lt2.Number1 = 0;
-            lt2.Number2 = 0;
 
             Debug.Assert(SQLiteClass.ExecuteUpdateTableAutoGenerate(path, lt2));
         }
@@ -930,12 +930,12 @@ namespace Taskalu.Tests
 
             var lt = new ListAutoGenerate();
             lt.Order = 1;
-            lt.Type = "type";
+            lt.Type = 0;
             lt.Name = "name";
             lt.Priority = "";
             lt.Template = 1;
+            lt.Number0 = 0;
             lt.Number1 = 0;
-            lt.Number2 = 0;
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
 
             Debug.Assert(SQLiteClass.ExecuteDeleteTableAutoGenerate(path, 1));

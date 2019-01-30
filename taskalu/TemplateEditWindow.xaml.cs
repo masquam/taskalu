@@ -31,14 +31,19 @@ namespace Taskalu
 
         private void ButtonTemplateEditOk_Click(object sender, RoutedEventArgs e)
         {
+            saveOrderOfTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
+            this.DialogResult = true;
+        }
+
+        private void saveOrderOfTemplate(string dbpath, TemplateListViewModel tlv)
+        {
             Int64 newOrder = 0;
-            foreach (ListTemplate entry in TemplateListViewModel.tlv.Entries)
+            foreach (ListTemplate entry in tlv.Entries)
             {
                 entry.Order = newOrder;
-                SQLiteClass.ExecuteUpdateTableTemplate(SQLiteClass.dbpath, entry);
+                SQLiteClass.ExecuteUpdateTableTemplate(dbpath, entry);
                 newOrder++;
             }
-            this.DialogResult = true;
         }
 
         private void TriangleButton_Template_Up_Click(object sender, RoutedEventArgs e)
@@ -115,8 +120,10 @@ namespace Taskalu
 
             if (dlg.ShowDialog() == true)
             {
+                saveOrderOfTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
+
                 SQLiteClass.ExecuteInsertTableTemplate(SQLiteClass.dbpath, dlg.theTemplate);
-                //
+                
                 TemplateListViewModel.tlv.Entries.Clear();
                 SQLiteClass.ExecuteSelectTableTemplate(SQLiteClass.dbpath, TemplateListViewModel.tlv);
             }

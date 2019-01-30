@@ -32,14 +32,19 @@ namespace Taskalu
 
         private void AutoGenerateEditOk_Click(object sender, RoutedEventArgs e)
         {
+            saveOrderOfAutoGelerate(SQLiteClass.dbpath, AutoGenerateListViewModel.aglv);
+            this.DialogResult = true;
+        }
+
+        private void saveOrderOfAutoGelerate(string dbpath, AutoGenerateListViewModel aglv)
+        {
             Int64 newOrder = 0;
-            foreach (ListAutoGenerate entry in AutoGenerateListViewModel.aglv.Entries)
+            foreach (ListAutoGenerate entry in aglv.Entries)
             {
                 entry.Order = newOrder;
-                SQLiteClass.ExecuteUpdateTableAutoGenerate(SQLiteClass.dbpath, entry);
+                SQLiteClass.ExecuteUpdateTableAutoGenerate(dbpath, entry);
                 newOrder++;
             }
-            this.DialogResult = true;
         }
 
         private void TriangleButton_AutoGenerate_Up_Click(object sender, RoutedEventArgs e)
@@ -127,6 +132,8 @@ namespace Taskalu
 
             if (dlg.ShowDialog() == true)
             {
+                saveOrderOfAutoGelerate(SQLiteClass.dbpath, AutoGenerateListViewModel.aglv);
+
                 SQLiteClass.ExecuteInsertTableAutoGenerate(SQLiteClass.dbpath, dlg.theAutoGenerate);
                 //
                 AutoGenerateListViewModel.aglv.Entries.Clear();

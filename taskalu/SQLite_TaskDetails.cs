@@ -12,7 +12,7 @@ namespace Taskalu
     public partial class SQLiteClass
     {
         public static int TaskDetailsMoreCount { get; set; }
-        public static int TaskDetailsMoreSize = 20;
+        public static int TaskDetailsMoreSize = 100;
 
         public static string selectTaskDetailsTaskTimeSql = "SELECT start_date, end_date, duration FROM tasktime WHERE tasklist_id = @id";
         public static TimeSpan SumTimeSpanTaskDetails = new TimeSpan(0, 0, 0);

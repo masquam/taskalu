@@ -19,7 +19,7 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("INSERT INTO autogenerate (torder, type, name, priority, template, number1, number2) VALUES (@torder, @type, @name, @priority, @template, @number1, @number2)", con);
+            SQLiteCommand com = new SQLiteCommand("INSERT INTO autogenerate (torder, type, name, priority, template, number0, number1) VALUES (@torder, @type, @name, @priority, @template, @number0, @number1)", con);
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
             com.Parameters.Add(sqliteParamInt64(com, "@type", lt.Type));
             com.Parameters.Add(sqliteParam(com, "@name", lt.Name));
@@ -119,15 +119,15 @@ namespace Taskalu
             SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
             con.Open();
 
-            SQLiteCommand com = new SQLiteCommand("UPDATE autogenerate set torder=@torder, type=@type, name=@name, priority=@priority, template=@template, number1=@number1, number2=@number2 where id=@id", con);
+            SQLiteCommand com = new SQLiteCommand("UPDATE autogenerate set torder=@torder, type=@type, name=@name, priority=@priority, template=@template, number0=@number0, number1=@number1 where id=@id", con);
             com.Parameters.Add(sqliteParamInt64(com, "@id", lt.Id));
             com.Parameters.Add(sqliteParamInt64(com, "@torder", lt.Order));
             com.Parameters.Add(sqliteParamInt64(com, "@type", lt.Type));
             com.Parameters.Add(sqliteParam(com, "@name", lt.Name));
             com.Parameters.Add(sqliteParam(com, "@priority", lt.Priority));
             com.Parameters.Add(sqliteParamInt64(com, "@template", lt.Template));
-            com.Parameters.Add(sqliteParamInt64(com, "@number1", lt.Number0));
-            com.Parameters.Add(sqliteParamInt64(com, "@number2", lt.Number1));
+            com.Parameters.Add(sqliteParamInt64(com, "@number0", lt.Number0));
+            com.Parameters.Add(sqliteParamInt64(com, "@number1", lt.Number1));
 
             try
             {
