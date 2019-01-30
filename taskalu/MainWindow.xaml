@@ -65,6 +65,7 @@
                         <ComboBoxItem Content="Active"/>
                         <ComboBoxItem Content="Closed"/>
                         <ComboBoxItem Content="Deffered"/>
+                        <ComboBoxItem Content="Knowledge"/>
                     </ComboBox>
                     <Label Content="{x:Static properties:Resources.MW_Keyword}" Width="60" Margin="8,2,0,0"></Label>
                     <TextBox x:Name="textboxMemo" KeyDown="textBoxKeyDown" TextChanged="textboxMemo_TextChanged" Width="350" Margin="0,2,0,0" Padding="0,2,0,0" MaxLength="256" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"></TextBox>
@@ -194,6 +195,7 @@
                     <ComboBoxItem Content="Active"/>
                     <ComboBoxItem Content="Closed"/>
                     <ComboBoxItem Content="Deffered"/>
+                    <ComboBoxItem Content="Knowledge"/>
                 </ComboBox>
                 <Label Grid.Row="3" Grid.Column="3" Content="{x:Static properties:Resources.MW_DueDate}"/>
                 <TextBox Grid.Row="3" Grid.Column="4" Name="ep_duedate" Height="23" TextWrapping="Wrap" Text="" Width="140" IsReadOnly="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" TextChanged="duedateChanged"/>
