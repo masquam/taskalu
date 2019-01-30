@@ -94,13 +94,5 @@ namespace Taskalu
             }
             return ret;
         }
-
-        /*
-        public static void DateDetailsSetOrderBy(string orderby, string direction)
-        {
-            DateSumOrderBy = orderby;
-            DateSumOrderByDirection = direction;
-        }
-        */
     }
 }
