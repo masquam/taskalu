@@ -16,7 +16,7 @@
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.AG_AutoGenerateEdit}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
             <StackPanel Orientation="Horizontal"  DockPanel.Dock="Top">
                 <Label Content="{x:Static properties:Resources.AG_Type}" HorizontalAlignment="Left" Height="27" Margin="0,0,0,0" Width="79" VerticalAlignment="Top"/>
-                <ComboBox x:Name="AutoGenerateTypeBox"  SelectedIndex="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="400" >
+                <ComboBox x:Name="AutoGenerateTypeBox"  SelectedIndex="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="400" SelectionChanged="AutoGenerateTypeBoxSelectionChanged">
                     <ComboBoxItem Content="{x:Static properties:Resources.AG_Type0}"/>
                     <ComboBoxItem Content="{x:Static properties:Resources.AG_Type1}"/>
                 </ComboBox>
@@ -59,7 +59,7 @@
             </StackPanel>
             <StackPanel x:Name="AutoGenerateType1Panel" Orientation="Horizontal" DockPanel.Dock="Top" Visibility="Collapsed">
                 <Label Content="{x:Static properties:Resources.AG_Weekday}" Width="80"></Label>
-                <ComboBox x:Name="weekdayBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="48" IsReadOnly="True" RenderTransformOrigin="0.417,1.682">
+                <ComboBox x:Name="weekdayBox" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="100" IsReadOnly="True" RenderTransformOrigin="0.417,1.682">
                     <ComboBoxItem Content="sunday"/>
                     <ComboBoxItem Content="monday"/>
                     <ComboBoxItem Content="tue"/>

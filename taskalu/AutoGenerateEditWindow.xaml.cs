@@ -117,7 +117,7 @@ namespace Taskalu
             dlg.theAutoGenerate.Id = 0;
             dlg.theAutoGenerate.Order = SQLiteClass.ExecuteSelectMaxAutoGenerate(SQLiteClass.dbpath) + 1;
             dlg.theAutoGenerate.Type = (Int64)ListAutoGenerate.TypeName.A_Day_Of_Every_Month;
-            dlg.theAutoGenerate.Name = "Auto Geneerated Task";
+            dlg.theAutoGenerate.Name = "Auto Generated Task";
             dlg.theAutoGenerate.Priority = "\u272e\u272e\u272e\u272e\u272e";
             dlg.theAutoGenerate.Template = 0;
             dlg.theAutoGenerate.Number1 = 1;
