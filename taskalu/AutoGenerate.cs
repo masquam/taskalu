@@ -17,8 +17,6 @@ namespace Taskalu
 
             foreach (ListAutoGenerate entry in aglv.Entries)
             {
-                // 前回チェック時刻= entry.Checked_date
-
                 while (true)
                 {
                     DateTime theNextDate = new DateTime(2019, 1, 1);
