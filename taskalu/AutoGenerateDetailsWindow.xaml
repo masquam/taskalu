@@ -7,7 +7,7 @@
         d:DataContext="{d:DesignInstance {x:Type local:TemplateListViewModel}}" 
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="taskalu" Height="280" MinHeight="280" MaxHeight="280" Width="600" MinWidth="600" MaxWidth="600" Loaded="AutoGenerateLoaded">
+        Title="taskalu" Height="280" MinHeight="280" MaxHeight="280" Width="610" MinWidth="610" MaxWidth="610" Loaded="AutoGenerateLoaded">
     <Window.Resources>
         <ResourceDictionary Source="ResourceDictionary1.xaml"/>
     </Window.Resources>
@@ -71,7 +71,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                 <Label Content="{x:Static properties:Resources.MW_Title}" Width="80"></Label>
-                <TextBox x:Name="AutoGenerateName" Width="500" MaxLength="32767" Margin="0"></TextBox>
+                <TextBox x:Name="AutoGenerateName" Width="500" MaxLength="32767" Margin="0" Height="22"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                 <Label Content="{x:Static properties:Resources.MW_DueDate}" Width="80"></Label>

@@ -61,7 +61,7 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
-        ///   auto generate task に類似しているローカライズされた文字列を検索します。
+        ///   Auto Generate に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string AG_AutoGenerate {
             get {
