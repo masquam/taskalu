@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "taskalu", "taskalu\taskalu.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "taskaluTests", "taskaluTests\taskaluTests.csproj", "{C2E0388A-0DDD-4FF3-B5AC-C1886D2C9EBC}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "taskaluSetup_JP_x64", "taskaluSetup\taskaluSetup.vdproj", "{47EE8119-F9B5-4994-BD83-E7C0FB1E638B}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "taskaluSetup_JP_x86", "taskaluSetup_JP_x86\taskaluSetup_JP_x86.vdproj", "{33B2B37A-002A-447B-902D-A54CA9ADB640}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "taskaluSetup_EN_x64", "taskaluSetup_EN_x64\taskaluSetup_EN_x64.vdproj", "{333D456B-DF2A-49A1-8AD0-72D77C599AE2}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "taskaluSetup_EN_x86", "taskaluSetup_EN_x86\taskaluSetup_EN_x86.vdproj", "{1E322C8E-1670-43D6-AFBE-46B1A1AE1118}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +29,14 @@ Global
 		{C2E0388A-0DDD-4FF3-B5AC-C1886D2C9EBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E0388A-0DDD-4FF3-B5AC-C1886D2C9EBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E0388A-0DDD-4FF3-B5AC-C1886D2C9EBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47EE8119-F9B5-4994-BD83-E7C0FB1E638B}.Debug|Any CPU.ActiveCfg = Debug
+		{47EE8119-F9B5-4994-BD83-E7C0FB1E638B}.Release|Any CPU.ActiveCfg = Release
+		{33B2B37A-002A-447B-902D-A54CA9ADB640}.Debug|Any CPU.ActiveCfg = Debug
+		{33B2B37A-002A-447B-902D-A54CA9ADB640}.Release|Any CPU.ActiveCfg = Release
+		{333D456B-DF2A-49A1-8AD0-72D77C599AE2}.Debug|Any CPU.ActiveCfg = Debug
+		{333D456B-DF2A-49A1-8AD0-72D77C599AE2}.Release|Any CPU.ActiveCfg = Release
+		{1E322C8E-1670-43D6-AFBE-46B1A1AE1118}.Debug|Any CPU.ActiveCfg = Debug
+		{1E322C8E-1670-43D6-AFBE-46B1A1AE1118}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
