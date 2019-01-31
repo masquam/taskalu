@@ -358,4 +358,7 @@
   <data name="AG_Wednesday" xml:space="preserve">
     <value>水曜日</value>
   </data>
+  <data name="MW_InvalidDate" xml:space="preserve">
+    <value>夏時間のため存在しない時刻です。</value>
+  </data>
 </root>

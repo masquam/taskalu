@@ -66,34 +66,40 @@ namespace Taskalu
             
             DateTime due = (DateTime)dateBox.SelectedDate;
             DateTime dueDate = new DateTime(due.Year, due.Month, due.Day, hourBox.SelectedIndex, (minuteBox.SelectedIndex * 5), 0);
-
-            ListViewFile lvFile = new ListViewFile()
+            if (TimeZoneInfo.Local.IsInvalidTime(dueDate))
             {
-                Name = NewTitleBox.Text,
-                Description = NewDescriptionBox.Text,
-                Memo = "",
-                Priority = priorityBox.Text,
-                DueDate = TimeZoneInfo.ConvertTimeToUtc(dueDate).ToString("yyyy-MM-dd HH:mm:ss"),
-                Status = "Active",
-                WorkHolder = WorkHolder.CreateWorkHolder(NewTitleBox.Text)
-            };
-            if (!string.IsNullOrEmpty(selectedTemplate.Template))
+                MessageBox.Show(Properties.Resources.MW_InvalidDate);
+            }
+            else
             {
-                lvFile.Description = selectedTemplate.Template;
+                ListViewFile lvFile = new ListViewFile()
+                {
+                    Name = NewTitleBox.Text,
+                    Description = NewDescriptionBox.Text,
+                    Memo = "",
+                    Priority = priorityBox.Text,
+                    DueDate = TimeZoneInfo.ConvertTimeToUtc(dueDate).ToString("yyyy-MM-dd HH:mm:ss"),
+                    Status = "Active",
+                    WorkHolder = WorkHolder.CreateWorkHolder(NewTitleBox.Text)
+                };
+                if (!string.IsNullOrEmpty(selectedTemplate.Template))
+                {
+                    lvFile.Description = selectedTemplate.Template;
+                }
+                retId = SQLiteClass.ExecuteInsertTable(SQLiteClass.dbpath, lvFile);
+                SQLiteClass.ExecuteInsertTableFTSString(SQLiteClass.dbpath, retId, "tasklist_name", Ngram.getNgramText(NewTitleBox.Text, 2));
+                SQLiteClass.ExecuteInsertTableFTSString(SQLiteClass.dbpath, retId, "tasklist_description", Ngram.getNgramText(NewDescriptionBox.Text, 2));
+
+                // copy template path
+                if (selectedTemplate.Id > -1)
+                {
+                    string workHolder = WorkHolder.CreateWorkHolder(NewTitleBox.Text);
+                    WorkHolder.CopyTemplatePathToWorkFolder(selectedTemplate.Id, workHolder);
+                }
+
+                // Dialog box accepted; ウィンドウを閉じる
+                this.DialogResult = true;
             }
-            retId = SQLiteClass.ExecuteInsertTable(SQLiteClass.dbpath, lvFile);
-            SQLiteClass.ExecuteInsertTableFTSString(SQLiteClass.dbpath, retId, "tasklist_name", Ngram.getNgramText(NewTitleBox.Text, 2));
-            SQLiteClass.ExecuteInsertTableFTSString(SQLiteClass.dbpath, retId, "tasklist_description", Ngram.getNgramText(NewDescriptionBox.Text, 2));
-
-            // copy template path
-            if (selectedTemplate.Id > -1) {
-                string workHolder = WorkHolder.CreateWorkHolder(NewTitleBox.Text);
-                WorkHolder.CopyTemplatePathToWorkFolder(selectedTemplate.Id, workHolder);
-            }
-
-            // Dialog box accepted; ウィンドウを閉じる
-            this.DialogResult = true;
-
             NewWindowOk.IsEnabled = true;
         }
     }

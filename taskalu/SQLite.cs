@@ -159,7 +159,7 @@ namespace Taskalu
                 {
                     return false;
                 }
-                if (!ExecuteCreateTable(dbpath, "CREATE TABLE autogenerate (id INTEGER NOT NULL PRIMARY KEY, torder INTEGER, type INTEGER, name TEXT, priority TEXT,  template INTEGER, number0 INTEGER, number1 INTEGER, due_hour INTEGER, due_minute INTEGER)"))
+                if (!ExecuteCreateTable(dbpath, "CREATE TABLE autogenerate (id INTEGER NOT NULL PRIMARY KEY, torder INTEGER, type INTEGER, name TEXT, priority TEXT,  template INTEGER, number0 INTEGER, number1 INTEGER, due_hour INTEGER, due_minute INTEGER, checked_date TEXT)"))
                 {
                     return false;
                 }

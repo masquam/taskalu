@@ -828,6 +828,7 @@ namespace Taskalu.Tests
             lt.Template = 1;
             lt.Number0 = 0;
             lt.Number1 = 0;
+            lt.Checked_date = "2019-02-01 01:23:45";
 
             Debug.Assert(SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt));
         }
@@ -847,6 +848,7 @@ namespace Taskalu.Tests
             lt.Template = 1;
             lt.Number0 = 0;
             lt.Number1 = 0;
+            lt.Checked_date = "2019-02-01 01:23:45";
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
             var lt2 = new ListAutoGenerate();
             lt2.Order = 2;
@@ -856,6 +858,7 @@ namespace Taskalu.Tests
             lt2.Template = 1;
             lt2.Number0 = 0;
             lt2.Number1 = 0;
+            lt2.Checked_date = "2019-02-01 01:23:45";
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt2);
 
             var aglv = new AutoGenerateListViewModel();
@@ -879,6 +882,7 @@ namespace Taskalu.Tests
             lt.Template = 1;
             lt.Number0 = 0;
             lt.Number1 = 0;
+            lt.Checked_date = "2019-02-01 01:23:45";
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
             var lt2 = new ListAutoGenerate();
             lt2.Order = 2;
@@ -888,6 +892,7 @@ namespace Taskalu.Tests
             lt2.Template = 1;
             lt2.Number0 = 0;
             lt2.Number1 = 0;
+            lt2.Checked_date = "2019-02-01 01:23:45";
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt2);
 
             Debug.Assert(SQLiteClass.ExecuteSelectMaxAutoGenerate(path) == 2);
@@ -908,6 +913,7 @@ namespace Taskalu.Tests
             lt.Template = 1;
             lt.Number0 = 0;
             lt.Number1 = 0;
+            lt.Checked_date = "2019-02-01 01:23:45";
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
             var lt2 = new ListAutoGenerate();
             lt2.Order = 2;
@@ -917,6 +923,7 @@ namespace Taskalu.Tests
             lt2.Template = 1;
             lt2.Number0 = 0;
             lt2.Number1 = 0;
+            lt2.Checked_date = "2019-02-01 01:23:45";
 
             Debug.Assert(SQLiteClass.ExecuteUpdateTableAutoGenerate(path, lt2));
         }
@@ -936,6 +943,7 @@ namespace Taskalu.Tests
             lt.Template = 1;
             lt.Number0 = 0;
             lt.Number1 = 0;
+            lt.Checked_date = "2019-02-01 01:23:45";
             SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
 
             Debug.Assert(SQLiteClass.ExecuteDeleteTableAutoGenerate(path, 1));

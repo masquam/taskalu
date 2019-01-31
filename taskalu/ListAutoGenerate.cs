@@ -18,6 +18,7 @@ namespace Taskalu
         public Int64 Number1 { get; set; }
         public Int64 Due_hour { get; set; }
         public Int64 Due_minute { get; set; }
+        public string Checked_date { get; set; }
 
         public enum TypeName : long {
             A_Day_Of_Every_Month,

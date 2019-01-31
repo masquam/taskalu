@@ -448,6 +448,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   The date specified is invalid as Daylight Saving Time. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MW_InvalidDate {
+            get {
+                return ResourceManager.GetString("MW_InvalidDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   keyword に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MW_Keyword {

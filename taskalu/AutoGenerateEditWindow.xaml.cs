@@ -144,6 +144,8 @@ namespace Taskalu
 
             if (dlg.ShowDialog() == true)
             {
+                dlg.theAutoGenerate.Checked_date = (DateTime.UtcNow - new TimeSpan(1, 0, 0, 0)).ToString("yyyy-MM-dd HH:mm:ss");
+
                 saveOrderOfAutoGelerate(SQLiteClass.dbpath, AutoGenerateListViewModel.aglv);
 
                 SQLiteClass.ExecuteInsertTableAutoGenerate(SQLiteClass.dbpath, dlg.theAutoGenerate);

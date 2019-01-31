@@ -355,4 +355,7 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="AG_Wednesday" xml:space="preserve">
     <value>Wednesday</value>
   </data>
+  <data name="MW_InvalidDate" xml:space="preserve">
+    <value>The date specified is invalid as Daylight Saving Time.</value>
+  </data>
 </root>

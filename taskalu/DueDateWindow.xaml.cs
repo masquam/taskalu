@@ -46,10 +46,17 @@ namespace Taskalu
 
             DateTime due = (DateTime)DueDateBox.SelectedDate;
             DateTime dueDate = new DateTime(due.Year, due.Month, due.Day, DueDateHourBox.SelectedIndex, (DueDateMinuteBox.SelectedIndex * 5), 0);
-            dueDateString = dueDate.ToString("G", System.Globalization.CultureInfo.CurrentCulture);
+            if (TimeZoneInfo.Local.IsInvalidTime(dueDate))
+            {
+                MessageBox.Show(Properties.Resources.MW_InvalidDate);
+            }
+            else
+            {
+                dueDateString = dueDate.ToString("G", System.Globalization.CultureInfo.CurrentCulture);
 
-            // Dialog box accepted; ウィンドウを閉じる
-            this.DialogResult = true;
+                // Dialog box accepted; ウィンドウを閉じる
+                this.DialogResult = true;
+            }
 
             DueDateOk.IsEnabled = true;
             DueDateCancel.IsEnabled = true;
