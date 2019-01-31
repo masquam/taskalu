@@ -82,11 +82,11 @@ namespace Taskalu
             return string.Join("_", filename.Split(Path.GetInvalidFileNameChars()));
         }
 
-
-        public static void CopyTemplatePathToWorkFolder(Int64 template_id, string workHolder)
+        public static int CopyTemplatePathToWorkFolder(string dbpath, Int64 template_id, string workHolder)
         {
+            int result = 0;
             TemplatePathListViewModel tplv = new TemplatePathListViewModel();
-            SQLiteClass.ExecuteSelectTableTemplatePath(SQLiteClass.dbpath, tplv, template_id);
+            SQLiteClass.ExecuteSelectTableTemplatePath(dbpath, tplv, template_id);
 
             foreach (ListTemplatePath entry in tplv.Entries)
             {
@@ -94,9 +94,9 @@ namespace Taskalu
                 string copyFileName = workHolder + "\\" + theFilename;
                 if (File.Exists(copyFileName))
                 {
-                    var result = MessageBox.Show(Properties.Resources.NW_Template_Overwrite, "taskalu",
+                    var res = MessageBox.Show(Properties.Resources.NW_Template_Overwrite, "taskalu",
                                         MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                    if (result == MessageBoxResult.No)
+                    if (res == MessageBoxResult.No)
                     {
                         continue;
                     }
@@ -104,12 +104,14 @@ namespace Taskalu
                 try
                 {
                     File.Copy(entry.Path, copyFileName, true);
+                    result += 1;
                 }
                 catch(Exception e)
                 {
                     MessageBox.Show(e.Message);
                 }
             }
+            return result;
         }
 
     }

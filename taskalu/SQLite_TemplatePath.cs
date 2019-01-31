@@ -95,11 +95,10 @@ namespace Taskalu
             {
                 torder = (Int64)com.ExecuteScalar();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // if no record, return DBNull -> exception raised
-                MessageBox.Show(e.Message);
-                torder = -1;
+                torder = 0;
             }
             finally
             {

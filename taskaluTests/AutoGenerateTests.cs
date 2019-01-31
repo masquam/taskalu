@@ -70,5 +70,67 @@ namespace Taskalu.Tests
             result = AutoGenerate.CaluculateTheNextAWeekDayOfEveryWeek(lt);
             Debug.Assert(DateTime.Compare(result, new DateTime(2019, 2, 9, 0, 0, 0)) == 0);
         }
+
+        [TestMethod()]
+        public void AutoGenerateTaskTest()
+        {
+            string dbfile = "taskaludb_autogenerate1.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var la = new ListAutoGenerate();
+            la.Order = 1;
+            la.Type = 0;
+            la.Name = "name";
+            la.Priority = "";
+            la.Template = 0;
+            la.Number0 = 2;
+            la.Number1 = 0;
+            la.Checked_date = "2019-02-02 00:00:00";
+            var result = AutoGenerate.AutoGenerateTask(path, la, new DateTime(2019, 2, 2));
+            Debug.Assert(result == 2 + 4 + 8);
+        }
+
+        public void TouchTestDB(string filename)
+        {
+            string dbfile = filename;
+            string dir = Path.GetTempPath();
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            try
+            {
+                File.Delete(path);
+            }
+            catch (Exception)
+            {
+                // preperation
+            }
+            SQLiteClass.TouchDB(dir, path);
+        }
+
+        [TestMethod()]
+        public void AutoGenerateTaskTest2()
+        {
+            string dbfile = "taskaludb_autogenerate1.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListTemplate();
+            lt.Order = 1;
+            lt.Name = "name";
+            lt.Template = "template";
+            SQLiteClass.ExecuteInsertTableTemplate(path, lt);
+
+            var la = new ListAutoGenerate();
+            la.Order = 1;
+            la.Type = 0;
+            la.Name = "name";
+            la.Priority = "";
+            la.Template = 1;
+            la.Number0 = 2;
+            la.Number1 = 0;
+            la.Checked_date = "2019-02-02 00:00:00";
+            var result = AutoGenerate.AutoGenerateTask(path, la, new DateTime(2019, 2, 2));
+            Debug.Assert(result == 1 + 2 + 4 + 8);
+        }
     }
 }

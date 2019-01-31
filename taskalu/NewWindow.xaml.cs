@@ -51,7 +51,7 @@ namespace Taskalu
 
             // template description update check
             var selectedTemplate = (ListTemplate)templateBox.SelectedItem;
-            if ((selectedTemplate.Id > -1) &&
+            if ((selectedTemplate.Id > 0) &&
                 (!string.IsNullOrEmpty(NewDescriptionBox.Text)) &&
                 (!string.IsNullOrEmpty(selectedTemplate.Template)))
             {
@@ -91,10 +91,10 @@ namespace Taskalu
                 SQLiteClass.ExecuteInsertTableFTSString(SQLiteClass.dbpath, retId, "tasklist_description", Ngram.getNgramText(NewDescriptionBox.Text, 2));
 
                 // copy template path
-                if (selectedTemplate.Id > -1)
+                if (selectedTemplate.Id > 0)
                 {
                     string workHolder = WorkHolder.CreateWorkHolder(NewTitleBox.Text);
-                    WorkHolder.CopyTemplatePathToWorkFolder(selectedTemplate.Id, workHolder);
+                    WorkHolder.CopyTemplatePathToWorkFolder(SQLiteClass.dbpath, selectedTemplate.Id, workHolder);
                 }
 
                 // Dialog box accepted; ウィンドウを閉じる

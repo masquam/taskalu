@@ -183,5 +183,45 @@ namespace Taskalu
             }
             return torder;
         }
+
+        public static Boolean ExecuteSelectATableTemplate(string dbpath, TemplateListViewModel tlv, Int64 id)
+        {
+            Boolean ret = false;
+
+            string sql = "SELECT * from template WHERE id = @id";
+
+            SQLiteConnection con = new SQLiteConnection("Data Source=" + dbpath + ";");
+            con.Open();
+
+            SQLiteCommand com = new SQLiteCommand(sql, con);
+            com.Parameters.Add(sqliteParamInt64(com, "@id", id));
+
+            try
+            {
+                SQLiteDataReader sdr = com.ExecuteReader();
+
+                while (sdr.Read() == true)
+                {
+                    ListTemplate lt = new ListTemplate();
+                    lt.Id = (Int64)sdr["id"];
+                    lt.Order = (Int64)sdr["torder"];
+                    lt.Name = (string)sdr["name"];
+                    lt.Template = (string)sdr["template"];
+                    tlv.Entries.Add(lt);
+                }
+                sdr.Close();
+                ret = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("database table template select error!\n" + ex.Message);
+            }
+            finally
+            {
+                con.Close();
+
+            }
+            return ret;
+        }
     }
 }

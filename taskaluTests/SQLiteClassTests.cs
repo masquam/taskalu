@@ -985,5 +985,24 @@ namespace Taskalu.Tests
 
             Debug.Assert(SQLiteClass.ExecuteSelectTemplateUsedInAutoGenerate(path, 1) == 1);
         }
+
+        [TestMethod()]
+        public void ExecuteSelectATableTemplateTest()
+        {
+            string dbfile = "taskaludb49.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListTemplate();
+            lt.Order = 1;
+            lt.Name = "name";
+            lt.Template = "template";
+            SQLiteClass.ExecuteInsertTableTemplate(path, lt);
+
+            var tlv = new TemplateListViewModel();
+            var result = SQLiteClass.ExecuteSelectATableTemplate(path, tlv, 1);
+            Debug.Assert(result);
+            Debug.Assert(tlv.Entries.Count == 1);
+        }
     }
 }

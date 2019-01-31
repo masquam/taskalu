@@ -33,17 +33,8 @@ namespace Taskalu
                     {
                         break;
                     }
-                    switch (entry.Type)
-                    {
-                        case (long)ListAutoGenerate.TypeName.A_Day_Of_Every_Month:
-                            AutoGenerateTheNextADayOfEveryMonth(entry, theNextDate);
-                            result = true;
-                            break;
-                        case (long)ListAutoGenerate.TypeName.A_Weekday_In_Every_Week:
-                            AutoGenerateTheNextAWeekDayOfEveryWeek(entry, theNextDate);
-                            result = true;
-                            break;
-                    }
+                    AutoGenerateTask(SQLiteClass.dbpath, entry, theNextDate);
+                    result = true;
                     entry.Checked_date = theNextDate.ToString("yyyy-MM-dd HH:mm:ss");
                     SQLiteClass.ExecuteUpdateTableAutoGenerate(SQLiteClass.dbpath, entry);
                 }
@@ -101,15 +92,51 @@ namespace Taskalu
             return new DateTime(theYear, theMonth, theDay) + new TimeSpan(plusDays, 0, 0, 0);
         }
 
-        public static void AutoGenerateTheNextADayOfEveryMonth(ListAutoGenerate entry, DateTime theDate)
+        public static int AutoGenerateTask(string dbpath, ListAutoGenerate entry, DateTime theDate)
         {
-            //
-        }
+            int result = 0;
+            DateTime dueDate = new DateTime(theDate.Year, theDate.Month, theDate.Day, (int)entry.Due_hour, (int)entry.Due_minute, 0);
+            if (TimeZoneInfo.Local.IsInvalidTime(dueDate))
+            {
+                dueDate = new DateTime(theDate.Year, theDate.Month, theDate.Day, 0, 0, 0);
+            }
+            ListViewFile lvFile = new ListViewFile()
+            {
+                Name = entry.Name,
+                Description = "",
+                Memo = "",
+                Priority = entry.Priority,
+                DueDate = TimeZoneInfo.ConvertTimeToUtc(dueDate).ToString("yyyy-MM-dd HH:mm:ss"),
+                Status = "Active",
+                WorkHolder = WorkHolder.CreateWorkHolder(entry.Name)
+            };
 
-        public static void AutoGenerateTheNextAWeekDayOfEveryWeek(ListAutoGenerate entry, DateTime theDate)
-        {
-            //
-        }
+            if (entry.Template > 0)
+            {
+                var tlv = new TemplateListViewModel();
+                if (SQLiteClass.ExecuteSelectATableTemplate(dbpath, tlv, entry.Template))
+                {
+                    if (!string.IsNullOrEmpty(tlv.Entries[0].Template))
+                    {
+                        lvFile.Description = tlv.Entries[0].Template;
+                        result += 1;
+                    }
+                }
+            }
 
+            Int64 retId;
+            retId = SQLiteClass.ExecuteInsertTable(dbpath, lvFile);
+            if (retId > 0) { result += 2; } 
+            if (SQLiteClass.ExecuteInsertTableFTSString(dbpath, retId, "tasklist_name", Ngram.getNgramText(lvFile.Name, 2))) { result += 4; }
+            if (SQLiteClass.ExecuteInsertTableFTSString(dbpath, retId, "tasklist_description", Ngram.getNgramText(lvFile.Description, 2))) { result += 8; }
+
+            // copy template path
+            if (entry.Template > 0)
+            {
+                string workHolder = WorkHolder.CreateWorkHolder(entry.Name);
+                if (WorkHolder.CopyTemplatePathToWorkFolder(dbpath, entry.Template, workHolder) > 0) { result += 16; }
+            }
+            return result;
+        }
     }
 }

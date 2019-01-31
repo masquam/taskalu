@@ -837,8 +837,7 @@ namespace Taskalu
 
             if (result && (listview1.Visibility == Visibility.Visible))
             {
-                System.ComponentModel.ICollectionView view = CollectionViewSource.GetDefaultView(listview1.ItemsSource);
-                view.Refresh();
+                ExecuteFirstSelectTable();
             }
         }
 
@@ -1121,7 +1120,8 @@ namespace Taskalu
 
             if (dlg.ShowDialog() == true)
             {
-                //
+                AutoGenerate.autoGenerateTasks();
+                ExecuteFirstSelectTable();
             }
         }
     }
