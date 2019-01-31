@@ -23,10 +23,10 @@ namespace Taskalu
                     switch (entry.Type)
                     {
                         case (long)ListAutoGenerate.TypeName.A_Day_Of_Every_Month:
-                            theNextDate = CaluculateTheNextADayOfEveryMonth(entry, DateTime.Now);
+                            theNextDate = CaluculateTheNextADayOfEveryMonth(entry);
                             break;
                         case (long)ListAutoGenerate.TypeName.A_Weekday_In_Every_Week:
-                            theNextDate = CaluculateTheNextAWeekDayOfEveryWeek(entry, DateTime.Now);
+                            theNextDate = CaluculateTheNextAWeekDayOfEveryWeek(entry);
                             break;
                     }
                     if (theNextDate > DateTime.Now)
@@ -51,7 +51,7 @@ namespace Taskalu
             return result;
         }
 
-        public static DateTime CaluculateTheNextADayOfEveryMonth(ListAutoGenerate entry, DateTime now)
+        public static DateTime CaluculateTheNextADayOfEveryMonth(ListAutoGenerate entry)
         {
             DateTime CheckedDate;
             DateTime.TryParseExact(
@@ -63,7 +63,7 @@ namespace Taskalu
             Int32 theDay = (int)entry.Number0;
             Int32 theMonth = CheckedDate.Month;
             Int32 theYear = CheckedDate.Year;
-            if (theDay < now.Day)
+            if (theDay <= CheckedDate.Day)
             {
                 theMonth++;
                 if (theMonth > 12)
@@ -80,7 +80,7 @@ namespace Taskalu
             return new DateTime(theYear, theMonth, theDay);
         }
 
-        public static DateTime CaluculateTheNextAWeekDayOfEveryWeek(ListAutoGenerate entry, DateTime now)
+        public static DateTime CaluculateTheNextAWeekDayOfEveryWeek(ListAutoGenerate entry)
         {
             DateTime CheckedDate;
             DateTime.TryParseExact(
@@ -93,7 +93,7 @@ namespace Taskalu
             Int32 theDay = CheckedDate.Day;
             Int32 theMonth = CheckedDate.Month;
             Int32 theYear = CheckedDate.Year;
-            Int32 plusDays = theWeekday - now.Day;
+            Int32 plusDays = theWeekday - (int)CheckedDate.DayOfWeek;
             if (plusDays <= 0)
             {
                 plusDays += 7;

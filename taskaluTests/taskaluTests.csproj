@@ -61,6 +61,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AutoGenerateTests.cs" />
     <Compile Include="DateCalcTests.cs" />
     <Compile Include="HyperLinkTests.cs" />
     <Compile Include="NgramTests.cs" />
