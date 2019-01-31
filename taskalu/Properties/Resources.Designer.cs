@@ -682,6 +682,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   The Template cannot be deleted because it is used in Auto-Generate rule. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string TE_CannotDelete {
+            get {
+                return ResourceManager.GetString("TE_CannotDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Delete... に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string TE_Delete {

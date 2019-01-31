@@ -110,13 +110,13 @@ namespace Taskalu
         private void DeleteTheAutoGenerate_Click(object sender, RoutedEventArgs e)
         {
             var currentIndex = AutoGenerateList.SelectedIndex;
+            Int64 id = AutoGenerateListViewModel.aglv.Entries[currentIndex].Id;
             if (currentIndex >= 0)
             {
                 var result = MessageBox.Show(Properties.Resources.TE_DeleteCaution, "taskalu",
                                     MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    Int64 id = AutoGenerateListViewModel.aglv.Entries[currentIndex].Id;
                     if (SQLiteClass.ExecuteDeleteTableAutoGenerate(SQLiteClass.dbpath, id))
                     {
                         AutoGenerateListViewModel.aglv.Entries.RemoveAt(currentIndex);

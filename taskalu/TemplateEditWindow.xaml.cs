@@ -98,11 +98,17 @@ namespace Taskalu
             var currentIndex = TemplateList.SelectedIndex;
             if (currentIndex >= 0)
             {
+                Int64 id = TemplateListViewModel.tlv.Entries[currentIndex].Id;
+                if (SQLiteClass.ExecuteSelectTemplateUsedInAutoGenerate(SQLiteClass.dbpath, id) > 0)
+                {
+                    MessageBox.Show(Properties.Resources.TE_CannotDelete);
+                    return;
+                }
+
                 var result = MessageBox.Show(Properties.Resources.TE_DeleteCaution, "taskalu",
                                     MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (result == MessageBoxResult.Yes)
                 {
-                    Int64 id = TemplateListViewModel.tlv.Entries[currentIndex].Id;
                     if (SQLiteClass.ExecuteDeleteTableTemplate(SQLiteClass.dbpath, id))
                     {
                         SQLiteClass.ExecuteDeleteTableTemplatePathFromTemplateId(SQLiteClass.dbpath, id);

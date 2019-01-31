@@ -358,4 +358,7 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="MW_InvalidDate" xml:space="preserve">
     <value>The date specified is invalid as Daylight Saving Time.</value>
   </data>
+  <data name="TE_CannotDelete" xml:space="preserve">
+    <value>The Template cannot be deleted because it is used in Auto-Generate rule.</value>
+  </data>
 </root>

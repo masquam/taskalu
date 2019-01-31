@@ -361,4 +361,7 @@
   <data name="MW_InvalidDate" xml:space="preserve">
     <value>夏時間のため存在しない時刻です。</value>
   </data>
+  <data name="TE_CannotDelete" xml:space="preserve">
+    <value>自動生成タスクに使用されているため削除できません。</value>
+  </data>
 </root>

@@ -964,5 +964,26 @@ namespace Taskalu.Tests
 
             Debug.Assert(SQLiteClass.ExecuteSelectTemplateOrderFromID(path, 1) == 2);
         }
+
+        [TestMethod()]
+        public void ExecuteSelectTemplateUsedInAutoGenerateTest()
+        {
+            string dbfile = "taskaludb48.sqlite";
+            string path = Path.GetTempPath() + "\\" + dbfile;
+            TouchTestDB(dbfile);
+
+            var lt = new ListAutoGenerate();
+            lt.Order = 1;
+            lt.Type = 0;
+            lt.Name = "name";
+            lt.Priority = "";
+            lt.Template = 1;
+            lt.Number0 = 0;
+            lt.Number1 = 0;
+            lt.Checked_date = "2019-02-01 01:23:45";
+            SQLiteClass.ExecuteInsertTableAutoGenerate(path, lt);
+
+            Debug.Assert(SQLiteClass.ExecuteSelectTemplateUsedInAutoGenerate(path, 1) == 1);
+        }
     }
 }
