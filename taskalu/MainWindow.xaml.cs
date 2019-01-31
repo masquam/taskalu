@@ -69,8 +69,12 @@ namespace Taskalu
 
             RecoverWindowSize();
 
+            AutoGenerate.autoGenerateTasks();
+
             this.DataContext = MainViewModel.mv;
             ExecuteFirstSelectTable();
+
+            autogenerateTimer_start();
         }
 
         /// <summary>
@@ -812,6 +816,37 @@ namespace Taskalu
         {
             rTimer.Stop();
         }
+
+
+        private static DispatcherTimer agTimer { get; set; }
+        /// <summary>
+        /// start the DispatcherTimer, for refresh
+        /// </summary>
+        /// <param name="tlist_id">tasklist id</param>
+        public void autogenerateTimer_start()
+        {
+            agTimer = new DispatcherTimer();
+            agTimer.Tick += new EventHandler(autogenerateTimer_Tick);
+            agTimer.Interval = new TimeSpan(0, 1, 0);
+            agTimer.Start();
+        }
+
+        private void autogenerateTimer_Tick(object sender, EventArgs e)
+        {
+            var result = AutoGenerate.autoGenerateTasks();
+
+            if (result && (listview1.Visibility == Visibility.Visible))
+            {
+                System.ComponentModel.ICollectionView view = CollectionViewSource.GetDefaultView(listview1.ItemsSource);
+                view.Refresh();
+            }
+        }
+
+        public void autogenerateTimer_stop()
+        {
+            agTimer.Stop();
+        }
+
 
         // ///////////////////////////////////////////////////////////////////////////
         //
