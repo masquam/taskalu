@@ -13,9 +13,11 @@
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}">
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.MW_AddMemo}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
-            <StackPanel x:Name="AddMemoBottomToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
-                <Button x:Name="AddMemoOk" Style="{StaticResource RoundedButton}" Content="OK" HorizontalAlignment="Left" Margin="110,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="AddMemoOk_Click"  />
-                <Button Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="32,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+            <StackPanel x:Name="AddMemoBottomToolbar" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="AddMemoOk" Style="{StaticResource RoundedButton}" Content="OK" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="AddMemoOk_Click"  />
+                    <Button Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="48,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+                </StackPanel>
             </StackPanel>
             <TextBox x:Name="AddMemoTextBox" Width="454" DockPanel.Dock="Left" ScrollViewer.VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" AcceptsReturn="True" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" MaxLength="32767"></TextBox>
         </DockPanel>

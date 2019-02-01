@@ -12,9 +12,11 @@
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" >
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="Language Settings" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
-            <StackPanel Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
-                <Button x:Name="LanguageOk" Style="{StaticResource RoundedButton}" Content="OK" HorizontalAlignment="Left" Margin="32,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="LanguageOk_Click"  />
-                <Button Content="Cancel" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="32,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+            <StackPanel Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="LanguageOk" Style="{StaticResource RoundedButton}" Content="OK" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="LanguageOk_Click"  />
+                    <Button Content="Cancel" Style="{StaticResource RoundedButton}" HorizontalAlignment="Left" Margin="48,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+                </StackPanel>
             </StackPanel>
             <Label DockPanel.Dock="Bottom" Content="This setting comes into effect after restart." Margin="28,0,0,0"></Label>
             <Label Content="Language" HorizontalAlignment="Left" Height="27" Margin="50,42,0,0" Width="79" VerticalAlignment="Top"/>

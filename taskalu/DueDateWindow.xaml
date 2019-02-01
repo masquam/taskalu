@@ -13,9 +13,11 @@
     <Grid Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" >
         <DockPanel>
             <Label DockPanel.Dock="Top" Content="{x:Static properties:Resources.DD_SelectDateTime}" FontSize="16" Height="32" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></Label>
-            <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" Orientation="Horizontal">
-                <Button x:Name="DueDateOk" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click"  />
-                <Button x:Name="DueDateCancel" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="96,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+            <StackPanel x:Name="DateDetailsBottomToolbar" Background="#FFF1EDED" DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" >
+                    <Button x:Name="DueDateOk" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.NW_Ok}" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsDefault="True" Click="ButtonDueDateWindowOk_Click"  />
+                    <Button x:Name="DueDateCancel" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.MW_Cancel}" HorizontalAlignment="Left" Margin="48,4,0,0" VerticalAlignment="Top" Width="96" Height="32" RenderTransformOrigin="1.259,3.535" IsCancel="True" />
+                </StackPanel>
             </StackPanel>
             <Label Content="{x:Static properties:Resources.MW_DueDate}" HorizontalAlignment="Left" Height="27" Margin="32,42,0,0" Width="79" VerticalAlignment="Top"/>
             <StackPanel Orientation="Vertical">
