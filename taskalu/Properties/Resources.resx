@@ -317,7 +317,7 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
     <value>Edit auto generate tasks</value>
   </data>
   <data name="ContextMenu_AG_AutoGenerateEdit" xml:space="preserve">
-    <value>Edit auto generate tasks...</value>
+    <value>Edit auto _generate tasks...</value>
   </data>
   <data name="AG_Day" xml:space="preserve">
     <value>day</value>
@@ -362,9 +362,12 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
     <value>The Template cannot be deleted because it is used in Auto-Generate rule.</value>
   </data>
   <data name="ContextMenu_VersionInfo" xml:space="preserve">
-    <value>_Version Info...</value>
+    <value>_About taskalu...</value>
   </data>
   <data name="VI_License" xml:space="preserve">
     <value>License...</value>
+  </data>
+  <data name="VI_SettingPath" xml:space="preserve">
+    <value>Setting file path:</value>
   </data>
 </root>

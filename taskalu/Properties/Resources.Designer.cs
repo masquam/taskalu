@@ -187,7 +187,7 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
-        ///   Edit auto generate tasks... に類似しているローカライズされた文字列を検索します。
+        ///   Edit auto _generate tasks... に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ContextMenu_AG_AutoGenerateEdit {
             get {
@@ -250,7 +250,7 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
-        ///   _Version Info... に類似しているローカライズされた文字列を検索します。
+        ///   _About taskalu... に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string ContextMenu_VersionInfo {
             get {
@@ -750,6 +750,15 @@ namespace Taskalu.Properties {
         public static string VI_License {
             get {
                 return ResourceManager.GetString("VI_License", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Setting file path: に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VI_SettingPath {
+            get {
+                return ResourceManager.GetString("VI_SettingPath", resourceCulture);
             }
         }
         

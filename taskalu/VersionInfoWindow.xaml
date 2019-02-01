@@ -6,7 +6,7 @@
         xmlns:properties="clr-namespace:Taskalu.Properties"
         xmlns:local="clr-namespace:Taskalu"
         mc:Ignorable="d"
-        Title="taskalu" Height="240" Width="320">
+        Title="taskalu" Height="360" Width="700">
     <Window.Resources>
         <ResourceDictionary Source="ResourceDictionary1.xaml"/>
     </Window.Resources>
@@ -19,12 +19,15 @@
                     <Label Content="version " />
                     <Label x:Name="versionLabel"  Content="" />
                 </StackPanel>
+                <Label Height="50" />
+                <Label Content="{x:Static properties:Resources.VI_SettingPath}" Margin="6,0,0,0"></Label>
+                <TextBox x:Name="settingsFilePathTextBox" Text="" Margin="8" Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" ></TextBox>
             </StackPanel>
-            <StackPanel DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch">
+            <StackPanel DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Stretch" FocusManager.FocusedElement="{Binding ElementName=VersionOkButton}">
                 <Button x:Name="VersionOkButton" Style="{StaticResource RoundedButton}" Content="Ok" IsCancel="True" HorizontalAlignment="Center" Margin="4" Width="96" Height="32"/>
             </StackPanel>
             <StackPanel DockPanel.Dock="Bottom" Height="40"  HorizontalAlignment="Right">
-                <Button x:Name="LicenseButton" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.VI_License}" HorizontalAlignment="Center" Margin="4" Width="96" Height="32" Click="LicenseClicked"/>
+                <Button x:Name="LicenseButton" Style="{StaticResource RoundedButton}" Content="{x:Static properties:Resources.VI_License}" HorizontalAlignment="Center" Margin="8" Width="96" Height="32" Click="LicenseClicked"/>
             </StackPanel>
             <StackPanel DockPanel.Dock="Left">
             </StackPanel>

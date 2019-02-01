@@ -320,7 +320,7 @@
     <value>自動生成タスクの編集</value>
   </data>
   <data name="ContextMenu_AG_AutoGenerateEdit" xml:space="preserve">
-    <value>自動生成タスクの編集...</value>
+    <value>自動生成タスクの編集(_G)...</value>
   </data>
   <data name="AG_Day" xml:space="preserve">
     <value>日付</value>
@@ -365,9 +365,12 @@
     <value>自動生成タスクに使用されているため削除できません。</value>
   </data>
   <data name="ContextMenu_VersionInfo" xml:space="preserve">
-    <value>バージョン情報(_V)...</value>
+    <value>taskaluについて(_A)...</value>
   </data>
   <data name="VI_License" xml:space="preserve">
     <value>ライセンス...</value>
+  </data>
+  <data name="VI_SettingPath" xml:space="preserve">
+    <value>設定ファイルのパス：</value>
   </data>
 </root>

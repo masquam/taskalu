@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Reflection;
+using System.Configuration;
 
 namespace Taskalu
 {
@@ -28,6 +29,8 @@ namespace Taskalu
             AssemblyName thisAssemName = thisAssem.GetName();
             Version ver = thisAssemName.Version;
             versionLabel.Content = ver.ToString();
+
+            settingsFilePathTextBox.Text = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath;
         }
 
         private void LicenseClicked(object sender, RoutedEventArgs e)
