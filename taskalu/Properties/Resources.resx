@@ -361,4 +361,10 @@ Unless there are any problems leave default. A folder 'taskalu' will be created 
   <data name="TE_CannotDelete" xml:space="preserve">
     <value>The Template cannot be deleted because it is used in Auto-Generate rule.</value>
   </data>
+  <data name="ContextMenu_VersionInfo" xml:space="preserve">
+    <value>_Version Info...</value>
+  </data>
+  <data name="VI_License" xml:space="preserve">
+    <value>License...</value>
+  </data>
 </root>

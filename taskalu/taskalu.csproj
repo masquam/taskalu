@@ -114,6 +114,9 @@
     <Compile Include="LanguageSettingsWindow.xaml.cs">
       <DependentUpon>LanguageSettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LicenseWindow.xaml.cs">
+      <DependentUpon>LicenseWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListAutoGenerate.cs" />
     <Compile Include="ListDateDetails.cs" />
     <Compile Include="ListDateSum.cs" />
@@ -156,6 +159,9 @@
     </Compile>
     <Compile Include="TemplateListViewModel.cs" />
     <Compile Include="TemplatePathListViewModel.cs" />
+    <Compile Include="VersionInfoWindow.xaml.cs">
+      <DependentUpon>VersionInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WelcomeWindow.xaml.cs">
       <DependentUpon>WelcomeWindow.xaml</DependentUpon>
     </Compile>
@@ -189,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LanguageSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LicenseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,6 +241,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="TemplateEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VersionInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

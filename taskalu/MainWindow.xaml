@@ -44,6 +44,7 @@
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_AG_AutoGenerateEdit}" Click="AutoGenerateEditButton_Click" />
                         <MenuItem Header="Language Settings..." Click="LanguageSettings_Click" />
                         <Separator />
+                        <MenuItem Header="{x:Static properties:Resources.ContextMenu_VersionInfo}" Click="VersionInfo_Click" />
                         <MenuItem Header="{x:Static properties:Resources.ContextMenu_Exit}" Click="Exit_Click" />
                     </MenuItem>
                 </Menu>

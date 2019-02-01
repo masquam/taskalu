@@ -250,6 +250,15 @@ namespace Taskalu.Properties {
         }
         
         /// <summary>
+        ///   _Version Info... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string ContextMenu_VersionInfo {
+            get {
+                return ResourceManager.GetString("ContextMenu_VersionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   date に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string DD_Date {
@@ -732,6 +741,15 @@ namespace Taskalu.Properties {
         public static string TE_TemplateEdit {
             get {
                 return ResourceManager.GetString("TE_TemplateEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   License... に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string VI_License {
+            get {
+                return ResourceManager.GetString("VI_License", resourceCulture);
             }
         }
         

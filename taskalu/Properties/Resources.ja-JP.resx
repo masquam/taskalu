@@ -364,4 +364,10 @@
   <data name="TE_CannotDelete" xml:space="preserve">
     <value>自動生成タスクに使用されているため削除できません。</value>
   </data>
+  <data name="ContextMenu_VersionInfo" xml:space="preserve">
+    <value>バージョン情報(_V)...</value>
+  </data>
+  <data name="VI_License" xml:space="preserve">
+    <value>ライセンス...</value>
+  </data>
 </root>

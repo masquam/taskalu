@@ -1124,6 +1124,16 @@ namespace Taskalu
                 ExecuteFirstSelectTable();
             }
         }
-    }
 
+        private void VersionInfo_Click(object sender, RoutedEventArgs e)
+        {
+            VersionInfoWindow dlg = new VersionInfoWindow();
+            dlg.Owner = this;
+            dlg.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            if (dlg.ShowDialog() == true)
+            {
+                //
+            }
+        }
+    }
 }
