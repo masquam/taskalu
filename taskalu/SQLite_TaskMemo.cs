@@ -12,7 +12,7 @@ namespace Taskalu
     public partial class SQLiteClass
     {
         public static int TaskMemoMoreCount { get; set; }
-        public static int TaskMemoMoreSize = 10;
+        public static int TaskMemoMoreSize = 100;
 
         public static Boolean ExecuteInsertTableTaskMemo(string dbpath, Int64 tasklist_id, string memo)
         {
